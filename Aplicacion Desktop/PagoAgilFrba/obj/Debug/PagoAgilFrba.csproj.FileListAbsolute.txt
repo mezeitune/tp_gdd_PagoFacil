@@ -1,0 +1,10 @@
+\\VBOXSVR\PagoAgil2C2017\src\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\ABM\Downloads\TP Pago Facil Frba 1.0 - 2C 2017\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\bin\Debug\PagoAgilFrba.pdb
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
