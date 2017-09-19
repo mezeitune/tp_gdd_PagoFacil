@@ -56,12 +56,12 @@ namespace PagoAgilFrba
 
         private void cargarComboRoles()
         {
-            /*cboRoles.Items.Clear();
+            cboRoles.Items.Clear();
 
             SqlDataReader reader;
             SqlCommand consultaRoles = new SqlCommand();
             consultaRoles.CommandType = CommandType.Text;
-            consultaRoles.CommandText = "SELECT R.ROL_NOMBRE FROM [ABSTRACCIONX4].ROLES_USUARIOS RU JOIN [ABSTRACCIONX4].ROLES R ON (RU.ROL_COD = R.ROL_COD) JOIN [ABSTRACCIONX4].USUARIOS U ON (U.USUA_COD = RU.USUA_COD) WHERE U.USERNAME = 'INVITADO' AND R.ROL_ESTADO = 1";
+            consultaRoles.CommandText = "SELECT * FROM [SERVOMOTOR].ROLES";
             consultaRoles.Connection = Program.conexion();
 
             reader = consultaRoles.ExecuteReader();
@@ -69,7 +69,7 @@ namespace PagoAgilFrba
             while (reader.Read())
                 cboRoles.Items.Add(reader.GetValue(0));
 
-            reader.Close();*/
+            reader.Close();
         }
 
 
@@ -84,11 +84,11 @@ namespace PagoAgilFrba
                     MessageBox.Show("El nombre de usuario ingresado no existe.", "Error", MessageBoxButtons.OK);
                     return;
                 }
-                //ingresarComoAdministrador();
+                ingresarComoAdministrador();
             }
             else
             {
-               // ingresarComoInvitado();
+                ingresarComoInvitado();
             }
         }
 
@@ -104,7 +104,7 @@ namespace PagoAgilFrba
         {
             if (datosCorrectos())
             {
-                //intentarLoguearse();
+                intentarLoguearse();
             }
         }
 
@@ -112,8 +112,8 @@ namespace PagoAgilFrba
         {
             Boolean huboErrores = false;
 
-           // huboErrores = validarTipos() || huboErrores;
-            //huboErrores = validarLongitudes() || huboErrores;
+            huboErrores = validarTipos() || huboErrores;
+            huboErrores = validarLongitudes() || huboErrores;
 
             return !huboErrores;
         }
@@ -121,13 +121,13 @@ namespace PagoAgilFrba
         // Verifica la contraseña con la base de datos (y los posibles ingresos erroneos de las mismas
         private void intentarLoguearse()
         {
-          //  SQLManager manager = new SQLManager().generarSP("LoginAdministrador")
-            //                                     .agregarStringSP("@Usuario", txtUsuario)
-              //                                   .agregarStringSP("@ContraseniaIngresada", Encriptador.encriptarSegunSHA256(txtPassword.Text));
+            SQLManager manager = new SQLManager().generarSP("LoginAdministrador")
+                                                 .agregarStringSP("@Usuario", txtUsuario)
+                                                 .agregarStringSP("@ContraseniaIngresada", Encriptador.encriptarSegunSHA256(txtPassword.Text));
 
             try
             {
-               // manager.ejecutarSP();
+                manager.ejecutarSP();
                 //cambiarVisibilidades(new Principal("Administrador", txtUsuario.Text, this));
                 
             }
@@ -142,26 +142,25 @@ namespace PagoAgilFrba
 
         private void ingresarComoInvitado()
         {
-            //if (Validacion.esVacio(cboRoles, "rol", true))
-              //  return;
+            if (Validacion.esVacio(cboRoles, "rol", true))
+                return;
 
-            //cambiarVisibilidades(new Principal(cboRoles.SelectedItem.ToString(),"Invitado",this));
+          // cambiarVisibilidades(new Principal(cboRoles.SelectedItem.ToString(),"Invitado",this));
         }
 
         private bool validarLongitudes()
         {
             Boolean huboErrores = false;
 
-         //   huboErrores = Validacion.esVacio(txtUsuario, "usuario", true) || huboErrores;
-           // huboErrores = Validacion.esVacio(txtPassword, "contraseña", true) || huboErrores;
+            huboErrores = Validacion.esVacio(txtUsuario, "usuario", true) || huboErrores;
+            huboErrores = Validacion.esVacio(txtPassword, "contraseña", true) || huboErrores;
 
             return huboErrores;
         }
 
         private bool validarTipos()
         {
-          //  return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
-            return true;//sacarlo cuando descomente lo de arriba
+            return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
         }
 
     }

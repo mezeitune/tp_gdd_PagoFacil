@@ -1,0 +1,171 @@
+--SELECT * FROM GD2C2017.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
+--use GD2C2017;
+--select * from gd_esquema.Maestra;
+
+USE [GD2C2017]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[FUNCIONES_ROLES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[FUNCIONES_ROLES]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[FUNCIONALIDADES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[FUNCIONALIDADES]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[ROLES_USUARIOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[ROLES_USUARIOS]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[ROLES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[ROLES]
+
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[USUARIOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[USUARIOS]
+
+
+
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[SUCURSALES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[SUCURSALES]
+
+
+
+
+
+
+
+GO
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'SERVOMOTOR')
+DROP SCHEMA [SERVOMOTOR]
+GO
+
+CREATE SCHEMA [SERVOMOTOR] AUTHORIZATION [gd]
+GO
+
+--//////////////////////////////////////////////
+
+
+
+--//////////// Creacion de tablas //////////////
+
+--Rol: Si el estado es 0, se encuentra inactivo, si es 1 activo.
+--Esta tabla contiene código, nombre y estado del rol (activo/inactivo)
+CREATE TABLE [SERVOMOTOR].[ROLES](
+	[ROL_COD] [tinyint] IDENTITY,
+	[ROL_NOMBRE] [varchar](30) UNIQUE NOT NULL, 
+ CONSTRAINT [PK_ROLES] PRIMARY KEY CLUSTERED 
+(
+	[ROL_COD] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+--Tabla Funcionalidad: Contiene los códigos, nombres de cada funcionalidad. 
+CREATE TABLE [SERVOMOTOR].[FUNCIONALIDADES](
+	[FUNC_COD] [tinyint] IDENTITY,
+	[FUNC_NOMBRE] [varchar] (60) UNIQUE NOT NULL,
+CONSTRAINT [PK_FUNCIONALIDADES] PRIMARY KEY CLUSTERED 
+(
+	[FUNC_COD] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+--Tabla Funciones por rol: Contiene las funcionalidades habilitadas para cada rol del sistema.
+CREATE TABLE [SERVOMOTOR].[FUNCIONES_ROLES](
+	[ROL_COD] [tinyint] NOT NULL,
+	[FUNC_COD] [tinyint] NOT NULL,
+ CONSTRAINT [PK_FUNCIONES_ROLES] PRIMARY KEY CLUSTERED 
+(
+	[ROL_COD] ASC,
+	[FUNC_COD] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+ALTER TABLE [SERVOMOTOR].[FUNCIONES_ROLES]  WITH CHECK ADD  CONSTRAINT [FK_FUNCIONES_ROLES_ROLES] FOREIGN KEY([ROL_COD])
+REFERENCES [SERVOMOTOR].[ROLES] ([ROL_COD])
+
+GO
+
+ALTER TABLE [SERVOMOTOR].[FUNCIONES_ROLES]  WITH CHECK ADD  CONSTRAINT [FK_FUNCIONES_ROLES_FUNCIONALIDADES] FOREIGN KEY([FUNC_COD])
+REFERENCES [SERVOMOTOR].[FUNCIONALIDADES] ([FUNC_COD])
+
+GO
+
+-- Tabla Sucursales: 
+CREATE TABLE [SERVOMOTOR].[SUCURSALES](
+	[COD_POSTAL] [tinyint] IDENTITY,
+	[DIRECCION] [varchar] (20) UNIQUE,
+	[ESTADO_HABILITACION] [varchar] (70) NOT NULL,
+ CONSTRAINT [PK_SUCURSALES] PRIMARY KEY CLUSTERED 
+(
+	[COD_POSTAL] 
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+-- Tabla Usuarios: 
+CREATE TABLE [SERVOMOTOR].[USUARIOS](
+	[USUA_COD] [tinyint] IDENTITY,
+	[USERNAME] [varchar] (20) UNIQUE,
+	[PASSWORD] [varchar] (70) NOT NULL,
+	[CANT_INT_FALL] [tinyint] DEFAULT 0,
+	[HABILITADO] [bit] DEFAULT 1,
+	[COD_SUCURSAL] [tinyint] NOT NULL,
+ CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED 
+(
+	[USUA_COD] 
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [SERVOMOTOR].[USUARIOS]  WITH CHECK ADD  CONSTRAINT [FK_SUCURSALES_USUARIOS] FOREIGN KEY([COD_SUCURSAL])
+REFERENCES [SERVOMOTOR].[SUCURSALES] ([COD_POSTAL])
+
+GO
+
+
+
+--Tabla roles por usuario: tiene los roles para cada usuario del sistema
+CREATE TABLE [SERVOMOTOR].[ROLES_USUARIOS](
+	[ROL_COD] [tinyint] NOT NULL,
+	[USUA_COD] [tinyint] NOT NULL,
+ CONSTRAINT [PK_ROLES_USUARIOS] PRIMARY KEY CLUSTERED 
+(
+	[ROL_COD] ASC,
+	[USUA_COD] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+ALTER TABLE [SERVOMOTOR].[ROLES_USUARIOS]  WITH CHECK ADD  CONSTRAINT [FK_ROLES_USUARIOS_ROL] FOREIGN KEY([ROL_COD])
+REFERENCES [SERVOMOTOR].[ROLES] ([ROL_COD])
+
+GO
+
+ALTER TABLE [SERVOMOTOR].[ROLES_USUARIOS]  WITH CHECK ADD  CONSTRAINT [FK_ROLES_USUARIOS_USUARIO] FOREIGN KEY([USUA_COD])
+REFERENCES [SERVOMOTOR].[USUARIOS] ([USUA_COD])

@@ -20,7 +20,7 @@ namespace PagoAgilFrba
             command = new SqlCommand();
             command.Connection = Program.conexion();
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.CommandText = "[GD2C2015].[ABSTRACCIONX4].[" + nombre + "]";
+            command.CommandText = "[GD2C2017].[SERVOMOTOR].[" + nombre + "]";
             command.CommandTimeout = 0;
             return this;
         }
