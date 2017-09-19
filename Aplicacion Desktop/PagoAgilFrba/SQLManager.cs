@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AerolineaFrba
+namespace PagoAgilFrba
 {
     // Clase encargada de simplificar la llamda a stored procedures, llenado de datagrid y otras conexiones con la BD
 

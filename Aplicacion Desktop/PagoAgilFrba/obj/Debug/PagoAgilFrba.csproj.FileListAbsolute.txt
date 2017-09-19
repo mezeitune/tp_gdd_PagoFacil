@@ -8,4 +8,5 @@ C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Rendicion.Form1.resources
-C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\AerolineaFrba.FormLogin.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.FormLogin.resources

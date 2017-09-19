@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AerolineaFrba
+namespace PagoAgilFrba
 {
     // Clase que contiene todas las validaciones generales que se hacen en la aplicación
     static class Validacion

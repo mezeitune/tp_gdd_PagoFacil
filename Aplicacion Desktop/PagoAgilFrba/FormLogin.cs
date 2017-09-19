@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AerolineaFrba
+namespace PagoAgilFrba
 {
     public partial class FormLogin : Form
     {
@@ -56,7 +56,7 @@ namespace AerolineaFrba
 
         private void cargarComboRoles()
         {
-            cboRoles.Items.Clear();
+            /*cboRoles.Items.Clear();
 
             SqlDataReader reader;
             SqlCommand consultaRoles = new SqlCommand();
@@ -69,7 +69,7 @@ namespace AerolineaFrba
             while (reader.Read())
                 cboRoles.Items.Add(reader.GetValue(0));
 
-            reader.Close();
+            reader.Close();*/
         }
 
 
@@ -84,11 +84,11 @@ namespace AerolineaFrba
                     MessageBox.Show("El nombre de usuario ingresado no existe.", "Error", MessageBoxButtons.OK);
                     return;
                 }
-                ingresarComoAdministrador();
+                //ingresarComoAdministrador();
             }
             else
             {
-                ingresarComoInvitado();
+               // ingresarComoInvitado();
             }
         }
 
@@ -104,7 +104,7 @@ namespace AerolineaFrba
         {
             if (datosCorrectos())
             {
-                intentarLoguearse();
+                //intentarLoguearse();
             }
         }
 
@@ -112,8 +112,8 @@ namespace AerolineaFrba
         {
             Boolean huboErrores = false;
 
-            huboErrores = validarTipos() || huboErrores;
-            huboErrores = validarLongitudes() || huboErrores;
+           // huboErrores = validarTipos() || huboErrores;
+            //huboErrores = validarLongitudes() || huboErrores;
 
             return !huboErrores;
         }
@@ -121,14 +121,14 @@ namespace AerolineaFrba
         // Verifica la contraseña con la base de datos (y los posibles ingresos erroneos de las mismas
         private void intentarLoguearse()
         {
-            SQLManager manager = new SQLManager().generarSP("LoginAdministrador")
-                                                 .agregarStringSP("@Usuario", txtUsuario)
-                                                 .agregarStringSP("@ContraseniaIngresada", Encriptador.encriptarSegunSHA256(txtPassword.Text));
+          //  SQLManager manager = new SQLManager().generarSP("LoginAdministrador")
+            //                                     .agregarStringSP("@Usuario", txtUsuario)
+              //                                   .agregarStringSP("@ContraseniaIngresada", Encriptador.encriptarSegunSHA256(txtPassword.Text));
 
             try
             {
-                manager.ejecutarSP();
-                cambiarVisibilidades(new Principal("Administrador", txtUsuario.Text, this));
+               // manager.ejecutarSP();
+                //cambiarVisibilidades(new Principal("Administrador", txtUsuario.Text, this));
                 
             }
             catch(Exception e)
@@ -142,25 +142,26 @@ namespace AerolineaFrba
 
         private void ingresarComoInvitado()
         {
-            if (Validacion.esVacio(cboRoles, "rol", true))
-                return;
+            //if (Validacion.esVacio(cboRoles, "rol", true))
+              //  return;
 
-            cambiarVisibilidades(new Principal(cboRoles.SelectedItem.ToString(),"Invitado",this));
+            //cambiarVisibilidades(new Principal(cboRoles.SelectedItem.ToString(),"Invitado",this));
         }
 
         private bool validarLongitudes()
         {
             Boolean huboErrores = false;
 
-            huboErrores = Validacion.esVacio(txtUsuario, "usuario", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtPassword, "contraseña", true) || huboErrores;
+         //   huboErrores = Validacion.esVacio(txtUsuario, "usuario", true) || huboErrores;
+           // huboErrores = Validacion.esVacio(txtPassword, "contraseña", true) || huboErrores;
 
             return huboErrores;
         }
 
         private bool validarTipos()
         {
-            return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
+          //  return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
+            return true;//sacarlo cuando descomente lo de arriba
         }
 
     }

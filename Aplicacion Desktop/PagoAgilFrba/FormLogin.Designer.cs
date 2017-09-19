@@ -1,4 +1,4 @@
-﻿namespace AerolineaFrba
+﻿namespace PagoAgilFrba
 {
     partial class FormLogin
     {
