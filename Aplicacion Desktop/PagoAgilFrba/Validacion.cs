@@ -246,6 +246,22 @@ namespace PagoAgilFrba
             }
             return true;
         }
+        
+        public static Boolean esFormatoDeFecha(TextBox txt, string nombreCampo = "Opcional") {
+            DateTime temp;
+
+            if (DateTime.TryParse(txt.ToString(), out temp))
+            {
+                return true;
+            }
+            else {
+                MessageBox.Show("El formato de la fecha es invalido debe ser DD/MM/AAAA " , "Error en los datos de entrada", MessageBoxButtons.OK);
+                return false;
+            }
+               
+            
+        }
+
 
         //******* VALIDACIONES DE CAMPOS VACIOS ******//
 
@@ -293,7 +309,19 @@ namespace PagoAgilFrba
 
             return vacio;
         }
+        public static Boolean esNumeroDe7u8(TextBox txt)
+        {
+            
+            if (txt.TextLength >= 7 && txt.TextLength <= 8)
+            {
+                return true;
+            }
+            else {
+                MessageBox.Show("El dni debe tener como minimo 7 caracteres u 8 como maximo", "Error en los datos de entrada", MessageBoxButtons.OK);
+                return false;
+            }
 
+        }
         public static Boolean listaVacia(List<Object> lista, string nombreCampo = "Opcional" , Boolean mostrarMensaje = false)
         {
             Boolean vacio = false;

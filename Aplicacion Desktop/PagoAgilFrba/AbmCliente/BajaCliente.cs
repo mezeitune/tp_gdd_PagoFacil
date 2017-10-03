@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class Form1 : Form
+    public partial class BajaCliente : Form
     {
-        public Form1()
+        public BajaCliente()
         {
             InitializeComponent();
+        }
+
+        private void BajaLogicaCliente_Click(object sender, EventArgs e)
+        {
+            //aca se da de baja logica al cliente seleccionado
         }
     }
 }

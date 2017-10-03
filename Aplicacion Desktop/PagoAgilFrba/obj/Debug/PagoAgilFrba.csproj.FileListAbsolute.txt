@@ -10,3 +10,7 @@ C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.Rendicion.Form1.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.FormLogin.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AltaCliente.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.Alta.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.BajaCliente.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.Baja_Modificacion_Cliente.resources
