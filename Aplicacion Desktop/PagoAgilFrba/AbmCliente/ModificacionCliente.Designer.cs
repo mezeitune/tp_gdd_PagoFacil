@@ -152,5 +152,7 @@
         private System.Windows.Forms.Button buscaPorDniExacto;
         private System.Windows.Forms.Button ModificacionCliente;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+
+
     }
 }
