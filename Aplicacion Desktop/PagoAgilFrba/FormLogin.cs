@@ -49,6 +49,7 @@ namespace PagoAgilFrba
 
         private void vaciarTextos()
         {
+            
             txtPassword.Text = "";
             txtUsuario.Text = "";
             cboRoles.SelectedIndex = -1;
@@ -161,6 +162,11 @@ namespace PagoAgilFrba
         private bool validarTipos()
         {
             return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
