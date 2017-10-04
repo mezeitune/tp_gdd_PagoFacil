@@ -49,7 +49,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void BajaLogicaCliente_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Se ha dado de baja correctamente", "Todo bien", MessageBoxButtons.OK);
         }
     }
 }

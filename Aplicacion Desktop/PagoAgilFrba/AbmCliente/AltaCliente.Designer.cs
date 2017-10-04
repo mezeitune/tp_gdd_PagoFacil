@@ -50,8 +50,8 @@
             this.txtDptoCliente = new System.Windows.Forms.TextBox();
             this.txtLocalidadCliente = new System.Windows.Forms.TextBox();
             this.txtCodPostalCliente = new System.Windows.Forms.TextBox();
-            this.txtFechaNacCliente = new System.Windows.Forms.TextBox();
             this.DarAltaCliente = new System.Windows.Forms.Button();
+            this.FechaNacCliente = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -242,14 +242,6 @@
             this.txtCodPostalCliente.TabIndex = 21;
             this.txtCodPostalCliente.TextChanged += new System.EventHandler(this.txtCodPosCliente_TextChanged);
             // 
-            // txtFechaNacCliente
-            // 
-            this.txtFechaNacCliente.Location = new System.Drawing.Point(204, 345);
-            this.txtFechaNacCliente.Name = "txtFechaNacCliente";
-            this.txtFechaNacCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtFechaNacCliente.TabIndex = 22;
-            this.txtFechaNacCliente.TextChanged += new System.EventHandler(this.txtFechaNacCliente_TextChanged);
-            // 
             // DarAltaCliente
             // 
             this.DarAltaCliente.Location = new System.Drawing.Point(152, 393);
@@ -260,13 +252,21 @@
             this.DarAltaCliente.UseVisualStyleBackColor = true;
             this.DarAltaCliente.Click += new System.EventHandler(this.DarAltaCliente_Click);
             // 
+            // FechaNacCliente
+            // 
+            this.FechaNacCliente.Location = new System.Drawing.Point(220, 346);
+            this.FechaNacCliente.Name = "FechaNacCliente";
+            this.FechaNacCliente.Size = new System.Drawing.Size(200, 20);
+            this.FechaNacCliente.TabIndex = 56;
+            this.FechaNacCliente.ValueChanged += new System.EventHandler(this.FechaNacCliente_ValueChanged);
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 439);
+            this.Controls.Add(this.FechaNacCliente);
             this.Controls.Add(this.DarAltaCliente);
-            this.Controls.Add(this.txtFechaNacCliente);
             this.Controls.Add(this.txtCodPostalCliente);
             this.Controls.Add(this.txtLocalidadCliente);
             this.Controls.Add(this.txtDptoCliente);
@@ -321,7 +321,7 @@
         private System.Windows.Forms.TextBox txtDptoCliente;
         private System.Windows.Forms.TextBox txtLocalidadCliente;
         private System.Windows.Forms.TextBox txtCodPostalCliente;
-        private System.Windows.Forms.TextBox txtFechaNacCliente;
         private System.Windows.Forms.Button DarAltaCliente;
+        private System.Windows.Forms.DateTimePicker FechaNacCliente;
     }
 }

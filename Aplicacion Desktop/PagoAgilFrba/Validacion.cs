@@ -354,6 +354,11 @@ namespace PagoAgilFrba
         {
             return check.Checked;
         }
+        public static Boolean estaCheckeadoComboBox(ComboBox combo)
+        {
+            if (combo.SelectedItem == null) { return true; }
+            return false;
+        }
 
 
         internal static bool estaCheckeadoOpt(RadioButton option)

@@ -52,9 +52,15 @@ namespace PagoAgilFrba.AbmSucursal
 
         }
 
-        private void BajaLogicaCliente_Click(object sender, EventArgs e)
+        private void BajaLogicaSucursal_Click(object sender, EventArgs e)
         {
-
+            Form formularioSiguiente = new AbmSucursal.ModificarSucursal();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
     }
 }

@@ -19,16 +19,15 @@ namespace PagoAgilFrba.AbmCliente
 
         private void ModificarCliente_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos())
+            if (todosLosCamposLLenos() && validarTipos())
             {
-                if (validarTipos())
-                {
+                
                     //update de todos los datos juntos
-                }
 
+                MessageBox.Show("Se ha modificado correctamente", "Todo bien", MessageBoxButtons.OK);
             }
            
-            MessageBox.Show("Se modifico correctamente al cliente", "Todo piola", MessageBoxButtons.OK);
+           
         }
         private bool todosLosCamposLLenos()
         {
@@ -62,14 +61,11 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = !Validacion.esTextoAlfanumerico(txtDptoCliente, true, "Departamento", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtLocalidadCliente, true, "Localidad", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtCodPostalCliente, "Codigo Postal", true) || huboErrores;
-            huboErrores = !Validacion.esFormatoDeFecha(txtFechaNacCliente, "Fecha Nacimiento") || huboErrores;
+           
             return huboErrores;
         }
        
-        private void txtFechaNacCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void txtCodPostalCliente_TextChanged(object sender, EventArgs e)
         {
@@ -107,6 +103,11 @@ namespace PagoAgilFrba.AbmCliente
         }
 
         private void txtApellidoCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FechaVencFact_ValueChanged(object sender, EventArgs e)
         {
 
         }

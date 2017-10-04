@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.ModificarCliente = new System.Windows.Forms.Button();
-            this.txtFechaNacCliente = new System.Windows.Forms.TextBox();
             this.txtCodPostalCliente = new System.Windows.Forms.TextBox();
             this.txtLocalidadCliente = new System.Windows.Forms.TextBox();
             this.txtDptoCliente = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // ModificarCliente
@@ -61,14 +61,6 @@
             this.ModificarCliente.Text = "Modificar cliente";
             this.ModificarCliente.UseVisualStyleBackColor = true;
             this.ModificarCliente.Click += new System.EventHandler(this.ModificarCliente_Click);
-            // 
-            // txtFechaNacCliente
-            // 
-            this.txtFechaNacCliente.Location = new System.Drawing.Point(244, 293);
-            this.txtFechaNacCliente.Name = "txtFechaNacCliente";
-            this.txtFechaNacCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtFechaNacCliente.TabIndex = 46;
-            this.txtFechaNacCliente.TextChanged += new System.EventHandler(this.txtFechaNacCliente_TextChanged);
             // 
             // txtCodPostalCliente
             // 
@@ -239,13 +231,21 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 24;
             // 
+            // FechaVencFact
+            // 
+            this.FechaVencFact.Location = new System.Drawing.Point(258, 294);
+            this.FechaVencFact.Name = "FechaVencFact";
+            this.FechaVencFact.Size = new System.Drawing.Size(200, 20);
+            this.FechaVencFact.TabIndex = 56;
+            this.FechaVencFact.ValueChanged += new System.EventHandler(this.FechaVencFact_ValueChanged);
+            // 
             // ModificarDatosCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 440);
+            this.Controls.Add(this.FechaVencFact);
             this.Controls.Add(this.ModificarCliente);
-            this.Controls.Add(this.txtFechaNacCliente);
             this.Controls.Add(this.txtCodPostalCliente);
             this.Controls.Add(this.txtLocalidadCliente);
             this.Controls.Add(this.txtDptoCliente);
@@ -276,7 +276,6 @@
         #endregion
 
         private System.Windows.Forms.Button ModificarCliente;
-        private System.Windows.Forms.TextBox txtFechaNacCliente;
         private System.Windows.Forms.TextBox txtCodPostalCliente;
         private System.Windows.Forms.TextBox txtLocalidadCliente;
         private System.Windows.Forms.TextBox txtDptoCliente;
@@ -297,5 +296,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker FechaVencFact;
     }
 }

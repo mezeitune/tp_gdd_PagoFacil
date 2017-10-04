@@ -64,11 +64,17 @@
     <Compile Include="AbmCliente\ModificacionCliente.Designer.cs">
       <DependentUpon>ModificacionCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmCliente\Form1.cs">
+    <Compile Include="AbmCliente\PantallaPrincipalABMCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmCliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmCliente\PantallaPrincipalABMCliente.Designer.cs">
+      <DependentUpon>PantallaPrincipalABMCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmCliente\ModificarDatosCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\ModificarDatosCliente.Designer.cs">
+      <DependentUpon>ModificarDatosCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmEmpresa\Form1.cs">
       <SubType>Form</SubType>
@@ -76,11 +82,47 @@
     <Compile Include="AbmEmpresa\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\Form1.cs">
+    <Compile Include="AbmFactura\AltaDeItemFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmFactura\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmFactura\AltaDeItemFactura.Designer.cs">
+      <DependentUpon>AltaDeItemFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\AltaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\AltaFactura.Designer.cs">
+      <DependentUpon>AltaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\BajaFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\BajaFactura.Designer.cs">
+      <DependentUpon>BajaFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\ModificacionFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\ModificacionFactura.Designer.cs">
+      <DependentUpon>ModificacionFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarFactura.Designer.cs">
+      <DependentUpon>ModificarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarItemFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarItemFactura.Designer.cs">
+      <DependentUpon>ModificarItemFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\PantallaPrincipalABMFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\PantallaPrincipalABMFactura.Designer.cs">
+      <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\Form1.cs">
       <SubType>Form</SubType>
@@ -88,11 +130,35 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.cs">
+    <Compile Include="AbmSucursal\AltaSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmSucursal\AltaSucursal.Designer.cs">
+      <DependentUpon>AltaSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\BajaSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\BajaSucursal.Designer.cs">
+      <DependentUpon>BajaSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\ModificacionSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\ModificacionSucursal.Designer.cs">
+      <DependentUpon>ModificacionSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\ModificarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\ModificarSucursal.Designer.cs">
+      <DependentUpon>ModificarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\PantallaPrincipalABMSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\PantallaPrincipalABMSucursal.Designer.cs">
+      <DependentUpon>PantallaPrincipalABMSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Constructores.cs" />
     <Compile Include="Encriptador.cs" />
@@ -139,8 +205,47 @@
     <EmbeddedResource Include="AbmCliente\ModificacionCliente.resx">
       <DependentUpon>ModificacionCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmCliente\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AbmCliente\PantallaPrincipalABMCliente.resx">
+      <DependentUpon>PantallaPrincipalABMCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ModificarDatosCliente.resx">
+      <DependentUpon>ModificarDatosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\AltaDeItemFactura.resx">
+      <DependentUpon>AltaDeItemFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\AltaFactura.resx">
+      <DependentUpon>AltaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\BajaFactura.resx">
+      <DependentUpon>BajaFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ModificacionFactura.resx">
+      <DependentUpon>ModificacionFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
+      <DependentUpon>ModificarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ModificarItemFactura.resx">
+      <DependentUpon>ModificarItemFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\PantallaPrincipalABMFactura.resx">
+      <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\AltaSucursal.resx">
+      <DependentUpon>AltaSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\BajaSucursal.resx">
+      <DependentUpon>BajaSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\ModificacionSucursal.resx">
+      <DependentUpon>ModificacionSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\ModificarSucursal.resx">
+      <DependentUpon>ModificarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\PantallaPrincipalABMSucursal.resx">
+      <DependentUpon>PantallaPrincipalABMSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

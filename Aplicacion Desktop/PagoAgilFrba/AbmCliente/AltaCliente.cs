@@ -108,13 +108,12 @@ namespace PagoAgilFrba.AbmCliente
 
         private void DarAltaCliente_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos())
+            if (todosLosCamposLLenos() && validarTipos())
             {
-                if (validarTipos())
-                {
+               
                     //aca se da de alta el cliente en la BDD
-                }
 
+                MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
             }
         }
         private bool todosLosCamposLLenos()
@@ -129,7 +128,7 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = Validacion.esVacio(txtMailCliente, "mail", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtDNICliente, "DNI", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtCodPostalCliente, "Cod Postal", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtFechaNacCliente, "Fecha Nacimiento", true) || huboErrores;
+            
             huboErrores = Validacion.esVacio(txtLocalidadCliente, "Localidad", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
 
@@ -149,8 +148,13 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = !Validacion.esTextoAlfanumerico(txtDptoCliente, true, "Departamento", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtLocalidadCliente, true, "Localidad", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtCodPostalCliente, "Codigo Postal", true) || huboErrores;
-            huboErrores = !Validacion.esFormatoDeFecha(txtFechaNacCliente,"Fecha Nacimiento") || huboErrores;
+            
             return huboErrores;
+        }
+
+        private void FechaNacCliente_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

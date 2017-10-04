@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtDireccionSucursal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.DarAltaCliente = new System.Windows.Forms.Button();
-            this.txtCodPostalCliente = new System.Windows.Forms.TextBox();
+            this.botonModificarSucursal = new System.Windows.Forms.Button();
+            this.txtCodPostalSucursal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtNombreSucursal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtDireccion
+            // txtDireccionSucursal
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(115, 94);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(193, 20);
-            this.txtDireccion.TabIndex = 33;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            this.txtDireccionSucursal.Location = new System.Drawing.Point(115, 94);
+            this.txtDireccionSucursal.Name = "txtDireccionSucursal";
+            this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtDireccionSucursal.TabIndex = 33;
+            this.txtDireccionSucursal.TextChanged += new System.EventHandler(this.txtDireccionSucursal_TextChanged);
             // 
             // label1
             // 
@@ -54,23 +54,23 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Direccion";
             // 
-            // DarAltaCliente
+            // botonModificarSucursal
             // 
-            this.DarAltaCliente.Location = new System.Drawing.Point(132, 221);
-            this.DarAltaCliente.Name = "DarAltaCliente";
-            this.DarAltaCliente.Size = new System.Drawing.Size(109, 34);
-            this.DarAltaCliente.TabIndex = 31;
-            this.DarAltaCliente.Text = "Modificar sucursal";
-            this.DarAltaCliente.UseVisualStyleBackColor = true;
-            this.DarAltaCliente.Click += new System.EventHandler(this.DarAltaCliente_Click);
+            this.botonModificarSucursal.Location = new System.Drawing.Point(132, 221);
+            this.botonModificarSucursal.Name = "botonModificarSucursal";
+            this.botonModificarSucursal.Size = new System.Drawing.Size(109, 34);
+            this.botonModificarSucursal.TabIndex = 31;
+            this.botonModificarSucursal.Text = "Modificar sucursal";
+            this.botonModificarSucursal.UseVisualStyleBackColor = true;
+            this.botonModificarSucursal.Click += new System.EventHandler(this.ModificarSucursal_Click);
             // 
-            // txtCodPostalCliente
+            // txtCodPostalSucursal
             // 
-            this.txtCodPostalCliente.Location = new System.Drawing.Point(115, 140);
-            this.txtCodPostalCliente.Name = "txtCodPostalCliente";
-            this.txtCodPostalCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtCodPostalCliente.TabIndex = 30;
-            this.txtCodPostalCliente.TextChanged += new System.EventHandler(this.txtCodPostalCliente_TextChanged);
+            this.txtCodPostalSucursal.Location = new System.Drawing.Point(115, 140);
+            this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
+            this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtCodPostalSucursal.TabIndex = 30;
+            this.txtCodPostalSucursal.TextChanged += new System.EventHandler(this.txtCodPostalSucursal_TextChanged);
             // 
             // label11
             // 
@@ -81,13 +81,13 @@
             this.label11.TabIndex = 29;
             this.label11.Text = "Codigo postal";
             // 
-            // txtNombreCliente
+            // txtNombreSucursal
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(115, 48);
-            this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtNombreCliente.TabIndex = 28;
-            this.txtNombreCliente.TextChanged += new System.EventHandler(this.txtNombreCliente_TextChanged);
+            this.txtNombreSucursal.Location = new System.Drawing.Point(115, 48);
+            this.txtNombreSucursal.Name = "txtNombreSucursal";
+            this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtNombreSucursal.TabIndex = 28;
+            this.txtNombreSucursal.TextChanged += new System.EventHandler(this.txtNombreSucursal_TextChanged);
             // 
             // label2
             // 
@@ -103,12 +103,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 288);
-            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.txtDireccionSucursal);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.DarAltaCliente);
-            this.Controls.Add(this.txtCodPostalCliente);
+            this.Controls.Add(this.botonModificarSucursal);
+            this.Controls.Add(this.txtCodPostalSucursal);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtNombreCliente);
+            this.Controls.Add(this.txtNombreSucursal);
             this.Controls.Add(this.label2);
             this.Name = "ModificarSucursal";
             this.Text = "ModificarSucursal";
@@ -119,12 +119,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtDireccionSucursal;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button DarAltaCliente;
-        private System.Windows.Forms.TextBox txtCodPostalCliente;
+        private System.Windows.Forms.Button botonModificarSucursal;
+        private System.Windows.Forms.TextBox txtCodPostalSucursal;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtNombreCliente;
+        private System.Windows.Forms.TextBox txtNombreSucursal;
         private System.Windows.Forms.Label label2;
     }
 }

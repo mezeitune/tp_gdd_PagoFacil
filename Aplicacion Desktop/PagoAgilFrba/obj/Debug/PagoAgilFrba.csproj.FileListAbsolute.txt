@@ -14,3 +14,16 @@ C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.Alta.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.BajaCliente.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.Baja_Modificacion_Cliente.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarDatosCliente.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.AltaSucursal.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.BajaSucursal.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.ModificacionSucursal.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.ModificarSucursal.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.Form1.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AltaDeItemFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AltaFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.BajaFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificacionFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarItemFactura.resources
+C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.Form1.resources

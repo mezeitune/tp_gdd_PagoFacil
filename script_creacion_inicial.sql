@@ -114,6 +114,11 @@ object_id(N'[SERVOMOTOR].[RENDICION_DEVOLUCION]') and OBJECTPROPERTY(id, N'IsUse
 drop table [SERVOMOTOR].[RENDICION_DEVOLUCION]
 
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[EncriptarSHA1]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
+drop function [SERVOMOTOR].[EncriptarSHA1]
+
 
 
 
@@ -187,7 +192,7 @@ CREATE TABLE [SERVOMOTOR].[SUCURSALES](
 	[COD_POSTAL] [tinyint] IDENTITY,
 	[NOMBRE] [varchar] (60) UNIQUE NOT NULL,
 	[DIRECCION] [varchar] (20) UNIQUE,
-	[ESTADO_HABILITACION] [varchar] (70) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_SUCURSALES] PRIMARY KEY CLUSTERED 
 (
 	[COD_POSTAL] 
@@ -215,7 +220,7 @@ GO
 CREATE TABLE [SERVOMOTOR].[ROLES_USUARIOS](
 	[ID_ROL] [tinyint] NOT NULL,
 	[ID_USUARIO] [tinyint] NOT NULL,
-	[ESTADO] [varchar] (60) NOT NULL,
+	[ESTADO] [bit] DEFAULT 1,
  CONSTRAINT [PK_ROLES_USUARIOS] PRIMARY KEY CLUSTERED 
 (
 	[ID_ROL] ASC,
@@ -319,11 +324,11 @@ CREATE TABLE [SERVOMOTOR].[RUBROS](
 
 -- Tabla EMPRESAS: 
 CREATE TABLE [SERVOMOTOR].[EMPRESAS](
-	[CUIT] [tinyint] IDENTITY,
+	[CUIT] [tinyint],
 	[NOMBRE] [varchar] (20) NOT NULL,
 	[DIRECCION] [varchar] (20) NOT NULL,
 	[ID_RUBRO] [tinyint] ,
-	[ESTADO_ACTIVACION] [varchar] (20) NOT NULL,
+	[ESTADO_ACTIVACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_EMPRESAS] PRIMARY KEY CLUSTERED 
 (
 	[CUIT] 
@@ -371,7 +376,7 @@ REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 -- Tabla CLIENTES: 
 CREATE TABLE [SERVOMOTOR].[CLIENTES](
-	[DNI] [tinyint] IDENTITY,
+	[DNI] [tinyint],
 	[NOMBRE] [varchar] (20) NOT NULL,
 	[APELLIDO] [varchar] (20) NOT NULL,
 	[MAIL] [varchar] (20) NOT NULL,
@@ -382,7 +387,7 @@ CREATE TABLE [SERVOMOTOR].[CLIENTES](
 	[LOCALIDAD] [varchar] (20) NOT NULL,
 	[FECHA_NACIMIENTO] [datetime] NOT NULL,
 	[COD_POSTAL_CLIENTE] [varchar] (20) NOT NULL,
-	[ESTADO_HABILITACION] [varchar] (20) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
 (
 	[DNI] 
@@ -443,3 +448,39 @@ CREATE TABLE [SERVOMOTOR].[ITEMS](
 
 ALTER TABLE [SERVOMOTOR].[ITEMS]  WITH CHECK ADD  CONSTRAINT [FK_ITEMS_PAGO] FOREIGN KEY([NUMERO_FACTURA])
 REFERENCES [SERVOMOTOR].[FACTURAS] ([NUMERO_FACTURA])
+
+
+--//////////////////////////////////////////////
+
+GO
+
+CREATE FUNCTION SERVOMOTOR.EncriptarSHA1 (@numero VARCHAR(16))
+RETURNS nvarchar(4000)
+AS
+BEGIN
+	DECLARE @hash nvarchar(4000)
+	SET @hash = CONVERT(nvarchar(4000),@numero);
+	RETURN HASHBYTES('SHA1', @hash);
+END
+
+
+
+GO
+
+--//////////// Migración de tabla maestra /////////////
+-- Inserta los clientes en la tabla clientes
+
+/*INSERT INTO [SERVOMOTOR].[CLIENTES]
+
+	(	
+		DNI ,
+		NOMBRE ,
+		APELLIDO ,
+		CALLE ,
+		MAIL ,
+		FECHA_NACIMIENTO,
+		COD_POSTAL_CLIENTE
+	)
+
+	SELECT DISTINCT CAST('Cliente-Dni' as tinyint) , 'Cliente-Nombre', 'Cliente-Apellido', Cliente_Direccion, Cliente_Mail, 'Cliente-Fecha_Nac' , Cliente_Codigo_Postal FROM gd_esquema.Maestra
+	*/

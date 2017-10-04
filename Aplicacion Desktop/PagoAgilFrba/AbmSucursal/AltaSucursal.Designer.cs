@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtNombreSucursal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCodPostalCliente = new System.Windows.Forms.TextBox();
+            this.txtCodPostalSucursal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.DarAltaCliente = new System.Windows.Forms.Button();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.DarAltaSucursal = new System.Windows.Forms.Button();
+            this.txtDireccionSucursal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtNombreCliente
+            // txtNombreSucursal
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(94, 43);
-            this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtNombreCliente.TabIndex = 14;
-            this.txtNombreCliente.TextChanged += new System.EventHandler(this.txtNombreCliente_TextChanged);
+            this.txtNombreSucursal.Location = new System.Drawing.Point(94, 43);
+            this.txtNombreSucursal.Name = "txtNombreSucursal";
+            this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtNombreSucursal.TabIndex = 14;
+            this.txtNombreSucursal.TextChanged += new System.EventHandler(this.txtNombreSucursal_TextChanged);
             // 
             // label2
             // 
@@ -54,13 +54,13 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Nombre";
             // 
-            // txtCodPostalCliente
+            // txtCodPostalSucursal
             // 
-            this.txtCodPostalCliente.Location = new System.Drawing.Point(94, 135);
-            this.txtCodPostalCliente.Name = "txtCodPostalCliente";
-            this.txtCodPostalCliente.Size = new System.Drawing.Size(193, 20);
-            this.txtCodPostalCliente.TabIndex = 23;
-            this.txtCodPostalCliente.TextChanged += new System.EventHandler(this.txtCodPostalCliente_TextChanged);
+            this.txtCodPostalSucursal.Location = new System.Drawing.Point(94, 135);
+            this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
+            this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtCodPostalSucursal.TabIndex = 23;
+            this.txtCodPostalSucursal.TextChanged += new System.EventHandler(this.txtCodPostalSucursal_TextChanged);
             // 
             // label11
             // 
@@ -71,23 +71,23 @@
             this.label11.TabIndex = 22;
             this.label11.Text = "Codigo postal";
             // 
-            // DarAltaCliente
+            // DarAltaSucursal
             // 
-            this.DarAltaCliente.Location = new System.Drawing.Point(111, 216);
-            this.DarAltaCliente.Name = "DarAltaCliente";
-            this.DarAltaCliente.Size = new System.Drawing.Size(109, 34);
-            this.DarAltaCliente.TabIndex = 24;
-            this.DarAltaCliente.Text = "Dar de alta sucursal";
-            this.DarAltaCliente.UseVisualStyleBackColor = true;
-            this.DarAltaCliente.Click += new System.EventHandler(this.DarAltaCliente_Click);
+            this.DarAltaSucursal.Location = new System.Drawing.Point(111, 216);
+            this.DarAltaSucursal.Name = "DarAltaSucursal";
+            this.DarAltaSucursal.Size = new System.Drawing.Size(109, 34);
+            this.DarAltaSucursal.TabIndex = 24;
+            this.DarAltaSucursal.Text = "Dar de alta sucursal";
+            this.DarAltaSucursal.UseVisualStyleBackColor = true;
+            this.DarAltaSucursal.Click += new System.EventHandler(this.DarAltaSucursal_Click);
             // 
-            // txtDireccion
+            // txtDireccionSucursal
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(94, 89);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(193, 20);
-            this.txtDireccion.TabIndex = 26;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            this.txtDireccionSucursal.Location = new System.Drawing.Point(94, 89);
+            this.txtDireccionSucursal.Name = "txtDireccionSucursal";
+            this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtDireccionSucursal.TabIndex = 26;
+            this.txtDireccionSucursal.TextChanged += new System.EventHandler(this.txtDireccionSucursal_TextChanged);
             // 
             // label1
             // 
@@ -103,12 +103,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 262);
-            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.txtDireccionSucursal);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.DarAltaCliente);
-            this.Controls.Add(this.txtCodPostalCliente);
+            this.Controls.Add(this.DarAltaSucursal);
+            this.Controls.Add(this.txtCodPostalSucursal);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtNombreCliente);
+            this.Controls.Add(this.txtNombreSucursal);
             this.Controls.Add(this.label2);
             this.Name = "AltaSucursal";
             this.Text = "AltaSucursal";
@@ -119,12 +119,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNombreCliente;
+        private System.Windows.Forms.TextBox txtNombreSucursal;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCodPostalCliente;
+        private System.Windows.Forms.TextBox txtCodPostalSucursal;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button DarAltaCliente;
-        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.Button DarAltaSucursal;
+        private System.Windows.Forms.TextBox txtDireccionSucursal;
         private System.Windows.Forms.Label label1;
     }
 }
