@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -63,15 +64,26 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(208, 240);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 6;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
+            // PantallaPrincipalABMFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Name = "Form1";
+            this.Name = "PantallaPrincipalABMFactura";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -83,5 +95,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

@@ -39,5 +39,11 @@ namespace PagoAgilFrba.AbmRol
             formularioSiguiente.Visible = true;
             this.Visible = false;
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new MenuPrincipal();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
     }
 }
