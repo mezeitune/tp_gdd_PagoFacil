@@ -53,6 +53,7 @@
             this.DarAltaCliente = new System.Windows.Forms.Button();
             this.FechaNacCliente = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -245,7 +246,7 @@
             // 
             // DarAltaCliente
             // 
-            this.DarAltaCliente.Location = new System.Drawing.Point(311, 393);
+            this.DarAltaCliente.Location = new System.Drawing.Point(177, 393);
             this.DarAltaCliente.Name = "DarAltaCliente";
             this.DarAltaCliente.Size = new System.Drawing.Size(109, 34);
             this.DarAltaCliente.TabIndex = 23;
@@ -271,11 +272,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(381, 393);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 58;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 439);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaNacCliente);
             this.Controls.Add(this.DarAltaCliente);
@@ -336,5 +348,6 @@
         private System.Windows.Forms.Button DarAltaCliente;
         private System.Windows.Forms.DateTimePicker FechaNacCliente;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

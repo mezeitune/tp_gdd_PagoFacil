@@ -32,7 +32,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmSucursal.ModificacionSucursal();
+            Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)

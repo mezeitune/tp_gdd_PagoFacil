@@ -51,11 +51,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.FechaNacCliente = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificarCliente
             // 
-            this.ModificarCliente.Location = new System.Drawing.Point(321, 342);
+            this.ModificarCliente.Location = new System.Drawing.Point(208, 348);
             this.ModificarCliente.Name = "ModificarCliente";
             this.ModificarCliente.Size = new System.Drawing.Size(109, 34);
             this.ModificarCliente.TabIndex = 47;
@@ -250,11 +251,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(383, 348);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 59;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // ModificarDatosCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 440);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaNacCliente);
             this.Controls.Add(this.ModificarCliente);
@@ -280,6 +292,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ModificarDatosCliente";
             this.Text = "ModificarDatosCliente";
+            this.Load += new System.EventHandler(this.ModificarDatosCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +323,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker FechaNacCliente;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

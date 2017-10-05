@@ -139,5 +139,21 @@ namespace PagoAgilFrba.AbmCliente
         {
             this.vaciarTextos();
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
+
+        private void ModificarDatosCliente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.ModificarUnRol = new System.Windows.Forms.Button();
             this.rolParaModificar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificarUnRol
@@ -61,11 +62,22 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Seleccione un Rol para modificarlo";
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(347, 178);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 62;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // ModificarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 213);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.ModificarUnRol);
             this.Controls.Add(this.rolParaModificar);
             this.Controls.Add(this.label1);
@@ -81,5 +93,6 @@
         private System.Windows.Forms.Button ModificarUnRol;
         private System.Windows.Forms.ComboBox rolParaModificar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

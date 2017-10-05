@@ -47,6 +47,7 @@
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.FechaAltaFactura = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTotalFactura
@@ -88,7 +89,7 @@
             // 
             // ModificarUnaFactura
             // 
-            this.ModificarUnaFactura.Location = new System.Drawing.Point(401, 323);
+            this.ModificarUnaFactura.Location = new System.Drawing.Point(224, 358);
             this.ModificarUnaFactura.Name = "ModificarUnaFactura";
             this.ModificarUnaFactura.Size = new System.Drawing.Size(109, 34);
             this.ModificarUnaFactura.TabIndex = 64;
@@ -213,7 +214,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(77, 334);
+            this.limpiar.Location = new System.Drawing.Point(80, 358);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 75;
@@ -221,11 +222,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
-            // ModificarFactura
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(410, 358);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 76;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
+            // ModificarDatosFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 444);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaAltaFactura);
             this.Controls.Add(this.FechaVencFact);
@@ -245,7 +257,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ModificarFactura";
+            this.Name = "ModificarDatosFactura";
             this.Text = "ModificarFactura";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,5 +285,6 @@
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.DateTimePicker FechaAltaFactura;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

@@ -32,5 +32,11 @@ namespace PagoAgilFrba.AbmFactura
         {
 
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
     }
 }

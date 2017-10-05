@@ -410,17 +410,17 @@ REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 -- Tabla CLIENTES: 
 CREATE TABLE [SERVOMOTOR].[CLIENTES](
-	[DNI] [tinyint],
-	[NOMBRE] [varchar] (20) NOT NULL,
-	[APELLIDO] [varchar] (20) NOT NULL,
-	[MAIL] [varchar] (20) NOT NULL,
-	[TELEFONO] [varchar] (20) NOT NULL,
-	[CALLE] [varchar] (20) NOT NULL,
-	[PISO] [varchar] (20) NOT NULL,
-	[DEPTO] [varchar] (20) NOT NULL,
-	[LOCALIDAD] [varchar] (20) NOT NULL,
+	[DNI] [numeric](18, 0) NOT NULL,
+	[NOMBRE] [varchar] (255) NOT NULL,
+	[APELLIDO] [varchar] (255) NOT NULL,
+	[MAIL] [varchar] (255) NOT NULL,
+	[TELEFONO] [varchar] (255) NULL,
+	[CALLE] [varchar] (255) NOT NULL,
+	[PISO] [varchar] (255) NULL,
+	[DEPTO] [varchar] (255) NULL,
+	[LOCALIDAD] [varchar] (255) NULL,
 	[FECHA_NACIMIENTO] [datetime] NOT NULL,
-	[COD_POSTAL_CLIENTE] [varchar] (20) NOT NULL,
+	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
 (
@@ -435,7 +435,7 @@ CREATE TABLE [SERVOMOTOR].[FACTURAS](
 	[NUMERO_FACTURA] [tinyint] IDENTITY,
 	[FECHA_ALTA] [datetime] NOT NULL,
 	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
-	[DNI_CLIENTE] [tinyint] NOT NULL,
+	[DNI_CLIENTE] [numeric](18, 0) NOT NULL,
 	[CUIT_EMPRESA] [tinyint] NOT NULL,
 	[TOTAL] [numeric] (7,2) NOT NULL,
 	[ESTADO] [varchar] (20) NOT NULL,
@@ -524,37 +524,21 @@ GO
 
 --//////////// Migración de tabla maestra /////////////
 -- Inserta los clientes en la tabla clientes
-/*
-INSERT INTO [SERVOMOTOR].[CLIENTES]
 
-	(	
-		DNI ,
-		NOMBRE ,
-		APELLIDO ,
-		CALLE ,
-		MAIL ,
+INSERT INTO [SERVOMOTOR].[CLIENTES]
+(	
+		DNI,
+		NOMBRE,
+		APELLIDO,
+		MAIL,
+		CALLE,
 		FECHA_NACIMIENTO,
 		COD_POSTAL_CLIENTE
 	)
-
-	SELECT DISTINCT cast([Cliente-Dni] as tinyint)   , [Cliente-Nombre], [Cliente-Apellido], [Cliente_Direccion], [Cliente_Mail], [Cliente-Fecha_Nac] , [Cliente_Codigo_Postal] FROM gd_esquema.Maestra
-	*/
-	/*
-		[DNI] [tinyint],
-	[NOMBRE] [varchar] (20) NOT NULL,
-	[APELLIDO] [varchar] (20) NOT NULL,
-	[MAIL] [varchar] (20) NOT NULL,
-	[TELEFONO] [varchar] (20) NOT NULL,
-	[CALLE] [varchar] (20) NOT NULL,
-	[PISO] [varchar] (20) NOT NULL,
-	[DEPTO] [varchar] (20) NOT NULL,
-	[LOCALIDAD] [varchar] (20) NOT NULL,
-	[FECHA_NACIMIENTO] [datetime] NOT NULL,
-	[COD_POSTAL_CLIENTE] [varchar] (20) NOT NULL,
-	[ESTADO_HABILITACION] [bit] DEFAULT 1,
+SELECT DISTINCT (cast([Cliente-Dni] as int))   , [Cliente-Nombre], [Cliente-Apellido], [Cliente_Mail], [Cliente_Direccion] ,cast([Cliente-Fecha_Nac] as datetime) , [Cliente_Codigo_Postal] FROM gd_esquema.Maestra
 	
-	*/
 
+	
 
 -- Insert de usuario invitado y un administrador
 -- el hash de la contraseña w23e está previamente calculado

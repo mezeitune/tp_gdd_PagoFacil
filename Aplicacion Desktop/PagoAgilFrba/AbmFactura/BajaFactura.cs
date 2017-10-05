@@ -26,5 +26,16 @@ namespace PagoAgilFrba.AbmFactura
         {
             MessageBox.Show("Se ha dado de baja correctamente", "Todo bien", MessageBoxButtons.OK);
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
     }
 }

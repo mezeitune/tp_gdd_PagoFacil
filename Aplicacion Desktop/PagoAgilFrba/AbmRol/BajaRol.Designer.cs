@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rolParaDarDeBaja = new System.Windows.Forms.ComboBox();
             this.darDeBajaRol = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,11 +62,22 @@
             this.darDeBajaRol.UseVisualStyleBackColor = true;
             this.darDeBajaRol.Click += new System.EventHandler(this.darDeBajaRol_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(368, 155);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 62;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // BajaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 190);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.darDeBajaRol);
             this.Controls.Add(this.rolParaDarDeBaja);
             this.Controls.Add(this.label1);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox rolParaDarDeBaja;
         private System.Windows.Forms.Button darDeBajaRol;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

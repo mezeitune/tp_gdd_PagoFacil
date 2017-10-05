@@ -32,6 +32,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxNroFacturaModif = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BajaLogicaCliente
@@ -72,11 +73,22 @@
             this.label1.Text = "Elija una Factura a modificar, recuerde que no apareceran las facturas pagas como" +
     " tambien las rendidas";
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(441, 227);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 61;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // ModificacionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 262);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.BajaLogicaCliente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxNroFacturaModif);
@@ -94,5 +106,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxNroFacturaModif;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

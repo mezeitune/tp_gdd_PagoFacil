@@ -31,6 +31,7 @@
             this.agregarFuncionalidadAlRolModificado = new System.Windows.Forms.Button();
             this.FuncionalidadesAMostrar = new System.Windows.Forms.ComboBox();
             this.Funcionalidad = new System.Windows.Forms.Label();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // agregarFuncionalidadAlRolModificado
@@ -61,11 +62,22 @@
             this.Funcionalidad.TabIndex = 2;
             this.Funcionalidad.Text = "Funcionalidad";
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(264, 181);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 64;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // FuncionalidadesAltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 216);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.Funcionalidad);
             this.Controls.Add(this.FuncionalidadesAMostrar);
             this.Controls.Add(this.agregarFuncionalidadAlRolModificado);
@@ -81,5 +93,6 @@
         private System.Windows.Forms.Button agregarFuncionalidadAlRolModificado;
         private System.Windows.Forms.ComboBox FuncionalidadesAMostrar;
         private System.Windows.Forms.Label Funcionalidad;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

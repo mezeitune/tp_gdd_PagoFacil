@@ -30,7 +30,6 @@
         {
             this.DarAltaFactura = new System.Windows.Forms.Button();
             this.txtNroFactura = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.FechaAltaFac = new System.Windows.Forms.DateTimePicker();
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DarAltaFactura
@@ -65,15 +65,6 @@
             this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
             this.txtNroFactura.TabIndex = 38;
             this.txtNroFactura.TextChanged += new System.EventHandler(this.txtNroFactura_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(43, 369);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(257, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "*las fechas se escriben en el formato (DD-MM-AAAA)";
             // 
             // label6
             // 
@@ -210,11 +201,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(350, 366);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 60;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 401);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaVencFact);
             this.Controls.Add(this.FechaAltaFac);
@@ -226,7 +228,6 @@
             this.Controls.Add(this.botonIngresarItem);
             this.Controls.Add(this.DarAltaFactura);
             this.Controls.Add(this.txtNroFactura);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -245,7 +246,6 @@
 
         private System.Windows.Forms.Button DarAltaFactura;
         private System.Windows.Forms.TextBox txtNroFactura;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -261,5 +261,6 @@
         private System.Windows.Forms.DateTimePicker FechaAltaFac;
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

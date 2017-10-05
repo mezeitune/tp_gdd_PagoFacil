@@ -70,6 +70,22 @@ namespace PagoAgilFrba.AbmSucursal
             txtDireccionSucursal.Text = "";
             txtNombreSucursal.Text = "";
         }
-        
+
+        private void AltaSucursal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmSucursal.Form1();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
+
     }
 }

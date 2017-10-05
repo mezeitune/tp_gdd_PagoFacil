@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class ModificacionSucursal : Form
+    public partial class ModificarDatosSucursal : Form
     {
-        public ModificacionSucursal()
+        public ModificarDatosSucursal()
         {
             InitializeComponent();
         }
@@ -61,6 +61,12 @@ namespace PagoAgilFrba.AbmSucursal
             txtCodPostalSucursal.Text = "";
             txtDireccionSucursal.Text = "";
             txtNombreSucursal.Text = "";
+        }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmSucursal.ModificarSucursal();
+            this.cambiarVisibilidades(formularioSiguiente);
         }
     }
 }

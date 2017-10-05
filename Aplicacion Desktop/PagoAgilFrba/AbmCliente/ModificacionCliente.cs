@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class Baja_Modificacion_Cliente : Form
+    public partial class ModificacionClienteee : Form
     {
-        public Baja_Modificacion_Cliente()
+        public ModificacionClienteee()
         {
             InitializeComponent();
         }
@@ -64,6 +64,17 @@ namespace PagoAgilFrba.AbmCliente
         }
 
         private void txtDniExacto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+
+        private void Baja_Modificacion_Cliente_Load(object sender, EventArgs e)
         {
 
         }
