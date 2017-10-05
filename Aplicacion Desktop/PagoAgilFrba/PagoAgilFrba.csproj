@@ -76,11 +76,35 @@
     <Compile Include="AbmCliente\ModificarDatosCliente.Designer.cs">
       <DependentUpon>ModificarDatosCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.cs">
+    <Compile Include="AbmEmpresa\AltaEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmEmpresa\AltaEmpresa.Designer.cs">
+      <DependentUpon>AltaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\BajaEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\BajaEmpresa.Designer.cs">
+      <DependentUpon>BajaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\ListadoEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\ListadoEmpresas.Designer.cs">
+      <DependentUpon>ListadoEmpresas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\ModificacionEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\ModificacionEmpresa.Designer.cs">
+      <DependentUpon>ModificacionEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmEmpresa\PantallaPrincipalABMEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\PantallaPrincipalABMEmpresa.Designer.cs">
+      <DependentUpon>PantallaPrincipalABMEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmFactura\AltaDeItemFactura.cs">
       <SubType>Form</SubType>
@@ -246,6 +270,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\ModificarDatosCliente.resx">
       <DependentUpon>ModificarDatosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\AltaEmpresa.resx">
+      <DependentUpon>AltaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\BajaEmpresa.resx">
+      <DependentUpon>BajaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\ListadoEmpresas.resx">
+      <DependentUpon>ListadoEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\ModificacionEmpresa.resx">
+      <DependentUpon>ModificacionEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\PantallaPrincipalABMEmpresa.resx">
+      <DependentUpon>PantallaPrincipalABMEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\AltaDeItemFactura.resx">
       <DependentUpon>AltaDeItemFactura.cs</DependentUpon>
