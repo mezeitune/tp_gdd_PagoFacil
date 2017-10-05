@@ -89,7 +89,7 @@ namespace PagoAgilFrba.AbmFactura
             huboErrores = !Validacion.esNumero(txtTotalFactura, "total factura", true) || huboErrores;
 
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
-            huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaAltaFac) || huboErrores;
+            huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaAltaFactura) || huboErrores;
             return huboErrores;
         }
 
@@ -111,7 +111,7 @@ namespace PagoAgilFrba.AbmFactura
             comboCliente.Items.Clear();
             comboEmpresa.Items.Clear();
             DateTimePicker fechaDeAhora = new DateTimePicker();
-            FechaAltaFac.Value = fechaDeAhora.Value;
+            FechaAltaFactura.Value = fechaDeAhora.Value;
             FechaVencFact.Value = fechaDeAhora.Value;
         }
         

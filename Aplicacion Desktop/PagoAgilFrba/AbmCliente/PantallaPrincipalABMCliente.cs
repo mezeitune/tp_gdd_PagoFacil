@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmCliente
 {
-    public partial class Alta : Form
+    public partial class PantallaPrincipalABMCliente : Form
     {
-        public Alta()
+        public PantallaPrincipalABMCliente()
         {
             InitializeComponent();
         }
@@ -38,6 +38,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             Form formularioSiguiente = new AbmCliente.Baja_Modificacion_Cliente();
             this.cambiarVisibilidades(formularioSiguiente);
+        }
+
+        private void Alta_Load(object sender, EventArgs e)
+        {
+
         }
 
         

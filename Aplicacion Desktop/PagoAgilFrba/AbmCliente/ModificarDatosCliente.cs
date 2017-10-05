@@ -64,7 +64,7 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = Validacion.esVacio(txtMailCliente, "mail", true) || huboErrores;
             
             huboErrores = Validacion.esVacio(txtCodPostalCliente, "Cod Postal", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtFechaNacCliente, "Fecha Nacimiento", true) || huboErrores;
+            
             huboErrores = Validacion.esVacio(txtLocalidadCliente, "Localidad", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
 

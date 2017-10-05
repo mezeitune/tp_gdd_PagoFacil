@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.botonIngresar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioInvitado = new System.Windows.Forms.RadioButton();
+            this.radioCobrador = new System.Windows.Forms.RadioButton();
             this.radioAdministrador = new System.Windows.Forms.RadioButton();
             this.gbInvitado = new System.Windows.Forms.GroupBox();
-            this.cboRoles = new System.Windows.Forms.ComboBox();
+            this.SucursalesDisponibles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.gbAdministrador.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,7 +57,7 @@
             this.gbAdministrador.Size = new System.Drawing.Size(248, 96);
             this.gbAdministrador.TabIndex = 0;
             this.gbAdministrador.TabStop = false;
-            this.gbAdministrador.Text = "Login Administrador";
+            this.gbAdministrador.Text = "Login";
             // 
             // txtPassword
             // 
@@ -108,7 +108,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioInvitado);
+            this.groupBox2.Controls.Add(this.radioCobrador);
             this.groupBox2.Controls.Add(this.radioAdministrador);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(22, 114);
@@ -118,15 +118,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ingresar como: ";
             // 
-            // radioInvitado
+            // radioCobrador
             // 
-            this.radioInvitado.AutoSize = true;
-            this.radioInvitado.Location = new System.Drawing.Point(129, 27);
-            this.radioInvitado.Name = "radioInvitado";
-            this.radioInvitado.Size = new System.Drawing.Size(63, 17);
-            this.radioInvitado.TabIndex = 1;
-            this.radioInvitado.Text = "Invitado";
-            this.radioInvitado.UseVisualStyleBackColor = true;
+            this.radioCobrador.AutoSize = true;
+            this.radioCobrador.Location = new System.Drawing.Point(129, 27);
+            this.radioCobrador.Name = "radioCobrador";
+            this.radioCobrador.Size = new System.Drawing.Size(68, 17);
+            this.radioCobrador.TabIndex = 1;
+            this.radioCobrador.Text = "Cobrador";
+            this.radioCobrador.UseVisualStyleBackColor = true;
+            this.radioCobrador.CheckedChanged += new System.EventHandler(this.radioCobrador_CheckedChanged);
             // 
             // radioAdministrador
             // 
@@ -143,7 +144,7 @@
             // 
             // gbInvitado
             // 
-            this.gbInvitado.Controls.Add(this.cboRoles);
+            this.gbInvitado.Controls.Add(this.SucursalesDisponibles);
             this.gbInvitado.Controls.Add(this.label3);
             this.gbInvitado.ForeColor = System.Drawing.Color.White;
             this.gbInvitado.Location = new System.Drawing.Point(288, 12);
@@ -151,25 +152,25 @@
             this.gbInvitado.Size = new System.Drawing.Size(209, 96);
             this.gbInvitado.TabIndex = 4;
             this.gbInvitado.TabStop = false;
-            this.gbInvitado.Text = "Login Invitado";
+            this.gbInvitado.Text = "Cobrador - Sucursal";
             // 
-            // cboRoles
+            // SucursalesDisponibles
             // 
-            this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRoles.FormattingEnabled = true;
-            this.cboRoles.Location = new System.Drawing.Point(61, 40);
-            this.cboRoles.Name = "cboRoles";
-            this.cboRoles.Size = new System.Drawing.Size(121, 21);
-            this.cboRoles.TabIndex = 4;
+            this.SucursalesDisponibles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SucursalesDisponibles.FormattingEnabled = true;
+            this.SucursalesDisponibles.Location = new System.Drawing.Point(61, 40);
+            this.SucursalesDisponibles.Name = "SucursalesDisponibles";
+            this.SucursalesDisponibles.Size = new System.Drawing.Size(121, 21);
+            this.SucursalesDisponibles.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 43);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Rol";
+            this.label3.Text = "Sucursal";
             // 
             // FormLogin
             // 
@@ -205,10 +206,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button botonIngresar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioInvitado;
+        private System.Windows.Forms.RadioButton radioCobrador;
         private System.Windows.Forms.RadioButton radioAdministrador;
         private System.Windows.Forms.GroupBox gbInvitado;
-        private System.Windows.Forms.ComboBox cboRoles;
+        private System.Windows.Forms.ComboBox SucursalesDisponibles;
         private System.Windows.Forms.Label label3;
 
     }

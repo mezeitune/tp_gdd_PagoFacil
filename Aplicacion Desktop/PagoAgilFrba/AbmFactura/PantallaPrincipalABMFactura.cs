@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
-    public partial class Form1 : Form
+    public partial class PantallaPrincipalABMFactura : Form
     {
-        public Form1()
+        public PantallaPrincipalABMFactura()
         {
             InitializeComponent();
         }
@@ -37,6 +37,11 @@ namespace PagoAgilFrba.AbmFactura
         {
             Form formularioSiguiente = new AbmFactura.ModificacionFactura();
             this.cambiarVisibilidades(formularioSiguiente);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

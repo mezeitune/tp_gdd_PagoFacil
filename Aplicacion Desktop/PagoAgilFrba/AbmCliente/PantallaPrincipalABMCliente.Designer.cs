@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmCliente
 {
-    partial class Alta
+    partial class PantallaPrincipalABMCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -70,6 +70,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Name = "Alta";
+            this.Load += new System.EventHandler(this.Alta_Load);
             this.ResumeLayout(false);
 
         }

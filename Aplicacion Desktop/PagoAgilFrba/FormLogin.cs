@@ -29,12 +29,12 @@ namespace PagoAgilFrba
             vaciarTextos();
 
             radioAdministrador.Checked = true;
-            radioInvitado.Checked = false;
+            radioCobrador.Checked = false;
 
             gbAdministrador.Enabled = true;
             gbInvitado.Enabled = false;
 
-            cargarComboRoles();
+            cargarSucursalesDisponibles();
         }
 
         private void radioAdministrador_CheckedChanged(object sender, EventArgs e)
@@ -52,23 +52,23 @@ namespace PagoAgilFrba
             
             txtPassword.Text = "";
             txtUsuario.Text = "";
-            cboRoles.SelectedIndex = -1;
+            SucursalesDisponibles.SelectedIndex = -1;
         }
 
-        private void cargarComboRoles()
+        private void cargarSucursalesDisponibles()
         {
-            cboRoles.Items.Clear();
+            SucursalesDisponibles.Items.Clear();
 
             SqlDataReader reader;
             SqlCommand consultaRoles = new SqlCommand();
             consultaRoles.CommandType = CommandType.Text;
-            consultaRoles.CommandText = "SELECT * FROM [SERVOMOTOR].ROLES";
+            consultaRoles.CommandText = "SELECT * FROM [SERVOMOTOR].SUCURSALES";
             consultaRoles.Connection = Program.conexion();
 
-            reader = consultaRoles.ExecuteReader();
+            reader = consultaRoles.ExecuteReader();//CONSULTASUCURSALES
 
             while (reader.Read())
-                cboRoles.Items.Add(reader.GetValue(0));
+                SucursalesDisponibles.Items.Add(reader.GetValue(0));
 
             reader.Close();
         }
@@ -129,6 +129,8 @@ namespace PagoAgilFrba
             try
             {
                 manager.ejecutarSP();
+                Form formularioSiguiente = new MenuPrincipal();
+                this.cambiarVisibilidades(formularioSiguiente);
                 //cambiarVisibilidades(new Principal("Administrador", txtUsuario.Text, this));
                 
             }
@@ -143,10 +145,10 @@ namespace PagoAgilFrba
 
         private void ingresarComoInvitado()
         {
-            if (Validacion.esVacio(cboRoles, "rol", true))
+            if (Validacion.esVacio(SucursalesDisponibles, "rol", true))
                 return;
 
-          // cambiarVisibilidades(new Principal(cboRoles.SelectedItem.ToString(),"Invitado",this));
+         
         }
 
         private bool validarLongitudes()
@@ -168,6 +170,16 @@ namespace PagoAgilFrba
         {
 
         }
+
+       
+
+        private void radioCobrador_CheckedChanged(object sender, EventArgs e)
+        {
+            gbAdministrador.Enabled = true;
+            gbInvitado.Enabled = true;
+        }
+
+       
 
     }
 }

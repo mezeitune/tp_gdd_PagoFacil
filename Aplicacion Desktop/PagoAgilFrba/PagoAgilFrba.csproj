@@ -106,11 +106,11 @@
     <Compile Include="AbmFactura\ModificacionFactura.Designer.cs">
       <DependentUpon>ModificacionFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\ModificarFactura.cs">
+    <Compile Include="AbmFactura\ModificarDatosFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmFactura\ModificarFactura.Designer.cs">
-      <DependentUpon>ModificarFactura.cs</DependentUpon>
+    <Compile Include="AbmFactura\ModificarDatosFactura.Designer.cs">
+      <DependentUpon>ModificarDatosFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmFactura\ModificarItemFactura.cs">
       <SubType>Form</SubType>
@@ -124,11 +124,47 @@
     <Compile Include="AbmFactura\PantallaPrincipalABMFactura.Designer.cs">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.Designer.cs">
+      <DependentUpon>AltaFuncionalidadesParaRolModificado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\AltaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\AltaRol.Designer.cs">
+      <DependentUpon>AltaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\BajaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\BajaRol.Designer.cs">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\FuncionalidadesAltaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\FuncionalidadesAltaRol.Designer.cs">
+      <DependentUpon>FuncionalidadesAltaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificarDatosRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificarDatosRol.Designer.cs">
+      <DependentUpon>ModificarDatosRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.Designer.cs">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\PantallaPrincipalABMRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\PantallaPrincipalABMRol.Designer.cs">
+      <DependentUpon>PantallaPrincipalABMRol.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\AltaSucursal.cs">
       <SubType>Form</SubType>
@@ -162,11 +198,11 @@
     </Compile>
     <Compile Include="Constructores.cs" />
     <Compile Include="Encriptador.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -223,14 +259,35 @@
     <EmbeddedResource Include="AbmFactura\ModificacionFactura.resx">
       <DependentUpon>ModificacionFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
-      <DependentUpon>ModificarFactura.cs</DependentUpon>
+    <EmbeddedResource Include="AbmFactura\ModificarDatosFactura.resx">
+      <DependentUpon>ModificarDatosFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ModificarItemFactura.resx">
       <DependentUpon>ModificarItemFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\PantallaPrincipalABMFactura.resx">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AltaFuncionalidadesParaRolModificado.resx">
+      <DependentUpon>AltaFuncionalidadesParaRolModificado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AltaRol.resx">
+      <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\BajaRol.resx">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\FuncionalidadesAltaRol.resx">
+      <DependentUpon>FuncionalidadesAltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificarDatosRol.resx">
+      <DependentUpon>ModificarDatosRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificarRol.resx">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\PantallaPrincipalABMRol.resx">
+      <DependentUpon>PantallaPrincipalABMRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\AltaSucursal.resx">
       <DependentUpon>AltaSucursal.cs</DependentUpon>
@@ -249,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
