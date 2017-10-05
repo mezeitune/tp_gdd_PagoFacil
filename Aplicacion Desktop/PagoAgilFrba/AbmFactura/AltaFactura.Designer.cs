@@ -45,6 +45,7 @@
             this.comboEmpresa = new System.Windows.Forms.ComboBox();
             this.FechaAltaFac = new System.Windows.Forms.DateTimePicker();
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DarAltaFactura
@@ -130,7 +131,7 @@
             // 
             // botonIngresarItem
             // 
-            this.botonIngresarItem.Location = new System.Drawing.Point(46, 266);
+            this.botonIngresarItem.Location = new System.Drawing.Point(316, 270);
             this.botonIngresarItem.Name = "botonIngresarItem";
             this.botonIngresarItem.Size = new System.Drawing.Size(109, 34);
             this.botonIngresarItem.TabIndex = 48;
@@ -199,11 +200,22 @@
             this.FechaVencFact.TabIndex = 55;
             this.FechaVencFact.ValueChanged += new System.EventHandler(this.FechaVencFact_ValueChanged);
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(46, 270);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 56;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 401);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaVencFact);
             this.Controls.Add(this.FechaAltaFac);
             this.Controls.Add(this.comboEmpresa);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.ComboBox comboEmpresa;
         private System.Windows.Forms.DateTimePicker FechaAltaFac;
         private System.Windows.Forms.DateTimePicker FechaVencFact;
+        private System.Windows.Forms.Button limpiar;
     }
 }

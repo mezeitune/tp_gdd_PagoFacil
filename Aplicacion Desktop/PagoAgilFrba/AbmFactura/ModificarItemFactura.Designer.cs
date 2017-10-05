@@ -34,11 +34,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // botonModificarUnItem
             // 
-            this.botonModificarUnItem.Location = new System.Drawing.Point(168, 144);
+            this.botonModificarUnItem.Location = new System.Drawing.Point(318, 144);
             this.botonModificarUnItem.Name = "botonModificarUnItem";
             this.botonModificarUnItem.Size = new System.Drawing.Size(109, 34);
             this.botonModificarUnItem.TabIndex = 66;
@@ -88,11 +89,22 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 61;
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(55, 150);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 67;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // ModificarItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 224);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.botonModificarUnItem);
             this.Controls.Add(this.txtCantidadItem);
             this.Controls.Add(this.txtMontoItem);
@@ -114,5 +126,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button limpiar;
     }
 }

@@ -63,6 +63,13 @@ namespace PagoAgilFrba.AbmSucursal
            
             return huboErrores;
         }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtCodPostalSucursal.Text = "";
+            txtDireccionSucursal.Text = "";
+            txtNombreSucursal.Text = "";
+        }
         
     }
 }

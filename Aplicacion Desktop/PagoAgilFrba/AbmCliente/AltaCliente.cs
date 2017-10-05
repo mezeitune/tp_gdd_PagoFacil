@@ -36,7 +36,8 @@ namespace PagoAgilFrba.AbmCliente
             txtNroPisoCliente.Text = " ";
             txtDptoCliente.Text = " ";
             txtLocalidadCliente.Text = " ";
-            txtFechaNacCliente.Text = " ";
+            DateTimePicker fechaDeAhora= new DateTimePicker ();
+            FechaNacCliente.Value = fechaDeAhora.Value;
 
         }
 
@@ -114,7 +115,14 @@ namespace PagoAgilFrba.AbmCliente
                     //aca se da de alta el cliente en la BDD
 
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+                
             }
+            
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
         private bool todosLosCamposLLenos()
         {
@@ -155,6 +163,11 @@ namespace PagoAgilFrba.AbmCliente
         private void FechaNacCliente_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            this.vaciarTextos();
         }
     }
 }

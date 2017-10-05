@@ -34,11 +34,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(158, 132);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(280, 133);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
             this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 34);
             this.botonGuardarUnItem.TabIndex = 60;
@@ -89,11 +90,22 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 49;
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(40, 133);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 61;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // AltaDeItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 186);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.botonGuardarUnItem);
             this.Controls.Add(this.txtCantidadDeItems);
             this.Controls.Add(this.txtMontoItem);
@@ -115,5 +127,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button limpiar;
     }
 }

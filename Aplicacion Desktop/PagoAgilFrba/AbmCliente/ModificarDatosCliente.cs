@@ -16,7 +16,30 @@ namespace PagoAgilFrba.AbmCliente
         {
             InitializeComponent();
         }
+        private void FormCliente_Load(object sender, EventArgs e)
+        {
+            iniciar();
+        }
+        public void iniciar()
+        {
+            vaciarTextos();
 
+        }
+        private void vaciarTextos()
+        {
+            txtNombreCliente.Text = "";
+            txtApellidoCliente.Text = " ";
+            
+            txtMailCliente.Text = " ";
+            txtTelCliente.Text = " ";
+            txtCalleCliente.Text = " ";
+            txtNroPisoCliente.Text = " ";
+            txtDptoCliente.Text = " ";
+            txtLocalidadCliente.Text = " ";
+            DateTimePicker fechaDeAhora = new DateTimePicker();
+            FechaNacCliente.Value = fechaDeAhora.Value;
+
+        }
         private void ModificarCliente_Click(object sender, EventArgs e)
         {
             if (todosLosCamposLLenos() && validarTipos())
@@ -107,9 +130,14 @@ namespace PagoAgilFrba.AbmCliente
 
         }
 
-        private void FechaVencFact_ValueChanged(object sender, EventArgs e)
+        private void FechaNacCliente_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            this.vaciarTextos();
         }
     }
 }

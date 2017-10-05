@@ -21,5 +21,37 @@ namespace PagoAgilFrba.AbmCliente
         {
             //aca se da de baja logica al cliente seleccionado
         }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDniExacto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtApellido.Text = "";
+            txtDniExacto.Text = "";
+            txtNombre.Text = "";
+        }
     }
 }

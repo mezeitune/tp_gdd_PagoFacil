@@ -52,6 +52,7 @@
             this.txtCodPostalCliente = new System.Windows.Forms.TextBox();
             this.DarAltaCliente = new System.Windows.Forms.Button();
             this.FechaNacCliente = new System.Windows.Forms.DateTimePicker();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -244,7 +245,7 @@
             // 
             // DarAltaCliente
             // 
-            this.DarAltaCliente.Location = new System.Drawing.Point(152, 393);
+            this.DarAltaCliente.Location = new System.Drawing.Point(311, 393);
             this.DarAltaCliente.Name = "DarAltaCliente";
             this.DarAltaCliente.Size = new System.Drawing.Size(109, 34);
             this.DarAltaCliente.TabIndex = 23;
@@ -260,11 +261,22 @@
             this.FechaNacCliente.TabIndex = 56;
             this.FechaNacCliente.ValueChanged += new System.EventHandler(this.FechaNacCliente_ValueChanged);
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(28, 399);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 57;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 439);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaNacCliente);
             this.Controls.Add(this.DarAltaCliente);
             this.Controls.Add(this.txtCodPostalCliente);
@@ -323,5 +335,6 @@
         private System.Windows.Forms.TextBox txtCodPostalCliente;
         private System.Windows.Forms.Button DarAltaCliente;
         private System.Windows.Forms.DateTimePicker FechaNacCliente;
+        private System.Windows.Forms.Button limpiar;
     }
 }

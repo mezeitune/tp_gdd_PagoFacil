@@ -31,5 +31,12 @@ namespace PagoAgilFrba.AbmFactura
         {
             //aca va el update con todos los datos
         }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtMontoItem.Text = "";
+            txtCantidadItem.Text = "";
+            
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class ModificarFactura
+    partial class ModificarDatosFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -46,6 +46,7 @@
             this.txtNroFactura = new System.Windows.Forms.TextBox();
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.FechaAltaFactura = new System.Windows.Forms.DateTimePicker();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTotalFactura
@@ -87,7 +88,7 @@
             // 
             // ModificarUnaFactura
             // 
-            this.ModificarUnaFactura.Location = new System.Drawing.Point(190, 323);
+            this.ModificarUnaFactura.Location = new System.Drawing.Point(401, 323);
             this.ModificarUnaFactura.Name = "ModificarUnaFactura";
             this.ModificarUnaFactura.Size = new System.Drawing.Size(109, 34);
             this.ModificarUnaFactura.TabIndex = 64;
@@ -210,11 +211,22 @@
             this.FechaAltaFactura.TabIndex = 74;
             this.FechaAltaFactura.ValueChanged += new System.EventHandler(this.FechaAltaFactura_ValueChanged);
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(77, 334);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 75;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // ModificarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(522, 444);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaAltaFactura);
             this.Controls.Add(this.FechaVencFact);
             this.Controls.Add(this.comboEmpresa);
@@ -260,5 +272,6 @@
         private System.Windows.Forms.TextBox txtNroFactura;
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.DateTimePicker FechaAltaFactura;
+        private System.Windows.Forms.Button limpiar;
     }
 }

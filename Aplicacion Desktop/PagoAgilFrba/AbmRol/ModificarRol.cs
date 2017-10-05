@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.AbmFactura
+namespace PagoAgilFrba.AbmRol
 {
-    public partial class ModificacionFactura : Form
+    public partial class ModificarRol : Form
     {
-        public ModificacionFactura()
+        public ModificarRol()
         {
             InitializeComponent();
         }
 
-        private void ModificarFactura_Click(object sender, EventArgs e)
+        private void ModificarRol_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.ModificarDatosFactura();
+            Form formularioSiguiente = new AbmRol.ModificarDatosRol();
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)
@@ -28,7 +28,7 @@ namespace PagoAgilFrba.AbmFactura
             this.Visible = false;
         }
 
-        private void comboBoxNroFacturaModif_SelectedIndexChanged(object sender, EventArgs e)
+        private void rolParaModificar_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

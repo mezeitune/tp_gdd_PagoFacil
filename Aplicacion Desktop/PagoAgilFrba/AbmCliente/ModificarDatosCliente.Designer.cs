@@ -49,12 +49,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
+            this.FechaNacCliente = new System.Windows.Forms.DateTimePicker();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificarCliente
             // 
-            this.ModificarCliente.Location = new System.Drawing.Point(171, 337);
+            this.ModificarCliente.Location = new System.Drawing.Point(321, 342);
             this.ModificarCliente.Name = "ModificarCliente";
             this.ModificarCliente.Size = new System.Drawing.Size(109, 34);
             this.ModificarCliente.TabIndex = 47;
@@ -231,20 +232,31 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 24;
             // 
-            // FechaVencFact
+            // FechaNacCliente
             // 
-            this.FechaVencFact.Location = new System.Drawing.Point(258, 294);
-            this.FechaVencFact.Name = "FechaVencFact";
-            this.FechaVencFact.Size = new System.Drawing.Size(200, 20);
-            this.FechaVencFact.TabIndex = 56;
-            this.FechaVencFact.ValueChanged += new System.EventHandler(this.FechaVencFact_ValueChanged);
+            this.FechaNacCliente.Location = new System.Drawing.Point(258, 294);
+            this.FechaNacCliente.Name = "FechaNacCliente";
+            this.FechaNacCliente.Size = new System.Drawing.Size(200, 20);
+            this.FechaNacCliente.TabIndex = 56;
+            this.FechaNacCliente.ValueChanged += new System.EventHandler(this.FechaNacCliente_ValueChanged);
+            // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(68, 348);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 58;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
             // ModificarDatosCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 440);
-            this.Controls.Add(this.FechaVencFact);
+            this.Controls.Add(this.limpiar);
+            this.Controls.Add(this.FechaNacCliente);
             this.Controls.Add(this.ModificarCliente);
             this.Controls.Add(this.txtCodPostalCliente);
             this.Controls.Add(this.txtLocalidadCliente);
@@ -296,6 +308,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker FechaVencFact;
+        private System.Windows.Forms.DateTimePicker FechaNacCliente;
+        private System.Windows.Forms.Button limpiar;
     }
 }

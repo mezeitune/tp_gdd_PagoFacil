@@ -36,5 +36,11 @@ namespace PagoAgilFrba.AbmFactura
         {
             MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
         }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtCantidadDeItems.Text = "";
+            txtMontoItem.Text = "";
+        }
     }
 }

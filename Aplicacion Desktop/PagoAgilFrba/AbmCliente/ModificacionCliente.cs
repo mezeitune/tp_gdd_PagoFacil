@@ -17,15 +17,8 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void ModificacionCliente_Click(object sender, EventArgs e)
@@ -35,20 +28,7 @@ namespace PagoAgilFrba.AbmCliente
 
         }
 
-        private void buscaPorDniExacto_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buscaPorApellido_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buscaPorNombre_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -58,6 +38,34 @@ namespace PagoAgilFrba.AbmCliente
         {
             formularioSiguiente.Visible = true;
             this.Visible = false;
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtApellido.Text = "";
+            txtDniExacto.Text = "";
+            txtNombre.Text = "";
+
+        }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDniExacto_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

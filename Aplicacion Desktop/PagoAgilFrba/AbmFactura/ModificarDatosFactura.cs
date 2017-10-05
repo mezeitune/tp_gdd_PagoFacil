@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
-    public partial class ModificarFactura : Form
+    public partial class ModificarDatosFactura : Form
     {
-        public ModificarFactura()
+        public ModificarDatosFactura()
         {
             InitializeComponent();
         }
@@ -102,6 +102,17 @@ namespace PagoAgilFrba.AbmFactura
         private void FechaVencFact_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtNroFactura.Text = "";
+            txtTotalFactura.Text = "";
+            comboCliente.Items.Clear();
+            comboEmpresa.Items.Clear();
+            DateTimePicker fechaDeAhora = new DateTimePicker();
+            FechaAltaFac.Value = fechaDeAhora.Value;
+            FechaVencFact.Value = fechaDeAhora.Value;
         }
         
     }

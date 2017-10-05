@@ -35,6 +35,7 @@
             this.DarAltaSucursal = new System.Windows.Forms.Button();
             this.txtDireccionSucursal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNombreSucursal
@@ -73,7 +74,7 @@
             // 
             // DarAltaSucursal
             // 
-            this.DarAltaSucursal.Location = new System.Drawing.Point(111, 216);
+            this.DarAltaSucursal.Location = new System.Drawing.Point(190, 185);
             this.DarAltaSucursal.Name = "DarAltaSucursal";
             this.DarAltaSucursal.Size = new System.Drawing.Size(109, 34);
             this.DarAltaSucursal.TabIndex = 24;
@@ -98,11 +99,22 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Direccion";
             // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(14, 185);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 31;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
+            // 
             // AltaSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 262);
+            this.Controls.Add(this.limpiar);
             this.Controls.Add(this.txtDireccionSucursal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DarAltaSucursal);
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Button DarAltaSucursal;
         private System.Windows.Forms.TextBox txtDireccionSucursal;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button limpiar;
     }
 }

@@ -32,25 +32,13 @@ namespace PagoAgilFrba.AbmSucursal
 
         }
 
-        private void buscaPorNombre_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buscaPorCodigoPostal_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtCodPostal_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buscaPorCodPostal_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void BajaLogicaSucursal_Click(object sender, EventArgs e)
         {
@@ -61,6 +49,18 @@ namespace PagoAgilFrba.AbmSucursal
         {
             formularioSiguiente.Visible = true;
             this.Visible = false;
+        }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtCodPostalSucursal.Text = "";
+            txtDireccionSucursal.Text = "";
+            txtNombreSucursal.Text = "";
         }
     }
 }

@@ -30,13 +30,15 @@
         {
             this.BajaLogicaCliente = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buscaPorDniExacto = new System.Windows.Forms.Button();
-            this.buscaPorApellido = new System.Windows.Forms.Button();
+            this.buscar = new System.Windows.Forms.Button();
             this.txtDniExacto = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buscaPorNombre = new System.Windows.Forms.Button();
+            this.Nombre = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BajaLogicaCliente
@@ -55,38 +57,33 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(387, 172);
             this.flowLayoutPanel1.TabIndex = 17;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // buscaPorDniExacto
+            // buscar
             // 
-            this.buscaPorDniExacto.Location = new System.Drawing.Point(444, 90);
-            this.buscaPorDniExacto.Name = "buscaPorDniExacto";
-            this.buscaPorDniExacto.Size = new System.Drawing.Size(111, 23);
-            this.buscaPorDniExacto.TabIndex = 16;
-            this.buscaPorDniExacto.Text = "Buscar por DNI";
-            this.buscaPorDniExacto.UseVisualStyleBackColor = true;
-            // 
-            // buscaPorApellido
-            // 
-            this.buscaPorApellido.Location = new System.Drawing.Point(269, 90);
-            this.buscaPorApellido.Name = "buscaPorApellido";
-            this.buscaPorApellido.Size = new System.Drawing.Size(116, 23);
-            this.buscaPorApellido.TabIndex = 15;
-            this.buscaPorApellido.Text = "Buscar por Apellido";
-            this.buscaPorApellido.UseVisualStyleBackColor = true;
+            this.buscar.Location = new System.Drawing.Point(242, 112);
+            this.buscar.Name = "buscar";
+            this.buscar.Size = new System.Drawing.Size(116, 23);
+            this.buscar.TabIndex = 15;
+            this.buscar.Text = "Buscar";
+            this.buscar.UseVisualStyleBackColor = true;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
             // 
             // txtDniExacto
             // 
-            this.txtDniExacto.Location = new System.Drawing.Point(444, 64);
+            this.txtDniExacto.Location = new System.Drawing.Point(490, 64);
             this.txtDniExacto.Name = "txtDniExacto";
-            this.txtDniExacto.Size = new System.Drawing.Size(111, 20);
+            this.txtDniExacto.Size = new System.Drawing.Size(124, 20);
             this.txtDniExacto.TabIndex = 14;
+            this.txtDniExacto.TextChanged += new System.EventHandler(this.txtDniExacto_TextChanged);
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(269, 64);
+            this.txtApellido.Location = new System.Drawing.Point(291, 64);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(116, 20);
+            this.txtApellido.Size = new System.Drawing.Size(127, 20);
             this.txtApellido.TabIndex = 13;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // txtNombre
             // 
@@ -94,6 +91,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(134, 20);
             this.txtNombre.TabIndex = 12;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label1
             // 
@@ -104,29 +102,58 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Ingrese el nombre, apellido o dni (este ultimo exacto) para buscar un cliente";
             // 
-            // buscaPorNombre
+            // Nombre
             // 
-            this.buscaPorNombre.Location = new System.Drawing.Point(81, 90);
-            this.buscaPorNombre.Name = "buscaPorNombre";
-            this.buscaPorNombre.Size = new System.Drawing.Size(134, 23);
-            this.buscaPorNombre.TabIndex = 10;
-            this.buscaPorNombre.Text = "Buscar por Nombre";
-            this.buscaPorNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buscaPorNombre.UseVisualStyleBackColor = true;
+            this.Nombre.AutoSize = true;
+            this.Nombre.Location = new System.Drawing.Point(31, 67);
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Size = new System.Drawing.Size(44, 13);
+            this.Nombre.TabIndex = 18;
+            this.Nombre.Text = "Nombre";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(445, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "DNI";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(239, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Apellido";
+            // 
+            // limpiar
+            // 
+            this.limpiar.Location = new System.Drawing.Point(81, 112);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 58;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
             // BajaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 456);
+            this.Controls.Add(this.limpiar);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Nombre);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.buscaPorDniExacto);
-            this.Controls.Add(this.buscaPorApellido);
+            this.Controls.Add(this.buscar);
             this.Controls.Add(this.txtDniExacto);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buscaPorNombre);
             this.Controls.Add(this.BajaLogicaCliente);
             this.Name = "BajaCliente";
             this.Text = "BajaCliente";
@@ -139,12 +166,14 @@
 
         private System.Windows.Forms.Button BajaLogicaCliente;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button buscaPorDniExacto;
-        private System.Windows.Forms.Button buscaPorApellido;
+        private System.Windows.Forms.Button buscar;
         private System.Windows.Forms.TextBox txtDniExacto;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buscaPorNombre;
+        private System.Windows.Forms.Label Nombre;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button limpiar;
     }
 }

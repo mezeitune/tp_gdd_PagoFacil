@@ -110,6 +110,17 @@ namespace PagoAgilFrba.AbmFactura
 
         }
 
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            txtNroFactura.Text = "";
+            txtTotalFactura.Text = "";
+            comboCliente.Items.Clear();
+            comboEmpresa.Items.Clear();
+            DateTimePicker fechaDeAhora = new DateTimePicker();
+            FechaAltaFac.Value = fechaDeAhora.Value;
+            FechaVencFact.Value = fechaDeAhora.Value;
+        }
+
        
        
     }
