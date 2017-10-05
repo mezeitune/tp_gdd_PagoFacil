@@ -116,11 +116,45 @@ drop table [SERVOMOTOR].[RENDICION_DEVOLUCION]
 
 GO
 if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[obtenerFechaDeHoy]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
+drop function [SERVOMOTOR].[obtenerFechaDeHoy]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[crearTablaFecha]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[crearTablaFecha]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[FECHA]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[FECHA]
+
+
+GO
+if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[EncriptarSHA1]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
 drop function [SERVOMOTOR].[EncriptarSHA1]
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[datetime_is_between]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
+drop function [SERVOMOTOR].[datetime_is_between]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[datetime_between]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
+drop function [SERVOMOTOR].[datetime_between]
 
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[LoginAdministrador]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[LoginAdministrador]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[AgregarFuncionalidadARol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[AgregarFuncionalidadARol]
 
 GO
 IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'SERVOMOTOR')
@@ -450,6 +484,27 @@ ALTER TABLE [SERVOMOTOR].[ITEMS]  WITH CHECK ADD  CONSTRAINT [FK_ITEMS_PAGO] FOR
 REFERENCES [SERVOMOTOR].[FACTURAS] ([NUMERO_FACTURA])
 
 
+--Crea tabla para la fecha del sistema
+CREATE TABLE [SERVOMOTOR].[FECHA]([HOY] [datetime])
+
+GO
+
+CREATE FUNCTION [SERVOMOTOR].obtenerFechaDeHoy()
+RETURNS datetime
+AS 
+	begin
+	return (select top 1 * from [SERVOMOTOR].[FECHA])
+	end
+GO
+
+CREATE PROCEDURE [SERVOMOTOR].crearTablaFecha
+	@fecha datetime
+AS
+	DELETE FROM [SERVOMOTOR].[FECHA]
+
+	insert into [SERVOMOTOR].[FECHA] values (@fecha)
+GO
+
 --//////////////////////////////////////////////
 
 GO
@@ -458,19 +513,19 @@ CREATE FUNCTION SERVOMOTOR.EncriptarSHA1 (@numero VARCHAR(16))
 RETURNS nvarchar(4000)
 AS
 BEGIN
-	DECLARE @hash nvarchar(4000)
-	SET @hash = CONVERT(nvarchar(4000),@numero);
-	RETURN HASHBYTES('SHA1', @hash);
+	--DECLARE @hash nvarchar(4000)
+	--SET @hash = CONVERT(nvarchar(4000),@numero);
+	RETURN HASHBYTES('SHA1', @numero);
 END
 
-
+--SELECT SERVOMOTOR.EncriptarSHA1('w23e') AS [ALGO]
 
 GO
 
 --//////////// Migración de tabla maestra /////////////
 -- Inserta los clientes en la tabla clientes
-
-/*INSERT INTO [SERVOMOTOR].[CLIENTES]
+/*
+INSERT INTO [SERVOMOTOR].[CLIENTES]
 
 	(	
 		DNI ,
@@ -482,5 +537,181 @@ GO
 		COD_POSTAL_CLIENTE
 	)
 
-	SELECT DISTINCT CAST('Cliente-Dni' as tinyint) , 'Cliente-Nombre', 'Cliente-Apellido', Cliente_Direccion, Cliente_Mail, 'Cliente-Fecha_Nac' , Cliente_Codigo_Postal FROM gd_esquema.Maestra
+	SELECT DISTINCT cast([Cliente-Dni] as tinyint)   , [Cliente-Nombre], [Cliente-Apellido], [Cliente_Direccion], [Cliente_Mail], [Cliente-Fecha_Nac] , [Cliente_Codigo_Postal] FROM gd_esquema.Maestra
 	*/
+	/*
+		[DNI] [tinyint],
+	[NOMBRE] [varchar] (20) NOT NULL,
+	[APELLIDO] [varchar] (20) NOT NULL,
+	[MAIL] [varchar] (20) NOT NULL,
+	[TELEFONO] [varchar] (20) NOT NULL,
+	[CALLE] [varchar] (20) NOT NULL,
+	[PISO] [varchar] (20) NOT NULL,
+	[DEPTO] [varchar] (20) NOT NULL,
+	[LOCALIDAD] [varchar] (20) NOT NULL,
+	[FECHA_NACIMIENTO] [datetime] NOT NULL,
+	[COD_POSTAL_CLIENTE] [varchar] (20) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,
+	
+	*/
+
+
+-- Insert de usuario invitado y un administrador
+-- el hash de la contraseña w23e está previamente calculado
+DECLARE @Password VARCHAR(70)
+--SET @Password = 'c6a9b01aeca5e5314845a9b00373f1d1cbe06b93'
+SET @Password = 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7'
+INSERT INTO SERVOMOTOR.USUARIOS (USERNAME,PASSWORD,HABILITADO,CANT_INT_FALL)
+	VALUES ('Invitado','',1,0),
+		   ('admin',@Password,1,0),
+		   ('usuarioX',@Password,1,0),
+		   ('jorge256',@Password,1,0),
+		   ('Alguien',@Password,1,0)
+
+GO
+
+
+INSERT INTO SERVOMOTOR.ROLES(NOMBRE) VALUES ('Administrador')
+INSERT INTO SERVOMOTOR.ROLES(NOMBRE) VALUES ('Cobrador')
+
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Rol')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Cliente')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Empresa')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Listado Estadístico')
+
+GO
+
+/**************************** <<STORED PROCEDURE PARA ROLES Y FUNCIONALIDADES>> ******************************/
+
+CREATE PROCEDURE SERVOMOTOR.AgregarFuncionalidadARol(@nombrerol NVARCHAR(100), @funcionalidad nvarchar(100)) AS
+BEGIN
+	INSERT INTO SERVOMOTOR.FUNCIONES_ROLES (ID_ROL,ID_FUNC)
+		VALUES ((SELECT ID_ROL FROM SERVOMOTOR.ROLES WHERE NOMBRE = @nombrerol),
+		        (SELECT ID_FUNC FROM SERVOMOTOR.FUNCIONALIDADES WHERE NOMBRE = @funcionalidad))
+END
+
+GO
+
+--////Ver bien que funcionalidades tiene cada rol
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Rol'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Cliente'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Listado Estadístico'
+
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Cliente'
+
+
+GO
+
+--//////////// Creacion de stored procedures y funciones /////////////
+
+
+
+--**************** LOGIN *************
+
+-----------------------------Login---------------------------
+CREATE PROCEDURE [SERVOMOTOR].LoginAdministrador
+(@Usuario VARCHAR(20), @ContraseniaIngresada VARCHAR(70))
+AS
+BEGIN
+	DECLARE @Contrasenia VARCHAR(70),
+			@CantidadIntentos TINYINT,
+			@ExisteUsuario BIT
+
+	SELECT @ExisteUsuario = COUNT(*) 
+		FROM SERVOMOTOR.USUARIOS
+		WHERE USERNAME = @Usuario
+	
+
+	IF @ExisteUsuario = 0
+	BEGIN
+		RAISERROR('El nombre de usuario ingresado no existe.', 16, 1)
+		RETURN
+	END
+
+	SELECT @Contrasenia = PASSWORD, @CantidadIntentos = CANT_INT_FALL
+		FROM SERVOMOTOR.USUARIOS
+		WHERE USERNAME = @Usuario
+
+	IF @CantidadIntentos = 3
+	BEGIN
+		RAISERROR('Ha ingresado la contraseña 3 veces de forma incorrecta. Contáctese con un administrador para reestablecer su cuenta.', 16, 1)
+		RETURN
+	END
+	--[SERVOMOTOR].EncriptarSHA1(
+	--IF (SELECT SERVOMOTOR.EncriptarSHA1(@ContraseniaIngresada) as [resultado]) <> @Contrasenia
+	IF @ContraseniaIngresada <> @Contrasenia
+	BEGIN
+		RAISERROR('Contraseña incorrecta.', 16, 1)
+		
+		UPDATE SERVOMOTOR.USUARIOS 
+			SET CANT_INT_FALL = CANT_INT_FALL + 1
+			WHERE USERNAME = @Usuario
+
+		SELECT @CantidadIntentos = CANT_INT_FALL
+			FROM SERVOMOTOR.USUARIOS
+			WHERE USERNAME = @Usuario
+		
+		IF @CantidadIntentos = 3
+		BEGIN
+			RAISERROR('Ha ingresado la contraseña 3 veces de forma incorrecta. Contáctese con un administrador para reestablecer su cuenta.', 16, 1)
+		END
+		RETURN
+	END
+
+	UPDATE SERVOMOTOR.USUARIOS 
+		SET CANT_INT_FALL = 0
+		WHERE USERNAME = @Usuario
+END
+
+
+
+GO
+
+--**************** MANEJO DE FECHAS *************
+
+
+-------------------------------Fecha entre dos fechas----------------------------------------------
+CREATE FUNCTION [SERVOMOTOR].datetime_between
+
+ (@fecha DATETIME, @fecha1 DATETIME, @fecha2 DATETIME)
+
+RETURNS smallint
+
+AS
+
+BEGIN
+	if(datediff(minute, '1900-01-01 00:00:00.0000000', @fecha) between datediff(minute, '1900-01-01 00:00:00.0000000', @fecha1) and datediff(minute, '1900-01-01 00:00:00.0000000', @fecha2))
+	begin
+		return 1
+	end
+	
+	return 0
+END
+GO
+-------------------------------Saber si un datetime esta entre otros dos datetime------------------------
+CREATE FUNCTION [SERVOMOTOR].datetime_is_between
+ (@fecha DATETIME, @fecha1 DATETIME, @fecha2 DATETIME)
+
+RETURNS smallint
+
+AS
+
+BEGIN
+	if(@fecha1 <= @fecha2)
+		begin
+			if([SERVOMOTOR].datetime_between(@fecha, @fecha1, @fecha2) = 1)
+				begin
+					return 1
+				end
+		end
+	else
+		begin
+			if([SERVOMOTOR].datetime_between(@fecha, @fecha2, @fecha1) = 1)
+				begin
+					return 1
+				end
+		end
+
+	return 0
+END
+
