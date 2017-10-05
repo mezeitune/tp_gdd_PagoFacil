@@ -32,5 +32,16 @@ namespace PagoAgilFrba.AbmRol
             //aca se updatea el estado del rol para que no pueda ser asignado a ningun usuario
             MessageBox.Show("Se ha inhabilitado el rol correctamente", "Todo bien", MessageBoxButtons.OK);
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmRol.PantallaPrincipalABMRol();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
     }
 }

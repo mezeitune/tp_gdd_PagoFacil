@@ -35,6 +35,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtNombreSucursal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDireccionSucursal
@@ -98,11 +99,22 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Nombre";
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(305, 253);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 66;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // ModificarSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 288);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.txtDireccionSucursal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.botonModificarSucursal);
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNombreSucursal;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

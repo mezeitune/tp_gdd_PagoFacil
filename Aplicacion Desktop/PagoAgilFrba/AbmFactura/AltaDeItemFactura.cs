@@ -42,5 +42,16 @@ namespace PagoAgilFrba.AbmFactura
             txtCantidadDeItems.Text = "";
             txtMontoItem.Text = "";
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmFactura.AltaFactura();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
     }
 }

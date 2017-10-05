@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -90,11 +91,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(331, 312);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 61;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // AltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(436, 380);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

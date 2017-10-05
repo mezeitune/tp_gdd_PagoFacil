@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmSucursal
 {
-    partial class ModificacionSucursal
+    partial class ModificarDatosSucursal
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.txtNombreSucursal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -135,11 +136,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
-            // ModificacionSucursal
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(512, 383);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 67;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
+            // ModificarDatosSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 418);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -151,7 +163,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.botonModificarSucursal);
-            this.Name = "ModificacionSucursal";
+            this.Name = "ModificarDatosSucursal";
             this.Text = "ModificacionSucursal";
             this.Load += new System.EventHandler(this.ModificacionSucursal_Load);
             this.ResumeLayout(false);
@@ -172,6 +184,7 @@
         private System.Windows.Forms.TextBox txtNombreSucursal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
 
     }
 }

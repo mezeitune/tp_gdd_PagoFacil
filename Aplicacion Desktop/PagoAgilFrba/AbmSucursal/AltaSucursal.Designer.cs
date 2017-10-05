@@ -36,11 +36,12 @@
             this.txtDireccionSucursal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNombreSucursal
             // 
-            this.txtNombreSucursal.Location = new System.Drawing.Point(94, 43);
+            this.txtNombreSucursal.Location = new System.Drawing.Point(165, 71);
             this.txtNombreSucursal.Name = "txtNombreSucursal";
             this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtNombreSucursal.TabIndex = 14;
@@ -49,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 46);
+            this.label2.Location = new System.Drawing.Point(82, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 13;
@@ -57,7 +58,7 @@
             // 
             // txtCodPostalSucursal
             // 
-            this.txtCodPostalSucursal.Location = new System.Drawing.Point(94, 135);
+            this.txtCodPostalSucursal.Location = new System.Drawing.Point(165, 163);
             this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
             this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalSucursal.TabIndex = 23;
@@ -66,7 +67,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 135);
+            this.label11.Location = new System.Drawing.Point(82, 163);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 22;
@@ -74,7 +75,7 @@
             // 
             // DarAltaSucursal
             // 
-            this.DarAltaSucursal.Location = new System.Drawing.Point(190, 185);
+            this.DarAltaSucursal.Location = new System.Drawing.Point(201, 252);
             this.DarAltaSucursal.Name = "DarAltaSucursal";
             this.DarAltaSucursal.Size = new System.Drawing.Size(109, 34);
             this.DarAltaSucursal.TabIndex = 24;
@@ -84,7 +85,7 @@
             // 
             // txtDireccionSucursal
             // 
-            this.txtDireccionSucursal.Location = new System.Drawing.Point(94, 89);
+            this.txtDireccionSucursal.Location = new System.Drawing.Point(165, 117);
             this.txtDireccionSucursal.Name = "txtDireccionSucursal";
             this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtDireccionSucursal.TabIndex = 26;
@@ -93,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 89);
+            this.label1.Location = new System.Drawing.Point(82, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 25;
@@ -101,7 +102,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(14, 185);
+            this.limpiar.Location = new System.Drawing.Point(61, 258);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 31;
@@ -109,11 +110,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(386, 332);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 64;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // AltaSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 262);
+            this.ClientSize = new System.Drawing.Size(473, 367);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.txtDireccionSucursal);
             this.Controls.Add(this.label1);
@@ -124,6 +136,7 @@
             this.Controls.Add(this.label2);
             this.Name = "AltaSucursal";
             this.Text = "AltaSucursal";
+            this.Load += new System.EventHandler(this.AltaSucursal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +152,6 @@
         private System.Windows.Forms.TextBox txtDireccionSucursal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

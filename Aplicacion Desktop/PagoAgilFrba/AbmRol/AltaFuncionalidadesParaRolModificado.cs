@@ -26,5 +26,16 @@ namespace PagoAgilFrba.AbmRol
         {
             //no agregar una funcionalidad si ya la tiene ese rol, verificar eso
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmRol.ModificarDatosRol();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
     }
 }

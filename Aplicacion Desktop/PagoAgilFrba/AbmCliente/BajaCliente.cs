@@ -53,5 +53,16 @@ namespace PagoAgilFrba.AbmCliente
             txtDniExacto.Text = "";
             txtNombre.Text = "";
         }
+
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+        private void cambiarVisibilidades(Form formularioSiguiente)
+        {
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
+        }
     }
 }

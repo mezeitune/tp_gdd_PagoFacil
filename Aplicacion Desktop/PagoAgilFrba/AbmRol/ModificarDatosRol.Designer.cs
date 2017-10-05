@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.nombreRol = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificarRol
@@ -90,11 +91,22 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Nombre Rol";
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(421, 332);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 63;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // ModificarDatosRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 367);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.ModificarRol);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox nombreRol;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

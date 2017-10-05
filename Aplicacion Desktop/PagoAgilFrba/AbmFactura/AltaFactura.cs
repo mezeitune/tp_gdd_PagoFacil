@@ -120,8 +120,17 @@ namespace PagoAgilFrba.AbmFactura
             FechaAltaFac.Value = fechaDeAhora.Value;
             FechaVencFact.Value = fechaDeAhora.Value;
         }
+         
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
 
+        Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
+          this.cambiarVisibilidades(formularioSiguiente);
+        }
        
+    
+
+    }
        
     }
-}
+

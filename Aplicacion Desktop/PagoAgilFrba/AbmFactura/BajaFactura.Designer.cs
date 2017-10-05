@@ -32,6 +32,7 @@
             this.comboBoxNroFactura = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.BajaLogicaFactura = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -72,11 +73,22 @@
             this.BajaLogicaFactura.UseVisualStyleBackColor = true;
             this.BajaLogicaFactura.Click += new System.EventHandler(this.BajaLogicaFactura_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(421, 167);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 59;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // BajaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 220);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.BajaLogicaFactura);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxNroFactura);
@@ -94,5 +106,6 @@
         private System.Windows.Forms.ComboBox comboBoxNroFactura;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BajaLogicaFactura;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
     }
 }

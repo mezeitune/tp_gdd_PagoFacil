@@ -178,11 +178,11 @@
     <Compile Include="AbmSucursal\BajaSucursal.Designer.cs">
       <DependentUpon>BajaSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\ModificacionSucursal.cs">
+    <Compile Include="AbmSucursal\ModificarDatosSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\ModificacionSucursal.Designer.cs">
-      <DependentUpon>ModificacionSucursal.cs</DependentUpon>
+    <Compile Include="AbmSucursal\ModificarDatosSucursal.Designer.cs">
+      <DependentUpon>ModificarDatosSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\ModificarSucursal.cs">
       <SubType>Form</SubType>
@@ -295,8 +295,8 @@
     <EmbeddedResource Include="AbmSucursal\BajaSucursal.resx">
       <DependentUpon>BajaSucursal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmSucursal\ModificacionSucursal.resx">
-      <DependentUpon>ModificacionSucursal.cs</DependentUpon>
+    <EmbeddedResource Include="AbmSucursal\ModificarDatosSucursal.resx">
+      <DependentUpon>ModificarDatosSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\ModificarSucursal.resx">
       <DependentUpon>ModificarSucursal.cs</DependentUpon>

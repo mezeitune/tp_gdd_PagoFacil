@@ -43,5 +43,11 @@ namespace PagoAgilFrba.AbmRol
             MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
         }
 
+        private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmRol.PantallaPrincipalABMRol(); 
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+
     }
 }

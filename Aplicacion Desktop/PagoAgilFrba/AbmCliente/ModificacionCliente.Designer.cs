@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmCliente
 {
-    partial class Baja_Modificacion_Cliente
+    partial class ModificacionClienteee
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.limpiar = new System.Windows.Forms.Button();
+            this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificacionCliente
@@ -139,11 +140,22 @@
             this.limpiar.UseVisualStyleBackColor = true;
             this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
+            // volverALaPaginaAnterior
+            // 
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(510, 379);
+            this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.TabIndex = 59;
+            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
+            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
             // Baja_Modificacion_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 450);
+            this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -157,6 +169,7 @@
             this.Controls.Add(this.ModificacionCliente);
             this.Name = "Baja_Modificacion_Cliente";
             this.Text = "Baja_Modificacion_Cliente";
+            this.Load += new System.EventHandler(this.Baja_Modificacion_Cliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +188,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button limpiar;
+        private System.Windows.Forms.Button volverALaPaginaAnterior;
 
 
     }
