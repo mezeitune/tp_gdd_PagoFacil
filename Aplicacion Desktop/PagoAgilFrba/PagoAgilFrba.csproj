@@ -234,25 +234,31 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
+    <Compile Include="ListadoEstadistico\PantallaPrincipalListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ListadoEstadistico\PantallaPrincipalListadoEstadistico.Designer.cs">
+      <DependentUpon>PantallaPrincipalListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroPago\Form1.cs">
+    <Compile Include="RegistroPago\PantallaPrincipalRegistroPagoFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPago\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="RegistroPago\PantallaPrincipalRegistroPagoFacturas.Designer.cs">
+      <DependentUpon>PantallaPrincipalRegistroPagoFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendicion\Form1.cs">
+    <Compile Include="Rendicion\AgregarEmpresaARendir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Rendicion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Rendicion\AgregarEmpresaARendir.Designer.cs">
+      <DependentUpon>AgregarEmpresaARendir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rendicion\PantallaPrincipalRendicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rendicion\PantallaPrincipalRendicion.Designer.cs">
+      <DependentUpon>PantallaPrincipalRendicion.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLManager.cs" />
     <Compile Include="Validacion.cs" />
@@ -346,6 +352,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\PantallaPrincipalListadoEstadistico.resx">
+      <DependentUpon>PantallaPrincipalListadoEstadistico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,8 +367,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Rendicion\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="RegistroPago\PantallaPrincipalRegistroPagoFacturas.resx">
+      <DependentUpon>PantallaPrincipalRegistroPagoFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion\AgregarEmpresaARendir.resx">
+      <DependentUpon>AgregarEmpresaARendir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rendicion\PantallaPrincipalRendicion.resx">
+      <DependentUpon>PantallaPrincipalRendicion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -374,7 +389,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Devolucion\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

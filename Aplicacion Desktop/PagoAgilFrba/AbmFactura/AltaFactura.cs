@@ -24,7 +24,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void DarAltaFactura_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
 
                 //aca se da de alta la factura en la BDD

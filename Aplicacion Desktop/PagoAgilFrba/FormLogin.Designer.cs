@@ -153,6 +153,7 @@
             this.gbInvitado.TabIndex = 4;
             this.gbInvitado.TabStop = false;
             this.gbInvitado.Text = "Cobrador - Sucursal";
+            this.gbInvitado.Enter += new System.EventHandler(this.gbInvitado_Enter);
             // 
             // SucursalesDisponibles
             // 

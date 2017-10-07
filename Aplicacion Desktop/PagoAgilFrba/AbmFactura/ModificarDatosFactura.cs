@@ -57,7 +57,8 @@ namespace PagoAgilFrba.AbmFactura
 
         private void ModificarUnaFactura_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && 
+                !validarTipos())
             {
 
                 ///aca va el update de todos los campos

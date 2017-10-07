@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.DarAltaFactura = new System.Windows.Forms.Button();
-            this.txtNroFactura = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,25 +45,18 @@
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
+            this.txtNroFactura = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // DarAltaFactura
             // 
-            this.DarAltaFactura.Location = new System.Drawing.Point(159, 311);
+            this.DarAltaFactura.Location = new System.Drawing.Point(195, 311);
             this.DarAltaFactura.Name = "DarAltaFactura";
             this.DarAltaFactura.Size = new System.Drawing.Size(109, 34);
             this.DarAltaFactura.TabIndex = 47;
             this.DarAltaFactura.Text = "Dar de alta factura";
             this.DarAltaFactura.UseVisualStyleBackColor = true;
             this.DarAltaFactura.Click += new System.EventHandler(this.DarAltaFactura_Click);
-            // 
-            // txtNroFactura
-            // 
-            this.txtNroFactura.Location = new System.Drawing.Point(225, 124);
-            this.txtNroFactura.Name = "txtNroFactura";
-            this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
-            this.txtNroFactura.TabIndex = 38;
-            this.txtNroFactura.TextChanged += new System.EventHandler(this.txtNroFactura_TextChanged);
             // 
             // label6
             // 
@@ -122,7 +114,7 @@
             // 
             // botonIngresarItem
             // 
-            this.botonIngresarItem.Location = new System.Drawing.Point(316, 270);
+            this.botonIngresarItem.Location = new System.Drawing.Point(46, 263);
             this.botonIngresarItem.Name = "botonIngresarItem";
             this.botonIngresarItem.Size = new System.Drawing.Size(109, 34);
             this.botonIngresarItem.TabIndex = 48;
@@ -193,7 +185,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(46, 270);
+            this.limpiar.Location = new System.Drawing.Point(46, 366);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 56;
@@ -210,6 +202,14 @@
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
+            // txtNroFactura
+            // 
+            this.txtNroFactura.Location = new System.Drawing.Point(225, 124);
+            this.txtNroFactura.Name = "txtNroFactura";
+            this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
+            this.txtNroFactura.TabIndex = 38;
+            this.txtNroFactura.TextChanged += new System.EventHandler(this.txtNroFactura_TextChanged);
             // 
             // AltaFactura
             // 
@@ -245,7 +245,6 @@
         #endregion
 
         private System.Windows.Forms.Button DarAltaFactura;
-        private System.Windows.Forms.TextBox txtNroFactura;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -262,5 +261,6 @@
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
+        private System.Windows.Forms.TextBox txtNroFactura;
     }
 }

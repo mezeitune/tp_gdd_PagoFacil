@@ -29,7 +29,7 @@ namespace PagoAgilFrba.AbmCliente
         {
             txtNombreCliente.Text = "";
             txtApellidoCliente.Text = " ";
-            
+            txtCodPostalCliente.Clear();
             txtMailCliente.Text = " ";
             txtTelCliente.Text = " ";
             txtCalleCliente.Text = " ";
@@ -42,7 +42,7 @@ namespace PagoAgilFrba.AbmCliente
         }
         private void ModificarCliente_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
                 
                     //update de todos los datos juntos

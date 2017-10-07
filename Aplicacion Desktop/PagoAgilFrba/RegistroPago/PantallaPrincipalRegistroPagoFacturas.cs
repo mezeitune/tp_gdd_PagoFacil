@@ -89,6 +89,9 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
 
             }
+            else {
+                MessageBox.Show("Algun Campo no es correcto o se encuentra vacio", "Error daros de entrada", MessageBoxButtons.OK);
+            }
         }
         private bool todosLosCamposLLenos()
         {

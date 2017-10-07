@@ -68,5 +68,10 @@ namespace PagoAgilFrba.AbmSucursal
             Form formularioSiguiente = new AbmSucursal.ModificarSucursal();
             this.cambiarVisibilidades(formularioSiguiente);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

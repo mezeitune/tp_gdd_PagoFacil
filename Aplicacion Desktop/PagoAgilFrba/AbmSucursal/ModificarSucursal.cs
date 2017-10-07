@@ -34,7 +34,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void ModificarSucursal_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
                 
                     //aca se modifica la sucursal en la BDD

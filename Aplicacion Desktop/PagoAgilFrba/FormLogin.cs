@@ -184,6 +184,11 @@ namespace PagoAgilFrba
 
         }
 
+        private void gbInvitado_Enter(object sender, EventArgs e)
+        {
+
+        }
+
        
 
     }

@@ -52,7 +52,7 @@ namespace PagoAgilFrba
 
         private void botonListadoEstadistico_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new ListadoEstadistico.Form1();//falta hacer esto
+            Form formularioSiguiente = new ListadoEstadistico.PantallaPrincipalListadoEstadistico();//falta hacer esto
             this.cambiarVisibilidades(formularioSiguiente);
         }
 
@@ -64,7 +64,7 @@ namespace PagoAgilFrba
 
         private void botonRendicion_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new Rendicion.Form1();
+            Form formularioSiguiente = new Rendicion.PantallaPrincipalRendicion();
             this.cambiarVisibilidades(formularioSiguiente);
         }
 

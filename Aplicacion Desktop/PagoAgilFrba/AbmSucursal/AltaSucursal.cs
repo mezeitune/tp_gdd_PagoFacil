@@ -34,7 +34,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void DarAltaSucursal_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
                
                     //aca se da de alta la sucursal en la BDD
@@ -57,8 +57,8 @@ namespace PagoAgilFrba.AbmSucursal
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            huboErrores = !Validacion.esDecimal(txtCodPostalSucursal,"apellido", true ) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtDireccionSucursal, true, "direccion", true) || huboErrores;
+            huboErrores = !Validacion.esDecimal(txtCodPostalSucursal,"Codigo Postal", true ) || huboErrores;
+            huboErrores = !Validacion.esTextoAlfanumerico(txtDireccionSucursal, true, "Direccion", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtNombreSucursal, true, "nombre", true) || huboErrores;
            
             return huboErrores;

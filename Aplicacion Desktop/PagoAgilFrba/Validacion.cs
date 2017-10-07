@@ -322,6 +322,20 @@ namespace PagoAgilFrba
             }
 
         }
+        public static Boolean esNumeroDe4(TextBox txt)
+        {
+
+            if (txt.TextLength == 4)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El campo ano debe tener 4 digitos", "Error en los datos de entrada", MessageBoxButtons.OK);
+                return false;
+            }
+
+        }
         public static Boolean listaVacia(List<Object> lista, string nombreCampo = "Opcional" , Boolean mostrarMensaje = false)
         {
             Boolean vacio = false;
