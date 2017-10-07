@@ -179,6 +179,11 @@ namespace PagoAgilFrba
             gbInvitado.Enabled = true;
         }
 
+        private void SucursalesDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
 
     }

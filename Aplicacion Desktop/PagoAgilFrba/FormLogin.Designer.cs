@@ -162,6 +162,7 @@
             this.SucursalesDisponibles.Name = "SucursalesDisponibles";
             this.SucursalesDisponibles.Size = new System.Drawing.Size(121, 21);
             this.SucursalesDisponibles.TabIndex = 4;
+            this.SucursalesDisponibles.SelectedIndexChanged += new System.EventHandler(this.SucursalesDisponibles_SelectedIndexChanged);
             // 
             // label3
             // 

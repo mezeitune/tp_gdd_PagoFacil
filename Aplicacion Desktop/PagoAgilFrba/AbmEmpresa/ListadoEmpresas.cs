@@ -45,5 +45,15 @@ namespace PagoAgilFrba.AbmEmpresa
                 );
             }
         }
+
+        private void Listado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Buscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

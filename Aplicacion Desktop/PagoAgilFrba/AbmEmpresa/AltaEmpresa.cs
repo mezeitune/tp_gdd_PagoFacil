@@ -29,5 +29,25 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             this.Dispose();
         }
+
+        private void Rubro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DarDeAlta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AltaEmpresa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

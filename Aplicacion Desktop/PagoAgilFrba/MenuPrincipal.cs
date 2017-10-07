@@ -34,7 +34,7 @@ namespace PagoAgilFrba
 
         private void botonABMEmpresa_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmEmpresa.PantallaPrincipalABMEmpresa(); //falta hacer esto
+            Form formularioSiguiente = new AbmEmpresa.PantallaPrincipalABMEmpresa();
             this.cambiarVisibilidades(formularioSiguiente);
         }
 
@@ -58,7 +58,7 @@ namespace PagoAgilFrba
 
         private void botonRegistrarPago_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new RegistroPago.Form1(); //falta hacer esto
+            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(); //falta hacer esto
             this.cambiarVisibilidades(formularioSiguiente);
         }
 

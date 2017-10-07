@@ -59,18 +59,21 @@
             DatosDeBusqueda.Controls.Add(this.label1);
             DatosDeBusqueda.Controls.Add(this.CUIT);
             DatosDeBusqueda.Controls.Add(this.Nombre);
-            DatosDeBusqueda.Location = new System.Drawing.Point(12, 12);
+            DatosDeBusqueda.Location = new System.Drawing.Point(9, 10);
+            DatosDeBusqueda.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             DatosDeBusqueda.Name = "DatosDeBusqueda";
-            DatosDeBusqueda.Size = new System.Drawing.Size(499, 95);
+            DatosDeBusqueda.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            DatosDeBusqueda.Size = new System.Drawing.Size(374, 82);
             DatosDeBusqueda.TabIndex = 0;
             DatosDeBusqueda.TabStop = false;
             DatosDeBusqueda.Text = "Datos de búsqueda";
             // 
             // Seleccionar
             // 
-            this.Seleccionar.Location = new System.Drawing.Point(374, 58);
+            this.Seleccionar.Location = new System.Drawing.Point(280, 50);
+            this.Seleccionar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Size = new System.Drawing.Size(108, 30);
+            this.Seleccionar.Size = new System.Drawing.Size(81, 26);
             this.Seleccionar.TabIndex = 4;
             this.Seleccionar.Text = "&Seleccionar";
             this.Seleccionar.UseVisualStyleBackColor = true;
@@ -79,66 +82,75 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 29);
+            this.label3.Location = new System.Drawing.Point(196, 25);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "&Rubro:";
             // 
             // Rubro
             // 
             this.Rubro.FormattingEnabled = true;
-            this.Rubro.Location = new System.Drawing.Point(322, 26);
+            this.Rubro.Location = new System.Drawing.Point(242, 23);
+            this.Rubro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Rubro.Name = "Rubro";
-            this.Rubro.Size = new System.Drawing.Size(160, 23);
+            this.Rubro.Size = new System.Drawing.Size(121, 21);
             this.Rubro.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 58);
+            this.label2.Location = new System.Drawing.Point(4, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 15);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "&CUIT:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Location = new System.Drawing.Point(4, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "&Nombre:";
             // 
             // CUIT
             // 
-            this.CUIT.Location = new System.Drawing.Point(75, 55);
+            this.CUIT.Location = new System.Drawing.Point(56, 48);
+            this.CUIT.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CUIT.Name = "CUIT";
-            this.CUIT.Size = new System.Drawing.Size(160, 25);
+            this.CUIT.Size = new System.Drawing.Size(121, 20);
             this.CUIT.TabIndex = 2;
             // 
             // Nombre
             // 
-            this.Nombre.Location = new System.Drawing.Point(75, 24);
+            this.Nombre.Location = new System.Drawing.Point(56, 21);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(160, 25);
+            this.Nombre.Size = new System.Drawing.Size(121, 20);
             this.Nombre.TabIndex = 1;
             // 
             // Buscar
             // 
-            this.Buscar.Location = new System.Drawing.Point(398, 112);
+            this.Buscar.Location = new System.Drawing.Point(298, 97);
+            this.Buscar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(113, 32);
+            this.Buscar.Size = new System.Drawing.Size(85, 28);
             this.Buscar.TabIndex = 6;
             this.Buscar.Text = "&Buscar";
             this.Buscar.UseVisualStyleBackColor = true;
+            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
             // 
             // Limpiar
             // 
-            this.Limpiar.Location = new System.Drawing.Point(12, 112);
+            this.Limpiar.Location = new System.Drawing.Point(9, 97);
+            this.Limpiar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(113, 32);
+            this.Limpiar.Size = new System.Drawing.Size(85, 28);
             this.Limpiar.TabIndex = 5;
             this.Limpiar.Text = "&Limpiar";
             this.Limpiar.UseVisualStyleBackColor = true;
@@ -151,15 +163,17 @@
             this.ColCUIT,
             this.ColRubro,
             this.ColDireccion});
-            this.Listado.Location = new System.Drawing.Point(12, 150);
+            this.Listado.Location = new System.Drawing.Point(9, 130);
+            this.Listado.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Listado.MultiSelect = false;
             this.Listado.Name = "Listado";
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Listado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Listado.RowTemplate.Height = 27;
-            this.Listado.Size = new System.Drawing.Size(499, 326);
+            this.Listado.Size = new System.Drawing.Size(374, 283);
             this.Listado.TabIndex = 7;
+            this.Listado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Listado_CellContentClick);
             // 
             // ColNombre
             // 
@@ -189,18 +203,19 @@
             // 
             this.Direccion.Location = new System.Drawing.Point(75, 24);
             this.Direccion.Name = "Direccion";
-            this.Direccion.Size = new System.Drawing.Size(160, 25);
+            this.Direccion.Size = new System.Drawing.Size(160, 20);
             this.Direccion.TabIndex = 0;
             // 
             // ListadoEmpresas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 488);
+            this.ClientSize = new System.Drawing.Size(392, 423);
             this.Controls.Add(this.Listado);
             this.Controls.Add(this.Limpiar);
             this.Controls.Add(this.Buscar);
             this.Controls.Add(DatosDeBusqueda);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "ListadoEmpresas";
             this.Text = "Seleccionar empresa";
