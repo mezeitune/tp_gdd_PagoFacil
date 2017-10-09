@@ -30,8 +30,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmCliente.BajaCliente();
-            this.cambiarVisibilidades(formularioSiguiente);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

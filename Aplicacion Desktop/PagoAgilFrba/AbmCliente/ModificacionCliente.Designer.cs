@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ModificacionCliente = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Nombre = new System.Windows.Forms.Label();
@@ -40,21 +39,22 @@
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dnii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calleCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nroPiso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estadoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bajaLogica = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ModificacionCliente
-            // 
-            this.ModificacionCliente.Location = new System.Drawing.Point(213, 313);
-            this.ModificacionCliente.Name = "ModificacionCliente";
-            this.ModificacionCliente.Size = new System.Drawing.Size(95, 38);
-            this.ModificacionCliente.TabIndex = 7;
-            this.ModificacionCliente.Text = "Modificar Cliente";
-            this.ModificacionCliente.UseVisualStyleBackColor = true;
-            this.ModificacionCliente.Click += new System.EventHandler(this.ModificacionCliente_Click);
             // 
             // label3
             // 
@@ -85,7 +85,7 @@
             // 
             // buscar
             // 
-            this.buscar.Location = new System.Drawing.Point(244, 112);
+            this.buscar.Location = new System.Drawing.Point(242, 112);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(116, 23);
             this.buscar.TabIndex = 25;
@@ -138,7 +138,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(510, 321);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(510, 354);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 59;
@@ -150,34 +150,129 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dnii,
             this.dataGridViewTextBoxColumn1,
-            this.Direccion,
-            this.CodPostal});
-            this.dataGridView1.Location = new System.Drawing.Point(39, 167);
+            this.DNI,
+            this.mailCliente,
+            this.telefono,
+            this.calleCliente,
+            this.nroPiso,
+            this.departamento,
+            this.locCliente,
+            this.fechaNacimiento,
+            this.codPos,
+            this.estadoCliente});
+            this.dataGridView1.Location = new System.Drawing.Point(5, 165);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(535, 110);
+            this.dataGridView1.Size = new System.Drawing.Size(580, 166);
             this.dataGridView1.TabIndex = 78;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarCliente);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // dnii
+            // 
+            this.dnii.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dnii.HeaderText = "DNI";
+            this.dnii.Name = "dnii";
+            this.dnii.ReadOnly = true;
+            this.dnii.Width = 51;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 79;
             // 
-            // Direccion
+            // DNI
             // 
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
+            this.DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DNI.HeaderText = "APELLIDO";
+            this.DNI.Name = "DNI";
+            this.DNI.Width = 84;
             // 
-            // CodPostal
+            // mailCliente
             // 
-            this.CodPostal.HeaderText = "Codigo Postal";
-            this.CodPostal.Name = "CodPostal";
+            this.mailCliente.HeaderText = "MAIL";
+            this.mailCliente.Name = "mailCliente";
+            // 
+            // telefono
+            // 
+            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefono.HeaderText = "TEL";
+            this.telefono.Name = "telefono";
+            this.telefono.Width = 52;
+            // 
+            // calleCliente
+            // 
+            this.calleCliente.HeaderText = "CALLE";
+            this.calleCliente.Name = "calleCliente";
+            // 
+            // nroPiso
+            // 
+            this.nroPiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nroPiso.HeaderText = "Nro PISO";
+            this.nroPiso.Name = "nroPiso";
+            this.nroPiso.Width = 77;
+            // 
+            // departamento
+            // 
+            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.departamento.HeaderText = "DEPTO";
+            this.departamento.Name = "departamento";
+            this.departamento.Width = 69;
+            // 
+            // locCliente
+            // 
+            this.locCliente.HeaderText = "LOCALIDAD";
+            this.locCliente.Name = "locCliente";
+            // 
+            // fechaNacimiento
+            // 
+            this.fechaNacimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.fechaNacimiento.HeaderText = "FECHA NAC";
+            this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.Width = 92;
+            // 
+            // codPos
+            // 
+            this.codPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.codPos.HeaderText = "COD POSTAL";
+            this.codPos.Name = "codPos";
+            // 
+            // estadoCliente
+            // 
+            this.estadoCliente.HeaderText = "HABILITACION";
+            this.estadoCliente.Name = "estadoCliente";
+            this.estadoCliente.ReadOnly = true;
+            // 
+            // bajaLogica
+            // 
+            this.bajaLogica.Location = new System.Drawing.Point(77, 354);
+            this.bajaLogica.Name = "bajaLogica";
+            this.bajaLogica.Size = new System.Drawing.Size(109, 23);
+            this.bajaLogica.TabIndex = 79;
+            this.bajaLogica.Text = "Baja Logica";
+            this.bajaLogica.UseVisualStyleBackColor = true;
+            this.bajaLogica.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(262, 354);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.TabIndex = 80;
+            this.button1.Text = "Modificar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // ModificacionClienteee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 346);
+            this.ClientSize = new System.Drawing.Size(589, 389);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bajaLogica);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
@@ -189,7 +284,6 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ModificacionCliente);
             this.Name = "ModificacionClienteee";
             this.Text = "Baja_Modificacion_Cliente";
             this.Load += new System.EventHandler(this.Baja_Modificacion_Cliente_Load);
@@ -201,7 +295,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button ModificacionCliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Nombre;
@@ -213,9 +306,21 @@
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button bajaLogica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dnii;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodPostal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn calleCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nroPiso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codPos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estadoCliente;
+        private System.Windows.Forms.Button button1;
+        
 
 
     }

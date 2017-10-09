@@ -699,3 +699,4 @@ BEGIN
 	return 0
 END
 
+select * from [SERVOMOTOR].[CLIENTES]    where NOMBRE like '%z%';

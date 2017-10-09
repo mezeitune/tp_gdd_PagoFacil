@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace PagoAgilFrba.AbmCliente
 {
     public partial class AltaCliente : Form
@@ -110,13 +110,19 @@ namespace PagoAgilFrba.AbmCliente
 
         private void DarAltaCliente_Click(object sender, EventArgs e)
         {
+            int estadoHab = 1;
+            
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-
-                //aca se da de alta el cliente en la BDD
-
+                int a = Int32.Parse(txtDNICliente.Text);
+                var cmd = new SqlCommand(
+               "insert into [SERVOMOTOR].[CLIENTES] values ("+a+",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text  +
+               "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text +"','"+estadoHab+ "');",
+                Program.conexion()
+            );
+                var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
-
+                this.vaciarTextos();
             }
             else { 
 
@@ -154,10 +160,10 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = !Validacion.esTextoAlfanumerico(txtNombreCliente, true, "nombre", true) || huboErrores;
             huboErrores = !Validacion.esNumeroDe7u8(txtDNICliente) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtMailCliente, true, "Mail", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtTelCliente, true, "Telefono", true) || huboErrores;
+            huboErrores = !Validacion.esNumero(txtTelCliente, "Telefono", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtCalleCliente, true, "Calle", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtNroPisoCliente, true, "Numero Piso", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtDptoCliente, true, "Departamento", true) || huboErrores;
+            huboErrores = !Validacion.esNumero(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
+            huboErrores = !Validacion.esNumero(txtDptoCliente, "Departamento", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtLocalidadCliente, true, "Localidad", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtCodPostalCliente, "Codigo Postal", true) || huboErrores;
             
