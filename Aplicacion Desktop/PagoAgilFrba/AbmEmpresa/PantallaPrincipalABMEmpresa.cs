@@ -34,6 +34,8 @@ namespace PagoAgilFrba.AbmEmpresa
         {
             using (var formListado = new ListadoEmpresas())
             {
+                formListado.MostrarEmpresasInactivas = false;
+
                 var result = formListado.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -53,13 +55,24 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new MenuPrincipal();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Dispose();
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
+
+        private void Modificacion_Click(object sender, EventArgs e)
         {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            using (var formListado = new ListadoEmpresas())
+            {
+                var result = formListado.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    var values = formListado.Listado.SelectedRows[0].Cells;
+                    using (var formModificacion = new ModificacionEmpresa())
+                    {
+                        formModificacion.values = values;
+                        formModificacion.ShowDialog();
+                    }
+                }
+            }
         }
     }
 }

@@ -34,8 +34,10 @@ namespace PagoAgilFrba
 
         private void botonABMEmpresa_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmEmpresa.PantallaPrincipalABMEmpresa();
-            this.cambiarVisibilidades(formularioSiguiente);
+            Form formularioEmpresa = new AbmEmpresa.PantallaPrincipalABMEmpresa();
+            this.Hide();
+            formularioEmpresa.ShowDialog();
+            this.Show();
         }
 
         private void botonABMFactura_Click(object sender, EventArgs e)

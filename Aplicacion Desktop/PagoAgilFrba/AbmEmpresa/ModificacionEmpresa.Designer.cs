@@ -31,6 +31,7 @@
             System.Windows.Forms.Button Actualizar;
             System.Windows.Forms.Button Deshacer;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Habilitar = new System.Windows.Forms.CheckBox();
             this.Rubro = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.Nombre = new System.Windows.Forms.TextBox();
             this.CUIT = new System.Windows.Forms.TextBox();
             this.Direccion = new System.Windows.Forms.TextBox();
-            this.Habilitar = new System.Windows.Forms.CheckBox();
             Actualizar = new System.Windows.Forms.Button();
             Deshacer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -53,6 +53,7 @@
             Actualizar.TabIndex = 7;
             Actualizar.Text = "&Actualizar";
             Actualizar.UseVisualStyleBackColor = true;
+            Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
             // 
             // Deshacer
             // 
@@ -62,6 +63,7 @@
             Deshacer.TabIndex = 6;
             Deshacer.Text = "&Deshacer todo";
             Deshacer.UseVisualStyleBackColor = true;
+            Deshacer.Click += new System.EventHandler(this.Deshacer_Click);
             // 
             // groupBox1
             // 
@@ -80,6 +82,16 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de empresa";
+            // 
+            // Habilitar
+            // 
+            this.Habilitar.AutoSize = true;
+            this.Habilitar.Location = new System.Drawing.Point(9, 146);
+            this.Habilitar.Name = "Habilitar";
+            this.Habilitar.Size = new System.Drawing.Size(165, 19);
+            this.Habilitar.TabIndex = 5;
+            this.Habilitar.Text = "&Habilitar empresa";
+            this.Habilitar.UseVisualStyleBackColor = true;
             // 
             // Rubro
             // 
@@ -147,16 +159,6 @@
             this.Direccion.Size = new System.Drawing.Size(260, 25);
             this.Direccion.TabIndex = 3;
             // 
-            // Habilitar
-            // 
-            this.Habilitar.AutoSize = true;
-            this.Habilitar.Location = new System.Drawing.Point(9, 146);
-            this.Habilitar.Name = "Habilitar";
-            this.Habilitar.Size = new System.Drawing.Size(165, 19);
-            this.Habilitar.TabIndex = 5;
-            this.Habilitar.Text = "&Habilitar empresa";
-            this.Habilitar.UseVisualStyleBackColor = true;
-            // 
             // ModificacionEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -167,6 +169,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "ModificacionEmpresa";
             this.Text = "Modificar empresa";
+            this.Load += new System.EventHandler(this.ModificacionEmpresa_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -175,14 +178,14 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox Habilitar;
-        private System.Windows.Forms.ComboBox Rubro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Nombre;
-        private System.Windows.Forms.TextBox CUIT;
-        private System.Windows.Forms.TextBox Direccion;
+        public System.Windows.Forms.ComboBox Rubro;
+        public System.Windows.Forms.TextBox Nombre;
+        public System.Windows.Forms.TextBox CUIT;
+        public System.Windows.Forms.TextBox Direccion;
+        public System.Windows.Forms.CheckBox Habilitar;
     }
 }

@@ -36,10 +36,9 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(142, 185);
-            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(189, 213);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(61, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(81, 27);
             this.volverALaPaginaAnterior.TabIndex = 7;
             this.volverALaPaginaAnterior.Text = "&Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -47,20 +46,19 @@
             // 
             // Modificacion
             // 
-            this.Modificacion.Location = new System.Drawing.Point(9, 135);
-            this.Modificacion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Modificacion.Location = new System.Drawing.Point(12, 156);
             this.Modificacion.Name = "Modificacion";
-            this.Modificacion.Size = new System.Drawing.Size(118, 37);
+            this.Modificacion.Size = new System.Drawing.Size(157, 43);
             this.Modificacion.TabIndex = 6;
             this.Modificacion.Text = "&Modificación";
             this.Modificacion.UseVisualStyleBackColor = true;
+            this.Modificacion.Click += new System.EventHandler(this.Modificacion_Click);
             // 
             // Baja
             // 
-            this.Baja.Location = new System.Drawing.Point(9, 75);
-            this.Baja.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Baja.Location = new System.Drawing.Point(12, 87);
             this.Baja.Name = "Baja";
-            this.Baja.Size = new System.Drawing.Size(118, 37);
+            this.Baja.Size = new System.Drawing.Size(157, 43);
             this.Baja.TabIndex = 5;
             this.Baja.Text = "&Baja";
             this.Baja.UseVisualStyleBackColor = true;
@@ -68,10 +66,9 @@
             // 
             // Alta
             // 
-            this.Alta.Location = new System.Drawing.Point(9, 10);
-            this.Alta.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Alta.Location = new System.Drawing.Point(12, 12);
             this.Alta.Name = "Alta";
-            this.Alta.Size = new System.Drawing.Size(118, 40);
+            this.Alta.Size = new System.Drawing.Size(157, 46);
             this.Alta.TabIndex = 4;
             this.Alta.Text = "&Alta";
             this.Alta.UseVisualStyleBackColor = true;
@@ -79,14 +76,13 @@
             // 
             // PantallaPrincipalABMEmpresa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 219);
+            this.ClientSize = new System.Drawing.Size(283, 253);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.Modificacion);
             this.Controls.Add(this.Baja);
             this.Controls.Add(this.Alta);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "PantallaPrincipalABMEmpresa";
             this.Text = "ABM Empresa";

@@ -20,7 +20,9 @@ namespace PagoAgilFrba.AbmEmpresa
         private void Limpiar_Click(object sender, EventArgs e)
         {
             Nombre.Clear();
-            CUIT.Clear();
+            CUITTipo.Clear();
+            CUITNumero.Clear();
+            CUITVerificador.Clear();
             Direccion.Clear();
             DarDeAlta.Refresh();
         }
@@ -30,24 +32,25 @@ namespace PagoAgilFrba.AbmEmpresa
             this.Dispose();
         }
 
-        private void Rubro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DarDeAlta_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void AltaEmpresa_Load(object sender, EventArgs e)
+        private void CUITTipo_Validating(object sender, CancelEventArgs e)
         {
+            int[] tiposValidos = { 20, 23, 24, 27, 30, 33, 34 };
 
+            if (!tiposValidos.Contains(int.Parse(CUITTipo.Text)))
+                errorProvider.SetError(CUITTipo, "Ingrese un CUIT valido.");
+            else
+                errorProvider.SetError(CUITTipo, String.Empty);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void CUIT_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            // Solo permitir ingresar numeros
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
