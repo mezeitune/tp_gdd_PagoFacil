@@ -310,10 +310,10 @@ CREATE TABLE [SERVOMOTOR].[MEDIOS_DE_PAGO](
 
 --Tabla PAGOS
 CREATE TABLE [SERVOMOTOR].[PAGOS](
-	[NUMERO_PAGO] [tinyint] NOT NULL,
+	[NUMERO_PAGO] [varchar] (20) NOT NULL,
 	[FECHA_COBRO] [datetime] NOT NULL,
-	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
-	[IMPORTE] [numeric] (7,2) NOT NULL,
+	[FECHA_VENCIMIENTO] [datetime] DEFAULT GETDATE(),
+	[IMPORTE] [numeric] (18,2) NOT NULL,
 	[COD_POSTAL] [varchar](20) NOT NULL,
 	[ID_MEDPAGO] [tinyint] NOT NULL,
  CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED 
@@ -358,9 +358,9 @@ CREATE TABLE [SERVOMOTOR].[RUBROS](
 
 -- Tabla EMPRESAS: 
 CREATE TABLE [SERVOMOTOR].[EMPRESAS](
-	[CUIT] [varchar] (255),
-	[NOMBRE] [varchar] (20) NOT NULL,
-	[DIRECCION] [varchar] (20) NOT NULL,
+	[CUIT] [varchar] (50) NOT NULL,
+	[NOMBRE] [varchar] (255) NOT NULL,
+	[DIRECCION] [varchar] (255) NOT NULL,
 	[ID_RUBRO] [tinyint] ,
 	[ESTADO_ACTIVACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_EMPRESAS] PRIMARY KEY CLUSTERED 
@@ -394,7 +394,7 @@ CREATE TABLE [SERVOMOTOR].[RENDICIONES](
 	[TOTAL_RENDIDO] [numeric] (7,2) NOT NULL,
 	[ESTADO] [varchar] (20) NOT NULL,
 	[ID_DEVOLUCION] [tinyint],
-	[CUIT_EMPRESA] [varchar] (255),
+	[CUIT_EMPRESA] [varchar] (50),
  CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED 
 (
 	[ID_RENDICION] 
@@ -432,16 +432,16 @@ CREATE TABLE [SERVOMOTOR].[CLIENTES](
 
 -- Tabla FACTURAS: 
 CREATE TABLE [SERVOMOTOR].[FACTURAS](
-	[NUMERO_FACTURA] [tinyint] IDENTITY,
+	[NUMERO_FACTURA] [varchar](20) NOT NULL,
 	[FECHA_ALTA] [datetime] NOT NULL,
 	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
 	[DNI_CLIENTE] [varchar](255) NOT NULL,
-	[CUIT_EMPRESA] [varchar] (255) NOT NULL,
+	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
 	[TOTAL] [numeric] (7,2) NOT NULL,
 	[ESTADO] [varchar] (20) NOT NULL,
-	[NUMERO_PAGO] [tinyint] NOT NULL,
-	[ID_RENDICION] [tinyint] NOT NULL,
-	[ID_DEVOLUCION] [tinyint] NOT NULL,
+	[NUMERO_PAGO] [varchar](20),
+	[ID_RENDICION] [tinyint] ,
+	[ID_DEVOLUCION] [tinyint] ,
  CONSTRAINT [PK_FACTURAS] PRIMARY KEY CLUSTERED 
 (
 	[NUMERO_FACTURA] 
@@ -469,10 +469,10 @@ REFERENCES [SERVOMOTOR].[FACTURA_DEVOLUCION] ([ID_DEVOLUCION])
 CREATE TABLE [SERVOMOTOR].[ITEMS](
 	[ID_ITEM] [tinyint] IDENTITY,
 	[DESCRIPCION] [varchar] (20) NOT NULL,
-	[MONTO] [numeric] (7,2) NOT NULL,
-	[IMPORTE] [numeric] (7,2) NOT NULL,
+	[MONTO] [varchar] (20) NOT NULL,
+	[IMPORTE] [varchar] (20) NOT NULL,
 	[CANTIDAD] [tinyint] NOT NULL,
-	[NUMERO_FACTURA] [tinyint] NOT NULL,
+	[NUMERO_FACTURA] [varchar](20) NOT NULL,
  CONSTRAINT [PK_ITEMS] PRIMARY KEY CLUSTERED 
 (
 	[ID_ITEM] 
@@ -551,7 +551,41 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		DIRECCION
 )
 SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+
+INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
+(	
+		TIPO_MEDPAGO
+)
+SELECT DISTINCT [FormaPagoDescripcion]   FROM gd_esquema.Maestra where FormaPagoDescripcion is not null
 	
+
+INSERT INTO [SERVOMOTOR].[EMPRESAS] 
+	(	CUIT , 
+		NOMBRE ,   
+		DIRECCION , 
+		ID_RUBRO 
+	)
+SELECT  DISTINCT Empresa_Cuit , 
+		Empresa_Nombre,  
+		Empresa_Direccion , 
+		Empresa_Rubro 		
+FROM gd_esquema.Maestra
+
+INSERT INTO [SERVOMOTOR].[PAGOS] 
+	(	NUMERO_PAGO , 
+		FECHA_COBRO ,
+		IMPORTE,
+		COD_POSTAL,
+		ID_MEDPAGO
+	)
+SELECT  DISTINCT Pago_nro , 
+		Pago_Fecha,  
+		Total , 
+		Sucursal_Codigo_Postal,
+		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion)				 		
+FROM gd_esquema.Maestra where Pago_nro is not null
+
+
 
 
 -- Insert de usuario invitado y un administrador
