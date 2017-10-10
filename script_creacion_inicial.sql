@@ -358,7 +358,7 @@ CREATE TABLE [SERVOMOTOR].[RUBROS](
 
 -- Tabla EMPRESAS: 
 CREATE TABLE [SERVOMOTOR].[EMPRESAS](
-	[CUIT] [tinyint],
+	[CUIT] [varchar] (255),
 	[NOMBRE] [varchar] (20) NOT NULL,
 	[DIRECCION] [varchar] (20) NOT NULL,
 	[ID_RUBRO] [tinyint] ,
@@ -394,7 +394,7 @@ CREATE TABLE [SERVOMOTOR].[RENDICIONES](
 	[TOTAL_RENDIDO] [numeric] (7,2) NOT NULL,
 	[ESTADO] [varchar] (20) NOT NULL,
 	[ID_DEVOLUCION] [tinyint],
-	[CUIT_EMPRESA] [tinyint],
+	[CUIT_EMPRESA] [varchar] (255),
  CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED 
 (
 	[ID_RENDICION] 
@@ -410,7 +410,7 @@ REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 -- Tabla CLIENTES: 
 CREATE TABLE [SERVOMOTOR].[CLIENTES](
-	[DNI] [numeric](18, 0) NOT NULL,
+	[DNI] [varchar](255) NOT NULL,
 	[NOMBRE] [varchar] (255) NOT NULL,
 	[APELLIDO] [varchar] (255) NOT NULL,
 	[MAIL] [varchar] (255) NOT NULL,
@@ -435,8 +435,8 @@ CREATE TABLE [SERVOMOTOR].[FACTURAS](
 	[NUMERO_FACTURA] [tinyint] IDENTITY,
 	[FECHA_ALTA] [datetime] NOT NULL,
 	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
-	[DNI_CLIENTE] [numeric](18, 0) NOT NULL,
-	[CUIT_EMPRESA] [tinyint] NOT NULL,
+	[DNI_CLIENTE] [varchar](255) NOT NULL,
+	[CUIT_EMPRESA] [varchar] (255) NOT NULL,
 	[TOTAL] [numeric] (7,2) NOT NULL,
 	[ESTADO] [varchar] (20) NOT NULL,
 	[NUMERO_PAGO] [tinyint] NOT NULL,
@@ -699,4 +699,3 @@ BEGIN
 	return 0
 END
 
-select * from [SERVOMOTOR].[CLIENTES]    where NOMBRE like '%z%';
