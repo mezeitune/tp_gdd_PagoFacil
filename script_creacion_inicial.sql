@@ -223,9 +223,9 @@ GO
 
 -- Tabla Sucursales: 
 CREATE TABLE [SERVOMOTOR].[SUCURSALES](
-	[COD_POSTAL] [tinyint] IDENTITY,
-	[NOMBRE] [varchar] (60) UNIQUE NOT NULL,
-	[DIRECCION] [varchar] (20) UNIQUE,
+	[COD_POSTAL] [VARCHAR] (20) NOT NULL,
+	[NOMBRE] [varchar] (50) UNIQUE NOT NULL,
+	[DIRECCION] [varchar] (50) UNIQUE,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
  CONSTRAINT [PK_SUCURSALES] PRIMARY KEY CLUSTERED 
 (
@@ -277,7 +277,7 @@ REFERENCES [SERVOMOTOR].[USUARIOS] ([ID_USUARIO])
 --Tabla roles por SUCURSALES: tiene los SUCURSALES PARA CADA USUARIO
 CREATE TABLE [SERVOMOTOR].[SUCURSALES_USUARIOS](
 	[ID_USUARIO] [tinyint] NOT NULL,
-	[COD_POSTAL] [tinyint] NOT NULL,
+	[COD_POSTAL] [varchar](20) NOT NULL,
  CONSTRAINT [PK_SUCURSALES_USUARIOS] PRIMARY KEY CLUSTERED 
 (
 	[ID_USUARIO] ASC,
@@ -314,7 +314,7 @@ CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[FECHA_COBRO] [datetime] NOT NULL,
 	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
 	[IMPORTE] [numeric] (7,2) NOT NULL,
-	[COD_POSTAL] [tinyint] NOT NULL,
+	[COD_POSTAL] [varchar](20) NOT NULL,
 	[ID_MEDPAGO] [tinyint] NOT NULL,
  CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED 
 (
@@ -538,7 +538,21 @@ INSERT INTO [SERVOMOTOR].[CLIENTES]
 SELECT DISTINCT (cast([Cliente-Dni] as int))   , [Cliente-Nombre], [Cliente-Apellido], [Cliente_Mail], [Cliente_Direccion] ,cast([Cliente-Fecha_Nac] as datetime) , [Cliente_Codigo_Postal] FROM gd_esquema.Maestra
 	
 
+INSERT INTO [SERVOMOTOR].[RUBROS]
+(	
+		DESCRIPCION
+)
+SELECT DISTINCT [Rubro_Descripcion]   FROM gd_esquema.Maestra
+
+INSERT INTO [SERVOMOTOR].[SUCURSALES]
+(	
+		COD_POSTAL,
+		NOMBRE,
+		DIRECCION
+)
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 	
+
 
 -- Insert de usuario invitado y un administrador
 -- el hash de la contraseña w23e está previamente calculado
@@ -699,4 +713,3 @@ BEGIN
 	return 0
 END
 
-select * from [SERVOMOTOR].SUCURSALES;
