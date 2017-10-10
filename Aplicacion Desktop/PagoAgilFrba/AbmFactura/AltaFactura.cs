@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace PagoAgilFrba.AbmFactura
 {
     public partial class AltaFactura : Form
@@ -24,13 +24,49 @@ namespace PagoAgilFrba.AbmFactura
 
         private void DarAltaFactura_Click(object sender, EventArgs e)
         {
+            int estadoHab = 1;
+
             if (!todosLosCamposLLenos() && !validarTipos())
             {
+               // int a = Int32.Parse(txtDNICliente.Text);
+                var cmdCliente = new SqlCommand(
+               "select DNI from [SERVOMOTOR].[CLIENTES] ;",
+                Program.conexion()
+                );
+                var dataReader = cmdCliente.ExecuteReader();
 
-                //aca se da de alta la factura en la BDD
+                while(dataReader.Read()){
+                    comboCliente.Items.Add(dataReader["DNI"]);
+                
+                }
 
+
+                var cmdEmpresa = new SqlCommand(
+              "select CUIT from [SERVOMOTOR].[EMPRESAS] ;",
+               Program.conexion()
+               );
+                var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
+
+                while (dataReaderEmpresa.Read())
+                {
+                    comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
+
+                }
+
+
+
+                var cmd = new SqlCommand(
+               "insert into [SERVOMOTOR].[FACTURAS] values (" + txtNroFactura.Text + ",'" + FechaAltaFac.Value + "','" + FechaVencFact.Text + "','" + comboCliente.SelectedItem.ToString() +
+               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + txtTotalFactura.Text + "','NO PAGA',');",
+                Program.conexion()
+            );
+                var dataReaderFactura = cmd.ExecuteReader();
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
-              
+                this.limpiarTextos();
+            }
+            else
+            {
+
             }
         }
         private bool todosLosCamposLLenos()
@@ -112,6 +148,9 @@ namespace PagoAgilFrba.AbmFactura
 
         private void limpiar_Click(object sender, EventArgs e)
         {
+            this.limpiarTextos();
+        }
+        private void limpiarTextos() {
             txtNroFactura.Text = "";
             txtTotalFactura.Text = "";
             comboCliente.Items.Clear();
@@ -120,7 +159,6 @@ namespace PagoAgilFrba.AbmFactura
             FechaAltaFac.Value = fechaDeAhora.Value;
             FechaVencFact.Value = fechaDeAhora.Value;
         }
-         
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
 

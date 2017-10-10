@@ -39,13 +39,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalFactura = new System.Windows.Forms.TextBox();
-            this.comboCliente = new System.Windows.Forms.ComboBox();
-            this.comboEmpresa = new System.Windows.Forms.ComboBox();
             this.FechaAltaFac = new System.Windows.Forms.DateTimePicker();
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.txtNroFactura = new System.Windows.Forms.TextBox();
+            this.comboEmpresa = new System.Windows.Forms.ComboBox();
+            this.comboCliente = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // DarAltaFactura
@@ -100,9 +100,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(43, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Cliente";
+            this.label2.Text = "DNI Cliente";
             // 
             // label1
             // 
@@ -149,24 +149,6 @@
             this.txtTotalFactura.TabIndex = 51;
             this.txtTotalFactura.TextChanged += new System.EventHandler(this.txtTotalFactura_TextChanged);
             // 
-            // comboCliente
-            // 
-            this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(225, 55);
-            this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(193, 21);
-            this.comboCliente.TabIndex = 52;
-            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
-            // 
-            // comboEmpresa
-            // 
-            this.comboEmpresa.FormattingEnabled = true;
-            this.comboEmpresa.Location = new System.Drawing.Point(225, 91);
-            this.comboEmpresa.Name = "comboEmpresa";
-            this.comboEmpresa.Size = new System.Drawing.Size(193, 21);
-            this.comboEmpresa.TabIndex = 53;
-            this.comboEmpresa.SelectedIndexChanged += new System.EventHandler(this.comboEmpresa_SelectedIndexChanged);
-            // 
             // FechaAltaFac
             // 
             this.FechaAltaFac.Location = new System.Drawing.Point(225, 157);
@@ -210,6 +192,24 @@
             this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
             this.txtNroFactura.TabIndex = 38;
             this.txtNroFactura.TextChanged += new System.EventHandler(this.txtNroFactura_TextChanged);
+            // 
+            // comboEmpresa
+            // 
+            this.comboEmpresa.FormattingEnabled = true;
+            this.comboEmpresa.Location = new System.Drawing.Point(225, 91);
+            this.comboEmpresa.Name = "comboEmpresa";
+            this.comboEmpresa.Size = new System.Drawing.Size(193, 21);
+            this.comboEmpresa.TabIndex = 53;
+            this.comboEmpresa.SelectedIndexChanged += new System.EventHandler(this.comboEmpresa_SelectedIndexChanged);
+            // 
+            // comboCliente
+            // 
+            this.comboCliente.FormattingEnabled = true;
+            this.comboCliente.Location = new System.Drawing.Point(225, 55);
+            this.comboCliente.Name = "comboCliente";
+            this.comboCliente.Size = new System.Drawing.Size(193, 21);
+            this.comboCliente.TabIndex = 52;
+            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
             // 
             // AltaFactura
             // 
@@ -255,12 +255,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotalFactura;
-        private System.Windows.Forms.ComboBox comboCliente;
-        private System.Windows.Forms.ComboBox comboEmpresa;
         private System.Windows.Forms.DateTimePicker FechaAltaFac;
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
         private System.Windows.Forms.TextBox txtNroFactura;
+        private System.Windows.Forms.ComboBox comboEmpresa;
+        private System.Windows.Forms.ComboBox comboCliente;
     }
 }

@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace PagoAgilFrba.AbmFactura
 {
     public partial class ModificarDatosFactura : Form
     {
-        public ModificarDatosFactura()
+        string nroFactura;
+        string descripcion;
+        public ModificarDatosFactura(string nroFact)
         {
+            nroFactura = nroFact;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-             Form formularioSiguiente = new AbmFactura.ModificarItemFactura();
+             Form formularioSiguiente = new AbmFactura.ModificarItemFactura(nroFactura,descripcion);
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)
@@ -47,12 +50,15 @@ namespace PagoAgilFrba.AbmFactura
 
         private void txtTotalFactura_TextChanged(object sender, EventArgs e)
         {
-           
+            txtTotalFactura.Visible = false;
         }
 
         private void comboBoxItemsDeFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
+            descripcion = comboBoxItemsDeFactura.SelectedIndex.ToString();
 
+
+            MessageBox.Show("Se ha seleccionado el item: " + descripcion, "", MessageBoxButtons.OK);
         }
 
         private void ModificarUnaFactura_Click(object sender, EventArgs e)
@@ -73,11 +79,7 @@ namespace PagoAgilFrba.AbmFactura
         {
 
             Boolean huboErrores = false;
-
-            huboErrores = Validacion.estaCheckeadoComboBox(comboCliente) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
-            huboErrores = Validacion.esVacio(txtNroFactura, "calle", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtTotalFactura, "departamento", true) || huboErrores;
+         huboErrores = Validacion.esVacio(txtTotalFactura, "total", true) || huboErrores;
 
 
             return huboErrores;
@@ -86,11 +88,11 @@ namespace PagoAgilFrba.AbmFactura
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            huboErrores = !Validacion.esNumero(txtNroFactura, "numero factura", true) || huboErrores;
+            
             huboErrores = !Validacion.esNumero(txtTotalFactura, "total factura", true) || huboErrores;
 
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
-            huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaAltaFactura) || huboErrores;
+            
             return huboErrores;
         }
 
@@ -107,12 +109,8 @@ namespace PagoAgilFrba.AbmFactura
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            txtNroFactura.Text = "";
             txtTotalFactura.Text = "";
-            comboCliente.Items.Clear();
-            comboEmpresa.Items.Clear();
             DateTimePicker fechaDeAhora = new DateTimePicker();
-            FechaAltaFactura.Value = fechaDeAhora.Value;
             FechaVencFact.Value = fechaDeAhora.Value;
         }
 
@@ -121,6 +119,41 @@ namespace PagoAgilFrba.AbmFactura
             Form formularioSiguiente = new AbmFactura.ModificacionFactura();
             this.cambiarVisibilidades(formularioSiguiente);
         }
-        
+
+        private void ModificarDatosFactura_Load(object sender, EventArgs e)
+        {
+            completarTextos();
+        }
+
+        private void completarTextos()
+        {
+            var cmd = new SqlCommand(
+                "select * from [SERVOMOTOR].FACTURAS f where NUMERO_FACTURA='" + nroFactura + "';",
+                 Program.conexion()
+             );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                FechaVencFact.Value = Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
+                txtTotalFactura.Text = dataReader["TOTAL"].ToString();
+               
+            }
+            var cmd2 = new SqlCommand(
+                "select DESCRIPCION from [SERVOMOTOR].ITEMS  where NUMERO_FACTURA='" + nroFactura + "';",
+                 Program.conexion()
+             );
+
+            var dataReader2 = cmd2.ExecuteReader();
+            while (dataReader2.Read())
+            {
+                comboBoxItemsDeFactura.Items.Add(dataReader["DESCRIPCION"].ToString());
+
+            }
+
+        }
+
+
+
     }
 }

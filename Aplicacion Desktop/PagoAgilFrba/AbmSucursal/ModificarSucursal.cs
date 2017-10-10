@@ -41,7 +41,7 @@ namespace PagoAgilFrba.AbmSucursal
             {
 
                 var cmd = new SqlCommand(
-                "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + " where COD_POSTAL=" + codigoPostal+ ";",
+                "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + "' where COD_POSTAL=" + codigoPostal+ ";",
                  Program.conexion()
              );
                 var dataReader = cmd.ExecuteReader();
@@ -68,8 +68,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             Boolean huboErrores = false;
           
-            huboErrores = !Validacion.esTextoAlfanumerico(txtDireccionSucursal, true, "direccion", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtNombreSucursal, true, "nombre", true) || huboErrores;
+           
 
             return huboErrores;
         }

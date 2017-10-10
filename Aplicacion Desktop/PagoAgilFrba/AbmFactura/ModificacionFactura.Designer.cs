@@ -37,7 +37,7 @@
             // 
             // BajaLogicaCliente
             // 
-            this.BajaLogicaCliente.Location = new System.Drawing.Point(218, 174);
+            this.BajaLogicaCliente.Location = new System.Drawing.Point(213, 175);
             this.BajaLogicaCliente.Name = "BajaLogicaCliente";
             this.BajaLogicaCliente.Size = new System.Drawing.Size(96, 38);
             this.BajaLogicaCliente.TabIndex = 33;
@@ -95,6 +95,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ModificacionFactura";
             this.Text = "ModificacionFactura";
+            this.Load += new System.EventHandler(this.ModificacionFactura_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

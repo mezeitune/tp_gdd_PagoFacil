@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmSucursal
         private void ModificacionSucursal_Load(object sender, EventArgs e)
         {
             var cmd = new SqlCommand(
-                 "select * from [SERVOMOTOR].SUCURSALES where ESTADO_HABILITACION=1",
+                 "select * from [SERVOMOTOR].SUCURSALES ",
                   Program.conexion()
               );
 
