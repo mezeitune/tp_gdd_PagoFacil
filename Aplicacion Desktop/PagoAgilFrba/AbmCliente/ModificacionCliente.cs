@@ -49,40 +49,38 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buscar_Click(object sender, EventArgs e)
         {
-            string query = queryinicial;
-            
-            if(txtApellido.Text!=""){
-                query += "where " + agregarLikeApellido() + ";";
-                this.ejecutarQuery(query);
 
-            }
-
-            if(txtNombre.Text!=""){
-                query += "where " + agregarLikeNombre() + ";";
-                this.ejecutarQuery(query);
-
-            }
-            if(txtDniExacto.Text!="" && Validacion.esNumeroDe7u8(txtDniExacto)){
-                query += "where " + agregarLikeDni() + ";";
-                this.ejecutarQuery(query);
-
-            }
-
-
-
-
+            Listado_Refresh();
            
         }
-        private void ejecutarQuery(string Query)
+
+        private void Listado_Refresh()
         {
+           
 
+           
             var cmd = new SqlCommand(
-                 Query,
-                  Program.conexion()
-              );
-
+                "SELECT * " +
+                "FROM [SERVOMOTOR].[CLIENTES] c " +
+                
+                "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
+                "  AND (APELLIDO LIKE @APELLIDO OR @APELLIDO = '') " +
+                "  AND (DNI = @DNI OR @DNI = '')" +
+                "  AND (ESTADO_HABILITACION = 1 )",
+                Program.conexion()
+            );
+           
+            cmd.Parameters.AddWithValue("@NOMBRE", "%" + txtNombre.Text+ "%");
+            cmd.Parameters.AddWithValue("@APELLIDO", "%" + txtApellido.Text + "%");
+            cmd.Parameters.AddWithValue("@DNI", txtDniExacto.Text);
+           
+            
+           
 
             var dataReader = cmd.ExecuteReader();
+
+            this.dataGridView1.Rows.Clear();
+
             while (dataReader.Read())
             {
                 this.dataGridView1.Rows.Clear();
@@ -103,20 +101,10 @@ namespace PagoAgilFrba.AbmCliente
                 );
             }
         }
-        private string agregarLikeApellido() {
-            return ( " APELLIDO LIKE '%" + txtApellido.Text + "%'");
-           
-        }
-        private string agregarLikeNombre()
-        {
-            return ( " NOMBRE LIKE '%" + txtNombre.Text + "%'");
 
-        }
-        private string agregarLikeDni()
-        {
-            return (" DNI=" + txtDniExacto.Text + "");
 
-        }
+
+       
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
