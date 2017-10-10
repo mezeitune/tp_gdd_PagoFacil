@@ -23,8 +23,7 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
         }
 
-        string queryinicial = "select * from [SERVOMOTOR].[CLIENTES] ";
-
+       
        
 
         
@@ -129,7 +128,7 @@ namespace PagoAgilFrba.AbmCliente
         private void query_inicial()
         {
             var cmd = new SqlCommand(
-                 "select * from [SERVOMOTOR].CLIENTES",
+                 "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1",
                   Program.conexion()
               );
 
@@ -162,7 +161,6 @@ namespace PagoAgilFrba.AbmCliente
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            MessageBox.Show("Se ha modificado correctamente", "Todo bien", MessageBoxButtons.OK);
            
         }
 

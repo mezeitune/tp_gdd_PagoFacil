@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmSucursal
 {
     public partial class ModificarSucursal : Form
     {
-        public ModificarSucursal()
+        String codigoPostal;
+        public ModificarSucursal(String codigoPostall)
         {
+            codigoPostal = codigoPostall;
             InitializeComponent();
         }
 
@@ -36,18 +39,24 @@ namespace PagoAgilFrba.AbmSucursal
         {
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-                
-                    //aca se modifica la sucursal en la BDD
 
-                MessageBox.Show("Se ha dado modificado correctamente", "Todo bien", MessageBoxButtons.OK);
+                var cmd = new SqlCommand(
+                "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + " where COD_POSTAL=" + codigoPostal+ ";",
+                 Program.conexion()
+             );
+                var dataReader = cmd.ExecuteReader();
+                MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " +  codigoPostal, "", MessageBoxButtons.OK);
+                Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
+                this.cambiarVisibilidades(formularioSiguiente);
             }
+           
         }
         private bool todosLosCamposLLenos()
         {
 
             Boolean huboErrores = false;
 
-            huboErrores = Validacion.esVacio(txtCodPostalSucursal, "codigo postal", true) || huboErrores;
+            
             huboErrores = Validacion.esVacio(txtDireccionSucursal, "direccion", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtNombreSucursal, "nombre", true) || huboErrores;
 
@@ -58,7 +67,7 @@ namespace PagoAgilFrba.AbmSucursal
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            huboErrores = !Validacion.esDecimal(txtCodPostalSucursal, "apellido", true) || huboErrores;
+          
             huboErrores = !Validacion.esTextoAlfanumerico(txtDireccionSucursal, true, "direccion", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtNombreSucursal, true, "nombre", true) || huboErrores;
 
@@ -75,5 +84,30 @@ namespace PagoAgilFrba.AbmSucursal
             formularioSiguiente.Visible = true;
             this.Visible = false;
         }
+
+        private void ModificarSucursal_Load(object sender, EventArgs e)
+        {
+            completarTextos();
+        }
+
+
+        private void completarTextos()
+        {
+            var cmd = new SqlCommand(
+                "select * from [SERVOMOTOR].SUCURSALES where COD_POSTAL=" + codigoPostal + ";",
+                 Program.conexion()
+             );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                txtNombreSucursal.Text = dataReader["NOMBRE"].ToString();
+                txtDireccionSucursal.Text = dataReader["DIRECCION"].ToString();
+               
+            }
+
+
+        }
+
     }
 }
