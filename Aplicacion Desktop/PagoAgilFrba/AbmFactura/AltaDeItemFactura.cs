@@ -42,7 +42,8 @@ namespace PagoAgilFrba.AbmFactura
             if (!todosLosCamposLLenos() && !validarTipos())
             {
 
-                repoItems.addToListaItems(txtCantidadDeItems.Text, txtMontoItem.Text, txtDescripcion.Text);
+                dataGridView1.Rows.Add(txtDescripcion.Text,txtMontoItem.Text,txtCantidadDeItems.Text);
+               // repoItems.addToListaItems(txtCantidadDeItems.Text, txtMontoItem.Text, txtDescripcion.Text);
                 MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
                 txtDescripcion.Text = "";
                 txtCantidadDeItems.Text = "";
@@ -107,10 +108,14 @@ namespace PagoAgilFrba.AbmFactura
             generarFactura.Enabled = false;
         }
 
+
+
+
         private void generarFactura_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.AltaFactura();
+            Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1);
             this.cambiarVisibilidades(formularioSiguiente);
+            dataGridView1.ClearSelection();
         }
 
         

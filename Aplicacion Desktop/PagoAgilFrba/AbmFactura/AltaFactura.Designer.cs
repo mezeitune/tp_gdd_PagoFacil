@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.botonIngresarItem = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalFactura = new System.Windows.Forms.TextBox();
@@ -51,9 +50,9 @@
             // 
             // DarAltaFactura
             // 
-            this.DarAltaFactura.Location = new System.Drawing.Point(184, 271);
+            this.DarAltaFactura.Location = new System.Drawing.Point(173, 296);
             this.DarAltaFactura.Name = "DarAltaFactura";
-            this.DarAltaFactura.Size = new System.Drawing.Size(109, 34);
+            this.DarAltaFactura.Size = new System.Drawing.Size(121, 50);
             this.DarAltaFactura.TabIndex = 47;
             this.DarAltaFactura.Text = "Dar de alta factura";
             this.DarAltaFactura.UseVisualStyleBackColor = true;
@@ -112,16 +111,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 24;
-            // 
-            // botonIngresarItem
-            // 
-            this.botonIngresarItem.Location = new System.Drawing.Point(184, 320);
-            this.botonIngresarItem.Name = "botonIngresarItem";
-            this.botonIngresarItem.Size = new System.Drawing.Size(109, 34);
-            this.botonIngresarItem.TabIndex = 48;
-            this.botonIngresarItem.Text = "Ingresar un Item";
-            this.botonIngresarItem.UseVisualStyleBackColor = true;
-            this.botonIngresarItem.Click += new System.EventHandler(this.botonIngresarItem_Click);
             // 
             // label8
             // 
@@ -236,7 +225,6 @@
             this.Controls.Add(this.txtTotalFactura);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.botonIngresarItem);
             this.Controls.Add(this.DarAltaFactura);
             this.Controls.Add(this.txtNroFactura);
             this.Controls.Add(this.label6);
@@ -262,7 +250,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button botonIngresarItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotalFactura;

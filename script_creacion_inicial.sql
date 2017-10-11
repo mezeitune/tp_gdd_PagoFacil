@@ -747,3 +747,4 @@ BEGIN
 	return 0
 END
 
+select * from [SERVOMOTOR].ITEMS;

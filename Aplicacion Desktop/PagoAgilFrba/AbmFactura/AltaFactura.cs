@@ -12,12 +12,11 @@ namespace PagoAgilFrba.AbmFactura
 {
     public partial class AltaFactura : Form
     {
-
-        repositorioItemsFacturaActual repoItems = new repositorioItemsFacturaActual();
-
-        public AltaFactura()
-        { 
-            
+        int totalFactura;
+        DataGridView dataGridItems;
+        public AltaFactura(DataGridView dataGridItem)
+        {
+            dataGridItems = dataGridItem;
             InitializeComponent();
         }
 
@@ -28,7 +27,7 @@ namespace PagoAgilFrba.AbmFactura
         private void AltaFactura_Load(object sender, EventArgs e)
         {
             var cmdCliente = new SqlCommand(
-               "select DNI from [SERVOMOTOR].[CLIENTES] ;",
+               "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",
                 Program.conexion()
                 );
             var dataReader = cmdCliente.ExecuteReader();
@@ -41,7 +40,7 @@ namespace PagoAgilFrba.AbmFactura
 
 
             var cmdEmpresa = new SqlCommand(
-          "select CUIT from [SERVOMOTOR].[EMPRESAS] ;",
+          "select CUIT from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
            Program.conexion()
            );
             var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
@@ -60,25 +59,53 @@ namespace PagoAgilFrba.AbmFactura
            
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-               // int a = Int32.Parse(txtDNICliente.Text);
              
-
                 var cmd = new SqlCommand(
                "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
                "','" + comboEmpresa.SelectedItem.ToString()+ "','" + txtTotalFactura.Text + "','NO PAGA',NULL,NULL,NULL);",
-                Program.conexion()
-                //hacer los inserts de los items (un for de esa lista del repo o algo asi)
-            );
+                Program.conexion()   
+                  );
                 var dataReaderFactura = cmd.ExecuteReader();
-                MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+
+                this.recorrerListaItems();
+                
+               MessageBox.Show("Se ha dado de alta correctamente la factura", "Correcto", MessageBoxButtons.OK);
                 this.limpiarTextos();
-                //limpiar lista del repositorio de items
+                dataGridItems.ClearSelection();
             }
             else
             {
 
             }
         }
+        private void recorrerListaItems() {
+
+            foreach(DataGridViewRow row in dataGridItems.Rows){
+                if (row.Cells[0].Value != null)
+                {
+                    String descripcion = row.Cells[0].Value.ToString();
+                    String monto = row.Cells[1].Value.ToString();
+                    String cantidad = row.Cells[2].Value.ToString();
+                    this.insertarItem(monto, descripcion, cantidad);
+                }
+            }
+
+        }
+
+        private void insertarItem(String m,String d, String c) {
+            
+
+            var cmd = new SqlCommand(
+              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,IMPORTE,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + m + "','" + c +
+              "','" + txtNroFactura.Text + "');",
+               Program.conexion()
+           );
+            var dataReaderFactura = cmd.ExecuteReader();
+
+        }
+
+
+
         private bool todosLosCamposLLenos()
         {
 
@@ -86,8 +113,8 @@ namespace PagoAgilFrba.AbmFactura
 
             huboErrores = Validacion.estaCheckeadoComboBox(comboCliente) || huboErrores;
             huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa)|| huboErrores;
-            huboErrores = Validacion.esVacio(txtNroFactura, "calle", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtTotalFactura, "departamento", true) || huboErrores;
+            huboErrores = Validacion.esVacio(txtNroFactura, "Numero factura", true) || huboErrores;
+            huboErrores = Validacion.esVacio(txtTotalFactura, "Total", true) || huboErrores;
            
 
             return huboErrores;

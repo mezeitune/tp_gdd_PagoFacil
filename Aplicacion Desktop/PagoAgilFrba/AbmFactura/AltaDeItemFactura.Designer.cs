@@ -39,13 +39,18 @@
             this.generarFactura = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(176, 122);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(208, 229);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
-            this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 34);
+            this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 42);
             this.botonGuardarUnItem.TabIndex = 60;
             this.botonGuardarUnItem.Text = "Guardar Item";
             this.botonGuardarUnItem.UseVisualStyleBackColor = true;
@@ -53,37 +58,37 @@
             // 
             // txtCantidadDeItems
             // 
-            this.txtCantidadDeItems.Location = new System.Drawing.Point(223, 83);
+            this.txtCantidadDeItems.Location = new System.Drawing.Point(441, 22);
             this.txtCantidadDeItems.Name = "txtCantidadDeItems";
-            this.txtCantidadDeItems.Size = new System.Drawing.Size(193, 20);
+            this.txtCantidadDeItems.Size = new System.Drawing.Size(54, 20);
             this.txtCantidadDeItems.TabIndex = 56;
             this.txtCantidadDeItems.TextChanged += new System.EventHandler(this.txtCantidadDeItems_TextChanged);
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(223, 52);
+            this.txtMontoItem.Location = new System.Drawing.Point(303, 22);
             this.txtMontoItem.Name = "txtMontoItem";
-            this.txtMontoItem.Size = new System.Drawing.Size(193, 20);
+            this.txtMontoItem.Size = new System.Drawing.Size(67, 20);
             this.txtMontoItem.TabIndex = 55;
             this.txtMontoItem.TextChanged += new System.EventHandler(this.txtMontoItem_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 86);
+            this.label3.Location = new System.Drawing.Point(386, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 51;
-            this.label3.Text = "Cantidad";
+            this.label3.Text = "Cantidad:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 55);
+            this.label2.Location = new System.Drawing.Point(260, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 50;
-            this.label2.Text = "Monto";
+            this.label2.Text = "Monto:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
@@ -96,7 +101,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(40, 128);
+            this.limpiar.Location = new System.Drawing.Point(18, 287);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 61;
@@ -106,7 +111,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(360, 128);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(420, 287);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 77;
@@ -116,7 +121,7 @@
             // 
             // generarFactura
             // 
-            this.generarFactura.Location = new System.Drawing.Point(176, 184);
+            this.generarFactura.Location = new System.Drawing.Point(208, 287);
             this.generarFactura.Name = "generarFactura";
             this.generarFactura.Size = new System.Drawing.Size(109, 42);
             this.generarFactura.TabIndex = 78;
@@ -127,24 +132,55 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 21);
+            this.label4.Location = new System.Drawing.Point(15, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 79;
-            this.label4.Text = "Descripcion";
+            this.label4.Text = "Descripcion:";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(223, 18);
+            this.txtDescripcion.Location = new System.Drawing.Point(84, 22);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(193, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(157, 20);
             this.txtDescripcion.TabIndex = 80;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.descripcion,
+            this.monto,
+            this.cantidad});
+            this.dataGridView1.Location = new System.Drawing.Point(18, 95);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(477, 116);
+            this.dataGridView1.TabIndex = 81;
+            // 
+            // descripcion
+            // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            // 
+            // monto
+            // 
+            this.monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.monto.HeaderText = "Monto";
+            this.monto.Name = "monto";
+            // 
+            // cantidad
+            // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
             // 
             // AltaDeItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 238);
+            this.ClientSize = new System.Drawing.Size(513, 352);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.generarFactura);
@@ -159,6 +195,7 @@
             this.Name = "AltaDeItemFactura";
             this.Text = "AltaDeItemFactura";
             this.Load += new System.EventHandler(this.AltaDeItemFactura_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +214,9 @@
         private System.Windows.Forms.Button generarFactura;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
     }
 }

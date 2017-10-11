@@ -39,13 +39,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bajaLogica = new System.Windows.Forms.Button();
+            this.dataGridItems = new System.Windows.Forms.DataGridView();
             this.CodPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoHab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.bajaLogica = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridItems)).BeginInit();
             this.SuspendLayout();
             // 
             // botonModificarSucursal
@@ -145,29 +145,20 @@
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
             // 
-            // dataGridView1
+            // dataGridItems
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodPostal,
             this.Nombre,
             this.Direccion,
             this.EstadoHab});
-            this.dataGridView1.Location = new System.Drawing.Point(5, 167);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(583, 110);
-            this.dataGridView1.TabIndex = 77;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarSucursal);
-            // 
-            // bajaLogica
-            // 
-            this.bajaLogica.Location = new System.Drawing.Point(77, 368);
-            this.bajaLogica.Name = "bajaLogica";
-            this.bajaLogica.Size = new System.Drawing.Size(109, 38);
-            this.bajaLogica.TabIndex = 80;
-            this.bajaLogica.Text = "Baja Logica";
-            this.bajaLogica.UseVisualStyleBackColor = true;
-            this.bajaLogica.Click += new System.EventHandler(this.bajaLogica_Click);
+            this.dataGridItems.Location = new System.Drawing.Point(5, 167);
+            this.dataGridItems.Name = "dataGridItems";
+            this.dataGridItems.Size = new System.Drawing.Size(583, 110);
+            this.dataGridItems.TabIndex = 77;
+            this.dataGridItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarSucursal);
+            this.dataGridItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // CodPostal
             // 
@@ -193,13 +184,23 @@
             this.EstadoHab.HeaderText = "Estado Habilitacion";
             this.EstadoHab.Name = "EstadoHab";
             // 
+            // bajaLogica
+            // 
+            this.bajaLogica.Location = new System.Drawing.Point(77, 368);
+            this.bajaLogica.Name = "bajaLogica";
+            this.bajaLogica.Size = new System.Drawing.Size(109, 38);
+            this.bajaLogica.TabIndex = 80;
+            this.bajaLogica.Text = "Baja Logica";
+            this.bajaLogica.UseVisualStyleBackColor = true;
+            this.bajaLogica.Click += new System.EventHandler(this.bajaLogica_Click);
+            // 
             // ModificarDatosSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 418);
             this.Controls.Add(this.bajaLogica);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridItems);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.label4);
@@ -214,7 +215,7 @@
             this.Name = "ModificarDatosSucursal";
             this.Text = "ModificacionSucursal";
             this.Load += new System.EventHandler(this.ModificacionSucursal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +234,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridItems;
         private System.Windows.Forms.Button bajaLogica;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodPostal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;

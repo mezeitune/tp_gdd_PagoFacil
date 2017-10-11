@@ -34,7 +34,7 @@ namespace PagoAgilFrba.AbmSucursal
             var dataReader = cmd.ExecuteReader();
             while (dataReader.Read())
             {
-                this.dataGridView1.Rows.Add(
+                this.dataGridItems.Rows.Add(
                     dataReader["COD_POSTAL"],
                     dataReader["NOMBRE"],
                     dataReader["DIRECCION"],
@@ -102,11 +102,11 @@ namespace PagoAgilFrba.AbmSucursal
 
             var dataReader = cmd.ExecuteReader();
 
-            this.dataGridView1.Rows.Clear();
+            this.dataGridItems.Rows.Clear();
 
              while (dataReader.Read())
             {
-                this.dataGridView1.Rows.Add(
+                this.dataGridItems.Rows.Add(
                     dataReader["COD_POSTAL"],
                     dataReader["NOMBRE"],
                     dataReader["DIRECCION"],
@@ -158,11 +158,16 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void seleccionarSucursal(object sender, DataGridViewCellEventArgs e)
         {
-            int indexSucursal = dataGridView1.CurrentRow.Index;
-            CodPostalSucursal = dataGridView1[0, indexSucursal].Value.ToString();
+            int indexSucursal = dataGridItems.CurrentRow.Index;
+            CodPostalSucursal = dataGridItems[0, indexSucursal].Value.ToString();
 
             MessageBox.Show("Se ha seleccionado la sucursal de codigo postal : " + CodPostalSucursal, "", MessageBoxButtons.OK);
 
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
