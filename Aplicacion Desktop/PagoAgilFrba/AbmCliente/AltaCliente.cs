@@ -114,9 +114,9 @@ namespace PagoAgilFrba.AbmCliente
             
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-                int a = Int32.Parse(txtDNICliente.Text);
+                
                 var cmd = new SqlCommand(
-               "insert into [SERVOMOTOR].[CLIENTES] values ("+a+",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text  +
+               "insert into [SERVOMOTOR].[CLIENTES] values ("+txtDNICliente.Text+",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text  +
                "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text +"','"+estadoHab+ "');",
                 Program.conexion()
             );

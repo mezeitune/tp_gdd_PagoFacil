@@ -14,8 +14,7 @@ namespace PagoAgilFrba.AbmFactura
     
     public partial class AltaDeItemFactura : Form
     {
-        repositorioItemsFacturaActual repoItems = new repositorioItemsFacturaActual();
-
+       
         public AltaDeItemFactura()
         {
             InitializeComponent();

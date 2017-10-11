@@ -51,7 +51,29 @@ namespace PagoAgilFrba.AbmFactura
 
             }
             txtTotalFactura.Enabled = false;
-            txtTotalFactura.Text = "0";
+            
+
+            this.calcularTotalFactura();
+            txtTotalFactura.Text = totalFactura.ToString();
+        }
+
+        private void calcularTotalFactura() {
+
+            foreach (DataGridViewRow row in dataGridItems.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                   
+                    String monto = row.Cells[1].Value.ToString();
+                    String cantidad = row.Cells[2].Value.ToString();
+
+                    int cantidadTotal = Int32.Parse(cantidad);
+                    int montoTotal = Int32.Parse(monto);
+                    totalFactura += montoTotal * cantidadTotal;
+                    
+                }
+            }
+        
         }
 
         private void DarAltaFactura_Click(object sender, EventArgs e)
@@ -96,7 +118,7 @@ namespace PagoAgilFrba.AbmFactura
             
 
             var cmd = new SqlCommand(
-              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,IMPORTE,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + m + "','" + c +
+              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + m + "','" + c +
               "','" + txtNroFactura.Text + "');",
                Program.conexion()
            );
@@ -161,7 +183,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //mostrar las empresas dadas de altas por el nombre
+            
         }
 
         private void txtNroFactura_TextChanged(object sender, EventArgs e)

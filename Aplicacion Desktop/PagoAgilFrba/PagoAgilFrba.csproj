@@ -112,7 +112,6 @@
     <Compile Include="AbmFactura\AltaFactura.Designer.cs">
       <DependentUpon>AltaFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\listaTuplas.cs" />
     <Compile Include="AbmFactura\ModificacionFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,7 +136,6 @@
     <Compile Include="AbmFactura\PantallaPrincipalABMFactura.Designer.cs">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\repositorioItemsFacturaActual.cs" />
     <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.cs">
       <SubType>Form</SubType>
     </Compile>
