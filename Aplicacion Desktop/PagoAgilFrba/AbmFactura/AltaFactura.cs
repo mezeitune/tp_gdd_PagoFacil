@@ -118,7 +118,7 @@ namespace PagoAgilFrba.AbmFactura
             
 
             var cmd = new SqlCommand(
-              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + m + "','" + c +
+              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
               "','" + txtNroFactura.Text + "');",
                Program.conexion()
            );

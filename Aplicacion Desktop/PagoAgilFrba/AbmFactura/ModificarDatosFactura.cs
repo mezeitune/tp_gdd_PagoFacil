@@ -55,7 +55,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void comboBoxItemsDeFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-            descripcion = comboBoxItemsDeFactura.SelectedIndex.ToString();
+            descripcion = comboBoxItemsDeFactura.SelectedItem.ToString();
 
 
             MessageBox.Show("Se ha seleccionado el item: " + descripcion, "", MessageBoxButtons.OK);
@@ -122,6 +122,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void ModificarDatosFactura_Load(object sender, EventArgs e)
         {
+            txtTotalFactura.Enabled = false;
             completarTextos();
         }
 
@@ -140,14 +141,14 @@ namespace PagoAgilFrba.AbmFactura
                
             }
             var cmd2 = new SqlCommand(
-                "select DESCRIPCION from [SERVOMOTOR].ITEMS  where NUMERO_FACTURA='" + nroFactura + "';",
+                "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + nroFactura + "';",
                  Program.conexion()
              );
 
             var dataReader2 = cmd2.ExecuteReader();
             while (dataReader2.Read())
             {
-                comboBoxItemsDeFactura.Items.Add(dataReader["DESCRIPCION"].ToString());
+                comboBoxItemsDeFactura.Items.Add(dataReader2["DESCRIPCION"].ToString());
 
             }
 
