@@ -12,57 +12,67 @@ namespace PagoAgilFrba.AbmFactura
 {
     public partial class AltaFactura : Form
     {
+
+        repositorioItemsFacturaActual repoItems = new repositorioItemsFacturaActual();
+
         public AltaFactura()
-        {
+        { 
+            
             InitializeComponent();
         }
 
+
+       
+
+
         private void AltaFactura_Load(object sender, EventArgs e)
         {
-           
+            var cmdCliente = new SqlCommand(
+               "select DNI from [SERVOMOTOR].[CLIENTES] ;",
+                Program.conexion()
+                );
+            var dataReader = cmdCliente.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                comboCliente.Items.Add(dataReader["DNI"]);
+
+            }
+
+
+            var cmdEmpresa = new SqlCommand(
+          "select CUIT from [SERVOMOTOR].[EMPRESAS] ;",
+           Program.conexion()
+           );
+            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
+
+            while (dataReaderEmpresa.Read())
+            {
+                comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
+
+            }
+            txtTotalFactura.Enabled = false;
+            txtTotalFactura.Text = "0";
         }
 
         private void DarAltaFactura_Click(object sender, EventArgs e)
         {
-            int estadoHab = 1;
-
+           
             if (!todosLosCamposLLenos() && !validarTipos())
             {
                // int a = Int32.Parse(txtDNICliente.Text);
-                var cmdCliente = new SqlCommand(
-               "select DNI from [SERVOMOTOR].[CLIENTES] ;",
-                Program.conexion()
-                );
-                var dataReader = cmdCliente.ExecuteReader();
-
-                while(dataReader.Read()){
-                    comboCliente.Items.Add(dataReader["DNI"]);
-                
-                }
-
-
-                var cmdEmpresa = new SqlCommand(
-              "select CUIT from [SERVOMOTOR].[EMPRESAS] ;",
-               Program.conexion()
-               );
-                var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
-
-                while (dataReaderEmpresa.Read())
-                {
-                    comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
-
-                }
-
-
+             
 
                 var cmd = new SqlCommand(
-               "insert into [SERVOMOTOR].[FACTURAS] values (" + txtNroFactura.Text + ",'" + FechaAltaFac.Value + "','" + FechaVencFact.Text + "','" + comboCliente.SelectedItem.ToString() +
-               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + txtTotalFactura.Text + "','NO PAGA',');",
+               "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
+               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + txtTotalFactura.Text + "','NO PAGA',NULL,NULL,NULL);",
                 Program.conexion()
+                //hacer los inserts de los items (un for de esa lista del repo o algo asi)
             );
                 var dataReaderFactura = cmd.ExecuteReader();
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
                 this.limpiarTextos();
+                //limpiar lista del repositorio de items
             }
             else
             {
@@ -110,8 +120,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void txtTotalFactura_TextChanged(object sender, EventArgs e)
         {
-            int totalFactura;
-                    //hay que controlar que ese total se vaya cambiando a medida que se agregan items y que el usuario no lo cambie
+            
 
         }
 
@@ -121,7 +130,6 @@ namespace PagoAgilFrba.AbmFactura
 
         private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //mostrar los clientes dados de alta por el apellido y nombre
         }
 
         private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)

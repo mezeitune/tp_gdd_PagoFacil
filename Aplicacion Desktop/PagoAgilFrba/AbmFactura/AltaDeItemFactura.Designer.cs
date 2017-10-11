@@ -36,11 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
+            this.generarFactura = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(172, 133);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(176, 122);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
             this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 34);
             this.botonGuardarUnItem.TabIndex = 60;
@@ -50,7 +53,7 @@
             // 
             // txtCantidadDeItems
             // 
-            this.txtCantidadDeItems.Location = new System.Drawing.Point(219, 65);
+            this.txtCantidadDeItems.Location = new System.Drawing.Point(223, 83);
             this.txtCantidadDeItems.Name = "txtCantidadDeItems";
             this.txtCantidadDeItems.Size = new System.Drawing.Size(193, 20);
             this.txtCantidadDeItems.TabIndex = 56;
@@ -58,7 +61,7 @@
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(219, 34);
+            this.txtMontoItem.Location = new System.Drawing.Point(223, 52);
             this.txtMontoItem.Name = "txtMontoItem";
             this.txtMontoItem.Size = new System.Drawing.Size(193, 20);
             this.txtMontoItem.TabIndex = 55;
@@ -67,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 68);
+            this.label3.Location = new System.Drawing.Point(41, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 51;
@@ -76,7 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 37);
+            this.label2.Location = new System.Drawing.Point(41, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 50;
@@ -93,7 +96,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(40, 133);
+            this.limpiar.Location = new System.Drawing.Point(40, 128);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 61;
@@ -103,7 +106,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(337, 133);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(360, 128);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 77;
@@ -111,11 +114,40 @@
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
             // 
+            // generarFactura
+            // 
+            this.generarFactura.Location = new System.Drawing.Point(176, 184);
+            this.generarFactura.Name = "generarFactura";
+            this.generarFactura.Size = new System.Drawing.Size(109, 42);
+            this.generarFactura.TabIndex = 78;
+            this.generarFactura.Text = "Generar Factura";
+            this.generarFactura.UseVisualStyleBackColor = true;
+            this.generarFactura.Click += new System.EventHandler(this.generarFactura_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(41, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 79;
+            this.label4.Text = "Descripcion";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(223, 18);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(193, 20);
+            this.txtDescripcion.TabIndex = 80;
+            // 
             // AltaDeItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 186);
+            this.ClientSize = new System.Drawing.Size(447, 238);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.generarFactura);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.botonGuardarUnItem);
@@ -126,6 +158,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AltaDeItemFactura";
             this.Text = "AltaDeItemFactura";
+            this.Load += new System.EventHandler(this.AltaDeItemFactura_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +174,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
+        private System.Windows.Forms.Button generarFactura;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDescripcion;
     }
 }

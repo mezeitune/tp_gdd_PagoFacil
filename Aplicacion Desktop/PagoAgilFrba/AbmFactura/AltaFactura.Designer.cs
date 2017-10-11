@@ -46,11 +46,12 @@
             this.txtNroFactura = new System.Windows.Forms.TextBox();
             this.comboEmpresa = new System.Windows.Forms.ComboBox();
             this.comboCliente = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DarAltaFactura
             // 
-            this.DarAltaFactura.Location = new System.Drawing.Point(195, 311);
+            this.DarAltaFactura.Location = new System.Drawing.Point(184, 271);
             this.DarAltaFactura.Name = "DarAltaFactura";
             this.DarAltaFactura.Size = new System.Drawing.Size(109, 34);
             this.DarAltaFactura.TabIndex = 47;
@@ -114,7 +115,7 @@
             // 
             // botonIngresarItem
             // 
-            this.botonIngresarItem.Location = new System.Drawing.Point(46, 263);
+            this.botonIngresarItem.Location = new System.Drawing.Point(184, 320);
             this.botonIngresarItem.Name = "botonIngresarItem";
             this.botonIngresarItem.Size = new System.Drawing.Size(109, 34);
             this.botonIngresarItem.TabIndex = 48;
@@ -211,11 +212,21 @@
             this.comboCliente.TabIndex = 52;
             this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(43, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(314, 13);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Recuerde primero dar de alta la factura y luego ingresar sus items";
+            // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 401);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaVencFact);
@@ -262,5 +273,6 @@
         private System.Windows.Forms.TextBox txtNroFactura;
         private System.Windows.Forms.ComboBox comboEmpresa;
         private System.Windows.Forms.ComboBox comboCliente;
+        private System.Windows.Forms.Label label7;
     }
 }

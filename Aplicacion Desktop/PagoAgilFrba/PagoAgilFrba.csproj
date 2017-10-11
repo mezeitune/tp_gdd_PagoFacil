@@ -112,12 +112,7 @@
     <Compile Include="AbmFactura\AltaFactura.Designer.cs">
       <DependentUpon>AltaFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\BajaFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmFactura\BajaFactura.Designer.cs">
-      <DependentUpon>BajaFactura.cs</DependentUpon>
-    </Compile>
+    <Compile Include="AbmFactura\listaTuplas.cs" />
     <Compile Include="AbmFactura\ModificacionFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +137,7 @@
     <Compile Include="AbmFactura\PantallaPrincipalABMFactura.Designer.cs">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmFactura\repositorioItemsFacturaActual.cs" />
     <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,12 +185,6 @@
     </Compile>
     <Compile Include="AbmSucursal\AltaSucursal.Designer.cs">
       <DependentUpon>AltaSucursal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmSucursal\BajaSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmSucursal\BajaSucursal.Designer.cs">
-      <DependentUpon>BajaSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\ModificarDatosSucursal.cs">
       <SubType>Form</SubType>
@@ -294,9 +284,6 @@
     <EmbeddedResource Include="AbmFactura\AltaFactura.resx">
       <DependentUpon>AltaFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\BajaFactura.resx">
-      <DependentUpon>BajaFactura.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ModificacionFactura.resx">
       <DependentUpon>ModificacionFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,9 +319,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\AltaSucursal.resx">
       <DependentUpon>AltaSucursal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmSucursal\BajaSucursal.resx">
-      <DependentUpon>BajaSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\ModificarDatosSucursal.resx">
       <DependentUpon>ModificarDatosSucursal.cs</DependentUpon>

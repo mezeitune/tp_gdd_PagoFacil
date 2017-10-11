@@ -53,14 +53,17 @@ namespace PagoAgilFrba.AbmCliente
             {
 
                 var cmd = new SqlCommand(
-                "update [SERVOMOTOR].[CLIENTES] set NOMBRE='"+txtNombre.Text+"',APELLIDO='"+txtApellidoCliente.Text+"',COD_POSTAL_CLIENTE='"+txtCodPostalCliente.Text+
-                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='"+FechaNacCliente.Value+"' where DNI=" + DNICliente + ";",
+                "update [SERVOMOTOR].[CLIENTES] set NOMBRE='" + txtNombre.Text + "',APELLIDO='" + txtApellidoCliente.Text + "',COD_POSTAL_CLIENTE='" + txtCodPostalCliente.Text +
+                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "' where DNI=" + DNICliente + ";",
                  Program.conexion()
              );
                 var dataReader = cmd.ExecuteReader();
-                MessageBox.Show("Se ha modificado correctamente el cliente de DNI: "+DNICliente, "", MessageBoxButtons.OK);
+                MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " + DNICliente, "", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
                 this.cambiarVisibilidades(formularioSiguiente);
+            }
+            else {
+                MessageBox.Show("Algun campo esta vacio o el formato es incorrecto.", "", MessageBoxButtons.OK);
             }
            
            

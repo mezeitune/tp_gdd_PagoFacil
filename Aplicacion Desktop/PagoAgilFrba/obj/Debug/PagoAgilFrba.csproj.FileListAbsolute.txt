@@ -12,12 +12,10 @@ C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AltaCliente.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarDatosCliente.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.AltaSucursal.resources
-C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.BajaSucursal.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.ModificarSucursal.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmSucursal.Form1.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AltaDeItemFactura.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AltaFactura.resources
-C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.BajaFactura.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificacionFactura.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarItemFactura.resources
 C:\Users\ABM\Desktop\tp_gdd_PagoFacil\Aplicacion Desktop\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarDatosFactura.resources

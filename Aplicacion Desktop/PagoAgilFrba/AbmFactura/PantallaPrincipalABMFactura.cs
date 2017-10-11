@@ -19,7 +19,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.AltaFactura();
+            Form formularioSiguiente = new AbmFactura.AltaDeItemFactura();
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)
@@ -27,11 +27,7 @@ namespace PagoAgilFrba.AbmFactura
             formularioSiguiente.Visible = true;
             this.Visible = false;
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form formularioSiguiente = new AbmFactura.BajaFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -10,8 +10,12 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
+
+    
     public partial class AltaDeItemFactura : Form
     {
+        repositorioItemsFacturaActual repoItems = new repositorioItemsFacturaActual();
+
         public AltaDeItemFactura()
         {
             InitializeComponent();
@@ -34,18 +38,62 @@ namespace PagoAgilFrba.AbmFactura
 
         private void botonGuardarUnItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
+
+            if (!todosLosCamposLLenos() && !validarTipos())
+            {
+
+                repoItems.addToListaItems(txtCantidadDeItems.Text, txtMontoItem.Text, txtDescripcion.Text);
+                MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
+                txtDescripcion.Text = "";
+                txtCantidadDeItems.Text = "";
+                txtMontoItem.Text = "";
+                generarFactura.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Algun campo esta vacio o el formato es incorrecto.", "", MessageBoxButtons.OK);
+            }
+           
         }
+
+
+        
+
+        private bool todosLosCamposLLenos()
+        {
+
+            Boolean huboErrores = false;
+
+            huboErrores = Validacion.esVacio(txtCantidadDeItems, "cantidad", true) || huboErrores;
+            huboErrores = Validacion.esVacio(txtMontoItem, "monto", true) || huboErrores;
+           
+
+            return huboErrores;
+        }
+
+        private bool validarTipos()
+        {
+            Boolean huboErrores = false;
+            
+            huboErrores = !Validacion.esNumero(txtMontoItem, "monto", true) || huboErrores;
+
+            huboErrores = !Validacion.esNumero(txtCantidadDeItems, "cantidad", true) || huboErrores;
+          
+
+            return huboErrores;
+        }
+
 
         private void limpiar_Click(object sender, EventArgs e)
         {
+            txtDescripcion.Text = "";
             txtCantidadDeItems.Text = "";
             txtMontoItem.Text = "";
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.AltaFactura();
+            Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)
@@ -53,5 +101,18 @@ namespace PagoAgilFrba.AbmFactura
             formularioSiguiente.Visible = true;
             this.Visible = false;
         }
+
+        private void AltaDeItemFactura_Load(object sender, EventArgs e)
+        {
+            generarFactura.Enabled = false;
+        }
+
+        private void generarFactura_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmFactura.AltaFactura();
+            this.cambiarVisibilidades(formularioSiguiente);
+        }
+
+        
     }
 }
