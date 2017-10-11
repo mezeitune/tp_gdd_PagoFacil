@@ -748,3 +748,6 @@ BEGIN
 END
 
 select * from [SERVOMOTOR].ITEMS;
+
+select * from [SERVOMOTOR].FACTURAS ;
+select * from [SERVOMOTOR].SUCURSALES ;

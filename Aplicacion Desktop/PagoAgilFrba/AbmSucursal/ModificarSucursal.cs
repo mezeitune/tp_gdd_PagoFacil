@@ -45,7 +45,7 @@ namespace PagoAgilFrba.AbmSucursal
                  Program.conexion()
              );
                 var dataReader = cmd.ExecuteReader();
-                MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " +  codigoPostal, "", MessageBoxButtons.OK);
+                MessageBox.Show("Se ha modificado correctamente la sucursal de Cod Postal: " +  codigoPostal, "", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
                 this.cambiarVisibilidades(formularioSiguiente);
             }

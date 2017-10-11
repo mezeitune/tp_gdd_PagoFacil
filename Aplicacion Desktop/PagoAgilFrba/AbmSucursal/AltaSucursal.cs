@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmSucursal
 {
@@ -36,8 +37,13 @@ namespace PagoAgilFrba.AbmSucursal
         {
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-               
-                    //aca se da de alta la sucursal en la BDD
+
+                var cmd = new SqlCommand(
+           "insert into [SERVOMOTOR].[SUCURSALES] (COD_POSTAL,NOMBRE,DIRECCION) values ('" + txtCodPostalSucursal.Text + "','" + txtNombreSucursal.Text + "','" + txtDireccionSucursal.Text + "');",
+            Program.conexion()
+              );
+                var dataReaderFactura = cmd.ExecuteReader();
+
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
             }
         }
@@ -58,8 +64,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             Boolean huboErrores = false;
             huboErrores = !Validacion.esDecimal(txtCodPostalSucursal,"Codigo Postal", true ) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtDireccionSucursal, true, "Direccion", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtNombreSucursal, true, "nombre", true) || huboErrores;
+         
            
             return huboErrores;
         }

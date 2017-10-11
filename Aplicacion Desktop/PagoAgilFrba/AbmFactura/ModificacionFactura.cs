@@ -31,7 +31,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void comboBoxNroFacturaModif_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numeroFactura = comboBoxNroFacturaModif.SelectedIndex.ToString(); 
+            numeroFactura = comboBoxNroFacturaModif.SelectedItem.ToString(); 
             
 
             MessageBox.Show("Se ha seleccionado la factura NUM: " + numeroFactura, "", MessageBoxButtons.OK);

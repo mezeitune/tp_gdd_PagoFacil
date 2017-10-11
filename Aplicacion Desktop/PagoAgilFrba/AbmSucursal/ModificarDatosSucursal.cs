@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmSucursal
         private void ModificacionSucursal_Load(object sender, EventArgs e)
         {
             var cmd = new SqlCommand(
-                 "select * from [SERVOMOTOR].SUCURSALES ",
+                 "select * from [SERVOMOTOR].SUCURSALES ;",
                   Program.conexion()
               );
 
@@ -43,6 +43,8 @@ namespace PagoAgilFrba.AbmSucursal
 
                 );
             }
+            bajaLogica.Enabled = false;
+            botonModificarSucursal.Enabled = false;
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -162,7 +164,8 @@ namespace PagoAgilFrba.AbmSucursal
             CodPostalSucursal = dataGridItems[0, indexSucursal].Value.ToString();
 
             MessageBox.Show("Se ha seleccionado la sucursal de codigo postal : " + CodPostalSucursal, "", MessageBoxButtons.OK);
-
+            bajaLogica.Enabled = true;
+            botonModificarSucursal.Enabled =true;
 
         }
 

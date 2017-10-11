@@ -159,12 +159,12 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = !Validacion.esTextoAlfanumerico(txtApellidoCliente, true, "apellido", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtNombreCliente, true, "nombre", true) || huboErrores;
             huboErrores = !Validacion.esNumeroDe7u8(txtDNICliente) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtMailCliente, true, "Mail", true) || huboErrores;
+           
             huboErrores = !Validacion.esNumero(txtTelCliente, "Telefono", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtCalleCliente, true, "Calle", true) || huboErrores;
+          
             huboErrores = !Validacion.esNumero(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtDptoCliente, "Departamento", true) || huboErrores;
-            huboErrores = !Validacion.esTextoAlfanumerico(txtLocalidadCliente, true, "Localidad", true) || huboErrores;
+          
             huboErrores = !Validacion.esNumero(txtCodPostalCliente, "Codigo Postal", true) || huboErrores;
             
             return huboErrores;
