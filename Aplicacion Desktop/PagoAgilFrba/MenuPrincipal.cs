@@ -48,8 +48,10 @@ namespace PagoAgilFrba
 
         private void botonABMRol_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmRol.PantallaPrincipalABMRol();
-            this.cambiarVisibilidades(formularioSiguiente);
+            Form formularioABMRol = new AbmRol.PantallaPrincipalABMRol();
+            this.Hide();
+            formularioABMRol.ShowDialog();
+            this.Show();
         }
 
         private void botonListadoEstadistico_Click(object sender, EventArgs e)

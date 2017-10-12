@@ -19,31 +19,36 @@ namespace PagoAgilFrba.AbmRol
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmRol.AltaRol();
-            this.cambiarVisibilidades(formularioSiguiente);
+            using (Form formularioAlta = new AltaRol())
+            {
+                this.Hide();
+                formularioAlta.ShowDialog();
+                this.Show();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmRol.BajaRol();
-            this.cambiarVisibilidades(formularioSiguiente);
+            using (Form formularioBaja = new BajaRol())
+            {
+                this.Hide();
+                formularioBaja.ShowDialog();
+                this.Show();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmRol.ModificarRol();
-            this.cambiarVisibilidades(formularioSiguiente);
+            using (Form formularioModificacion = new ModificarRol())
+            {
+                this.Hide();
+                formularioModificacion.ShowDialog();
+                this.Show();
+            }
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
-
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new MenuPrincipal();
-            this.cambiarVisibilidades(formularioSiguiente);
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

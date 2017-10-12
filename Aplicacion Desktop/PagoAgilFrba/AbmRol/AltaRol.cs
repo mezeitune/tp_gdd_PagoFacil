@@ -47,13 +47,14 @@ namespace PagoAgilFrba.AbmRol
             DialogResult = DialogResult.Cancel;
         }
 
-        private void ListadoFuncionalidades_CellLeave(object sender, DataGridViewCellEventArgs e)
+        private void ListadoFuncionalidades_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (ListadoFuncionalidades.Rows[e.RowIndex].Cells["Funcionalidad"].Value == null)
+            if (e.RowIndex < 0 || ListadoFuncionalidades.Rows[e.RowIndex]
+                .Cells["Funcionalidad"].Value == null)
                 return;
 
-            var itemSeleccionado = ListadoFuncionalidades.Rows[e.RowIndex]
-                .Cells["Funcionalidad"].Value.ToString();
+            var celdaActualizada = ListadoFuncionalidades.Rows[e.RowIndex].Cells["Funcionalidad"];
+            var itemSeleccionado = celdaActualizada.Value.ToString();
 
             foreach (DataGridViewRow funcionalidad in ListadoFuncionalidades.Rows)
             {
@@ -67,13 +68,20 @@ namespace PagoAgilFrba.AbmRol
                 if (itemActual.Equals(itemSeleccionado))
                 {
                     MessageBox.Show("No se puede agregar dos veces la misma funcionalidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    ListadoFuncionalidades.Rows.RemoveAt(e.RowIndex);
                 }
             }
         }
 
-        private void ListadoFuncionalidades_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        private void nombreRol_Leave(object sender, EventArgs e)
         {
-
+            if (nombreRol.Text.Length == 0)
+            {
+                MessageBox.Show("El nombre de rol no puede ser vacio.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nombreRol.Focus();
+            }
         }
     }
 }
