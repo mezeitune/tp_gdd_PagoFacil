@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,37 +18,62 @@ namespace PagoAgilFrba.AbmRol
             InitializeComponent();
         }
 
-        private void nombreRol_TextChanged(object sender, EventArgs e)
+        private void AltaRol_Load(object sender, EventArgs e)
         {
-
+            Funcionalidad_Init();
         }
 
-        private void irAPantallaDeFuncionalidades_Click(object sender, EventArgs e)
+        private void Funcionalidad_Init()
         {
-            Form formularioSiguiente = new AbmRol.FuncionalidadesAltaRol();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            var cmd = new SqlCommand(
+                "SELECT NOMBRE AS FUNCIONALIDAD " +
+                "FROM [SERVOMOTOR].FUNCIONALIDADES",
+                Program.conexion()
+            );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+                this.Funcionalidad.Items.Add(dataReader["FUNCIONALIDAD"]);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void DarDeAlta_Click(object sender, EventArgs e)
         {
-            //mostrar las funcionalidades que se fueron agregando (sin repetidos pero se valida en la pantalla de funcionalidadesAltaRol)
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+            MessageBox.Show("Se ha dado de alta correctamente", "Todo bien",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmRol.PantallaPrincipalABMRol(); 
-            this.cambiarVisibilidades(formularioSiguiente);
+            DialogResult = DialogResult.Cancel;
         }
 
+        private void ListadoFuncionalidades_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ListadoFuncionalidades.Rows[e.RowIndex].Cells["Funcionalidad"].Value == null)
+                return;
+
+            var itemSeleccionado = ListadoFuncionalidades.Rows[e.RowIndex]
+                .Cells["Funcionalidad"].Value.ToString();
+
+            foreach (DataGridViewRow funcionalidad in ListadoFuncionalidades.Rows)
+            {
+                if (funcionalidad.Index == e.RowIndex)
+                    continue;
+
+                if (funcionalidad.Cells["Funcionalidad"].Value == null)
+                    continue;
+
+                var itemActual = funcionalidad.Cells["Funcionalidad"].Value.ToString();
+                if (itemActual.Equals(itemSeleccionado))
+                {
+                    MessageBox.Show("No se puede agregar dos veces la misma funcionalidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ListadoFuncionalidades_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
     }
 }

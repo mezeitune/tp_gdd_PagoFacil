@@ -30,91 +30,91 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.nombreRol = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.DarDeAlta = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
+            this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
+            this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 46);
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(119, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre Rol";
+            this.label1.Text = "&Nombre de rol:";
             // 
             // nombreRol
             // 
-            this.nombreRol.Location = new System.Drawing.Point(152, 43);
+            this.nombreRol.Location = new System.Drawing.Point(140, 6);
+            this.nombreRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.nombreRol.Name = "nombreRol";
-            this.nombreRol.Size = new System.Drawing.Size(203, 20);
+            this.nombreRol.Size = new System.Drawing.Size(298, 25);
             this.nombreRol.TabIndex = 1;
-            this.nombreRol.TextChanged += new System.EventHandler(this.nombreRol_TextChanged);
             // 
-            // button1
+            // DarDeAlta
             // 
-            this.button1.Location = new System.Drawing.Point(152, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Agregar Funcionalidad";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.irAPantallaDeFuncionalidades_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Funcionalidades Rol";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(38, 159);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(317, 118);
-            this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(152, 312);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 38);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Dar de alta Rol";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.DarDeAlta.Location = new System.Drawing.Point(295, 243);
+            this.DarDeAlta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DarDeAlta.Name = "DarDeAlta";
+            this.DarDeAlta.Size = new System.Drawing.Size(143, 27);
+            this.DarDeAlta.TabIndex = 5;
+            this.DarDeAlta.Text = "Dar de &alta";
+            this.DarDeAlta.UseVisualStyleBackColor = true;
+            this.DarDeAlta.Click += new System.EventHandler(this.DarDeAlta_Click);
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(331, 312);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(16, 243);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 61;
-            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.Text = "&Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
             // 
+            // ListadoFuncionalidades
+            // 
+            this.ListadoFuncionalidades.AllowUserToResizeColumns = false;
+            this.ListadoFuncionalidades.AllowUserToResizeRows = false;
+            this.ListadoFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListadoFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Funcionalidad});
+            this.ListadoFuncionalidades.Location = new System.Drawing.Point(16, 37);
+            this.ListadoFuncionalidades.Name = "ListadoFuncionalidades";
+            this.ListadoFuncionalidades.RowTemplate.Height = 27;
+            this.ListadoFuncionalidades.Size = new System.Drawing.Size(422, 200);
+            this.ListadoFuncionalidades.TabIndex = 62;
+            this.ListadoFuncionalidades.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoFuncionalidades_CellLeave);
+            this.ListadoFuncionalidades.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ListadoFuncionalidades_UserAddedRow);
+            // 
+            // Funcionalidad
+            // 
+            this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Funcionalidad.HeaderText = "Funcionalidad";
+            this.Funcionalidad.Name = "Funcionalidad";
+            // 
             // AltaRol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 380);
+            this.CancelButton = this.volverALaPaginaAnterior;
+            this.ClientSize = new System.Drawing.Size(452, 281);
+            this.Controls.Add(this.ListadoFuncionalidades);
             this.Controls.Add(this.volverALaPaginaAnterior);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DarDeAlta);
             this.Controls.Add(this.nombreRol);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
             this.Name = "AltaRol";
-            this.Text = "Form1";
+            this.Text = "Alta rol";
+            this.Load += new System.EventHandler(this.AltaRol_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,10 +124,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nombreRol;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DarDeAlta;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
+        private System.Windows.Forms.DataGridView ListadoFuncionalidades;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Funcionalidad;
     }
 }
