@@ -14,8 +14,12 @@ namespace PagoAgilFrba.AbmFactura
     {
         string nroFactura;
         string descripcion;
-        public ModificarDatosFactura(string nroFact)
-        {
+        int subtotal;
+        decimal totalFacturaDecimal;
+        int totalFacturaInt;
+        public ModificarDatosFactura(string nroFact,int subtot)
+       {
+            subtotal = subtot;
             nroFactura = nroFact;
             InitializeComponent();
         }
@@ -50,7 +54,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void txtTotalFactura_TextChanged(object sender, EventArgs e)
         {
-            txtTotalFactura.Visible = false;
+            totalFactura.Visible = false;
         }
 
         private void comboBoxItemsDeFactura_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,8 +70,12 @@ namespace PagoAgilFrba.AbmFactura
             if (!todosLosCamposLLenos() && 
                 !validarTipos())
             {
-
-                ///aca va el update de todos los campos
+                var cmd = new SqlCommand(
+                "update [SERVOMOTOR].[FACTURAS] set FECHA_VENCIMIENTO='" + FechaVencFact.Value + "',TOTAL=" + (totalFacturaInt+subtotal) + "where NUMERO_FACTURA='" + nroFactura + "';",
+                 Program.conexion()
+             );
+                var dataReader = cmd.ExecuteReader();
+                
 
                 MessageBox.Show("Se ha dado modificado correctamente", "Todo bien", MessageBoxButtons.OK);
 
@@ -79,7 +87,7 @@ namespace PagoAgilFrba.AbmFactura
         {
 
             Boolean huboErrores = false;
-         huboErrores = Validacion.esVacio(txtTotalFactura, "total", true) || huboErrores;
+         
 
 
             return huboErrores;
@@ -89,7 +97,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             Boolean huboErrores = false;
             
-            huboErrores = !Validacion.esNumero(txtTotalFactura, "total factura", true) || huboErrores;
+         
 
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
             
@@ -109,7 +117,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            txtTotalFactura.Text = "";
+            
             DateTimePicker fechaDeAhora = new DateTimePicker();
             FechaVencFact.Value = fechaDeAhora.Value;
         }
@@ -122,14 +130,15 @@ namespace PagoAgilFrba.AbmFactura
 
         private void ModificarDatosFactura_Load(object sender, EventArgs e)
         {
-            txtTotalFactura.Enabled = false;
+           totalFactura.Enabled = false;
+           
             completarTextos();
         }
 
         private void completarTextos()
         {
             var cmd = new SqlCommand(
-                "select * from [SERVOMOTOR].FACTURAS f where NUMERO_FACTURA='" + nroFactura + "';",
+                "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + nroFactura + "';",
                  Program.conexion()
              );
 
@@ -137,14 +146,16 @@ namespace PagoAgilFrba.AbmFactura
             while (dataReader.Read())
             {
                 FechaVencFact.Value = Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
-                txtTotalFactura.Text = dataReader["TOTAL"].ToString();
+                totalFactura.Text = dataReader["TOTAL"].ToString();
+                
                
             }
             var cmd2 = new SqlCommand(
                 "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + nroFactura + "';",
                  Program.conexion()
              );
-
+            totalFacturaDecimal = Convert.ToDecimal(totalFactura.Text);
+            totalFacturaInt = Convert.ToInt32(totalFacturaDecimal);
             var dataReader2 = cmd2.ExecuteReader();
             while (dataReader2.Read())
             {
@@ -152,6 +163,12 @@ namespace PagoAgilFrba.AbmFactura
 
             }
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmFactura.agregarItemFacturaModificada(nroFactura);
+            this.cambiarVisibilidades(formularioSiguiente);
         }
 
 

@@ -54,7 +54,7 @@ namespace PagoAgilFrba.AbmCliente
 
                 var cmd = new SqlCommand(
                 "update [SERVOMOTOR].[CLIENTES] set NOMBRE='" + txtNombre.Text + "',APELLIDO='" + txtApellidoCliente.Text + "',COD_POSTAL_CLIENTE='" + txtCodPostalCliente.Text +
-                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "' where DNI=" + DNICliente + ";",
+                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "',ESTADO_HABILITACION="+( Habilitar.Checked ? 1 : 0)+" where DNI='" + DNICliente + "';",
                  Program.conexion()
              );
                 var dataReader = cmd.ExecuteReader();
@@ -169,13 +169,18 @@ namespace PagoAgilFrba.AbmCliente
 
         private void ModificarDatosCliente_Load(object sender, EventArgs e)
         {
-            
+            Habilitar.Checked = true;
             completarTextos();
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Habilitar_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

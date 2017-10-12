@@ -37,7 +37,7 @@
             // 
             // BajaLogicaCliente
             // 
-            this.BajaLogicaCliente.Location = new System.Drawing.Point(213, 175);
+            this.BajaLogicaCliente.Location = new System.Drawing.Point(195, 144);
             this.BajaLogicaCliente.Name = "BajaLogicaCliente";
             this.BajaLogicaCliente.Size = new System.Drawing.Size(96, 38);
             this.BajaLogicaCliente.TabIndex = 33;
@@ -48,7 +48,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 103);
+            this.label4.Location = new System.Drawing.Point(12, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 32;
@@ -57,7 +57,7 @@
             // comboBoxNroFacturaModif
             // 
             this.comboBoxNroFacturaModif.FormattingEnabled = true;
-            this.comboBoxNroFacturaModif.Location = new System.Drawing.Point(172, 100);
+            this.comboBoxNroFacturaModif.Location = new System.Drawing.Point(180, 70);
             this.comboBoxNroFacturaModif.Name = "comboBoxNroFacturaModif";
             this.comboBoxNroFacturaModif.Size = new System.Drawing.Size(330, 21);
             this.comboBoxNroFacturaModif.TabIndex = 31;
@@ -66,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 61);
+            this.label1.Location = new System.Drawing.Point(12, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(498, 13);
             this.label1.TabIndex = 30;
@@ -75,7 +75,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(441, 227);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(435, 159);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 61;
@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 262);
+            this.ClientSize = new System.Drawing.Size(516, 187);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.BajaLogicaCliente);
             this.Controls.Add(this.label4);

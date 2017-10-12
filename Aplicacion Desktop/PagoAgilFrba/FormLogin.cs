@@ -177,6 +177,7 @@ namespace PagoAgilFrba
         {
             gbAdministrador.Enabled = true;
             gbInvitado.Enabled = true;
+            //aca hay que verificar que el usuario cobrador se loguee piola y mostrar sus sucursales habilitadas, sino tirar error
         }
 
         private void SucursalesDisponibles_SelectedIndexChanged(object sender, EventArgs e)

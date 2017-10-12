@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTotalFactura = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.botonModificarUnItem = new System.Windows.Forms.Button();
@@ -40,15 +39,9 @@
             this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
+            this.totalFactura = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // txtTotalFactura
-            // 
-            this.txtTotalFactura.Location = new System.Drawing.Point(228, 89);
-            this.txtTotalFactura.Name = "txtTotalFactura";
-            this.txtTotalFactura.Size = new System.Drawing.Size(200, 20);
-            this.txtTotalFactura.TabIndex = 68;
-            this.txtTotalFactura.TextChanged += new System.EventHandler(this.txtTotalFactura_TextChanged);
             // 
             // label9
             // 
@@ -81,7 +74,7 @@
             // 
             // ModificarUnaFactura
             // 
-            this.ModificarUnaFactura.Location = new System.Drawing.Point(189, 182);
+            this.ModificarUnaFactura.Location = new System.Drawing.Point(219, 245);
             this.ModificarUnaFactura.Name = "ModificarUnaFactura";
             this.ModificarUnaFactura.Size = new System.Drawing.Size(109, 34);
             this.ModificarUnaFactura.TabIndex = 64;
@@ -128,15 +121,15 @@
             // 
             // FechaVencFact
             // 
-            this.FechaVencFact.Location = new System.Drawing.Point(228, 43);
+            this.FechaVencFact.Location = new System.Drawing.Point(219, 42);
             this.FechaVencFact.Name = "FechaVencFact";
-            this.FechaVencFact.Size = new System.Drawing.Size(200, 20);
+            this.FechaVencFact.Size = new System.Drawing.Size(196, 20);
             this.FechaVencFact.TabIndex = 73;
             this.FechaVencFact.ValueChanged += new System.EventHandler(this.FechaVencFact_ValueChanged);
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(40, 182);
+            this.limpiar.Location = new System.Drawing.Point(60, 256);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 75;
@@ -146,7 +139,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(376, 182);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(398, 256);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 76;
@@ -154,17 +147,35 @@
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
             // 
+            // totalFactura
+            // 
+            this.totalFactura.Location = new System.Drawing.Point(219, 89);
+            this.totalFactura.Name = "totalFactura";
+            this.totalFactura.Size = new System.Drawing.Size(151, 20);
+            this.totalFactura.TabIndex = 77;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(219, 182);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 34);
+            this.button1.TabIndex = 78;
+            this.button1.Text = "Agregar Item";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // ModificarDatosFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 244);
+            this.ClientSize = new System.Drawing.Size(522, 325);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.totalFactura);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.FechaVencFact);
             this.Controls.Add(this.comboBoxItemsDeFactura);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtTotalFactura);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.botonModificarUnItem);
@@ -181,7 +192,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTotalFactura;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button botonModificarUnItem;
@@ -193,5 +203,7 @@
         private System.Windows.Forms.DateTimePicker FechaVencFact;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
+        private System.Windows.Forms.TextBox totalFactura;
+        private System.Windows.Forms.Button button1;
     }
 }

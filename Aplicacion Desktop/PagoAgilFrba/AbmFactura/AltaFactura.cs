@@ -84,7 +84,7 @@ namespace PagoAgilFrba.AbmFactura
              
                 var cmd = new SqlCommand(
                "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
-               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','NO PAGA',NULL,NULL,NULL);",
+               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','NO PAGA',NULL,NULL);",
                 Program.conexion()   
                   );
                 var dataReaderFactura = cmd.ExecuteReader();

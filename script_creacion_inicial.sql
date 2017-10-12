@@ -125,6 +125,8 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[obtenerFechaDeHoy]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
 drop function [SERVOMOTOR].[obtenerFechaDeHoy]
 
+
+
 GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[crearTablaFecha]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -150,6 +152,8 @@ GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[datetime_between]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
 drop function [SERVOMOTOR].[datetime_between]
+
+
 
 
 GO
@@ -230,7 +234,7 @@ GO
 
 -- Tabla Sucursales: 
 CREATE TABLE [SERVOMOTOR].[SUCURSALES](
-	[COD_POSTAL] [VARCHAR] (20) NOT NULL,
+	[COD_POSTAL] [varchar] (20) NOT NULL,
 	[NOMBRE] [varchar] (50) UNIQUE NOT NULL,
 	[DIRECCION] [varchar] (50) UNIQUE,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
@@ -758,3 +762,4 @@ BEGIN
 
 	return 0
 END
+select * from SERVOMOTOR.ITEMS;

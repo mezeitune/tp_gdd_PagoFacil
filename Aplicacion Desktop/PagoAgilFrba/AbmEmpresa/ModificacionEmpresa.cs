@@ -73,5 +73,10 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show("Error al intentar modificar la empresa.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void Habilitar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
