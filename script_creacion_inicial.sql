@@ -74,13 +74,17 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[EMPRESAS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[EMPRESAS]
 
-
-
-
 GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[PAGOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[PAGOS]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[CLIENTES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[CLIENTES]
+
+
 
 
 
@@ -96,15 +100,6 @@ GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[SUCURSALES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[SUCURSALES]
-
-
-
-
-GO
-if exists (select * from dbo.sysobjects where id =
-object_id(N'[SERVOMOTOR].[CLIENTES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [SERVOMOTOR].[CLIENTES]
-
 
 
 
@@ -319,6 +314,27 @@ CREATE TABLE [SERVOMOTOR].[MEDIOS_DE_PAGO](
 ) ON [PRIMARY]
 
 
+-- Tabla CLIENTES: 
+CREATE TABLE [SERVOMOTOR].[CLIENTES](
+	[DNI] [varchar](255) NOT NULL,
+	[NOMBRE] [varchar] (255) NOT NULL,
+	[APELLIDO] [varchar] (255) NOT NULL,
+	[MAIL] [varchar] (255) NOT NULL,
+	[TELEFONO] [varchar] (255) NULL,
+	[CALLE] [varchar] (255) NOT NULL,
+	[PISO] [varchar] (255) NULL,
+	[DEPTO] [varchar] (255) NULL,
+	[LOCALIDAD] [varchar] (255) NULL,
+	[FECHA_NACIMIENTO] [datetime] NOT NULL,
+	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,
+ CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
+(
+	[DNI] 
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+
 --Tabla PAGOS
 CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[NUMERO_PAGO] [varchar] (20) NOT NULL,
@@ -342,6 +358,10 @@ REFERENCES [SERVOMOTOR].[SUCURSALES] ([COD_POSTAL])
 
 ALTER TABLE [SERVOMOTOR].[PAGOS]  WITH CHECK ADD  CONSTRAINT [FK_PAGOS_MEDPAGO] FOREIGN KEY([ID_MEDPAGO])
 REFERENCES [SERVOMOTOR].[MEDIOS_DE_PAGO] ([ID_MEDPAGO])
+
+
+ALTER TABLE [SERVOMOTOR].[PAGOS]  WITH CHECK ADD  CONSTRAINT [FK_PAGOS_DNICLI] FOREIGN KEY([DNI_CLIENTE])
+REFERENCES [SERVOMOTOR].[CLIENTES] ([DNI])
 
 
 -- Tabla DEVOLUCIONEs: 
@@ -406,25 +426,6 @@ ALTER TABLE [SERVOMOTOR].[RENDICIONES]  WITH CHECK ADD  CONSTRAINT [FK_RENDICION
 REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 
--- Tabla CLIENTES: 
-CREATE TABLE [SERVOMOTOR].[CLIENTES](
-	[DNI] [varchar](255) NOT NULL,
-	[NOMBRE] [varchar] (255) NOT NULL,
-	[APELLIDO] [varchar] (255) NOT NULL,
-	[MAIL] [varchar] (255) NOT NULL,
-	[TELEFONO] [varchar] (255) NULL,
-	[CALLE] [varchar] (255) NOT NULL,
-	[PISO] [varchar] (255) NULL,
-	[DEPTO] [varchar] (255) NULL,
-	[LOCALIDAD] [varchar] (255) NULL,
-	[FECHA_NACIMIENTO] [datetime] NOT NULL,
-	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
-	[ESTADO_HABILITACION] [bit] DEFAULT 1,
- CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
-(
-	[DNI] 
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
 
 
 
