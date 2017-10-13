@@ -14,6 +14,8 @@ namespace PagoAgilFrba.AbmFactura
     {
         string nroFact;
         string descripcion;
+        string montoAnterior;
+        string cantidadAnterior;
         public ModificarItemFactura(string nroFactura,string desc)
         {
             nroFact = nroFactura;
@@ -42,7 +44,8 @@ namespace PagoAgilFrba.AbmFactura
              );
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el item : " + descripcion, "", MessageBoxButtons.OK);
-                int subtotalParametro = (Convert.ToInt32(txtMontoItem.ToString())*Convert.ToInt32(txtCantidadItem.ToString()));
+                int subtotalAnterior = (Convert.ToInt32(montoAnterior) * Convert.ToInt32(cantidadAnterior));
+                int subtotalParametro = (Convert.ToInt32(txtMontoItem.Text.ToString()) * Convert.ToInt32(txtCantidadItem.Text.ToString())) - subtotalAnterior;
                 Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFact,subtotalParametro);
                 this.cambiarVisibilidades(formularioSiguiente);
             }
@@ -77,6 +80,8 @@ namespace PagoAgilFrba.AbmFactura
             {
                 txtCantidadItem.Text = dataReader["CANTIDAD"].ToString();
                 txtMontoItem.Text = dataReader["MONTO"].ToString();
+                montoAnterior = dataReader["MONTO"].ToString();
+                cantidadAnterior = dataReader["CANTIDAD"].ToString();
             }
 
 

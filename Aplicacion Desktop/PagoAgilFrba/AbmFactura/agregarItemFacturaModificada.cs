@@ -95,7 +95,7 @@ namespace PagoAgilFrba.AbmFactura
                     String monto = row.Cells[1].Value.ToString();
                     String cantidad = row.Cells[2].Value.ToString();
                     this.insertarItem(monto, descripcion, cantidad);
-                    int subTotalItem = (Int32.Parse(monto)*Int32.Parse(cantidad));
+                    int subTotalItem = ((Convert.ToInt32(monto.ToString()) * Convert.ToInt32(cantidad.ToString())));
                     subtotal += subTotalItem;
                 }
             }
