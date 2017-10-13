@@ -327,6 +327,7 @@ CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[IMPORTE] [numeric] (18,2) NOT NULL,
 	[COD_POSTAL] [varchar](20) NOT NULL,
 	[ID_MEDPAGO] [tinyint] NOT NULL,
+	[DNI_CLIENTE] [varchar](255)  NOT NULL,
  CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED 
 (
 	[NUMERO_PAGO] 
@@ -588,13 +589,15 @@ INSERT INTO [SERVOMOTOR].[PAGOS]
 		FECHA_COBRO ,
 		IMPORTE,
 		COD_POSTAL,
-		ID_MEDPAGO
+		ID_MEDPAGO,
+		DNI_CLIENTE
 	)
 SELECT  DISTINCT Pago_nro , 
 		Pago_Fecha,  
 		Total , 
 		Sucursal_Codigo_Postal,
-		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion)				 		
+		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion),		
+		[Cliente-Dni]				 		
 FROM gd_esquema.Maestra where Pago_nro is not null
 
 
@@ -762,4 +765,4 @@ BEGIN
 
 	return 0
 END
-delete from SERVOMOTOR.FACTURAS;
+
