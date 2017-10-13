@@ -10,6 +10,10 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
+drop trigger [SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]
 
 
 GO
@@ -765,5 +769,25 @@ BEGIN
 		end
 
 	return 0
+END
+
+/**************************** <<TRIGGERS>> ******************************/
+GO
+CREATE TRIGGER cambiarTotalDelasFacturasPorModificacionItem ON [SERVOMOTOR].ITEMS
+AFTER UPDATE
+AS BEGIN
+
+	UPDATE [SERVOMOTOR].FACTURAS
+				SET Total=SumDetalle.Total
+	FROM [SERVOMOTOR].FACTURAS F
+	JOIN    (SELECT NUMERO_FACTURA, SUM(MONTO*CANTIDAD) AS Total
+				  FROM [SERVOMOTOR].ITEMS
+				  GROUP BY NUMERO_FACTURA) AS SumDetalle
+	ON     F.NUMERO_FACTURA=SumDetalle.NUMERO_FACTURA
+	JOIN  (SELECT NUMERO_FACTURA FROM Inserted
+				UNION
+				SELECT NUMERO_FACTURA FROM Deleted) AS Modificados
+	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
+
 END
 
