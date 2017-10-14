@@ -115,7 +115,7 @@ namespace PagoAgilFrba.RegistroPago
         }
         private void insertarPago() {
             var cmd = new SqlCommand(
-                     "insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + medioPago.SelectedIndex + ",'" + comboClientes.SelectedItem.ToString() + "')",
+                     "insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + (medioPago.SelectedIndex+1) + ",'" + comboClientes.SelectedItem.ToString() + "')",
                       Program.conexion()
                   );
 

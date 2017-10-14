@@ -807,4 +807,5 @@ AS BEGIN
 
 END
 
-
+select * from SERVOMOTOR.MEDIOS_DE_PAGO;
+insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values ('23232',2);
