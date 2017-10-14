@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace PagoAgilFrba.RegistroPago
 {
     public partial class PantallaPrincipalRegistroPagoFacturas : Form
@@ -17,45 +17,29 @@ namespace PagoAgilFrba.RegistroPago
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //facturas que se encuentren no pagas
-        }
+          
 
-        private void FechaCobro_ValueChanged(object sender, EventArgs e)
-        {
-            FechaCobro.Enabled = false;
-        }
+                var cmd = new SqlCommand(
+                "select * from [SERVOMOTOR].[FACTURAS]  where NUMERO_FACTURA='" + comboFacturasAPagar.SelectedItem.ToString() + "';",
+                 Program.conexion()
+             );
 
-        private void comboEmpresas_SelectedIndexChanged(object sender, EventArgs e)
-        {
+                var dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    FechaVencFact.Value= Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
+                    ImporteFact.Text = dataReader["TOTAL"].ToString();
+                }
+         }
+        
 
-        }
+        
 
-        private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //tienen que ser clientes habilitados
-        }
-
-        private void FechaVencFact_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ImporteFact_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboSucursal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //sucursales habliitadas o la que ingreso el cobrador???
-        }
+        
 
         private void limpiar_Click(object sender, EventArgs e)
         {
@@ -84,9 +68,16 @@ namespace PagoAgilFrba.RegistroPago
             if (todosLosCamposLLenos() && validarTipos())
             {
 
-                //aca se da de alta la factura en la BDD
+                var cmd = new SqlCommand(
+                     "insert into [SERVOMOTOR].[PAGOS] values ('"+FechaCobro.Value+"','"+FechaVencFact.Value+"','"+ImporteFact.Text+"','"+comboSucursal.SelectedItem.ToString()+"',"+medioPago.SelectedIndex+",'"+comboCliente.SelectedItem.ToString()+"')",
+                      Program.conexion()
+                  );
 
-                MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+                var dataReader = cmd.ExecuteReader();
+
+
+
+                MessageBox.Show("Se ha dado de alta el pago correctamente", "Todo bien", MessageBoxButtons.OK);
 
             }
             else {
@@ -120,7 +111,96 @@ namespace PagoAgilFrba.RegistroPago
             return huboErrores;
         }
 
+        private void PantallaPrincipalRegistroPagoFacturas_Load(object sender, EventArgs e)
+        {
+            this.levantarFacturas();
+            this.levantarEmpresas();
+            this.levantarClientes();
+            this.levantarSucursales();
+            this.levantarMediosDePago();
+            FechaCobro.Enabled = false;
+            FechaVencFact.Enabled = false;
+            ImporteFact.Enabled = false;
+        }
 
+        private void levantarFacturas()
+        {
+            var cmd = new SqlCommand(
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS where ESTADO='NO PAGA' ",
+                     Program.conexion()
+                 );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                this.comboFacturasAPagar.Items.Add(dataReader["NUMERO_FACTURA"]);
+            }
+
+
+        }
+
+        private void levantarClientes() {
+            var cmdCliente = new SqlCommand(
+                   "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",
+                    Program.conexion()
+                    );
+            var dataReader = cmdCliente.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                comboCliente.Items.Add(dataReader["DNI"]);
+
+            }
+        }
+
+        private void levantarEmpresas() {
+
+            var cmdEmpresa = new SqlCommand(
+             "select * from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
+              Program.conexion()
+              );
+            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
+
+            while (dataReaderEmpresa.Read())
+            {
+                comboEmpresas.Items.Add(dataReaderEmpresa["CUIT"]);
+                
+            }
+        }
+
+        private void levantarSucursales() {
+
+            var cmd = new SqlCommand(
+                     "select * from [SERVOMOTOR].SUCURSALES where ESTADO_HABILITACION=1;",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+               comboSucursal.Items.Add(dataReader["DIRECCION"]);
+
+             
+            }
+        
+        }
+        private void levantarMediosDePago()
+        {
+
+            var cmd = new SqlCommand(
+                     "select * from [SERVOMOTOR].MEDIOS_DE_PAGO ;",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                medioPago.Items.Add(dataReader["TIPO_MEDPAGO"]);
+
+
+            }
+
+        }
 
     }
 }
