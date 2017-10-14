@@ -29,52 +29,91 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.medioPago = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.comboSucursal = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ImporteFact = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.FechaVencFact = new System.Windows.Forms.DateTimePicker();
-            this.comboCliente = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboEmpresas = new System.Windows.Forms.ComboBox();
             this.comboFacturasAPagar = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.FechaCobro = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.limpiar = new System.Windows.Forms.Button();
             this.registrarUnPago = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.medioPago = new System.Windows.Forms.ComboBox();
+            this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboClientes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboClientes);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.medioPago);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.comboSucursal);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.ImporteFact);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.FechaVencFact);
-            this.groupBox1.Controls.Add(this.comboCliente);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboEmpresas);
             this.groupBox1.Controls.Add(this.comboFacturasAPagar);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.FechaCobro);
-            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(453, 276);
+            this.groupBox1.Size = new System.Drawing.Size(589, 303);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Pago";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.num_fact,
+            this.fecha_venc_fact,
+            this.dni_cliente,
+            this.cuit_empresa,
+            this.totalFactura});
+            this.dataGridView1.Location = new System.Drawing.Point(9, 63);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(568, 118);
+            this.dataGridView1.TabIndex = 80;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(463, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.TabIndex = 79;
+            this.button1.Text = "Agregar Factura";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.agregarFactura);
+            // 
+            // medioPago
+            // 
+            this.medioPago.FormattingEnabled = true;
+            this.medioPago.Location = new System.Drawing.Point(213, 246);
+            this.medioPago.Name = "medioPago";
+            this.medioPago.Size = new System.Drawing.Size(231, 21);
+            this.medioPago.TabIndex = 78;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 251);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.TabIndex = 77;
+            this.label6.Text = "Medio de pago :";
             // 
             // comboSucursal
             // 
@@ -89,9 +128,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 225);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.Size = new System.Drawing.Size(119, 13);
             this.label5.TabIndex = 75;
-            this.label5.Text = "Sucursal";
+            this.label5.Text = "Codigo Postal Sucursal:";
             // 
             // label4
             // 
@@ -104,60 +143,10 @@
             // 
             // ImporteFact
             // 
-            this.ImporteFact.Location = new System.Drawing.Point(213, 191);
+            this.ImporteFact.Location = new System.Drawing.Point(213, 187);
             this.ImporteFact.Name = "ImporteFact";
             this.ImporteFact.Size = new System.Drawing.Size(231, 20);
             this.ImporteFact.TabIndex = 73;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 167);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 13);
-            this.label3.TabIndex = 72;
-            this.label3.Text = "Fecha de vencimiento Factura Elegida";
-            // 
-            // FechaVencFact
-            // 
-            this.FechaVencFact.Location = new System.Drawing.Point(213, 161);
-            this.FechaVencFact.Name = "FechaVencFact";
-            this.FechaVencFact.Size = new System.Drawing.Size(231, 20);
-            this.FechaVencFact.TabIndex = 71;
-            // 
-            // comboCliente
-            // 
-            this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(213, 125);
-            this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(231, 21);
-            this.comboCliente.TabIndex = 70;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 69;
-            this.label2.Text = "DNI Cliente:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 100);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "CUIT Empresa :";
-            // 
-            // comboEmpresas
-            // 
-            this.comboEmpresas.FormattingEnabled = true;
-            this.comboEmpresas.Location = new System.Drawing.Point(213, 92);
-            this.comboEmpresas.Name = "comboEmpresas";
-            this.comboEmpresas.Size = new System.Drawing.Size(231, 21);
-            this.comboEmpresas.TabIndex = 67;
             // 
             // comboFacturasAPagar
             // 
@@ -177,25 +166,9 @@
             this.label10.TabIndex = 59;
             this.label10.Text = "Numero de Factura:";
             // 
-            // FechaCobro
-            // 
-            this.FechaCobro.Location = new System.Drawing.Point(211, 59);
-            this.FechaCobro.Name = "FechaCobro";
-            this.FechaCobro.Size = new System.Drawing.Size(233, 20);
-            this.FechaCobro.TabIndex = 65;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 60;
-            this.label11.Text = "Fecha de Cobro";
-            // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(381, 316);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(514, 340);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 67;
@@ -205,7 +178,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(21, 316);
+            this.limpiar.Location = new System.Drawing.Point(21, 340);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 66;
@@ -215,7 +188,7 @@
             // 
             // registrarUnPago
             // 
-            this.registrarUnPago.Location = new System.Drawing.Point(192, 310);
+            this.registrarUnPago.Location = new System.Drawing.Point(251, 329);
             this.registrarUnPago.Name = "registrarUnPago";
             this.registrarUnPago.Size = new System.Drawing.Size(109, 34);
             this.registrarUnPago.TabIndex = 64;
@@ -223,28 +196,63 @@
             this.registrarUnPago.UseVisualStyleBackColor = true;
             this.registrarUnPago.Click += new System.EventHandler(this.registrarUnPago_Click);
             // 
-            // label6
+            // num_fact
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 251);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
-            this.label6.TabIndex = 77;
-            this.label6.Text = "Medio de pago :";
+            this.num_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.num_fact.HeaderText = "NUM FACT";
+            this.num_fact.Name = "num_fact";
+            this.num_fact.ReadOnly = true;
             // 
-            // medioPago
+            // fecha_venc_fact
             // 
-            this.medioPago.FormattingEnabled = true;
-            this.medioPago.Location = new System.Drawing.Point(213, 246);
-            this.medioPago.Name = "medioPago";
-            this.medioPago.Size = new System.Drawing.Size(231, 21);
-            this.medioPago.TabIndex = 78;
+            this.fecha_venc_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fecha_venc_fact.HeaderText = "FECHA VENC";
+            this.fecha_venc_fact.Name = "fecha_venc_fact";
+            this.fecha_venc_fact.ReadOnly = true;
+            // 
+            // dni_cliente
+            // 
+            this.dni_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dni_cliente.HeaderText = "DNI CLIENTE";
+            this.dni_cliente.Name = "dni_cliente";
+            this.dni_cliente.ReadOnly = true;
+            // 
+            // cuit_empresa
+            // 
+            this.cuit_empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cuit_empresa.HeaderText = "CUIT EMPRESA";
+            this.cuit_empresa.Name = "cuit_empresa";
+            this.cuit_empresa.ReadOnly = true;
+            // 
+            // totalFactura
+            // 
+            this.totalFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalFactura.HeaderText = "TOTAL";
+            this.totalFactura.Name = "totalFactura";
+            this.totalFactura.ReadOnly = true;
+            // 
+            // comboClientes
+            // 
+            this.comboClientes.FormattingEnabled = true;
+            this.comboClientes.Location = new System.Drawing.Point(213, 273);
+            this.comboClientes.Name = "comboClientes";
+            this.comboClientes.Size = new System.Drawing.Size(231, 21);
+            this.comboClientes.TabIndex = 81;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 280);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 81;
+            this.label1.Text = "DNI Cliente :";
             // 
             // PantallaPrincipalRegistroPagoFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 367);
+            this.ClientSize = new System.Drawing.Size(617, 367);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.registrarUnPago);
@@ -254,6 +262,7 @@
             this.Load += new System.EventHandler(this.PantallaPrincipalRegistroPagoFacturas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,21 +274,22 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox ImporteFact;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker FechaVencFact;
-        private System.Windows.Forms.ComboBox comboCliente;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboEmpresas;
         private System.Windows.Forms.ComboBox comboFacturasAPagar;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker FechaCobro;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
         private System.Windows.Forms.Button limpiar;
         private System.Windows.Forms.Button registrarUnPago;
         private System.Windows.Forms.ComboBox medioPago;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num_fact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_venc_fact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuit_empresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalFactura;
+        private System.Windows.Forms.ComboBox comboClientes;
+        private System.Windows.Forms.Label label1;
 
     }
 }

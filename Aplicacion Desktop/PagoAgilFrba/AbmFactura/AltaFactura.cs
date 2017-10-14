@@ -94,6 +94,8 @@ namespace PagoAgilFrba.AbmFactura
                MessageBox.Show("Se ha dado de alta correctamente la factura", "Correcto", MessageBoxButtons.OK);
                 this.limpiarTextos();
                 dataGridItems.ClearSelection();
+                Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
+                this.cambiarVisibilidades(formularioSiguiente);
             }
             else
             {

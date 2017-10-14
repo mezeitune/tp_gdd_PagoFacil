@@ -16,24 +16,13 @@ namespace PagoAgilFrba.RegistroPago
         {
             InitializeComponent();
         }
-
-        
-
+        decimal importePago;
+        int numPago;
+        DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
           
-
-                var cmd = new SqlCommand(
-                "select * from [SERVOMOTOR].[FACTURAS]  where NUMERO_FACTURA='" + comboFacturasAPagar.SelectedItem.ToString() + "';",
-                 Program.conexion()
-             );
-
-                var dataReader = cmd.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    FechaVencFact.Value= Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
-                    ImporteFact.Text = dataReader["TOTAL"].ToString();
-                }
+            
          }
         
 
@@ -43,13 +32,17 @@ namespace PagoAgilFrba.RegistroPago
 
         private void limpiar_Click(object sender, EventArgs e)
         {
+            this.limpiarTextos();
+        }
+        private void limpiarTextos() {
             ImporteFact.Clear();
             DateTimePicker fechaDeAhora = new DateTimePicker();
-            FechaVencFact.Value = fechaDeAhora.Value;
-            comboCliente.Items.Clear();
-            comboEmpresas.Items.Clear();
-            comboFacturasAPagar.Items.Clear();
-            comboSucursal.Items.Clear();
+
+            comboFacturasAPagar.SelectedItem = null;
+            comboSucursal.SelectedItem = null;
+            medioPago.SelectedItem = null;
+            this.dataGridView1.Rows.Clear();
+        
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
@@ -65,33 +58,78 @@ namespace PagoAgilFrba.RegistroPago
 
         private void registrarUnPago_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
 
-                var cmd = new SqlCommand(
-                     "insert into [SERVOMOTOR].[PAGOS] values ('"+FechaCobro.Value+"','"+FechaVencFact.Value+"','"+ImporteFact.Text+"','"+comboSucursal.SelectedItem.ToString()+"',"+medioPago.SelectedIndex+",'"+comboCliente.SelectedItem.ToString()+"')",
-                      Program.conexion()
-                  );
+                this.insertarPago();
+                this.actualizarEstadoEmpresa();
 
-                var dataReader = cmd.ExecuteReader();
-
-
-
-                MessageBox.Show("Se ha dado de alta el pago correctamente", "Todo bien", MessageBoxButtons.OK);
-
+                this.dataGridView1.Rows.Clear();
+                this.limpiarTextos();
+                MessageBox.Show("Se ha registrado el pago correctamente", "Todo bien", MessageBoxButtons.OK);
+                Form formularioSiguiente = new MenuPrincipal();
+                this.cambiarVisibilidades(formularioSiguiente);
             }
             else {
                 MessageBox.Show("Algun Campo no es correcto o se encuentra vacio", "Error daros de entrada", MessageBoxButtons.OK);
             }
+        }
+        private void actualizarEstadoEmpresa() {
+           
+            var cmdPago = new SqlCommand(
+                         "select * from [SERVOMOTOR].[PAGOS] where DNI_CLIENTE='" + comboClientes.SelectedItem.ToString() + "' AND FECHA_COBRO='" + fechaDeAhora.Value+ "';",
+                          Program.conexion()
+                      );
+
+            var dataReaderPagos = cmdPago.ExecuteReader();
+            while(dataReaderPagos.Read()){
+
+                numPago = Convert.ToInt32( dataReaderPagos["NUMERO_PAGO"]);
+            }
+
+            this.recorrerListaFacturas();
+           
+        
+        }
+        private void recorrerListaFacturas() {
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+
+                    var cmd = new SqlCommand(
+                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='PAGA',NUMERO_PAGO=" + numPago + " where NUMERO_FACTURA='" +row.Cells[0].Value.ToString() + "';",
+                             Program.conexion()
+                         );
+
+                    var dataReader = cmd.ExecuteReader();
+
+
+                }
+            }
+
+
+            
+        
+        }
+        private void insertarPago() {
+            var cmd = new SqlCommand(
+                     "insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + medioPago.SelectedIndex + ",'" + comboClientes.SelectedItem.ToString() + "')",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+        
+        
         }
         private bool todosLosCamposLLenos()
         {
 
             Boolean huboErrores = false;
 
-            huboErrores = Validacion.estaCheckeadoComboBox(comboCliente) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresas) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboFacturasAPagar) || huboErrores;
+          
+          
             huboErrores = Validacion.estaCheckeadoComboBox(comboSucursal) || huboErrores;
             huboErrores = Validacion.esVacio(ImporteFact, "importeFactura", true) || huboErrores;
             
@@ -103,30 +141,42 @@ namespace PagoAgilFrba.RegistroPago
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            huboErrores = !Validacion.esNumero(ImporteFact, "numero factura", true) || huboErrores;
-           
-
-            huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
-           
+            
+            
             return huboErrores;
         }
 
         private void PantallaPrincipalRegistroPagoFacturas_Load(object sender, EventArgs e)
         {
             this.levantarFacturas();
-            this.levantarEmpresas();
-            this.levantarClientes();
+            
             this.levantarSucursales();
             this.levantarMediosDePago();
-            FechaCobro.Enabled = false;
-            FechaVencFact.Enabled = false;
+            this.levantarClientes();
+            registrarUnPago.Enabled = false;
             ImporteFact.Enabled = false;
+        }
+
+        private void levantarClientes()
+        {
+            var cmd = new SqlCommand(
+                    "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1 ",
+                     Program.conexion()
+                 );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                this.comboClientes.Items.Add(dataReader["DNI"]);
+            }
+
+
         }
 
         private void levantarFacturas()
         {
             var cmd = new SqlCommand(
-                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS where ESTADO='NO PAGA' ",
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='NO PAGA' AND e.ESTADO_ACTIVACION=1 ",
                      Program.conexion()
                  );
 
@@ -139,34 +189,7 @@ namespace PagoAgilFrba.RegistroPago
 
         }
 
-        private void levantarClientes() {
-            var cmdCliente = new SqlCommand(
-                   "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",
-                    Program.conexion()
-                    );
-            var dataReader = cmdCliente.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                comboCliente.Items.Add(dataReader["DNI"]);
-
-            }
-        }
-
-        private void levantarEmpresas() {
-
-            var cmdEmpresa = new SqlCommand(
-             "select * from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
-              Program.conexion()
-              );
-            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
-
-            while (dataReaderEmpresa.Read())
-            {
-                comboEmpresas.Items.Add(dataReaderEmpresa["CUIT"]);
-                
-            }
-        }
+       
 
         private void levantarSucursales() {
 
@@ -178,7 +201,7 @@ namespace PagoAgilFrba.RegistroPago
             var dataReader = cmd.ExecuteReader();
             while (dataReader.Read())
             {
-               comboSucursal.Items.Add(dataReader["DIRECCION"]);
+               comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
 
              
             }
@@ -188,7 +211,7 @@ namespace PagoAgilFrba.RegistroPago
         {
 
             var cmd = new SqlCommand(
-                     "select * from [SERVOMOTOR].MEDIOS_DE_PAGO ;",
+                     "select * from [SERVOMOTOR].MEDIOS_DE_PAGO order by ID_MEDPAGO ;",
                       Program.conexion()
                   );
 
@@ -200,6 +223,36 @@ namespace PagoAgilFrba.RegistroPago
 
             }
 
+        }
+
+        private void agregarFactura(object sender, EventArgs e)
+        {
+           
+            var cmd = new SqlCommand(
+                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= '"+comboFacturasAPagar.SelectedItem.ToString()+"';",
+                Program.conexion()
+            );
+
+            var dataReader = cmd.ExecuteReader();
+            comboFacturasAPagar.Items.Remove(comboFacturasAPagar.SelectedItem);
+            comboFacturasAPagar.SelectedItem = null;
+
+            while (dataReader.Read())
+            {
+                
+                this.dataGridView1.Rows.Add(
+                    dataReader["NUMERO_FACTURA"],
+                    dataReader["FECHA_VENCIMIENTO"],
+                    dataReader["DNI_CLIENTE"],
+                    dataReader["CUIT_EMPRESA"],
+                    dataReader["TOTAL"]
+                   
+                );
+                importePago += Convert.ToDecimal(dataReader["TOTAL"]);
+            }
+            
+            ImporteFact.Text = Convert.ToString(importePago);
+            registrarUnPago.Enabled = true;
         }
 
     }

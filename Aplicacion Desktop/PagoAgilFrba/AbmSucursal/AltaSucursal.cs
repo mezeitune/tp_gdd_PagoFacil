@@ -45,6 +45,9 @@ namespace PagoAgilFrba.AbmSucursal
                 var dataReaderFactura = cmd.ExecuteReader();
 
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+                Form formularioSiguiente = new AbmSucursal.Form1();
+                this.cambiarVisibilidades(formularioSiguiente);
+
             }
         }
         private bool todosLosCamposLLenos()
