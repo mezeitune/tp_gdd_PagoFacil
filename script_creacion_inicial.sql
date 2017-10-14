@@ -10,10 +10,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 
-GO
-if exists (select * from dbo.sysobjects where id =
-object_id(N'[SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
-drop trigger [SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]
 
 
 GO
@@ -78,17 +74,13 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[EMPRESAS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[EMPRESAS]
 
+
+
+
 GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[PAGOS]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[PAGOS]
-
-GO
-if exists (select * from dbo.sysobjects where id =
-object_id(N'[SERVOMOTOR].[CLIENTES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
-drop table [SERVOMOTOR].[CLIENTES]
-
-
 
 
 
@@ -104,6 +96,15 @@ GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[SUCURSALES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
 drop table [SERVOMOTOR].[SUCURSALES]
+
+
+
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[CLIENTES]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [SERVOMOTOR].[CLIENTES]
+
 
 
 
@@ -124,7 +125,10 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[obtenerFechaDeHoy]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
 drop function [SERVOMOTOR].[obtenerFechaDeHoy]
 
-
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[crearTablaFecha]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[ingresarDatosDelCliente]
 
 GO
 if exists (select * from dbo.sysobjects where id =
@@ -151,8 +155,6 @@ GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[datetime_between]') AND type in (N'FN', N'IF',N'TF', N'FS', N'FT'))
 drop function [SERVOMOTOR].[datetime_between]
-
-
 
 
 GO
@@ -233,7 +235,7 @@ GO
 
 -- Tabla Sucursales: 
 CREATE TABLE [SERVOMOTOR].[SUCURSALES](
-	[COD_POSTAL] [varchar] (20) NOT NULL,
+	[COD_POSTAL] [VARCHAR] (20) NOT NULL,
 	[NOMBRE] [varchar] (50) UNIQUE NOT NULL,
 	[DIRECCION] [varchar] (50) UNIQUE,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
@@ -318,27 +320,6 @@ CREATE TABLE [SERVOMOTOR].[MEDIOS_DE_PAGO](
 ) ON [PRIMARY]
 
 
--- Tabla CLIENTES: 
-CREATE TABLE [SERVOMOTOR].[CLIENTES](
-	[DNI] [varchar](255) NOT NULL,
-	[NOMBRE] [varchar] (255) NOT NULL,
-	[APELLIDO] [varchar] (255) NOT NULL,
-	[MAIL] [varchar] (255) NOT NULL,
-	[TELEFONO] [varchar] (255) NULL,
-	[CALLE] [varchar] (255) NOT NULL,
-	[PISO] [varchar] (255) NULL,
-	[DEPTO] [varchar] (255) NULL,
-	[LOCALIDAD] [varchar] (255) NULL,
-	[FECHA_NACIMIENTO] [datetime] NOT NULL,
-	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
-	[ESTADO_HABILITACION] [bit] DEFAULT 1,
- CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
-(
-	[DNI] 
-)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-
 --Tabla PAGOS
 CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[NUMERO_PAGO] [varchar] (20) NOT NULL,
@@ -347,7 +328,6 @@ CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[IMPORTE] [numeric] (18,2) NOT NULL,
 	[COD_POSTAL] [varchar](20) NOT NULL,
 	[ID_MEDPAGO] [tinyint] NOT NULL,
-	[DNI_CLIENTE] [varchar](255)  NOT NULL,
  CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED 
 (
 	[NUMERO_PAGO] 
@@ -362,10 +342,6 @@ REFERENCES [SERVOMOTOR].[SUCURSALES] ([COD_POSTAL])
 
 ALTER TABLE [SERVOMOTOR].[PAGOS]  WITH CHECK ADD  CONSTRAINT [FK_PAGOS_MEDPAGO] FOREIGN KEY([ID_MEDPAGO])
 REFERENCES [SERVOMOTOR].[MEDIOS_DE_PAGO] ([ID_MEDPAGO])
-
-
-ALTER TABLE [SERVOMOTOR].[PAGOS]  WITH CHECK ADD  CONSTRAINT [FK_PAGOS_DNICLI] FOREIGN KEY([DNI_CLIENTE])
-REFERENCES [SERVOMOTOR].[CLIENTES] ([DNI])
 
 
 -- Tabla DEVOLUCIONEs: 
@@ -430,6 +406,25 @@ ALTER TABLE [SERVOMOTOR].[RENDICIONES]  WITH CHECK ADD  CONSTRAINT [FK_RENDICION
 REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 
+-- Tabla CLIENTES: 
+CREATE TABLE [SERVOMOTOR].[CLIENTES](
+	[DNI] [varchar](255) NOT NULL,
+	[NOMBRE] [varchar] (255) NOT NULL,
+	[APELLIDO] [varchar] (255) NOT NULL,
+	[MAIL] [varchar] (255) NOT NULL,
+	[TELEFONO] [varchar] (255) NULL,
+	[CALLE] [varchar] (255) NOT NULL,
+	[PISO] [varchar] (255) NULL,
+	[DEPTO] [varchar] (255) NULL,
+	[LOCALIDAD] [varchar] (255) NULL,
+	[FECHA_NACIMIENTO] [datetime] NOT NULL,
+	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,
+ CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
+(
+	[DNI] 
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
 
 
 
@@ -594,15 +589,13 @@ INSERT INTO [SERVOMOTOR].[PAGOS]
 		FECHA_COBRO ,
 		IMPORTE,
 		COD_POSTAL,
-		ID_MEDPAGO,
-		DNI_CLIENTE
+		ID_MEDPAGO
 	)
 SELECT  DISTINCT Pago_nro , 
 		Pago_Fecha,  
 		Total , 
 		Sucursal_Codigo_Postal,
-		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion),		
-		[Cliente-Dni]				 		
+		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion)				 		
 FROM gd_esquema.Maestra where Pago_nro is not null
 
 
@@ -770,24 +763,3 @@ BEGIN
 
 	return 0
 END
-
-/**************************** <<TRIGGERS>> ******************************/
-GO
-CREATE TRIGGER cambiarTotalDelasFacturasPorModificacionItem ON [SERVOMOTOR].ITEMS
-AFTER UPDATE
-AS BEGIN
-
-	UPDATE [SERVOMOTOR].FACTURAS
-				SET Total=SumDetalle.Total
-	FROM [SERVOMOTOR].FACTURAS F
-	JOIN    (SELECT NUMERO_FACTURA, SUM(MONTO*CANTIDAD) AS Total
-				  FROM [SERVOMOTOR].ITEMS
-				  GROUP BY NUMERO_FACTURA) AS SumDetalle
-	ON     F.NUMERO_FACTURA=SumDetalle.NUMERO_FACTURA
-	JOIN  (SELECT NUMERO_FACTURA FROM Inserted
-				UNION
-				SELECT NUMERO_FACTURA FROM Deleted) AS Modificados
-	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
-
-END
-
