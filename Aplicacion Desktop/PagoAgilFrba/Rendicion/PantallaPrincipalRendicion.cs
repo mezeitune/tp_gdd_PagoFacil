@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.Rendicion
 {
     public partial class PantallaPrincipalRendicion : Form
     {
+        decimal importeTotalARendir=0,importeComisionARendir=0;
         public PantallaPrincipalRendicion()
         {
             InitializeComponent();
@@ -20,16 +22,26 @@ namespace PagoAgilFrba.Rendicion
         private void PantallaPrincipalRendicion_Load(object sender, EventArgs e)
         {
             CantidadFacturasRendidas.Enabled = false;
-            comisionTotal.Enabled = false;
-            importeTotalTodasLasRendiciones.Enabled = false;
            
+            importeTotalRendicion.Enabled = false;
+            this.levantarEmpresas();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //aca hay que mostrar las facturas que se fueron agregando (creo q hay que hacer una lista en la otra pantalla y pasarsela por parametro aca pero ni idea)
-        }
+        private void levantarEmpresas() {
+            var cmdEmpresa = new SqlCommand(
+         "select CUIT from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
+          Program.conexion()
+          );
+            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
 
+            while (dataReaderEmpresa.Read())
+            {
+                comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
+
+            }
+        
+        
+        }
         private void irAPaginaAgregarFacturaARendir_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new Rendicion.AgregarEmpresaARendir();
@@ -50,7 +62,7 @@ namespace PagoAgilFrba.Rendicion
         private void limpiar_Click(object sender, EventArgs e)
         {
             porcentajeComision.Clear();
-            comboEmpresas.Items.Clear();
+            comboEmpresa.Items.Clear();
             DateTimePicker fechaDeAhora = new DateTimePicker();
             FechaRendicion.Value = fechaDeAhora.Value;
            
@@ -58,10 +70,17 @@ namespace PagoAgilFrba.Rendicion
 
         private void registrarRendicion_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
+               decimal totalComision = Convert.ToDecimal(Convert.ToDecimal(porcentajeComision.Text) * Convert.ToDecimal(importeTotalRendicion.Text) / 100);
 
-                //aca se da de alta la factura en la BDD
+                var cmd = new SqlCommand(
+               "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES ( '" + FechaRendicion.Value + "'," + Convert.ToInt32(porcentajeComision.Text) + "," + Convert.ToInt32(CantidadFacturasRendidas.Text) + "," + totalComision + "," + Convert.ToDecimal(importeTotalRendicion.Text) + ",'"+comboEmpresa.SelectedItem.ToString()+"');",
+               Program.conexion()
+           );
+
+                var dataReader = cmd.ExecuteReader();
+                
 
                 MessageBox.Show("Se ha rendido las facturas correctamente", "Todo bien", MessageBoxButtons.OK);
 
@@ -78,7 +97,7 @@ namespace PagoAgilFrba.Rendicion
             Boolean huboErrores = false;
 
           
-            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresas) || huboErrores;
+            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
             huboErrores = Validacion.esVacio(porcentajeComision, "Porcentaje comision", true) || huboErrores;
 
 
@@ -89,27 +108,50 @@ namespace PagoAgilFrba.Rendicion
         {
             Boolean huboErrores = false;
             huboErrores = !Validacion.esNumero(porcentajeComision, "Porcentaje comision", true) || huboErrores;
-            
+            huboErrores = !Validacion.estaEntreLimites(porcentajeComision,0,100,false,porcentajeComision.Text);
 
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaRendicion) || huboErrores;
             
             return huboErrores;
         }
 
-        private void CantidadFacturasRendidas_TextChanged(object sender, EventArgs e)
+        private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //hacer un count de la lista de facturas que selecciono para rendir
+            var cmd = new SqlCommand(
+                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE CUIT_EMPRESA= '" +comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA';",
+                Program.conexion()
+            );
+
+            var dataReader = cmd.ExecuteReader();
+           
+
+            while (dataReader.Read())
+            {
+
+                this.dataGridView1.Rows.Add(
+                    dataReader["NUMERO_FACTURA"],
+                    dataReader["TOTAL"]
+
+                );
+                importeTotalARendir+= Convert.ToDecimal(dataReader["TOTAL"]);
+            }
+            CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count-1).ToString();
+            importeTotalRendicion.Text = importeTotalARendir.ToString();
         }
 
-        private void comisionTotal_TextChanged(object sender, EventArgs e)
+        private void porcentajeComision_TextChanged(object sender, EventArgs e)
         {
-            //del importe a cobrar poner el dinero correspondiente a la comision
-        }
+            
 
-        private void importeTotalTodasLasRendiciones_TextChanged(object sender, EventArgs e)
+       }
+
+        private void label3_Click(object sender, EventArgs e)
         {
-            //sumar el importe la comision con el total a cobrar
+
         }
+       
+
+       
 
     }
 }
