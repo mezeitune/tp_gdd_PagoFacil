@@ -161,7 +161,7 @@ namespace PagoAgilFrba.RegistroPago
         private void levantarClientes()
         {
             var cmd = new SqlCommand(
-                    "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1 ",
+                    "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1 ; ",
                      Program.conexion()
                  );
 
@@ -177,7 +177,7 @@ namespace PagoAgilFrba.RegistroPago
         private void levantarFacturas()
         {
             var cmd = new SqlCommand(
-                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='NO PAGA' AND e.ESTADO_ACTIVACION=1 ",
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='NO PAGA' AND e.ESTADO_ACTIVACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
                      Program.conexion()
                  );
 
