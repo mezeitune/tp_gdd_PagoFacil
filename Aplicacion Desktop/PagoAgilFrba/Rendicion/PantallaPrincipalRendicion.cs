@@ -79,7 +79,8 @@ namespace PagoAgilFrba.Rendicion
               
 
                 MessageBox.Show("Se ha rendido las facturas correctamente", "Todo bien", MessageBoxButtons.OK);
-
+                Form formularioSiguiente = new MenuPrincipal();
+                this.cambiarVisibilidades(formularioSiguiente);
             }
             else {
                 MessageBox.Show("Algun campo esta vacio o ha ingresado un dato de forma incorrecta", "Error en los datos de entrada", MessageBoxButtons.OK);
@@ -111,7 +112,7 @@ namespace PagoAgilFrba.Rendicion
         }
 
         private void cambiarEstadoFacturas() {
-            MessageBox.Show("Se ha rendido las facturas correctamente"+idRendicion.ToString(), "Todo bien", MessageBoxButtons.OK);
+           
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[0].Value != null)
@@ -168,7 +169,7 @@ namespace PagoAgilFrba.Rendicion
         private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             var cmd = new SqlCommand(
-                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE CUIT_EMPRESA= '" +comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA';",
+                "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
                 Program.conexion()
             );
 
@@ -184,6 +185,7 @@ namespace PagoAgilFrba.Rendicion
 
                 );
                 importeTotalARendir+= Convert.ToDecimal(dataReader["TOTAL"]);
+               
             }
             CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count-1).ToString();
             importeTotalRendicion.Text = importeTotalARendir.ToString();
