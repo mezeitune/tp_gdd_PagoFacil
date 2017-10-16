@@ -13,7 +13,8 @@ namespace PagoAgilFrba.Rendicion
 {
     public partial class PantallaPrincipalRendicion : Form
     {
-        decimal importeTotalARendir=0,importeComisionARendir=0;
+        decimal importeTotalARendir=0,totalComision=0;
+        int idRendicion;
         public PantallaPrincipalRendicion()
         {
             InitializeComponent();
@@ -72,15 +73,10 @@ namespace PagoAgilFrba.Rendicion
         {
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-               decimal totalComision = Convert.ToDecimal(Convert.ToDecimal(porcentajeComision.Text) * Convert.ToDecimal(importeTotalRendicion.Text) / 100);
-
-                var cmd = new SqlCommand(
-               "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES ( '" + FechaRendicion.Value + "'," + Convert.ToInt32(porcentajeComision.Text) + "," + Convert.ToInt32(CantidadFacturasRendidas.Text) + "," + totalComision + "," + Convert.ToDecimal(importeTotalRendicion.Text) + ",'"+comboEmpresa.SelectedItem.ToString()+"');",
-               Program.conexion()
-           );
-
-                var dataReader = cmd.ExecuteReader();
-                
+                this.darDeAltaRendicion();
+                this.buscarRendicion();
+                this.cambiarEstadoFacturas();
+              
 
                 MessageBox.Show("Se ha rendido las facturas correctamente", "Todo bien", MessageBoxButtons.OK);
 
@@ -89,6 +85,60 @@ namespace PagoAgilFrba.Rendicion
                 MessageBox.Show("Algun campo esta vacio o ha ingresado un dato de forma incorrecta", "Error en los datos de entrada", MessageBoxButtons.OK);
             }
 
+        }
+
+
+
+        private void darDeAltaRendicion() {
+
+            totalComision = Convert.ToDecimal(Convert.ToDecimal(porcentajeComision.Text) * Convert.ToDecimal(importeTotalRendicion.Text) / 100);
+
+            var cmd = new SqlCommand(
+           "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES (@fecha,@porc_com,@cant_fact,@precio_comision,@total_rendido,@cuit_empresa);",
+           Program.conexion()
+       );
+            cmd.Parameters.Add("@fecha", SqlDbType.DateTime, 13).Value = FechaRendicion.Value;
+            cmd.Parameters.Add("@porc_com", SqlDbType.Int, 20).Value = Convert.ToInt32(porcentajeComision.Text);
+            cmd.Parameters.Add("@cant_fact", SqlDbType.Int, 20).Value = Convert.ToInt32(CantidadFacturasRendidas.Text);
+            cmd.Parameters.Add("@precio_comision", SqlDbType.Decimal, 20).Value = totalComision;
+            cmd.Parameters.Add("@total_rendido", SqlDbType.Decimal).Value = Convert.ToDecimal(importeTotalRendicion.Text);
+            cmd.Parameters.Add("@cuit_empresa", SqlDbType.VarChar, 13).Value = comboEmpresa.SelectedItem.ToString();
+
+
+            var dataReader = cmd.ExecuteReader();
+                
+        
+        }
+
+        private void cambiarEstadoFacturas() {
+            MessageBox.Show("Se ha rendido las facturas correctamente"+idRendicion.ToString(), "Todo bien", MessageBoxButtons.OK);
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+
+                    var cmd = new SqlCommand(
+                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='RENDIDA',ID_RENDICION=" + idRendicion + " where NUMERO_FACTURA='" + row.Cells[0].Value.ToString() + "';",
+                             Program.conexion()
+                         );
+
+                    var dataReader = cmd.ExecuteReader();
+
+                }
+            }
+        
+        }
+        private void buscarRendicion(){
+        var cmd = new SqlCommand(
+                            "select * from [SERVOMOTOR].[RENDICIONES] where FECHA_COBRO='" + FechaRendicion.Value + "';",
+                             Program.conexion()
+                         );
+
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        idRendicion = Convert.ToInt32(dataReader["ID_RENDICION"]);
+                    }
         }
 
         private bool todosLosCamposLLenos()

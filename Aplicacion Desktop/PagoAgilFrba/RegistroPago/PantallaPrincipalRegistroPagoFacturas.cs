@@ -105,6 +105,7 @@ namespace PagoAgilFrba.RegistroPago
 
                     var dataReader = cmd.ExecuteReader();
 
+                    
 
                 }
             }
