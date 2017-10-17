@@ -29,44 +29,37 @@
         private void InitializeComponent()
         {
             this.ModificarUnRol = new System.Windows.Forms.Button();
-            this.rolParaModificar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ModificarUnRol
             // 
-            this.ModificarUnRol.Location = new System.Drawing.Point(163, 124);
+            this.ModificarUnRol.Location = new System.Drawing.Point(162, 205);
+            this.ModificarUnRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ModificarUnRol.Name = "ModificarUnRol";
-            this.ModificarUnRol.Size = new System.Drawing.Size(116, 40);
+            this.ModificarUnRol.Size = new System.Drawing.Size(155, 27);
             this.ModificarUnRol.TabIndex = 5;
             this.ModificarUnRol.Text = "Modificar Rol";
             this.ModificarUnRol.UseVisualStyleBackColor = true;
             this.ModificarUnRol.Click += new System.EventHandler(this.ModificarRol_Click);
             // 
-            // rolParaModificar
-            // 
-            this.rolParaModificar.FormattingEnabled = true;
-            this.rolParaModificar.Location = new System.Drawing.Point(215, 51);
-            this.rolParaModificar.Name = "rolParaModificar";
-            this.rolParaModificar.Size = new System.Drawing.Size(197, 21);
-            this.rolParaModificar.TabIndex = 4;
-            this.rolParaModificar.SelectedIndexChanged += new System.EventHandler(this.rolParaModificar_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 51);
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 13);
+            this.label1.Size = new System.Drawing.Size(271, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Seleccione un Rol para modificarlo";
+            this.label1.Text = "Seleccione un rol para modificar:";
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(347, 178);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(463, 205);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 62;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -74,13 +67,13 @@
             // 
             // ModificarRol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 213);
+            this.ClientSize = new System.Drawing.Size(596, 246);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.ModificarUnRol);
-            this.Controls.Add(this.rolParaModificar);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ModificarRol";
             this.Text = "ModificarRol";
             this.ResumeLayout(false);
@@ -91,7 +84,6 @@
         #endregion
 
         private System.Windows.Forms.Button ModificarUnRol;
-        private System.Windows.Forms.ComboBox rolParaModificar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
     }

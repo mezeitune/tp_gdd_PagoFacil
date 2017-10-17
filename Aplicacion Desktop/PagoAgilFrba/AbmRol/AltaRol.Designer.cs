@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label labelNombreDeRol;
+            System.Windows.Forms.GroupBox groupBox;
             this.nombreRol = new System.Windows.Forms.TextBox();
             this.DarDeAlta = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
             this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
             labelNombreDeRol = new System.Windows.Forms.Label();
+            groupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
+            groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNombreDeRol
             // 
             labelNombreDeRol.AutoSize = true;
-            labelNombreDeRol.Location = new System.Drawing.Point(13, 9);
+            labelNombreDeRol.Location = new System.Drawing.Point(3, 21);
             labelNombreDeRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             labelNombreDeRol.Name = "labelNombreDeRol";
             labelNombreDeRol.Size = new System.Drawing.Size(119, 15);
@@ -50,16 +53,16 @@
             // 
             // nombreRol
             // 
-            this.nombreRol.Location = new System.Drawing.Point(140, 6);
+            this.nombreRol.Location = new System.Drawing.Point(130, 18);
             this.nombreRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.nombreRol.Name = "nombreRol";
-            this.nombreRol.Size = new System.Drawing.Size(298, 25);
+            this.nombreRol.Size = new System.Drawing.Size(348, 25);
             this.nombreRol.TabIndex = 1;
             this.nombreRol.Leave += new System.EventHandler(this.nombreRol_Leave);
             // 
             // DarDeAlta
             // 
-            this.DarDeAlta.Location = new System.Drawing.Point(295, 243);
+            this.DarDeAlta.Location = new System.Drawing.Point(357, 277);
             this.DarDeAlta.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DarDeAlta.Name = "DarDeAlta";
             this.DarDeAlta.Size = new System.Drawing.Size(143, 27);
@@ -71,7 +74,7 @@
             // volverALaPaginaAnterior
             // 
             this.volverALaPaginaAnterior.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(16, 243);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(16, 277);
             this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
@@ -87,11 +90,11 @@
             this.ListadoFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListadoFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Funcionalidad});
-            this.ListadoFuncionalidades.Location = new System.Drawing.Point(16, 37);
+            this.ListadoFuncionalidades.Location = new System.Drawing.Point(6, 49);
             this.ListadoFuncionalidades.Name = "ListadoFuncionalidades";
             this.ListadoFuncionalidades.RowTemplate.Height = 27;
             this.ListadoFuncionalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.ListadoFuncionalidades.Size = new System.Drawing.Size(422, 200);
+            this.ListadoFuncionalidades.Size = new System.Drawing.Size(472, 200);
             this.ListadoFuncionalidades.TabIndex = 62;
             this.ListadoFuncionalidades.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoFuncionalidades_CellValueChanged);
             // 
@@ -101,17 +104,27 @@
             this.Funcionalidad.HeaderText = "Funcionalidad";
             this.Funcionalidad.Name = "Funcionalidad";
             // 
+            // groupBox
+            // 
+            groupBox.Controls.Add(labelNombreDeRol);
+            groupBox.Controls.Add(this.ListadoFuncionalidades);
+            groupBox.Controls.Add(this.nombreRol);
+            groupBox.Location = new System.Drawing.Point(16, 12);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new System.Drawing.Size(484, 259);
+            groupBox.TabIndex = 63;
+            groupBox.TabStop = false;
+            groupBox.Text = "Datos";
+            // 
             // AltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.volverALaPaginaAnterior;
-            this.ClientSize = new System.Drawing.Size(452, 281);
-            this.Controls.Add(this.ListadoFuncionalidades);
+            this.ClientSize = new System.Drawing.Size(516, 316);
+            this.Controls.Add(groupBox);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.DarDeAlta);
-            this.Controls.Add(this.nombreRol);
-            this.Controls.Add(labelNombreDeRol);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
@@ -119,8 +132,9 @@
             this.Text = "Alta rol";
             this.Load += new System.EventHandler(this.AltaRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).EndInit();
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
