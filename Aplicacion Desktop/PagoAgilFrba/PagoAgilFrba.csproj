@@ -142,12 +142,6 @@
     <Compile Include="AbmFactura\PantallaPrincipalABMFactura.Designer.cs">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\AltaFuncionalidadesParaRolModificado.Designer.cs">
-      <DependentUpon>AltaFuncionalidadesParaRolModificado.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmRol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,11 +160,11 @@
     <Compile Include="AbmRol\ModificarDatosRol.Designer.cs">
       <DependentUpon>ModificarDatosRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\ModificarRol.cs">
+    <Compile Include="AbmRol\SeleccionarRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\ModificarRol.Designer.cs">
-      <DependentUpon>ModificarRol.cs</DependentUpon>
+    <Compile Include="AbmRol\SeleccionarRol.Designer.cs">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\PantallaPrincipalABMRol.cs">
       <SubType>Form</SubType>
@@ -303,9 +297,6 @@
     <EmbeddedResource Include="AbmFactura\PantallaPrincipalABMFactura.resx">
       <DependentUpon>PantallaPrincipalABMFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\AltaFuncionalidadesParaRolModificado.resx">
-      <DependentUpon>AltaFuncionalidadesParaRolModificado.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,8 +306,8 @@
     <EmbeddedResource Include="AbmRol\ModificarDatosRol.resx">
       <DependentUpon>ModificarDatosRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRol\ModificarRol.resx">
-      <DependentUpon>ModificarRol.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRol\SeleccionarRol.resx">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\PantallaPrincipalABMRol.resx">
       <DependentUpon>PantallaPrincipalABMRol.cs</DependentUpon>

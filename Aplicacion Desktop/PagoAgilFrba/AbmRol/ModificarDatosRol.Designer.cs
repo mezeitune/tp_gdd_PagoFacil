@@ -28,106 +28,132 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ModificarRol = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.GroupBox groupBox;
+            System.Windows.Forms.Label labelNombreDeRol;
+            this.EstadoHabilitacion = new System.Windows.Forms.CheckBox();
+            this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
             this.nombreRol = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
+            this.Actualizar = new System.Windows.Forms.Button();
+            this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            groupBox = new System.Windows.Forms.GroupBox();
+            labelNombreDeRol = new System.Windows.Forms.Label();
+            groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
-            // ModificarRol
+            // groupBox
             // 
-            this.ModificarRol.Location = new System.Drawing.Point(173, 294);
-            this.ModificarRol.Name = "ModificarRol";
-            this.ModificarRol.Size = new System.Drawing.Size(107, 38);
-            this.ModificarRol.TabIndex = 11;
-            this.ModificarRol.Text = "Modificar Rol";
-            this.ModificarRol.UseVisualStyleBackColor = true;
-            this.ModificarRol.Click += new System.EventHandler(this.ModificarRol_Click);
+            groupBox.Controls.Add(this.EstadoHabilitacion);
+            groupBox.Controls.Add(labelNombreDeRol);
+            groupBox.Controls.Add(this.ListadoFuncionalidades);
+            groupBox.Controls.Add(this.nombreRol);
+            groupBox.Location = new System.Drawing.Point(12, 12);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new System.Drawing.Size(484, 285);
+            groupBox.TabIndex = 66;
+            groupBox.TabStop = false;
+            groupBox.Text = "Datos";
             // 
-            // panel1
+            // EstadoHabilitacion
             // 
-            this.panel1.Location = new System.Drawing.Point(91, 137);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(317, 118);
-            this.panel1.TabIndex = 10;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.EstadoHabilitacion.AutoSize = true;
+            this.EstadoHabilitacion.Location = new System.Drawing.Point(7, 256);
+            this.EstadoHabilitacion.Name = "EstadoHabilitacion";
+            this.EstadoHabilitacion.Size = new System.Drawing.Size(133, 19);
+            this.EstadoHabilitacion.TabIndex = 63;
+            this.EstadoHabilitacion.Text = "&Habilitar rol";
+            this.EstadoHabilitacion.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // labelNombreDeRol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Funcionalidades Rol";
+            labelNombreDeRol.AutoSize = true;
+            labelNombreDeRol.Location = new System.Drawing.Point(3, 21);
+            labelNombreDeRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelNombreDeRol.Name = "labelNombreDeRol";
+            labelNombreDeRol.Size = new System.Drawing.Size(119, 15);
+            labelNombreDeRol.TabIndex = 0;
+            labelNombreDeRol.Text = "&Nombre de rol:";
             // 
-            // button1
+            // ListadoFuncionalidades
             // 
-            this.button1.Location = new System.Drawing.Point(173, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Agregar Funcionalidad";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.irAAgregarFuncionalidades_Click);
+            this.ListadoFuncionalidades.AllowUserToResizeColumns = false;
+            this.ListadoFuncionalidades.AllowUserToResizeRows = false;
+            this.ListadoFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListadoFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Funcionalidad});
+            this.ListadoFuncionalidades.Location = new System.Drawing.Point(6, 49);
+            this.ListadoFuncionalidades.Name = "ListadoFuncionalidades";
+            this.ListadoFuncionalidades.RowTemplate.Height = 27;
+            this.ListadoFuncionalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.ListadoFuncionalidades.Size = new System.Drawing.Size(472, 200);
+            this.ListadoFuncionalidades.TabIndex = 62;
+            this.ListadoFuncionalidades.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoFuncionalidades_CellValueChanged);
             // 
             // nombreRol
             // 
-            this.nombreRol.Location = new System.Drawing.Point(173, 25);
+            this.nombreRol.Location = new System.Drawing.Point(130, 18);
+            this.nombreRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.nombreRol.Name = "nombreRol";
-            this.nombreRol.Size = new System.Drawing.Size(203, 20);
-            this.nombreRol.TabIndex = 7;
-            this.nombreRol.TextChanged += new System.EventHandler(this.nombreRol_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre Rol";
+            this.nombreRol.Size = new System.Drawing.Size(348, 25);
+            this.nombreRol.TabIndex = 1;
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(421, 332);
+            this.volverALaPaginaAnterior.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(12, 303);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
-            this.volverALaPaginaAnterior.TabIndex = 63;
-            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
+            this.volverALaPaginaAnterior.TabIndex = 65;
+            this.volverALaPaginaAnterior.Text = "&Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
-            this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
+            // 
+            // Actualizar
+            // 
+            this.Actualizar.Location = new System.Drawing.Point(353, 303);
+            this.Actualizar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Actualizar.Name = "Actualizar";
+            this.Actualizar.Size = new System.Drawing.Size(143, 27);
+            this.Actualizar.TabIndex = 64;
+            this.Actualizar.Text = "&Actualizar";
+            this.Actualizar.UseVisualStyleBackColor = true;
+            this.Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
+            // 
+            // Funcionalidad
+            // 
+            this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Funcionalidad.HeaderText = "Funcionalidad";
+            this.Funcionalidad.Name = "Funcionalidad";
             // 
             // ModificarDatosRol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 367);
+            this.ClientSize = new System.Drawing.Size(508, 342);
+            this.Controls.Add(groupBox);
             this.Controls.Add(this.volverALaPaginaAnterior);
-            this.Controls.Add(this.ModificarRol);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.nombreRol);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Actualizar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
             this.Name = "ModificarDatosRol";
-            this.Text = "ModificarDatosRol";
+            this.Text = "Modificar rol";
+            this.Load += new System.EventHandler(this.ModificarDatosRol_Load);
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button ModificarRol;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView ListadoFuncionalidades;
         private System.Windows.Forms.TextBox nombreRol;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
+        private System.Windows.Forms.Button Actualizar;
+        private System.Windows.Forms.CheckBox EstadoHabilitacion;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Funcionalidad;
     }
 }

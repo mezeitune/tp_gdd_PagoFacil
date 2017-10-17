@@ -39,7 +39,7 @@ namespace PagoAgilFrba.AbmRol
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (Form formularioModificacion = new ModificarRol())
+            using (Form formularioModificacion = new SeleccionarRol())
             {
                 this.Hide();
                 formularioModificacion.ShowDialog();

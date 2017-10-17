@@ -38,6 +38,55 @@ namespace PagoAgilFrba.AbmRol
 
         private void DarDeAlta_Click(object sender, EventArgs e)
         {
+            var transaccion = Program.conexion().BeginTransaction();
+
+            try
+            {
+                var cmd = new SqlCommand(
+                    "INSERT INTO [SERVOMOTOR].ROLES (NOMBRE)" +
+                    "VALUES (@NOMBRE);" +
+                    "SELECT SCOPE_IDENTITY();",
+                    transaccion.Connection
+                );
+
+                cmd.Transaction = transaccion;
+
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 30).Value = nombreRol.Text;
+
+                var idRol = cmd.ExecuteScalar().ToString();
+
+                cmd = new SqlCommand(
+                    "INSERT INTO [SERVOMOTOR].FUNCIONES_ROLES (ID_ROL, ID_FUNC) " +
+                    "  SELECT @ID_ROL, ID_FUNC " +
+                    "  FROM [SERVOMOTOR].FUNCIONALIDADES " +
+                    "  WHERE NOMBRE = @NOMBRE",
+                    transaccion.Connection
+                );
+
+                cmd.Transaction = transaccion;
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add("@ID_ROL", SqlDbType.TinyInt).Value = idRol;
+                var paramNombre = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 60);
+
+                foreach (DataGridViewRow fila in this.ListadoFuncionalidades.Rows)
+                {
+                    if (fila.IsNewRow)
+                        continue;
+                    paramNombre.Value = fila.Cells["Funcionalidad"].Value.ToString();
+                    cmd.ExecuteNonQuery();
+                }
+
+                transaccion.Commit();
+            }
+        
+            catch (Exception exception)
+            {
+                transaccion.Rollback();
+                MessageBox.Show("No se pudo dar de alta el rol.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             MessageBox.Show("Se ha dado de alta correctamente", "Todo bien",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -82,6 +131,13 @@ namespace PagoAgilFrba.AbmRol
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 nombreRol.Focus();
             }
+        }
+
+        private void EliminarFuncionalidad_Click(object sender, EventArgs e)
+        {
+            if (ListadoFuncionalidades.SelectedRows.Count > 0 &&
+                !ListadoFuncionalidades.SelectedRows[0].IsNewRow)
+                ListadoFuncionalidades.Rows.Remove(ListadoFuncionalidades.SelectedRows[0]);
         }
     }
 }
