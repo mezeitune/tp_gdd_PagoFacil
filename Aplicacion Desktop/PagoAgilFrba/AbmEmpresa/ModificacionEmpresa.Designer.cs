@@ -47,9 +47,10 @@
             // 
             // Actualizar
             // 
-            Actualizar.Location = new System.Drawing.Point(259, 193);
+            Actualizar.Location = new System.Drawing.Point(194, 167);
+            Actualizar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Actualizar.Name = "Actualizar";
-            Actualizar.Size = new System.Drawing.Size(146, 32);
+            Actualizar.Size = new System.Drawing.Size(110, 28);
             Actualizar.TabIndex = 7;
             Actualizar.Text = "&Actualizar";
             Actualizar.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // 
             // Deshacer
             // 
-            Deshacer.Location = new System.Drawing.Point(12, 193);
+            Deshacer.Location = new System.Drawing.Point(9, 167);
+            Deshacer.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Deshacer.Name = "Deshacer";
-            Deshacer.Size = new System.Drawing.Size(158, 32);
+            Deshacer.Size = new System.Drawing.Size(118, 28);
             Deshacer.TabIndex = 6;
             Deshacer.Text = "&Deshacer todo";
             Deshacer.UseVisualStyleBackColor = true;
@@ -76,9 +78,11 @@
             this.groupBox1.Controls.Add(this.Nombre);
             this.groupBox1.Controls.Add(this.CUIT);
             this.groupBox1.Controls.Add(this.Direccion);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(393, 175);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupBox1.Size = new System.Drawing.Size(295, 152);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de empresa";
@@ -86,87 +90,98 @@
             // Habilitar
             // 
             this.Habilitar.AutoSize = true;
-            this.Habilitar.Location = new System.Drawing.Point(9, 146);
+            this.Habilitar.Location = new System.Drawing.Point(7, 127);
+            this.Habilitar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Habilitar.Name = "Habilitar";
-            this.Habilitar.Size = new System.Drawing.Size(165, 19);
+            this.Habilitar.Size = new System.Drawing.Size(107, 17);
             this.Habilitar.TabIndex = 5;
             this.Habilitar.Text = "&Habilitar empresa";
             this.Habilitar.UseVisualStyleBackColor = true;
+            this.Habilitar.CheckedChanged += new System.EventHandler(this.Habilitar_CheckedChanged);
             // 
             // Rubro
             // 
             this.Rubro.FormattingEnabled = true;
-            this.Rubro.Location = new System.Drawing.Point(117, 117);
+            this.Rubro.Location = new System.Drawing.Point(88, 101);
+            this.Rubro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Rubro.Name = "Rubro";
-            this.Rubro.Size = new System.Drawing.Size(260, 23);
+            this.Rubro.Size = new System.Drawing.Size(196, 21);
             this.Rubro.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 120);
+            this.label4.Location = new System.Drawing.Point(4, 104);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 15);
+            this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "&Rubro:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 89);
+            this.label3.Location = new System.Drawing.Point(4, 77);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 15);
+            this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "&Dirección:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 58);
+            this.label2.Location = new System.Drawing.Point(4, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 15);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "&CUIT:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
+            this.label1.Location = new System.Drawing.Point(4, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 15);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "&Nombre:";
             // 
             // Nombre
             // 
-            this.Nombre.Location = new System.Drawing.Point(117, 24);
+            this.Nombre.Location = new System.Drawing.Point(88, 21);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(260, 25);
+            this.Nombre.Size = new System.Drawing.Size(196, 20);
             this.Nombre.TabIndex = 1;
             // 
             // CUIT
             // 
-            this.CUIT.Location = new System.Drawing.Point(117, 55);
+            this.CUIT.Location = new System.Drawing.Point(88, 48);
+            this.CUIT.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CUIT.MaxLength = 13;
             this.CUIT.Name = "CUIT";
-            this.CUIT.Size = new System.Drawing.Size(260, 25);
+            this.CUIT.Size = new System.Drawing.Size(196, 20);
             this.CUIT.TabIndex = 2;
             // 
             // Direccion
             // 
-            this.Direccion.Location = new System.Drawing.Point(117, 86);
+            this.Direccion.Location = new System.Drawing.Point(88, 75);
+            this.Direccion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Direccion.Name = "Direccion";
-            this.Direccion.Size = new System.Drawing.Size(260, 25);
+            this.Direccion.Size = new System.Drawing.Size(196, 20);
             this.Direccion.TabIndex = 3;
             // 
             // ModificacionEmpresa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 242);
+            this.ClientSize = new System.Drawing.Size(315, 210);
             this.Controls.Add(Actualizar);
             this.Controls.Add(Deshacer);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ModificacionEmpresa";
             this.Text = "Modificar empresa";
             this.Load += new System.EventHandler(this.ModificacionEmpresa_Load);

@@ -38,11 +38,12 @@
             this.botonRendicion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // botonABMCliente
             // 
-            this.botonABMCliente.Location = new System.Drawing.Point(56, 54);
+            this.botonABMCliente.Location = new System.Drawing.Point(56, 66);
             this.botonABMCliente.Name = "botonABMCliente";
             this.botonABMCliente.Size = new System.Drawing.Size(101, 55);
             this.botonABMCliente.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             // botonABMSucursal
             // 
-            this.botonABMSucursal.Location = new System.Drawing.Point(251, 54);
+            this.botonABMSucursal.Location = new System.Drawing.Point(251, 66);
             this.botonABMSucursal.Name = "botonABMSucursal";
             this.botonABMSucursal.Size = new System.Drawing.Size(101, 55);
             this.botonABMSucursal.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             // botonABMEmpresa
             // 
-            this.botonABMEmpresa.Location = new System.Drawing.Point(56, 161);
+            this.botonABMEmpresa.Location = new System.Drawing.Point(56, 212);
             this.botonABMEmpresa.Name = "botonABMEmpresa";
             this.botonABMEmpresa.Size = new System.Drawing.Size(101, 55);
             this.botonABMEmpresa.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             // botonABMFactura
             // 
-            this.botonABMFactura.Location = new System.Drawing.Point(251, 161);
+            this.botonABMFactura.Location = new System.Drawing.Point(251, 212);
             this.botonABMFactura.Name = "botonABMFactura";
             this.botonABMFactura.Size = new System.Drawing.Size(101, 55);
             this.botonABMFactura.TabIndex = 3;
@@ -82,7 +83,7 @@
             // 
             // botonABMRol
             // 
-            this.botonABMRol.Location = new System.Drawing.Point(56, 263);
+            this.botonABMRol.Location = new System.Drawing.Point(152, 138);
             this.botonABMRol.Name = "botonABMRol";
             this.botonABMRol.Size = new System.Drawing.Size(101, 55);
             this.botonABMRol.TabIndex = 4;
@@ -92,27 +93,27 @@
             // 
             // botonListadoEstadistico
             // 
-            this.botonListadoEstadistico.Location = new System.Drawing.Point(536, 54);
+            this.botonListadoEstadistico.Location = new System.Drawing.Point(678, 212);
             this.botonListadoEstadistico.Name = "botonListadoEstadistico";
             this.botonListadoEstadistico.Size = new System.Drawing.Size(101, 55);
             this.botonListadoEstadistico.TabIndex = 5;
-            this.botonListadoEstadistico.Text = "Estadisticas";
+            this.botonListadoEstadistico.Text = "Listado Estadistico";
             this.botonListadoEstadistico.UseVisualStyleBackColor = true;
             this.botonListadoEstadistico.Click += new System.EventHandler(this.botonListadoEstadistico_Click);
             // 
             // botonRegistrarPago
             // 
-            this.botonRegistrarPago.Location = new System.Drawing.Point(536, 161);
+            this.botonRegistrarPago.Location = new System.Drawing.Point(476, 66);
             this.botonRegistrarPago.Name = "botonRegistrarPago";
             this.botonRegistrarPago.Size = new System.Drawing.Size(101, 55);
             this.botonRegistrarPago.TabIndex = 6;
-            this.botonRegistrarPago.Text = "Resgistrar Pago";
+            this.botonRegistrarPago.Text = "Registrar Pago";
             this.botonRegistrarPago.UseVisualStyleBackColor = true;
             this.botonRegistrarPago.Click += new System.EventHandler(this.botonRegistrarPago_Click);
             // 
             // botonRendicion
             // 
-            this.botonRendicion.Location = new System.Drawing.Point(536, 263);
+            this.botonRendicion.Location = new System.Drawing.Point(476, 212);
             this.botonRendicion.Name = "botonRendicion";
             this.botonRendicion.Size = new System.Drawing.Size(101, 55);
             this.botonRendicion.TabIndex = 7;
@@ -124,7 +125,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(173, 20);
+            this.label1.Location = new System.Drawing.Point(173, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 25);
             this.label1.TabIndex = 8;
@@ -134,17 +135,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(421, 20);
+            this.label2.Location = new System.Drawing.Point(471, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(308, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "OTRAS FUNCIONALIDADES";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(678, 66);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 55);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Devolver Pago Factura";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 348);
+            this.ClientSize = new System.Drawing.Size(814, 297);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.botonRendicion);
@@ -175,6 +187,7 @@
         private System.Windows.Forms.Button botonRendicion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

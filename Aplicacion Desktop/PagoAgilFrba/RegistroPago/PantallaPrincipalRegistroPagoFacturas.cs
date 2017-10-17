@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace PagoAgilFrba.RegistroPago
 {
     public partial class PantallaPrincipalRegistroPagoFacturas : Form
@@ -16,56 +16,33 @@ namespace PagoAgilFrba.RegistroPago
         {
             InitializeComponent();
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        decimal importePago;
+        int numPago;
+        DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //facturas que se encuentren no pagas
-        }
+          
+            
+         }
+        
 
-        private void FechaCobro_ValueChanged(object sender, EventArgs e)
-        {
-            FechaCobro.Enabled = false;
-        }
+        
 
-        private void comboEmpresas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //tienen que ser clientes habilitados
-        }
-
-        private void FechaVencFact_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ImporteFact_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboSucursal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //sucursales habliitadas o la que ingreso el cobrador???
-        }
+        
 
         private void limpiar_Click(object sender, EventArgs e)
         {
+            this.limpiarTextos();
+        }
+        private void limpiarTextos() {
             ImporteFact.Clear();
             DateTimePicker fechaDeAhora = new DateTimePicker();
-            FechaVencFact.Value = fechaDeAhora.Value;
-            comboCliente.Items.Clear();
-            comboEmpresas.Items.Clear();
-            comboFacturasAPagar.Items.Clear();
-            comboSucursal.Items.Clear();
+
+            comboFacturasAPagar.SelectedItem = null;
+            comboSucursal.SelectedItem = null;
+            medioPago.SelectedItem = null;
+            this.dataGridView1.Rows.Clear();
+        
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
@@ -81,26 +58,79 @@ namespace PagoAgilFrba.RegistroPago
 
         private void registrarUnPago_Click(object sender, EventArgs e)
         {
-            if (todosLosCamposLLenos() && validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos())
             {
 
-                //aca se da de alta la factura en la BDD
+                this.insertarPago();
+                this.actualizarEstadoEmpresa();
 
-                MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
-
+                this.dataGridView1.Rows.Clear();
+                this.limpiarTextos();
+                MessageBox.Show("Se ha registrado el pago correctamente", "Todo bien", MessageBoxButtons.OK);
+                Form formularioSiguiente = new MenuPrincipal();
+                this.cambiarVisibilidades(formularioSiguiente);
             }
             else {
                 MessageBox.Show("Algun Campo no es correcto o se encuentra vacio", "Error daros de entrada", MessageBoxButtons.OK);
             }
+        }
+        private void actualizarEstadoEmpresa() {
+           
+            var cmdPago = new SqlCommand(
+                         "select * from [SERVOMOTOR].[PAGOS] where DNI_CLIENTE='" + comboClientes.SelectedItem.ToString() + "' AND FECHA_COBRO='" + fechaDeAhora.Value+ "';",
+                          Program.conexion()
+                      );
+
+            var dataReaderPagos = cmdPago.ExecuteReader();
+            while(dataReaderPagos.Read()){
+
+                numPago = Convert.ToInt32( dataReaderPagos["NUMERO_PAGO"]);
+            }
+
+            this.recorrerListaFacturas();
+           
+        
+        }
+        private void recorrerListaFacturas() {
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+
+                    var cmd = new SqlCommand(
+                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='PAGA',NUMERO_PAGO=" + numPago + " where NUMERO_FACTURA='" +row.Cells[0].Value.ToString() + "';",
+                             Program.conexion()
+                         );
+
+                    var dataReader = cmd.ExecuteReader();
+
+                    
+
+                }
+            }
+
+
+            
+        
+        }
+        private void insertarPago() {
+            var cmd = new SqlCommand(
+                     "insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + (medioPago.SelectedIndex+1) + ",'" + comboClientes.SelectedItem.ToString() + "')",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+        
+        
         }
         private bool todosLosCamposLLenos()
         {
 
             Boolean huboErrores = false;
 
-            huboErrores = Validacion.estaCheckeadoComboBox(comboCliente) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresas) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboFacturasAPagar) || huboErrores;
+          
+          
             huboErrores = Validacion.estaCheckeadoComboBox(comboSucursal) || huboErrores;
             huboErrores = Validacion.esVacio(ImporteFact, "importeFactura", true) || huboErrores;
             
@@ -112,15 +142,119 @@ namespace PagoAgilFrba.RegistroPago
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            huboErrores = !Validacion.esNumero(ImporteFact, "numero factura", true) || huboErrores;
-           
-
-            huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
-           
+            
+            
             return huboErrores;
         }
 
+        private void PantallaPrincipalRegistroPagoFacturas_Load(object sender, EventArgs e)
+        {
+            this.levantarFacturas();
+            
+            this.levantarSucursales();
+            this.levantarMediosDePago();
+            this.levantarClientes();
+            registrarUnPago.Enabled = false;
+            ImporteFact.Enabled = false;
+        }
 
+        private void levantarClientes()
+        {
+            var cmd = new SqlCommand(
+                    "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1 ; ",
+                     Program.conexion()
+                 );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                this.comboClientes.Items.Add(dataReader["DNI"]);
+            }
+
+
+        }
+
+        private void levantarFacturas()
+        {
+            var cmd = new SqlCommand(
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='NO PAGA' AND e.ESTADO_ACTIVACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
+                     Program.conexion()
+                 );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                this.comboFacturasAPagar.Items.Add(dataReader["NUMERO_FACTURA"]);
+            }
+
+
+        }
+
+       
+
+        private void levantarSucursales() {
+
+            var cmd = new SqlCommand(
+                     "select * from [SERVOMOTOR].SUCURSALES where ESTADO_HABILITACION=1;",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+               comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
+
+             
+            }
+        
+        }
+        private void levantarMediosDePago()
+        {
+
+            var cmd = new SqlCommand(
+                     "select * from [SERVOMOTOR].MEDIOS_DE_PAGO order by ID_MEDPAGO ;",
+                      Program.conexion()
+                  );
+
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                medioPago.Items.Add(dataReader["TIPO_MEDPAGO"]);
+
+
+            }
+
+        }
+
+        private void agregarFactura(object sender, EventArgs e)
+        {
+           
+            var cmd = new SqlCommand(
+                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= '"+comboFacturasAPagar.SelectedItem.ToString()+"';",
+                Program.conexion()
+            );
+
+            var dataReader = cmd.ExecuteReader();
+            comboFacturasAPagar.Items.Remove(comboFacturasAPagar.SelectedItem);
+            comboFacturasAPagar.SelectedItem = null;
+
+            while (dataReader.Read())
+            {
+                
+                this.dataGridView1.Rows.Add(
+                    dataReader["NUMERO_FACTURA"],
+                    dataReader["FECHA_VENCIMIENTO"],
+                    dataReader["DNI_CLIENTE"],
+                    dataReader["CUIT_EMPRESA"],
+                    dataReader["TOTAL"]
+                   
+                );
+                importePago += Convert.ToDecimal(dataReader["TOTAL"]);
+            }
+            
+            ImporteFact.Text = Convert.ToString(importePago);
+            registrarUnPago.Enabled = true;
+        }
 
     }
 }

@@ -129,7 +129,7 @@ namespace PagoAgilFrba.AbmCliente
         private void query_inicial()
         {
             var cmd = new SqlCommand(
-                 "select * from [SERVOMOTOR].CLIENTES where ESTADO_HABILITACION=1",
+                 "select * from [SERVOMOTOR].CLIENTES ",
                   Program.conexion()
               );
 

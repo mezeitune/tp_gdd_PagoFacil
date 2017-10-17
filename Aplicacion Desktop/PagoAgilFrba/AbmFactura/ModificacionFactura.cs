@@ -20,7 +20,7 @@ namespace PagoAgilFrba.AbmFactura
         
         private void ModificarFactura_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(numeroFactura);
+            Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(numeroFactura,0);
             this.cambiarVisibilidades(formularioSiguiente);
         }
         private void cambiarVisibilidades(Form formularioSiguiente)

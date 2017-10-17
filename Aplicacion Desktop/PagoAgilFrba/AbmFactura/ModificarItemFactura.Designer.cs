@@ -40,7 +40,7 @@
             // 
             // botonModificarUnItem
             // 
-            this.botonModificarUnItem.Location = new System.Drawing.Point(208, 144);
+            this.botonModificarUnItem.Location = new System.Drawing.Point(171, 138);
             this.botonModificarUnItem.Name = "botonModificarUnItem";
             this.botonModificarUnItem.Size = new System.Drawing.Size(109, 34);
             this.botonModificarUnItem.TabIndex = 66;
@@ -50,7 +50,7 @@
             // 
             // txtCantidadItem
             // 
-            this.txtCantidadItem.Location = new System.Drawing.Point(234, 87);
+            this.txtCantidadItem.Location = new System.Drawing.Point(154, 84);
             this.txtCantidadItem.Name = "txtCantidadItem";
             this.txtCantidadItem.Size = new System.Drawing.Size(193, 20);
             this.txtCantidadItem.TabIndex = 65;
@@ -58,7 +58,7 @@
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(234, 56);
+            this.txtMontoItem.Location = new System.Drawing.Point(154, 43);
             this.txtMontoItem.Name = "txtMontoItem";
             this.txtMontoItem.Size = new System.Drawing.Size(193, 20);
             this.txtMontoItem.TabIndex = 64;
@@ -67,7 +67,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 90);
+            this.label3.Location = new System.Drawing.Point(40, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 63;
@@ -76,11 +76,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 59);
+            this.label2.Location = new System.Drawing.Point(40, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(193, 13);
             this.label2.TabIndex = 62;
-            this.label2.Text = "Monto";
+            this.label2.Text = "Monto                       $                           ";
             // 
             // label1
             // 
@@ -92,7 +92,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(55, 150);
+            this.limpiar.Location = new System.Drawing.Point(23, 144);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 67;
@@ -102,7 +102,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(382, 150);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(363, 144);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 68;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 224);
+            this.ClientSize = new System.Drawing.Size(449, 190);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.botonModificarUnItem);
