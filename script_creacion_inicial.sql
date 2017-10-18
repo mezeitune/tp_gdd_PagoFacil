@@ -10,6 +10,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 
+
+
 GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
@@ -166,6 +168,11 @@ GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[AgregarFuncionalidadARol]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [SERVOMOTOR].[AgregarFuncionalidadARol]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[crearFacturas]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[crearFacturas]
 
 GO
 IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'SERVOMOTOR')
@@ -409,14 +416,14 @@ CREATE TABLE [SERVOMOTOR].[DEVOLUCIONES](
 
 -- Tabla RENDICIONES: 
 CREATE TABLE [SERVOMOTOR].[RENDICIONES](
-	[ID_RENDICION] [tinyint] IDENTITY,
+	[ID_RENDICION] [numeric](18,0) IDENTITY,
 	[FECHA_COBRO] [datetime] NOT NULL,
 	[PORCENTAJE_COMISION]  [tinyint] NOT NULL DEFAULT 30,
-	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] NOT NULL,
+	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] ,
 	[PRECIO_COMISION] [numeric] (7,2) NOT NULL DEFAULT 60,
-	[TOTAL_RENDIDO] [numeric] (7,2) NOT NULL,
+	[TOTAL_RENDIDO] [numeric] (7,2) ,
 	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'rendida' ,
-	[CUIT_EMPRESA] [varchar] (50),
+	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
  CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED 
 (
 	[ID_RENDICION] 
@@ -433,15 +440,15 @@ REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 -- Tabla FACTURAS: 
 CREATE TABLE [SERVOMOTOR].[FACTURAS](
-	[NUMERO_FACTURA] [varchar](20) NOT NULL,
+	[NUMERO_FACTURA] [numeric](18,0) NOT NULL,
 	[FECHA_ALTA] [datetime] NOT NULL,
 	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
 	[DNI_CLIENTE] [varchar](255) NOT NULL,
 	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
 	[TOTAL] [numeric] (7,2) NOT NULL,
-	[ESTADO] [varchar] (20) NOT NULL,
+	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'no paga',
 	[NUMERO_PAGO][numeric](18,0),
-	[ID_RENDICION] [tinyint] ,
+	[ID_RENDICION] [numeric](18,0) ,
  CONSTRAINT [PK_FACTURAS] PRIMARY KEY CLUSTERED 
 (
 	[NUMERO_FACTURA] 
@@ -463,7 +470,7 @@ REFERENCES [SERVOMOTOR].[RENDICIONES] ([ID_RENDICION])
 
 --Tabla FActuras por devolucion.
 CREATE TABLE [SERVOMOTOR].[FACTURAS_DEVOLUCIONES](
-	[NUMERO_FACTURA] [varchar] (20) NOT NULL,
+	[NUMERO_FACTURA] [numeric] (18,0) NOT NULL,
 	[ID_DEVOLUCION] [tinyint] NOT NULL,
  CONSTRAINT [PK_FACTURAS_DEVOLUCIONESm] PRIMARY KEY CLUSTERED 
 (
@@ -488,7 +495,7 @@ CREATE TABLE [SERVOMOTOR].[ITEMS](
 	[DESCRIPCION] [varchar] (20) NOT NULL,
 	[MONTO] [varchar] (20) NOT NULL,
 	[CANTIDAD] [tinyint] NOT NULL,
-	[NUMERO_FACTURA] [varchar](20) NOT NULL,
+	[NUMERO_FACTURA] [numeric](18,0) NOT NULL,
  CONSTRAINT [PK_ITEMS] PRIMARY KEY CLUSTERED 
 (
 	[ID_ITEM] 
@@ -606,24 +613,90 @@ FROM gd_esquema.Maestra where Pago_nro is not null
 
 SET IDENTITY_INSERT [SERVOMOTOR].[PAGOS]  OFF
 
-/*
+SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  ON
 INSERT INTO [SERVOMOTOR].[RENDICIONES] 
 	(	ID_RENDICION , 
 		FECHA_COBRO ,
-		CANTIDAD_FACTURAS_RENDIDAS,
-		TOTAL_RENDIDO,
 		CUIT_EMPRESA
 	)
-SELECT  DISTINCT Rendicion_Nro , 
+SELECT  DISTINCT Rendicion_Nro  , 
 		Rendicion_Fecha,  
-		Total , 
-		Sucursal_Codigo_Postal,
-		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion),		
-		[Cliente-Dni]				 		
+		[Empresa_Cuit]			 		
 FROM gd_esquema.Maestra where Rendicion_nro is not null
 
+SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  OFF
 
+/*
+	[NUMERO_FACTURA] [varchar](20) NOT NULL,
+	[FECHA_ALTA] [datetime] NOT NULL,
+	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
+	[DNI_CLIENTE] [varchar](255) NOT NULL,
+	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
+	[TOTAL] [numeric] (7,2) NOT NULL,
+	[ESTADO] [varchar] (20) NOT NULL,
+	[NUMERO_PAGO][numeric](18,0),
+	[ID_RENDICION] [numeric](18,0) ,
 */
+GO
+--SET IDENTITY_INSERT [SERVOMOTOR].[FACTURAS]  ON
+
+CREATE PROCEDURE [SERVOMOTOR].[crearFacturas]
+AS
+BEGIN TRANSACTION
+
+	declare @facNro numeric(18,0)
+	declare @facFechaAlt datetime
+	declare @facFechaVenc datetime
+	declare @dniCli varchar(255)
+	declare @cuitEmpresa varchar(50)
+	declare @total numeric(7,2)
+	declare @numPago numeric(18,0)
+	declare @rendNum numeric(18,2)
+	
+	declare cursorFacturas cursor local for
+
+	SELECT  DISTINCT 
+	Nro_Factura ,
+	Factura_Fecha,
+	Factura_Fecha_Vencimiento,
+	[Cliente-Dni],
+	Empresa_Cuit,
+	Pago_nro,
+    Rendicion_Nro
+	FROM gd_esquema.Maestra WHERE Nro_Factura IS NOT NULL
+	
+	
+	open cursorFacturas
+
+	FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum 
+
+	WHILE(@@FETCH_STATUS = 0)
+	BEGIN
+		print @facNro
+		--SELECT @turnoID = turno.Turno_ID FROM [SERVOMOTOR].Turno turno WHERE turno.Turno_Descripcion = @turnoDescripcion
+
+		--SELECT @rendImporte = sum(i.ItemRendicion_Importe) FROM [NORMALIZADOS].[ItemRendicion] i WHERE i.Rendicion_Numero = @rendNro
+		--if not exists(select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA = @facNro)
+		--BEGIN 
+			INSERT INTO [SERVOMOTOR].FACTURAS(NUMERO_FACTURA,FECHA_ALTA,FECHA_VENCIMIENTO,DNI_CLIENTE,CUIT_EMPRESA,TOTAL,NUMERO_PAGO,ID_RENDICION)
+			VALUES (@facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa,0, @numPago,@rendNum)
+		--END
+		FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum 
+
+	END
+	close cursorFacturas
+	deallocate cursorFacturas
+
+COMMIT
+GO
+
+--SET IDENTITY_INSERT [SERVOMOTOR].[FACTURAS]  OFF
+
+EXEC [SERVOMOTOR].[crearFacturas];
+GO
+
+
+
 
 -- Insert de usuario invitado y un administrador
 -- el hash de la contraseña w23e está previamente calculado
@@ -786,22 +859,7 @@ BEGIN
 
 	return 0
 END
-GO
 
-
-
-CREATE FUNCTION [SERVOMOTOR].ExisteRegistroEnCliente (@dni VARCHAR(30),@mail VARCHAR(40))
-	RETURNS BIT
-AS
-BEGIN
-	DECLARE @Existe INT
-	SELECT @Existe = COUNT(*) FROM SERVOMOTOR.CLIENTES WHERE DNI= @dni or MAIL = @mail;
-	IF(@Existe > 0)
-	RETURN 1
-	RETURN 0
-END
-GO
-select * from SERVOMOTOR.FACTURAS;
 /**************************** <<TRIGGERS>> ******************************/
 GO
 CREATE TRIGGER cambiarTotalDelasFacturasPorModificacionItem ON [SERVOMOTOR].ITEMS
@@ -821,3 +879,6 @@ AS BEGIN
 	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
 
 END
+
+--select * from [SERVOMOTOR].FACTURAS
+--select * from [SERVOMOTOR].RENDICIONES
