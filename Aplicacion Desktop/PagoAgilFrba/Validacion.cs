@@ -226,26 +226,6 @@ namespace PagoAgilFrba
             return !huboErrores;
         }
 
-        // Utilizado para validar matrícula de aeronave
-        public static Boolean esMatricula(MaskedTextBox txtBox, Boolean mostrarMensaje = false)
-        {
-            string cadena = txtBox.Text;
-            if (cantidadEnCadena(cadena, '-') > 1)
-            {
-                MessageBox.Show("La matrícula debe estar compuesta por 3 letras seguida de 3 dígitos", "Error en los datos de entrada", MessageBoxButtons.OK);
-                return false;
-            }
-
-            if (!(cadena.Take(3).All((car) => Char.IsLetter(car)) && (cadena.Substring(4).All((car) => Char.IsDigit(car) && !Char.IsWhiteSpace(car))) && cadena.Substring(4).Length==3))
-            {
-                if (mostrarMensaje)
-                {
-                    MessageBox.Show("La matrícula debe estar compuesta por 3 letras seguida de 3 dígitos", "Error en los datos de entrada", MessageBoxButtons.OK);
-                }
-                return false;
-            }
-            return true;
-        }
         
         public static Boolean esFormatoDeFecha(TextBox txt, string nombreCampo = "Opcional") {
             DateTime temp;
@@ -336,19 +316,6 @@ namespace PagoAgilFrba
             }
 
         }
-        public static Boolean listaVacia(List<Object> lista, string nombreCampo = "Opcional" , Boolean mostrarMensaje = false)
-        {
-            Boolean vacio = false;
-            if (lista.Count == 0)
-            {
-                vacio = true;
-                if (mostrarMensaje)
-                {
-                    MessageBox.Show("Se debe agregar por lo menos un tipo de servicio", "Error en los datos de entrada", MessageBoxButtons.OK);
-                }
-            }
-            return vacio;
-        }
 
         public static Boolean estaSeleccionado(ComboBox combo , Boolean mostrarMensaje = false , String opcional = "opciones")
         {
@@ -380,18 +347,6 @@ namespace PagoAgilFrba
             return option.Checked;
         }
 
-        public static bool igualdadCiudades(TextBox txtCiudadDestino, TextBox txtCiudadOrigen)
-        {
-            if (txtCiudadDestino.TextLength * txtCiudadOrigen.TextLength != 0)
-            {
-                if (txtCiudadOrigen.Text == txtCiudadDestino.Text)
-                {
-                    MessageBox.Show("La ciudad de origen debe ser distinta a la de destino", "Error en los datos ingresados", MessageBoxButtons.OK);
-                    return true;
-                }
-            }
-            return false;
-        }
 
         public static Boolean numeroCorrecto(TextBox txtBox, string campo , bool debeSerDecimal)
         {
@@ -424,29 +379,6 @@ namespace PagoAgilFrba
 
 
         //Eventos de validacion de tipos de campos
-
-        public static void controlIngresoNumeroDecimal(object sender, KeyPressEventArgs e)
-        {
-            string cadena = ((TextBox)sender).Text;
-            char caracter = e.KeyChar;
-
-            if (caracter == (char)(Keys.Back))
-                return;
-
-            if (caracter.ToString() == ",")
-            {
-                if (cantidadEnCadena(cadena, ',') != 0)
-                {
-                    e.Handled = true;
-                }
-                return;
-            }
-
-            if (!Char.IsDigit(caracter))
-            {
-                e.Handled = true;
-            }
-        }
 
         private static int cantidadEnCadena(string cadena, char caracter)
         {
