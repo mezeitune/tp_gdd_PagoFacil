@@ -42,11 +42,7 @@ namespace PagoAgilFrba.Rendicion
         
         
         }
-        private void irAPaginaAgregarFacturaARendir_Click(object sender, EventArgs e)
-        {
-            Form formularioSiguiente = new Rendicion.AgregarEmpresaARendir();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
+        
         private void cambiarVisibilidades(Form formularioSiguiente)
         {
             formularioSiguiente.Visible = true;
@@ -174,18 +170,22 @@ namespace PagoAgilFrba.Rendicion
 
             while (dataReader.Read())
             {
-
+                
                 this.dataGridView1.Rows.Add(
                     dataReader["NUMERO_FACTURA"],
                     dataReader["TOTAL"]
 
                 );
                 importeTotalARendir+= Convert.ToDecimal(dataReader["TOTAL"]);
+                comboEmpresa.Items.Remove(comboEmpresa.SelectedItem);
+                comboEmpresa.SelectedItem = null;
                
             }
-            CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count-1).ToString();
+            CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
             importeTotalRendicion.Text = importeTotalARendir.ToString();
         }
+
+       
 
     }
 }

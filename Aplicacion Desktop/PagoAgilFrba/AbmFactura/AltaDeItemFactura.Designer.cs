@@ -43,12 +43,13 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(208, 229);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(146, 230);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
             this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 42);
             this.botonGuardarUnItem.TabIndex = 60;
@@ -58,14 +59,14 @@
             // 
             // txtCantidadDeItems
             // 
-            this.txtCantidadDeItems.Location = new System.Drawing.Point(441, 22);
+            this.txtCantidadDeItems.Location = new System.Drawing.Point(439, 49);
             this.txtCantidadDeItems.Name = "txtCantidadDeItems";
             this.txtCantidadDeItems.Size = new System.Drawing.Size(54, 20);
             this.txtCantidadDeItems.TabIndex = 56;
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(303, 22);
+            this.txtMontoItem.Location = new System.Drawing.Point(301, 49);
             this.txtMontoItem.Name = "txtMontoItem";
             this.txtMontoItem.Size = new System.Drawing.Size(67, 20);
             this.txtMontoItem.TabIndex = 55;
@@ -73,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(386, 25);
+            this.label3.Location = new System.Drawing.Point(381, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 51;
@@ -82,11 +83,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(260, 25);
+            this.label2.Location = new System.Drawing.Point(256, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 50;
-            this.label2.Text = "Monto:";
+            this.label2.Text = "Monto: $";
             // 
             // label1
             // 
@@ -98,7 +99,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(18, 287);
+            this.limpiar.Location = new System.Drawing.Point(16, 240);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 61;
@@ -108,7 +109,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(420, 287);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(418, 240);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 77;
@@ -118,7 +119,7 @@
             // 
             // generarFactura
             // 
-            this.generarFactura.Location = new System.Drawing.Point(208, 287);
+            this.generarFactura.Location = new System.Drawing.Point(282, 230);
             this.generarFactura.Name = "generarFactura";
             this.generarFactura.Size = new System.Drawing.Size(109, 42);
             this.generarFactura.TabIndex = 78;
@@ -129,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 25);
+            this.label4.Location = new System.Drawing.Point(13, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 79;
@@ -137,7 +138,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(84, 22);
+            this.txtDescripcion.Location = new System.Drawing.Point(82, 49);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(157, 20);
             this.txtDescripcion.TabIndex = 80;
@@ -178,11 +179,21 @@
             this.cantidad.Name = "cantidad";
             this.cantidad.ReadOnly = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(252, 13);
+            this.label5.TabIndex = 82;
+            this.label5.Text = "Ingrese los datos de los items de la factura a cargar.";
+            // 
             // AltaDeItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 352);
+            this.ClientSize = new System.Drawing.Size(513, 289);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
@@ -221,5 +232,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -51,7 +51,7 @@
             // 
             // botonModificarSucursal
             // 
-            this.botonModificarSucursal.Location = new System.Drawing.Point(262, 368);
+            this.botonModificarSucursal.Location = new System.Drawing.Point(326, 361);
             this.botonModificarSucursal.Name = "botonModificarSucursal";
             this.botonModificarSucursal.Size = new System.Drawing.Size(125, 38);
             this.botonModificarSucursal.TabIndex = 27;
@@ -138,7 +138,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(512, 383);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(512, 376);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 67;
@@ -159,7 +159,7 @@
             this.dataGridItems.Location = new System.Drawing.Point(5, 167);
             this.dataGridItems.Name = "dataGridItems";
             this.dataGridItems.ReadOnly = true;
-            this.dataGridItems.Size = new System.Drawing.Size(583, 110);
+            this.dataGridItems.Size = new System.Drawing.Size(583, 175);
             this.dataGridItems.TabIndex = 77;
             this.dataGridItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarSucursal);
             // 
@@ -193,7 +193,7 @@
             // 
             // bajaLogica
             // 
-            this.bajaLogica.Location = new System.Drawing.Point(77, 368);
+            this.bajaLogica.Location = new System.Drawing.Point(170, 361);
             this.bajaLogica.Name = "bajaLogica";
             this.bajaLogica.Size = new System.Drawing.Size(109, 38);
             this.bajaLogica.TabIndex = 80;

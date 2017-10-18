@@ -55,7 +55,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(37, 89);
+            this.label8.Location = new System.Drawing.Point(37, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 66;
@@ -64,7 +64,7 @@
             // 
             // botonModificarUnItem
             // 
-            this.botonModificarUnItem.Location = new System.Drawing.Point(373, 128);
+            this.botonModificarUnItem.Location = new System.Drawing.Point(373, 120);
             this.botonModificarUnItem.Name = "botonModificarUnItem";
             this.botonModificarUnItem.Size = new System.Drawing.Size(100, 23);
             this.botonModificarUnItem.TabIndex = 65;
@@ -74,7 +74,7 @@
             // 
             // ModificarUnaFactura
             // 
-            this.ModificarUnaFactura.Location = new System.Drawing.Point(219, 245);
+            this.ModificarUnaFactura.Location = new System.Drawing.Point(272, 182);
             this.ModificarUnaFactura.Name = "ModificarUnaFactura";
             this.ModificarUnaFactura.Size = new System.Drawing.Size(109, 34);
             this.ModificarUnaFactura.TabIndex = 64;
@@ -85,7 +85,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 49);
+            this.label6.Location = new System.Drawing.Point(37, 41);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(137, 13);
             this.label6.TabIndex = 57;
@@ -103,7 +103,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 130);
+            this.label10.Location = new System.Drawing.Point(40, 122);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 69;
@@ -113,7 +113,7 @@
             // comboBoxItemsDeFactura
             // 
             this.comboBoxItemsDeFactura.FormattingEnabled = true;
-            this.comboBoxItemsDeFactura.Location = new System.Drawing.Point(219, 130);
+            this.comboBoxItemsDeFactura.Location = new System.Drawing.Point(219, 122);
             this.comboBoxItemsDeFactura.Name = "comboBoxItemsDeFactura";
             this.comboBoxItemsDeFactura.Size = new System.Drawing.Size(148, 21);
             this.comboBoxItemsDeFactura.TabIndex = 70;
@@ -121,15 +121,14 @@
             // 
             // FechaVencFact
             // 
-            this.FechaVencFact.Location = new System.Drawing.Point(219, 42);
+            this.FechaVencFact.Location = new System.Drawing.Point(219, 34);
             this.FechaVencFact.Name = "FechaVencFact";
             this.FechaVencFact.Size = new System.Drawing.Size(196, 20);
             this.FechaVencFact.TabIndex = 73;
-            
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(60, 256);
+            this.limpiar.Location = new System.Drawing.Point(40, 188);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 75;
@@ -139,7 +138,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(398, 256);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(398, 188);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 76;
@@ -149,14 +148,14 @@
             // 
             // totalFactura
             // 
-            this.totalFactura.Location = new System.Drawing.Point(219, 89);
+            this.totalFactura.Location = new System.Drawing.Point(219, 81);
             this.totalFactura.Name = "totalFactura";
             this.totalFactura.Size = new System.Drawing.Size(151, 20);
             this.totalFactura.TabIndex = 77;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(219, 182);
+            this.button1.Location = new System.Drawing.Point(143, 182);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 34);
             this.button1.TabIndex = 78;
@@ -168,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 325);
+            this.ClientSize = new System.Drawing.Size(494, 242);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.totalFactura);
             this.Controls.Add(this.volverALaPaginaAnterior);

@@ -50,7 +50,7 @@
             // 
             // DarAltaFactura
             // 
-            this.DarAltaFactura.Location = new System.Drawing.Point(173, 296);
+            this.DarAltaFactura.Location = new System.Drawing.Point(176, 267);
             this.DarAltaFactura.Name = "DarAltaFactura";
             this.DarAltaFactura.Size = new System.Drawing.Size(121, 50);
             this.DarAltaFactura.TabIndex = 47;
@@ -135,7 +135,7 @@
             // 
             this.txtTotalFactura.Location = new System.Drawing.Point(225, 225);
             this.txtTotalFactura.Name = "txtTotalFactura";
-            this.txtTotalFactura.Size = new System.Drawing.Size(193, 20);
+            this.txtTotalFactura.Size = new System.Drawing.Size(200, 20);
             this.txtTotalFactura.TabIndex = 51;
             // 
             // FechaAltaFac
@@ -154,7 +154,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(46, 366);
+            this.limpiar.Location = new System.Drawing.Point(46, 281);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 56;
@@ -164,7 +164,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(350, 366);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(343, 281);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 60;
@@ -176,7 +176,7 @@
             // 
             this.txtNroFactura.Location = new System.Drawing.Point(225, 124);
             this.txtNroFactura.Name = "txtNroFactura";
-            this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
+            this.txtNroFactura.Size = new System.Drawing.Size(200, 20);
             this.txtNroFactura.TabIndex = 38;
             // 
             // comboEmpresa
@@ -184,7 +184,7 @@
             this.comboEmpresa.FormattingEnabled = true;
             this.comboEmpresa.Location = new System.Drawing.Point(225, 91);
             this.comboEmpresa.Name = "comboEmpresa";
-            this.comboEmpresa.Size = new System.Drawing.Size(193, 21);
+            this.comboEmpresa.Size = new System.Drawing.Size(200, 21);
             this.comboEmpresa.TabIndex = 53;
             // 
             // comboCliente
@@ -192,7 +192,7 @@
             this.comboCliente.FormattingEnabled = true;
             this.comboCliente.Location = new System.Drawing.Point(225, 55);
             this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(193, 21);
+            this.comboCliente.Size = new System.Drawing.Size(200, 21);
             this.comboCliente.TabIndex = 52;
             // 
             // label7
@@ -200,15 +200,15 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(43, 25);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(314, 13);
+            this.label7.Size = new System.Drawing.Size(152, 13);
             this.label7.TabIndex = 61;
-            this.label7.Text = "Recuerde primero dar de alta la factura y luego ingresar sus items";
+            this.label7.Text = "Ingrese los datos de la factura.";
             // 
             // AltaFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 401);
+            this.ClientSize = new System.Drawing.Size(461, 340);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);

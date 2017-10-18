@@ -229,12 +229,6 @@
     <Compile Include="RegistroPago\PantallaPrincipalRegistroPagoFacturas.Designer.cs">
       <DependentUpon>PantallaPrincipalRegistroPagoFacturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rendicion\AgregarEmpresaARendir.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rendicion\AgregarEmpresaARendir.Designer.cs">
-      <DependentUpon>AgregarEmpresaARendir.cs</DependentUpon>
-    </Compile>
     <Compile Include="Rendicion\PantallaPrincipalRendicion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,9 +340,6 @@
     </Compile>
     <EmbeddedResource Include="RegistroPago\PantallaPrincipalRegistroPagoFacturas.resx">
       <DependentUpon>PantallaPrincipalRegistroPagoFacturas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rendicion\AgregarEmpresaARendir.resx">
-      <DependentUpon>AgregarEmpresaARendir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rendicion\PantallaPrincipalRendicion.resx">
       <DependentUpon>PantallaPrincipalRendicion.cs</DependentUpon>

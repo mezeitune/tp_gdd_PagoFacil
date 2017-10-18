@@ -45,7 +45,6 @@
             this.txtNombreSucursal.Name = "txtNombreSucursal";
             this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtNombreSucursal.TabIndex = 14;
-         
             // 
             // label2
             // 
@@ -62,7 +61,6 @@
             this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
             this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalSucursal.TabIndex = 23;
-           
             // 
             // label11
             // 
@@ -75,7 +73,7 @@
             // 
             // DarAltaSucursal
             // 
-            this.DarAltaSucursal.Location = new System.Drawing.Point(130, 174);
+            this.DarAltaSucursal.Location = new System.Drawing.Point(140, 174);
             this.DarAltaSucursal.Name = "DarAltaSucursal";
             this.DarAltaSucursal.Size = new System.Drawing.Size(109, 34);
             this.DarAltaSucursal.TabIndex = 24;
@@ -89,7 +87,6 @@
             this.txtDireccionSucursal.Name = "txtDireccionSucursal";
             this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtDireccionSucursal.TabIndex = 26;
-           
             // 
             // label1
             // 

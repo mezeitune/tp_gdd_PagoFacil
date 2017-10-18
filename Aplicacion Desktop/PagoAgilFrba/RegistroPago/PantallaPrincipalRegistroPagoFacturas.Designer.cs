@@ -194,11 +194,11 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(204, 13);
             this.label4.TabIndex = 74;
-            this.label4.Text = "Importe                                                    $";
+            this.label4.Text = "Importe Total Facturas Seleccionadas    $";
             // 
             // ImporteFact
             // 
-            this.ImporteFact.Location = new System.Drawing.Point(213, 187);
+            this.ImporteFact.Location = new System.Drawing.Point(213, 194);
             this.ImporteFact.Name = "ImporteFact";
             this.ImporteFact.Size = new System.Drawing.Size(231, 20);
             this.ImporteFact.TabIndex = 73;
@@ -223,7 +223,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(514, 340);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 335);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 67;
@@ -233,7 +233,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(21, 340);
+            this.limpiar.Location = new System.Drawing.Point(21, 335);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 66;
