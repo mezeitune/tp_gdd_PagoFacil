@@ -23,7 +23,6 @@ namespace PagoAgilFrba.Rendicion
         private void PantallaPrincipalRendicion_Load(object sender, EventArgs e)
         {
             CantidadFacturasRendidas.Enabled = false;
-           
             importeTotalRendicion.Enabled = false;
             this.levantarEmpresas();
         }
@@ -105,7 +104,6 @@ namespace PagoAgilFrba.Rendicion
             cmd.Parameters.Add("@total_rendido", SqlDbType.Decimal).Value = Convert.ToDecimal(importeTotalRendicion.Text);
             cmd.Parameters.Add("@cuit_empresa", SqlDbType.VarChar, 13).Value = comboEmpresa.SelectedItem.ToString();
 
-
             var dataReader = cmd.ExecuteReader();
                 
         
@@ -146,8 +144,6 @@ namespace PagoAgilFrba.Rendicion
         {
 
             Boolean huboErrores = false;
-
-          
             huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
             huboErrores = Validacion.esVacio(porcentajeComision, "Porcentaje comision", true) || huboErrores;
 
@@ -190,20 +186,6 @@ namespace PagoAgilFrba.Rendicion
             CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count-1).ToString();
             importeTotalRendicion.Text = importeTotalARendir.ToString();
         }
-
-        private void porcentajeComision_TextChanged(object sender, EventArgs e)
-        {
-            
-
-       }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-       
-
-       
 
     }
 }

@@ -33,17 +33,20 @@ namespace PagoAgilFrba.AbmFactura
                 dataGridView1.Rows.Add(txtDescripcion.Text, txtMontoItem.Text, txtCantidadDeItems.Text);
 
                 MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
-                txtDescripcion.Text = "";
-                txtCantidadDeItems.Text = "";
-                txtMontoItem.Text = "";
-                agregarItems.Enabled = true;
+                this.limpiarTextos();
             }
             else
             {
                 MessageBox.Show("Algun campo esta vacio o el formato es incorrecto.", "", MessageBoxButtons.OK);
             }
         }
+        private void limpiarTextos() {
 
+            txtDescripcion.Text = "";
+            txtCantidadDeItems.Text = "";
+            txtMontoItem.Text = "";
+        
+        }
         private bool todosLosCamposLLenos()
         {
 
@@ -70,9 +73,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            txtDescripcion.Text = "";
-            txtCantidadDeItems.Text = "";
-            txtMontoItem.Text = "";
+            this.limpiarTextos();
         }
 
         private void agregarItems_Click(object sender, EventArgs e)

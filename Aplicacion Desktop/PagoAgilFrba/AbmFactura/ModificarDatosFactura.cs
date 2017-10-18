@@ -112,38 +112,15 @@ namespace PagoAgilFrba.AbmFactura
 
         private void completarTextos()
         {
-            var cmd = new SqlCommand(
-                "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + nroFactura + "';",
-                 Program.conexion()
-             );
-
-            var dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-                FechaVencFact.Value = Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
-                totalFactura.Text = dataReader["TOTAL"].ToString() ;
-                
-               
-            }
-            var cmd2 = new SqlCommand(
-                "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + nroFactura + "';",
-                 Program.conexion()
-             );
-           
-
-            var dataReader2 = cmd2.ExecuteReader();
-            while (dataReader2.Read())
-            {
-                comboBoxItemsDeFactura.Items.Add(dataReader2["DESCRIPCION"].ToString());
-
-            }
+            this.levantarFacturas();
+            this.levantarItemsFactura();
             this.actualizarTotalFactura();
         }
 
         private void actualizarTotalFactura() {
             totalFacturaDecimal = Convert.ToDecimal(totalFactura.Text);
             totalFacturaInt = Convert.ToInt32(totalFacturaDecimal);
-            MessageBox.Show(subtotal.ToString(), "Todo bien", MessageBoxButtons.OK);
+          
             totalFactura.Text = (totalFacturaInt + subtotal).ToString();
         
         }
@@ -153,11 +130,35 @@ namespace PagoAgilFrba.AbmFactura
             this.cambiarVisibilidades(formularioSiguiente);
         }
 
-        private void totalFactura_TextChanged(object sender, EventArgs e)
-        {
+        private void levantarFacturas() {
+            var cmd = new SqlCommand(
+                   "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + nroFactura + "';",
+                    Program.conexion()
+                );
 
+            var dataReader = cmd.ExecuteReader();
+            while (dataReader.Read())
+            {
+                FechaVencFact.Value = Convert.ToDateTime(dataReader["FECHA_VENCIMIENTO"]);
+                totalFactura.Text = dataReader["TOTAL"].ToString();
+            }
         }
+        private void levantarItemsFactura() {
+            var cmd2 = new SqlCommand(
+                   "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + nroFactura + "';",
+                    Program.conexion()
+                );
 
+
+            var dataReader2 = cmd2.ExecuteReader();
+            while (dataReader2.Read())
+            {
+                comboBoxItemsDeFactura.Items.Add(dataReader2["DESCRIPCION"].ToString());
+
+            }
+        
+        
+        }
 
 
     }

@@ -19,10 +19,7 @@ namespace PagoAgilFrba.AbmSucursal
             InitializeComponent();
         }
 
-        private void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void ModificacionSucursal_Load(object sender, EventArgs e)
         {
@@ -45,17 +42,6 @@ namespace PagoAgilFrba.AbmSucursal
             }
             bajaLogica.Enabled = false;
             botonModificarSucursal.Enabled = false;
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void txtCodPostal_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         
@@ -99,9 +85,6 @@ namespace PagoAgilFrba.AbmSucursal
             cmd.Parameters.AddWithValue("@DIRECCION", "%" + txtDireccionSucursal.Text + "%");
             cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalSucursal.Text);
 
-
-
-
             var dataReader = cmd.ExecuteReader();
 
             this.dataGridItems.Rows.Clear();
@@ -134,11 +117,6 @@ namespace PagoAgilFrba.AbmSucursal
             this.cambiarVisibilidades(formularioSiguiente);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void bajaLogica_Click(object sender, EventArgs e)
         {
 
@@ -169,9 +147,5 @@ namespace PagoAgilFrba.AbmSucursal
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

@@ -123,7 +123,7 @@
             this.label3.Size = new System.Drawing.Size(171, 13);
             this.label3.TabIndex = 77;
             this.label3.Text = "Porcentaje Comision                    %";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+         
             // 
             // porcentajeComision
             // 
@@ -131,7 +131,7 @@
             this.porcentajeComision.Name = "porcentajeComision";
             this.porcentajeComision.Size = new System.Drawing.Size(41, 20);
             this.porcentajeComision.TabIndex = 74;
-            this.porcentajeComision.TextChanged += new System.EventHandler(this.porcentajeComision_TextChanged);
+            
             // 
             // dataGridView1
             // 

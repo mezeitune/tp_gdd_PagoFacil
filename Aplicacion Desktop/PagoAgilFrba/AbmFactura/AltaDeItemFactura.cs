@@ -20,20 +20,6 @@ namespace PagoAgilFrba.AbmFactura
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMontoItem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCantidadDeItems_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void botonGuardarUnItem_Click(object sender, EventArgs e)
         {
@@ -44,10 +30,8 @@ namespace PagoAgilFrba.AbmFactura
                 dataGridView1.Rows.Add(txtDescripcion.Text,txtMontoItem.Text,txtCantidadDeItems.Text);
                
                 MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
-                txtDescripcion.Text = "";
-                txtCantidadDeItems.Text = "";
-                txtMontoItem.Text = "";
-                generarFactura.Enabled = true;
+
+                this.limpiarTextos();
             }
             else
             {
@@ -55,7 +39,12 @@ namespace PagoAgilFrba.AbmFactura
             }
            
         }
-
+        private void limpiarTextos(){
+         txtDescripcion.Text = "";
+         txtCantidadDeItems.Text = "";
+         txtMontoItem.Text = "";
+         generarFactura.Enabled = true;
+        }
 
         
 
@@ -86,9 +75,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void limpiar_Click(object sender, EventArgs e)
         {
-            txtDescripcion.Text = "";
-            txtCantidadDeItems.Text = "";
-            txtMontoItem.Text = "";
+            this.limpiarTextos();
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
@@ -107,9 +94,6 @@ namespace PagoAgilFrba.AbmFactura
             generarFactura.Enabled = false;
         }
 
-
-
-
         private void generarFactura_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1);
@@ -117,6 +101,5 @@ namespace PagoAgilFrba.AbmFactura
             dataGridView1.ClearSelection();
         }
 
-        
     }
 }

@@ -73,7 +73,7 @@
             this.txtCodPostalCliente.Name = "txtCodPostalCliente";
             this.txtCodPostalCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalCliente.TabIndex = 45;
-            this.txtCodPostalCliente.TextChanged += new System.EventHandler(this.txtCodPostalCliente_TextChanged);
+          
             // 
             // txtLocalidadCliente
             // 
@@ -81,7 +81,7 @@
             this.txtLocalidadCliente.Name = "txtLocalidadCliente";
             this.txtLocalidadCliente.Size = new System.Drawing.Size(193, 20);
             this.txtLocalidadCliente.TabIndex = 44;
-            this.txtLocalidadCliente.TextChanged += new System.EventHandler(this.txtLocalidadCliente_TextChanged);
+            
             // 
             // txtDptoCliente
             // 
@@ -89,7 +89,6 @@
             this.txtDptoCliente.Name = "txtDptoCliente";
             this.txtDptoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtDptoCliente.TabIndex = 43;
-            this.txtDptoCliente.TextChanged += new System.EventHandler(this.txtDptoCliente_TextChanged);
             // 
             // txtNroPisoCliente
             // 
@@ -97,7 +96,7 @@
             this.txtNroPisoCliente.Name = "txtNroPisoCliente";
             this.txtNroPisoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtNroPisoCliente.TabIndex = 42;
-            this.txtNroPisoCliente.TextChanged += new System.EventHandler(this.txtNroPisoCliente_TextChanged);
+         
             // 
             // txtCalleCliente
             // 
@@ -105,7 +104,7 @@
             this.txtCalleCliente.Name = "txtCalleCliente";
             this.txtCalleCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCalleCliente.TabIndex = 41;
-            this.txtCalleCliente.TextChanged += new System.EventHandler(this.txtCalleCliente_TextChanged);
+            
             // 
             // txtTelCliente
             // 
@@ -113,7 +112,7 @@
             this.txtTelCliente.Name = "txtTelCliente";
             this.txtTelCliente.Size = new System.Drawing.Size(193, 20);
             this.txtTelCliente.TabIndex = 40;
-            this.txtTelCliente.TextChanged += new System.EventHandler(this.txtTelCliente_TextChanged);
+           
             // 
             // txtMailCliente
             // 
@@ -121,7 +120,7 @@
             this.txtMailCliente.Name = "txtMailCliente";
             this.txtMailCliente.Size = new System.Drawing.Size(193, 20);
             this.txtMailCliente.TabIndex = 39;
-            this.txtMailCliente.TextChanged += new System.EventHandler(this.txtMailCliente_TextChanged);
+         
             // 
             // txtApellidoCliente
             // 
@@ -129,7 +128,7 @@
             this.txtApellidoCliente.Name = "txtApellidoCliente";
             this.txtApellidoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtApellidoCliente.TabIndex = 37;
-            this.txtApellidoCliente.TextChanged += new System.EventHandler(this.txtApellidoCliente_TextChanged);
+     
             // 
             // txtNombreCliente
             // 
@@ -271,7 +270,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(193, 20);
             this.txtNombre.TabIndex = 61;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+  
             // 
             // FechaNacCliente
             // 
@@ -279,7 +278,7 @@
             this.FechaNacCliente.Name = "FechaNacCliente";
             this.FechaNacCliente.Size = new System.Drawing.Size(200, 20);
             this.FechaNacCliente.TabIndex = 56;
-            this.FechaNacCliente.ValueChanged += new System.EventHandler(this.FechaNacCliente_ValueChanged);
+            
             // 
             // Habilitar
             // 
@@ -291,7 +290,7 @@
             this.Habilitar.TabIndex = 62;
             this.Habilitar.Text = "&Habilitar cliente";
             this.Habilitar.UseVisualStyleBackColor = true;
-            this.Habilitar.CheckedChanged += new System.EventHandler(this.Habilitar_CheckedChanged);
+            
             // 
             // ModificarDatosCliente
             // 

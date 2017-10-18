@@ -158,7 +158,6 @@
             this.dataGridItems.Size = new System.Drawing.Size(583, 110);
             this.dataGridItems.TabIndex = 77;
             this.dataGridItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarSucursal);
-            this.dataGridItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // CodPostal
             // 

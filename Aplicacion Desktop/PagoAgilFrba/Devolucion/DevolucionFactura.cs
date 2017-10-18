@@ -44,8 +44,6 @@ namespace PagoAgilFrba.Devolucion
 
         }
 
-
-
         private void levantarMotivosDevolucion()
         {
 
@@ -58,8 +56,6 @@ namespace PagoAgilFrba.Devolucion
             while (dataReader.Read())
             {
                 motivosDevolucion.Items.Add(dataReader["MOTIVO_DEVOLUCION"]);
-
-
             }
 
         }
@@ -70,8 +66,7 @@ namespace PagoAgilFrba.Devolucion
         }
         private void limpiarTextos()
         {
-          
-            
+         
             this.dataGridView1.Rows.Clear();
 
         }
@@ -118,7 +113,6 @@ namespace PagoAgilFrba.Devolucion
             }
 
             
-
             this.dataGridView1.Rows.Clear();
             this.limpiarTextos();
             MessageBox.Show("Se ha registrado la devolucion correctamente", "Todo bien", MessageBoxButtons.OK);
@@ -170,6 +164,8 @@ namespace PagoAgilFrba.Devolucion
             }
             
         }
+
+    
 
     }
 }

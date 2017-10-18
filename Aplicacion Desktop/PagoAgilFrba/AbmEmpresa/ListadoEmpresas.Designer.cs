@@ -235,14 +235,14 @@
 
         #endregion
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+       
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+ 
         private System.Windows.Forms.TextBox Direccion;
         private System.Windows.Forms.Button Buscar;
         private System.Windows.Forms.Button Limpiar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dirección;
+   
         private System.Windows.Forms.Button Seleccionar;
         private System.Windows.Forms.TextBox Nombre;
         private System.Windows.Forms.TextBox CUIT;

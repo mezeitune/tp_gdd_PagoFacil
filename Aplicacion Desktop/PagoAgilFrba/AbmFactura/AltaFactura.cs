@@ -21,39 +21,13 @@ namespace PagoAgilFrba.AbmFactura
         }
 
 
-       
-
-
         private void AltaFactura_Load(object sender, EventArgs e)
         {
-            var cmdCliente = new SqlCommand(
-               "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",
-                Program.conexion()
-                );
-            var dataReader = cmdCliente.ExecuteReader();
-
-            while (dataReader.Read())
-            {
-                comboCliente.Items.Add(dataReader["DNI"]);
-
-            }
-
-
-            var cmdEmpresa = new SqlCommand(
-          "select CUIT from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
-           Program.conexion()
-           );
-            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
-
-            while (dataReaderEmpresa.Read())
-            {
-                comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
-
-            }
-            txtTotalFactura.Enabled = false;
-            
-
+            this.levantarClientes();
+            this.levantarEmpresas();
             this.calcularTotalFactura();
+
+            txtTotalFactura.Enabled = false;
             txtTotalFactura.Text = totalFactura.ToString();
         }
 
@@ -69,7 +43,7 @@ namespace PagoAgilFrba.AbmFactura
 
                     int cantidadTotal = Int32.Parse(cantidad);
                     int montoTotal = Int32.Parse(monto);
-                    totalFactura += montoTotal * cantidadTotal;
+                    totalFactura += (montoTotal * cantidadTotal);
                     
                 }
             }
@@ -94,12 +68,13 @@ namespace PagoAgilFrba.AbmFactura
                MessageBox.Show("Se ha dado de alta correctamente la factura", "Correcto", MessageBoxButtons.OK);
                 this.limpiarTextos();
                 dataGridItems.ClearSelection();
+               
                 Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
                 this.cambiarVisibilidades(formularioSiguiente);
             }
             else
             {
-
+        
             }
         }
         private void recorrerListaItems() {
@@ -117,8 +92,6 @@ namespace PagoAgilFrba.AbmFactura
         }
 
         private void insertarItem(String m,String d, String c) {
-            
-
             var cmd = new SqlCommand(
               "insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
               "','" + txtNroFactura.Text + "');",
@@ -127,8 +100,6 @@ namespace PagoAgilFrba.AbmFactura
             var dataReaderFactura = cmd.ExecuteReader();
 
         }
-
-
 
         private bool todosLosCamposLLenos()
         {
@@ -167,42 +138,32 @@ namespace PagoAgilFrba.AbmFactura
             this.Visible = false;
         }
 
-       
+        private void levantarClientes() {
+            var cmdCliente = new SqlCommand(
+                  "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",
+                   Program.conexion()
+                   );
+            var dataReader = cmdCliente.ExecuteReader();
 
-        private void txtTotalFactura_TextChanged(object sender, EventArgs e)
-        {
-            
+            while (dataReader.Read())
+            {
+                comboCliente.Items.Add(dataReader["DNI"]);
 
-        }
-
-        private void txtApellidoCliente_TextChanged(object sender, EventArgs e)
-        {
-                    }
-
-        private void comboCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtNroFactura_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+            }
         
-
-        private void FechaAltaFact_ValueChanged(object sender, EventArgs e)
-        {
-
         }
+        private void levantarEmpresas() {
+            var cmdEmpresa = new SqlCommand(
+          "select CUIT from [SERVOMOTOR].[EMPRESAS] where ESTADO_ACTIVACION=1;",
+           Program.conexion()
+           );
+            var dataReaderEmpresa = cmdEmpresa.ExecuteReader();
 
-        private void FechaVencFact_ValueChanged(object sender, EventArgs e)
-        {
+            while (dataReaderEmpresa.Read())
+            {
+                comboEmpresa.Items.Add(dataReaderEmpresa["CUIT"]);
 
+            }
         }
 
         private void limpiar_Click(object sender, EventArgs e)
@@ -224,10 +185,7 @@ namespace PagoAgilFrba.AbmFactura
         Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
           this.cambiarVisibilidades(formularioSiguiente);
         }
-       
-    
-
     }
        
-    }
+ }
 

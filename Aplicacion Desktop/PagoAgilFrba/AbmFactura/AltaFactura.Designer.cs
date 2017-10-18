@@ -137,7 +137,6 @@
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(193, 20);
             this.txtTotalFactura.TabIndex = 51;
-            this.txtTotalFactura.TextChanged += new System.EventHandler(this.txtTotalFactura_TextChanged);
             // 
             // FechaAltaFac
             // 
@@ -145,7 +144,6 @@
             this.FechaAltaFac.Name = "FechaAltaFac";
             this.FechaAltaFac.Size = new System.Drawing.Size(200, 20);
             this.FechaAltaFac.TabIndex = 54;
-            this.FechaAltaFac.ValueChanged += new System.EventHandler(this.FechaAltaFact_ValueChanged);
             // 
             // FechaVencFact
             // 
@@ -153,7 +151,6 @@
             this.FechaVencFact.Name = "FechaVencFact";
             this.FechaVencFact.Size = new System.Drawing.Size(200, 20);
             this.FechaVencFact.TabIndex = 55;
-            this.FechaVencFact.ValueChanged += new System.EventHandler(this.FechaVencFact_ValueChanged);
             // 
             // limpiar
             // 
@@ -181,7 +178,6 @@
             this.txtNroFactura.Name = "txtNroFactura";
             this.txtNroFactura.Size = new System.Drawing.Size(193, 20);
             this.txtNroFactura.TabIndex = 38;
-            this.txtNroFactura.TextChanged += new System.EventHandler(this.txtNroFactura_TextChanged);
             // 
             // comboEmpresa
             // 
@@ -190,7 +186,6 @@
             this.comboEmpresa.Name = "comboEmpresa";
             this.comboEmpresa.Size = new System.Drawing.Size(193, 21);
             this.comboEmpresa.TabIndex = 53;
-            this.comboEmpresa.SelectedIndexChanged += new System.EventHandler(this.comboEmpresa_SelectedIndexChanged);
             // 
             // comboCliente
             // 
@@ -199,7 +194,6 @@
             this.comboCliente.Name = "comboCliente";
             this.comboCliente.Size = new System.Drawing.Size(193, 21);
             this.comboCliente.TabIndex = 52;
-            this.comboCliente.SelectedIndexChanged += new System.EventHandler(this.comboCliente_SelectedIndexChanged);
             // 
             // label7
             // 

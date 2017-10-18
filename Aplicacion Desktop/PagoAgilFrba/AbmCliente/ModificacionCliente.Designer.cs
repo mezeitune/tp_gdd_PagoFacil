@@ -99,7 +99,7 @@
             this.txtDniExacto.Name = "txtDniExacto";
             this.txtDniExacto.Size = new System.Drawing.Size(124, 20);
             this.txtDniExacto.TabIndex = 24;
-            this.txtDniExacto.TextChanged += new System.EventHandler(this.txtDniExacto_TextChanged);
+        
             // 
             // txtApellido
             // 
@@ -107,7 +107,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(127, 20);
             this.txtApellido.TabIndex = 23;
-            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
+        
             // 
             // txtNombre
             // 
@@ -115,7 +115,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(134, 20);
             this.txtNombre.TabIndex = 22;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+         
             // 
             // label1
             // 
@@ -167,7 +167,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(580, 166);
             this.dataGridView1.TabIndex = 78;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarCliente);
-            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+         
             // 
             // dnii
             // 

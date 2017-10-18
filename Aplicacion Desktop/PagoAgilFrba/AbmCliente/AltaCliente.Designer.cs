@@ -63,7 +63,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+         
             // 
             // label2
             // 
@@ -170,7 +170,7 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(193, 20);
             this.txtNombreCliente.TabIndex = 12;
-            this.txtNombreCliente.TextChanged += new System.EventHandler(this.txtNombreCliente_TextChanged);
+        
             // 
             // txtApellidoCliente
             // 
@@ -178,7 +178,7 @@
             this.txtApellidoCliente.Name = "txtApellidoCliente";
             this.txtApellidoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtApellidoCliente.TabIndex = 13;
-            this.txtApellidoCliente.TextChanged += new System.EventHandler(this.txtApellidoCliente_TextChanged);
+          
             // 
             // txtDNICliente
             // 
@@ -186,7 +186,7 @@
             this.txtDNICliente.Name = "txtDNICliente";
             this.txtDNICliente.Size = new System.Drawing.Size(193, 20);
             this.txtDNICliente.TabIndex = 14;
-            this.txtDNICliente.TextChanged += new System.EventHandler(this.txtDNICliente_TextChanged);
+     
             // 
             // txtMailCliente
             // 
@@ -194,7 +194,7 @@
             this.txtMailCliente.Name = "txtMailCliente";
             this.txtMailCliente.Size = new System.Drawing.Size(193, 20);
             this.txtMailCliente.TabIndex = 15;
-            this.txtMailCliente.TextChanged += new System.EventHandler(this.txtMailCliente_TextChanged);
+       
             // 
             // txtTelCliente
             // 
@@ -202,7 +202,7 @@
             this.txtTelCliente.Name = "txtTelCliente";
             this.txtTelCliente.Size = new System.Drawing.Size(193, 20);
             this.txtTelCliente.TabIndex = 16;
-            this.txtTelCliente.TextChanged += new System.EventHandler(this.txtTelCliente_TextChanged);
+          
             // 
             // txtCalleCliente
             // 
@@ -210,7 +210,7 @@
             this.txtCalleCliente.Name = "txtCalleCliente";
             this.txtCalleCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCalleCliente.TabIndex = 17;
-            this.txtCalleCliente.TextChanged += new System.EventHandler(this.txtCalleCliente_TextChanged);
+        
             // 
             // txtNroPisoCliente
             // 
@@ -218,7 +218,7 @@
             this.txtNroPisoCliente.Name = "txtNroPisoCliente";
             this.txtNroPisoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtNroPisoCliente.TabIndex = 18;
-            this.txtNroPisoCliente.TextChanged += new System.EventHandler(this.txtNroPisoCliente_TextChanged);
+  
             // 
             // txtDptoCliente
             // 
@@ -226,7 +226,7 @@
             this.txtDptoCliente.Name = "txtDptoCliente";
             this.txtDptoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtDptoCliente.TabIndex = 19;
-            this.txtDptoCliente.TextChanged += new System.EventHandler(this.txtDptoCliente_TextChanged);
+        
             // 
             // txtLocalidadCliente
             // 
@@ -234,7 +234,7 @@
             this.txtLocalidadCliente.Name = "txtLocalidadCliente";
             this.txtLocalidadCliente.Size = new System.Drawing.Size(193, 20);
             this.txtLocalidadCliente.TabIndex = 20;
-            this.txtLocalidadCliente.TextChanged += new System.EventHandler(this.txtLocalidadCliente_TextChanged);
+       
             // 
             // txtCodPostalCliente
             // 
@@ -242,7 +242,7 @@
             this.txtCodPostalCliente.Name = "txtCodPostalCliente";
             this.txtCodPostalCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalCliente.TabIndex = 21;
-            this.txtCodPostalCliente.TextChanged += new System.EventHandler(this.txtCodPosCliente_TextChanged);
+        
             // 
             // DarAltaCliente
             // 
@@ -260,7 +260,7 @@
             this.FechaNacCliente.Name = "FechaNacCliente";
             this.FechaNacCliente.Size = new System.Drawing.Size(200, 20);
             this.FechaNacCliente.TabIndex = 56;
-            this.FechaNacCliente.ValueChanged += new System.EventHandler(this.FechaNacCliente_ValueChanged);
+   
             // 
             // limpiar
             // 
@@ -315,7 +315,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AltaCliente";
             this.Text = "AltaCliente";
-            this.Load += new System.EventHandler(this.AltaCliente_Load);
+         
             this.ResumeLayout(false);
             this.PerformLayout();
 

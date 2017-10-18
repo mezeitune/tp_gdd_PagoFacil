@@ -45,7 +45,6 @@
             this.txtDireccionSucursal.Name = "txtDireccionSucursal";
             this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtDireccionSucursal.TabIndex = 33;
-            this.txtDireccionSucursal.TextChanged += new System.EventHandler(this.txtDireccionSucursal_TextChanged);
             // 
             // label1
             // 
@@ -72,7 +71,6 @@
             this.txtNombreSucursal.Name = "txtNombreSucursal";
             this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtNombreSucursal.TabIndex = 28;
-            this.txtNombreSucursal.TextChanged += new System.EventHandler(this.txtNombreSucursal_TextChanged);
             // 
             // label2
             // 

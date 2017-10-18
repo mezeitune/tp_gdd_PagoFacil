@@ -153,7 +153,6 @@
             this.totalFactura.Name = "totalFactura";
             this.totalFactura.Size = new System.Drawing.Size(151, 20);
             this.totalFactura.TabIndex = 77;
-            this.totalFactura.TextChanged += new System.EventHandler(this.totalFactura_TextChanged);
             // 
             // button1
             // 

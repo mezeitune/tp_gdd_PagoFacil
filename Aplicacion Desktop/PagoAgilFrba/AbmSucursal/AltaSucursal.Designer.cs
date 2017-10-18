@@ -45,7 +45,7 @@
             this.txtNombreSucursal.Name = "txtNombreSucursal";
             this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtNombreSucursal.TabIndex = 14;
-            this.txtNombreSucursal.TextChanged += new System.EventHandler(this.txtNombreSucursal_TextChanged);
+         
             // 
             // label2
             // 
@@ -62,7 +62,7 @@
             this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
             this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalSucursal.TabIndex = 23;
-            this.txtCodPostalSucursal.TextChanged += new System.EventHandler(this.txtCodPostalSucursal_TextChanged);
+           
             // 
             // label11
             // 
@@ -89,7 +89,7 @@
             this.txtDireccionSucursal.Name = "txtDireccionSucursal";
             this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
             this.txtDireccionSucursal.TabIndex = 26;
-            this.txtDireccionSucursal.TextChanged += new System.EventHandler(this.txtDireccionSucursal_TextChanged);
+           
             // 
             // label1
             // 

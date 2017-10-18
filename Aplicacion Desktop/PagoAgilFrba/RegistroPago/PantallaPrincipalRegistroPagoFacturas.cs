@@ -149,8 +149,7 @@ namespace PagoAgilFrba.RegistroPago
 
         private void PantallaPrincipalRegistroPagoFacturas_Load(object sender, EventArgs e)
         {
-            this.levantarFacturas();
-            
+            this.levantarFacturas(); 
             this.levantarSucursales();
             this.levantarMediosDePago();
             this.levantarClientes();
@@ -189,9 +188,6 @@ namespace PagoAgilFrba.RegistroPago
 
 
         }
-
-       
-
         private void levantarSucursales() {
 
             var cmd = new SqlCommand(
@@ -203,8 +199,6 @@ namespace PagoAgilFrba.RegistroPago
             while (dataReader.Read())
             {
                comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
-
-             
             }
         
         }
@@ -220,8 +214,6 @@ namespace PagoAgilFrba.RegistroPago
             while (dataReader.Read())
             {
                 medioPago.Items.Add(dataReader["TIPO_MEDPAGO"]);
-
-
             }
 
         }

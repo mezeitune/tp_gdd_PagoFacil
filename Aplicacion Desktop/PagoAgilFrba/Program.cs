@@ -11,7 +11,7 @@ namespace PagoAgilFrba
     static class Program
     {
 
-        public static string rolActual;
+       
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -21,11 +21,9 @@ namespace PagoAgilFrba
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //CREO LA TABLA CON LA FECHA DEL XML
+          
             SQLManager manager = new SQLManager();
-           // manager.generarSP("crearTablaFecha");
-            //manager.agregarFechaSP("@fecha", Program.fechaHoy());
-            //manager.ejecutarSP();
+        
 
             Application.Run(new FormLogin());
         }

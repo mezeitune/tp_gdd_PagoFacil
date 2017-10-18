@@ -23,15 +23,6 @@ namespace PagoAgilFrba.AbmCliente
             InitializeComponent();
         }
 
-       
-       
-
-        
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void cambiarVisibilidades(Form formularioSiguiente)
         {
             formularioSiguiente.Visible = true;
@@ -55,8 +46,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void Listado_Refresh()
         {
-           
-
+ 
            
             var cmd = new SqlCommand(
                 "SELECT * " +
@@ -72,9 +62,7 @@ namespace PagoAgilFrba.AbmCliente
             cmd.Parameters.AddWithValue("@NOMBRE", "%" + txtNombre.Text+ "%");
             cmd.Parameters.AddWithValue("@APELLIDO", "%" + txtApellido.Text + "%");
             cmd.Parameters.AddWithValue("@DNI", txtDniExacto.Text);
-           
-            
-           
+
 
             var dataReader = cmd.ExecuteReader();
 
@@ -103,22 +91,6 @@ namespace PagoAgilFrba.AbmCliente
         }
 
 
-
-       
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDniExacto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
@@ -159,12 +131,7 @@ namespace PagoAgilFrba.AbmCliente
             
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-           
-        }
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
             var cmd = new SqlCommand(

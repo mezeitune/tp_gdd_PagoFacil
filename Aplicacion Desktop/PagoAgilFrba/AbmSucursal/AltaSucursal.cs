@@ -18,21 +18,7 @@ namespace PagoAgilFrba.AbmSucursal
             InitializeComponent();
         }
 
-        private void txtNombreSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDireccionSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodPostalSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void DarAltaSucursal_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && !validarTipos())

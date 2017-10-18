@@ -42,72 +42,7 @@ namespace PagoAgilFrba.AbmCliente
 
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNombreCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtApellidoCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDNICliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMailCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTelCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCalleCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNroPisoCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDptoCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLocalidadCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AltaCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFechaNacCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodPosCliente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void DarAltaCliente_Click(object sender, EventArgs e)
         {
             int estadoHab = 1;
@@ -124,9 +59,7 @@ namespace PagoAgilFrba.AbmCliente
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
                 this.vaciarTextos();
             }
-            else { 
-
-            }
+            
             
         }
         private void cambiarVisibilidades(Form formularioSiguiente)
@@ -169,12 +102,6 @@ namespace PagoAgilFrba.AbmCliente
             
             return huboErrores;
         }
-
-        private void FechaNacCliente_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void limpiar_Click(object sender, EventArgs e)
         {
             this.vaciarTextos();

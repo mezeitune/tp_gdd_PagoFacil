@@ -23,16 +23,7 @@ namespace PagoAgilFrba.AbmFactura
             InitializeComponent();
         }
 
-        private void txtMontoItem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCantidadItem_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void botonModificarUnItem_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && !validarTipos())

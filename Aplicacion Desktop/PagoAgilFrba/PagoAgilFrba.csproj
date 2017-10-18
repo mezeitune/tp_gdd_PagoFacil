@@ -196,7 +196,6 @@
     <Compile Include="AbmSucursal\PantallaPrincipalABMSucursal.Designer.cs">
       <DependentUpon>PantallaPrincipalABMSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Constructores.cs" />
     <Compile Include="Devolucion\DevolucionFactura.cs">
       <SubType>Form</SubType>
     </Compile>

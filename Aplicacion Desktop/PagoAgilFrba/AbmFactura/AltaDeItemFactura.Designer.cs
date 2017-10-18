@@ -62,7 +62,6 @@
             this.txtCantidadDeItems.Name = "txtCantidadDeItems";
             this.txtCantidadDeItems.Size = new System.Drawing.Size(54, 20);
             this.txtCantidadDeItems.TabIndex = 56;
-            this.txtCantidadDeItems.TextChanged += new System.EventHandler(this.txtCantidadDeItems_TextChanged);
             // 
             // txtMontoItem
             // 
@@ -70,7 +69,6 @@
             this.txtMontoItem.Name = "txtMontoItem";
             this.txtMontoItem.Size = new System.Drawing.Size(67, 20);
             this.txtMontoItem.TabIndex = 55;
-            this.txtMontoItem.TextChanged += new System.EventHandler(this.txtMontoItem_TextChanged);
             // 
             // label3
             // 
@@ -89,7 +87,6 @@
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 50;
             this.label2.Text = "Monto:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 

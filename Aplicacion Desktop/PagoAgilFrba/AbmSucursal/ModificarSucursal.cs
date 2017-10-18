@@ -20,21 +20,7 @@ namespace PagoAgilFrba.AbmSucursal
             InitializeComponent();
         }
 
-        private void txtNombreSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDireccionSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCodPostalSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void ModificarSucursal_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && !validarTipos())
@@ -46,6 +32,8 @@ namespace PagoAgilFrba.AbmSucursal
              );
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente la sucursal de Cod Postal: " +  codigoPostal, "", MessageBoxButtons.OK);
+               
+                
                 Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
                 this.cambiarVisibilidades(formularioSiguiente);
             }
@@ -108,6 +96,8 @@ namespace PagoAgilFrba.AbmSucursal
 
 
         }
+
+     
 
     }
 }
