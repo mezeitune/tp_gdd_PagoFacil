@@ -30,7 +30,7 @@ namespace PagoAgilFrba.AbmCliente
             txtNombreCliente.Text = "";
             txtApellidoCliente.Text = " ";
             txtDNICliente.Text = " ";
-            txtMailCliente.Text = " ";
+            txtMailCliente.Clear();
             txtTelCliente.Text = " ";
             txtCalleCliente.Text = " ";
             txtNroPisoCliente.Text = " ";
@@ -47,21 +47,32 @@ namespace PagoAgilFrba.AbmCliente
         {
             int estadoHab = 1;
             
-            if (!todosLosCamposLLenos() && !validarTipos())
+            if (!todosLosCamposLLenos() && !validarTipos() && existenDatosDuplicados())
             {
-                
-                var cmd = new SqlCommand(
-               "insert into [SERVOMOTOR].[CLIENTES] values ("+txtDNICliente.Text+",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text  +
-               "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text +"','"+estadoHab+ "');",
-                Program.conexion()
-            );
-                var dataReader = cmd.ExecuteReader();
-                MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
+                try
+                {
+                    var cmd = new SqlCommand(
+                   "insert into [SERVOMOTOR].[CLIENTES] values (" + txtDNICliente.Text + ",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text +
+                   "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text + "','" + estadoHab + "');",
+                    Program.conexion()
+                );
+                    var dataReader = cmd.ExecuteReader();
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
+
+                    MessageBox.Show("El campo nombre o mail estan duplicados, vuelva a ingresar otro","", MessageBoxButtons.OK);
+                    return;
+                }
                 this.vaciarTextos();
             }
             
             
         }
+        private Boolean existenDatosDuplicados() {
+            return true;
+        }
+
         private void cambiarVisibilidades(Form formularioSiguiente)
         {
             formularioSiguiente.Visible = true;

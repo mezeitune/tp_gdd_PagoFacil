@@ -53,6 +53,7 @@
             this.estadoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bajaLogica = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(416, 64);
+            this.label2.Location = new System.Drawing.Point(429, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 27;
@@ -85,7 +86,7 @@
             // 
             // buscar
             // 
-            this.buscar.Location = new System.Drawing.Point(242, 112);
+            this.buscar.Location = new System.Drawing.Point(262, 100);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(116, 23);
             this.buscar.TabIndex = 25;
@@ -99,7 +100,6 @@
             this.txtDniExacto.Name = "txtDniExacto";
             this.txtDniExacto.Size = new System.Drawing.Size(124, 20);
             this.txtDniExacto.TabIndex = 24;
-        
             // 
             // txtApellido
             // 
@@ -107,7 +107,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(127, 20);
             this.txtApellido.TabIndex = 23;
-        
             // 
             // txtNombre
             // 
@@ -115,7 +114,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(134, 20);
             this.txtNombre.TabIndex = 22;
-         
             // 
             // label1
             // 
@@ -128,7 +126,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(67, 112);
+            this.limpiar.Location = new System.Drawing.Point(77, 100);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 58;
@@ -167,7 +165,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(580, 166);
             this.dataGridView1.TabIndex = 78;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarCliente);
-         
             // 
             // dnii
             // 
@@ -264,12 +261,23 @@
             this.button1.TabIndex = 80;
             this.button1.Text = "Modificar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(64, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(281, 13);
+            this.label4.TabIndex = 81;
+            this.label4.Text = "Haga click en el cliente que quiera modificar o dar de baja";
             // 
             // ModificacionClienteee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 389);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bajaLogica);
             this.Controls.Add(this.dataGridView1);
@@ -319,6 +327,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoCliente;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
         
 
 

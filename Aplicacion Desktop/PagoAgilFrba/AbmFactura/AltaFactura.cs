@@ -55,14 +55,21 @@ namespace PagoAgilFrba.AbmFactura
            
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-             
+                try
+                {
                 var cmd = new SqlCommand(
                "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
                "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','NO PAGA',NULL,NULL);",
                 Program.conexion()   
                   );
                 var dataReaderFactura = cmd.ExecuteReader();
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
 
+                    MessageBox.Show("El campo numero de factura esta duplicado, vuelva a ingresar otro", "", MessageBoxButtons.OK);
+                    return;
+                }
                 this.recorrerListaItems();
                 
                MessageBox.Show("Se ha dado de alta correctamente la factura", "Correcto", MessageBoxButtons.OK);

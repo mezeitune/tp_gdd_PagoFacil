@@ -786,7 +786,22 @@ BEGIN
 
 	return 0
 END
+GO
 
+
+
+CREATE FUNCTION [SERVOMOTOR].ExisteRegistroEnCliente (@dni VARCHAR(30),@mail VARCHAR(40))
+	RETURNS BIT
+AS
+BEGIN
+	DECLARE @Existe INT
+	SELECT @Existe = COUNT(*) FROM SERVOMOTOR.CLIENTES WHERE DNI= @dni or MAIL = @mail;
+	IF(@Existe > 0)
+	RETURN 1
+	RETURN 0
+END
+GO
+select * from SERVOMOTOR.FACTURAS;
 /**************************** <<TRIGGERS>> ******************************/
 GO
 CREATE TRIGGER cambiarTotalDelasFacturasPorModificacionItem ON [SERVOMOTOR].ITEMS
@@ -806,4 +821,3 @@ AS BEGIN
 	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
 
 END
-select * from SERVOMOTOR.CLIENTES where NOMBRE like '%s%'  and APELLIDO like '';

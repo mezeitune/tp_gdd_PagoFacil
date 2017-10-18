@@ -52,5 +52,15 @@ namespace PagoAgilFrba.AbmEmpresa
             // Solo permitir ingresar numeros
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AltaEmpresa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

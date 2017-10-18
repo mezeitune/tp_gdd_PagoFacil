@@ -39,9 +39,11 @@ namespace PagoAgilFrba.AbmCliente
 
         private void buscar_Click(object sender, EventArgs e)
         {
-
+            if(  !Validacion.estaEntreLimites(txtDniExacto, 999999, 99999999, false, "DNI")){
+                this.query_inicial();
+            }else{
             Listado_Refresh();
-           
+            }
         }
 
         private void Listado_Refresh()
@@ -54,8 +56,7 @@ namespace PagoAgilFrba.AbmCliente
                 
                 "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
                 "  AND (APELLIDO LIKE @APELLIDO OR @APELLIDO = '') " +
-                "  AND (DNI = @DNI OR @DNI = '')" +
-                "  AND (ESTADO_HABILITACION = 1 )",
+                "  AND (DNI = @DNI OR @DNI = '');" ,
                 Program.conexion()
             );
            
@@ -70,7 +71,7 @@ namespace PagoAgilFrba.AbmCliente
 
             while (dataReader.Read())
             {
-                this.dataGridView1.Rows.Clear();
+               
                 this.dataGridView1.Rows.Add(
                     dataReader["DNI"],
                     dataReader["NOMBRE"],
@@ -149,8 +150,14 @@ namespace PagoAgilFrba.AbmCliente
             indexCliente = dataGridView1.CurrentRow.Index;
             DNICliente = dataGridView1[0, indexCliente].Value.ToString();
             bajaLogica.Enabled = true;
-            button1.Enabled = false;
+            button1.Enabled = true;
             MessageBox.Show("Se ha seleccionado el cliente de DNI: "+DNICliente, "", MessageBoxButtons.OK);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new AbmCliente.ModificarDatosCliente(DNICliente);
+            this.cambiarVisibilidades(formularioSiguiente);
         }
       
 
