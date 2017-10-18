@@ -45,6 +45,7 @@
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoHab = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bajaLogica = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,11 +201,21 @@
             this.bajaLogica.UseVisualStyleBackColor = true;
             this.bajaLogica.Click += new System.EventHandler(this.bajaLogica_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(35, 141);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(289, 13);
+            this.label5.TabIndex = 82;
+            this.label5.Text = "Haga click en la sucursal que quiera modificar o dar de baja";
+            // 
             // ModificarDatosSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 418);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.bajaLogica);
             this.Controls.Add(this.dataGridItems);
             this.Controls.Add(this.volverALaPaginaAnterior);
@@ -246,6 +257,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoHab;
+        private System.Windows.Forms.Label label5;
 
     }
 }
