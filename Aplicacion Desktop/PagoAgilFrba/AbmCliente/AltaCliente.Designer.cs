@@ -63,7 +63,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-         
             // 
             // label2
             // 
@@ -170,7 +169,6 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(193, 20);
             this.txtNombreCliente.TabIndex = 12;
-        
             // 
             // txtApellidoCliente
             // 
@@ -178,7 +176,6 @@
             this.txtApellidoCliente.Name = "txtApellidoCliente";
             this.txtApellidoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtApellidoCliente.TabIndex = 13;
-          
             // 
             // txtDNICliente
             // 
@@ -186,7 +183,6 @@
             this.txtDNICliente.Name = "txtDNICliente";
             this.txtDNICliente.Size = new System.Drawing.Size(193, 20);
             this.txtDNICliente.TabIndex = 14;
-     
             // 
             // txtMailCliente
             // 
@@ -194,7 +190,6 @@
             this.txtMailCliente.Name = "txtMailCliente";
             this.txtMailCliente.Size = new System.Drawing.Size(193, 20);
             this.txtMailCliente.TabIndex = 15;
-       
             // 
             // txtTelCliente
             // 
@@ -202,7 +197,6 @@
             this.txtTelCliente.Name = "txtTelCliente";
             this.txtTelCliente.Size = new System.Drawing.Size(193, 20);
             this.txtTelCliente.TabIndex = 16;
-          
             // 
             // txtCalleCliente
             // 
@@ -210,7 +204,6 @@
             this.txtCalleCliente.Name = "txtCalleCliente";
             this.txtCalleCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCalleCliente.TabIndex = 17;
-        
             // 
             // txtNroPisoCliente
             // 
@@ -218,7 +211,6 @@
             this.txtNroPisoCliente.Name = "txtNroPisoCliente";
             this.txtNroPisoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtNroPisoCliente.TabIndex = 18;
-  
             // 
             // txtDptoCliente
             // 
@@ -226,7 +218,6 @@
             this.txtDptoCliente.Name = "txtDptoCliente";
             this.txtDptoCliente.Size = new System.Drawing.Size(193, 20);
             this.txtDptoCliente.TabIndex = 19;
-        
             // 
             // txtLocalidadCliente
             // 
@@ -234,7 +225,6 @@
             this.txtLocalidadCliente.Name = "txtLocalidadCliente";
             this.txtLocalidadCliente.Size = new System.Drawing.Size(193, 20);
             this.txtLocalidadCliente.TabIndex = 20;
-       
             // 
             // txtCodPostalCliente
             // 
@@ -242,7 +232,6 @@
             this.txtCodPostalCliente.Name = "txtCodPostalCliente";
             this.txtCodPostalCliente.Size = new System.Drawing.Size(193, 20);
             this.txtCodPostalCliente.TabIndex = 21;
-        
             // 
             // DarAltaCliente
             // 
@@ -260,7 +249,6 @@
             this.FechaNacCliente.Name = "FechaNacCliente";
             this.FechaNacCliente.Size = new System.Drawing.Size(200, 20);
             this.FechaNacCliente.TabIndex = 56;
-   
             // 
             // limpiar
             // 
@@ -315,7 +303,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AltaCliente";
             this.Text = "AltaCliente";
-         
+            this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

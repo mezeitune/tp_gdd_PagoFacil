@@ -289,20 +289,8 @@ namespace PagoAgilFrba
 
             return vacio;
         }
-        public static Boolean esNumeroDe7u8(TextBox txt)
-        {
-            
-            if (txt.TextLength >= 7 && txt.TextLength <= 8)
-            {
-                return true;
-            }
-            else {
-                MessageBox.Show("El dni debe tener como minimo 7 caracteres u 8 como maximo", "Error en los datos de entrada", MessageBoxButtons.OK);
-                return false;
-            }
-
-        }
-        public static Boolean esNumeroDe4(TextBox txt)
+      
+        public static Boolean esNumeroDe4(TextBox txt,string campo)
         {
 
             if (txt.TextLength == 4)
@@ -311,7 +299,7 @@ namespace PagoAgilFrba
             }
             else
             {
-                MessageBox.Show("El campo ano debe tener 4 digitos", "Error en los datos de entrada", MessageBoxButtons.OK);
+                MessageBox.Show("El campo'"+campo+"' debe tener 4 digitos", "Error en los datos de entrada", MessageBoxButtons.OK);
                 return false;
             }
 
@@ -377,7 +365,15 @@ namespace PagoAgilFrba
             return true;
         }
 
-
+        public static Boolean fechaAnteriorALaDeHoy(DateTimePicker dateTimePicker1)
+        {
+            if (dateTimePicker1.Value.CompareTo(Program.fechaHoy()) > 0)
+            {
+                MessageBox.Show("La fecha ingresada debe ser anterior a la fecha de hoy", "Error en los datos de entrada", MessageBoxButtons.OK);
+                return false;
+            }
+            return true;
+        }
         //Eventos de validacion de tipos de campos
 
         private static int cantidadEnCadena(string cadena, char caracter)

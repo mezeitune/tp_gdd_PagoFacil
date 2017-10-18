@@ -806,4 +806,4 @@ AS BEGIN
 	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
 
 END
-select * from SERVOMOTOR.USUARIOS;
+select * from SERVOMOTOR.CLIENTES where NOMBRE like '%s%'  and APELLIDO like '';

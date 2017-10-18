@@ -50,7 +50,7 @@ namespace PagoAgilFrba.AbmCliente
            
             var cmd = new SqlCommand(
                 "SELECT * " +
-                "FROM [SERVOMOTOR].[CLIENTES] c " +
+                "FROM [SERVOMOTOR].[CLIENTES] " +
                 
                 "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
                 "  AND (APELLIDO LIKE @APELLIDO OR @APELLIDO = '') " +
@@ -128,7 +128,8 @@ namespace PagoAgilFrba.AbmCliente
         private void Baja_Modificacion_Cliente_Load(object sender, EventArgs e)
         {
             this.query_inicial();
-            
+            button1.Enabled = false;
+            bajaLogica.Enabled = false;
         }
 
        
@@ -147,21 +148,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             indexCliente = dataGridView1.CurrentRow.Index;
             DNICliente = dataGridView1[0, indexCliente].Value.ToString();
-            
+            bajaLogica.Enabled = true;
+            button1.Enabled = false;
             MessageBox.Show("Se ha seleccionado el cliente de DNI: "+DNICliente, "", MessageBoxButtons.OK);
         }
       
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (DNICliente!=null)
-            {
-                Form formularioSiguiente = new AbmCliente.ModificarDatosCliente(DNICliente);
-                this.cambiarVisibilidades(formularioSiguiente);
-            }
-            else {
-                MessageBox.Show("Seleccione un cliente a modificar clickeando en la tabla: ","", MessageBoxButtons.OK);
-            }
-        }
     }
 }

@@ -91,10 +91,10 @@ namespace PagoAgilFrba.AbmCliente
             Boolean huboErrores = false;
             huboErrores = !Validacion.esTextoAlfanumerico(txtApellidoCliente, true, "apellido", true) || huboErrores;
             huboErrores = !Validacion.esTextoAlfanumerico(txtNombreCliente, true, "nombre", true) || huboErrores;
-            huboErrores = !Validacion.esNumeroDe7u8(txtDNICliente) || huboErrores;
-           
+            huboErrores = !Validacion.estaEntreLimites(txtDNICliente, 999999, 99999999, false, "DNI") || huboErrores;
+            huboErrores = !Validacion.esNumeroDe4(txtCodPostalCliente,"Cod Postal") || huboErrores;
             huboErrores = !Validacion.esNumero(txtTelCliente, "Telefono", true) || huboErrores;
-          
+            huboErrores = !Validacion.fechaAnteriorALaDeHoy(FechaNacCliente) || huboErrores;
             huboErrores = !Validacion.esNumero(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtDptoCliente, "Departamento", true) || huboErrores;
           
@@ -111,6 +111,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
             this.cambiarVisibilidades(formularioSiguiente);
+        }
+
+        private void AltaCliente_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
