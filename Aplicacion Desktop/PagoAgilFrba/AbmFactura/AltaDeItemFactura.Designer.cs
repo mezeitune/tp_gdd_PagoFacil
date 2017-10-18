@@ -144,6 +144,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.descripcion,
@@ -151,6 +153,7 @@
             this.cantidad});
             this.dataGridView1.Location = new System.Drawing.Point(18, 95);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(477, 116);
             this.dataGridView1.TabIndex = 81;
             // 
@@ -159,18 +162,21 @@
             this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             // 
             // monto
             // 
             this.monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.monto.HeaderText = "Monto";
             this.monto.Name = "monto";
+            this.monto.ReadOnly = true;
             // 
             // cantidad
             // 
             this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cantidad.HeaderText = "Cantidad";
             this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
             // 
             // AltaDeItemFactura
             // 

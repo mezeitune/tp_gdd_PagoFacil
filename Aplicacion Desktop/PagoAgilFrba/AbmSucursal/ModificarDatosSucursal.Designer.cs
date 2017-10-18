@@ -147,6 +147,8 @@
             // 
             // dataGridItems
             // 
+            this.dataGridItems.AllowUserToAddRows = false;
+            this.dataGridItems.AllowUserToDeleteRows = false;
             this.dataGridItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodPostal,
@@ -155,6 +157,7 @@
             this.EstadoHab});
             this.dataGridItems.Location = new System.Drawing.Point(5, 167);
             this.dataGridItems.Name = "dataGridItems";
+            this.dataGridItems.ReadOnly = true;
             this.dataGridItems.Size = new System.Drawing.Size(583, 110);
             this.dataGridItems.TabIndex = 77;
             this.dataGridItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarSucursal);
@@ -164,24 +167,28 @@
             this.CodPostal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CodPostal.HeaderText = "Codigo Postal";
             this.CodPostal.Name = "CodPostal";
+            this.CodPostal.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Direccion
             // 
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Direccion.HeaderText = "Direccion";
             this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
             // 
             // EstadoHab
             // 
             this.EstadoHab.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.EstadoHab.HeaderText = "Estado Habilitacion";
             this.EstadoHab.Name = "EstadoHab";
+            this.EstadoHab.ReadOnly = true;
             // 
             // bajaLogica
             // 

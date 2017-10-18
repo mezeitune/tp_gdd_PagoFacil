@@ -29,7 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboClientes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.medioPago = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,13 +49,6 @@
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.limpiar = new System.Windows.Forms.Button();
             this.registrarUnPago = new System.Windows.Forms.Button();
-            this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboClientes = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -74,8 +74,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Pago";
             // 
+            // comboClientes
+            // 
+            this.comboClientes.FormattingEnabled = true;
+            this.comboClientes.Location = new System.Drawing.Point(213, 273);
+            this.comboClientes.Name = "comboClientes";
+            this.comboClientes.Size = new System.Drawing.Size(231, 21);
+            this.comboClientes.TabIndex = 81;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 280);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 81;
+            this.label1.Text = "DNI Cliente :";
+            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num_fact,
@@ -85,8 +104,44 @@
             this.totalFactura});
             this.dataGridView1.Location = new System.Drawing.Point(9, 63);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(568, 118);
             this.dataGridView1.TabIndex = 80;
+            // 
+            // num_fact
+            // 
+            this.num_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.num_fact.HeaderText = "NUM FACT";
+            this.num_fact.Name = "num_fact";
+            this.num_fact.ReadOnly = true;
+            // 
+            // fecha_venc_fact
+            // 
+            this.fecha_venc_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fecha_venc_fact.HeaderText = "FECHA VENC";
+            this.fecha_venc_fact.Name = "fecha_venc_fact";
+            this.fecha_venc_fact.ReadOnly = true;
+            // 
+            // dni_cliente
+            // 
+            this.dni_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dni_cliente.HeaderText = "DNI CLIENTE";
+            this.dni_cliente.Name = "dni_cliente";
+            this.dni_cliente.ReadOnly = true;
+            // 
+            // cuit_empresa
+            // 
+            this.cuit_empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cuit_empresa.HeaderText = "CUIT EMPRESA";
+            this.cuit_empresa.Name = "cuit_empresa";
+            this.cuit_empresa.ReadOnly = true;
+            // 
+            // totalFactura
+            // 
+            this.totalFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalFactura.HeaderText = "TOTAL";
+            this.totalFactura.Name = "totalFactura";
+            this.totalFactura.ReadOnly = true;
             // 
             // button1
             // 
@@ -195,58 +250,6 @@
             this.registrarUnPago.Text = "Registrar Pago";
             this.registrarUnPago.UseVisualStyleBackColor = true;
             this.registrarUnPago.Click += new System.EventHandler(this.registrarUnPago_Click);
-            // 
-            // num_fact
-            // 
-            this.num_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.num_fact.HeaderText = "NUM FACT";
-            this.num_fact.Name = "num_fact";
-            this.num_fact.ReadOnly = true;
-            // 
-            // fecha_venc_fact
-            // 
-            this.fecha_venc_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fecha_venc_fact.HeaderText = "FECHA VENC";
-            this.fecha_venc_fact.Name = "fecha_venc_fact";
-            this.fecha_venc_fact.ReadOnly = true;
-            // 
-            // dni_cliente
-            // 
-            this.dni_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dni_cliente.HeaderText = "DNI CLIENTE";
-            this.dni_cliente.Name = "dni_cliente";
-            this.dni_cliente.ReadOnly = true;
-            // 
-            // cuit_empresa
-            // 
-            this.cuit_empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cuit_empresa.HeaderText = "CUIT EMPRESA";
-            this.cuit_empresa.Name = "cuit_empresa";
-            this.cuit_empresa.ReadOnly = true;
-            // 
-            // totalFactura
-            // 
-            this.totalFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.totalFactura.HeaderText = "TOTAL";
-            this.totalFactura.Name = "totalFactura";
-            this.totalFactura.ReadOnly = true;
-            // 
-            // comboClientes
-            // 
-            this.comboClientes.FormattingEnabled = true;
-            this.comboClientes.Location = new System.Drawing.Point(213, 273);
-            this.comboClientes.Name = "comboClientes";
-            this.comboClientes.Size = new System.Drawing.Size(231, 21);
-            this.comboClientes.TabIndex = 81;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 280);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 81;
-            this.label1.Text = "DNI Cliente :";
             // 
             // PantallaPrincipalRegistroPagoFacturas
             // 

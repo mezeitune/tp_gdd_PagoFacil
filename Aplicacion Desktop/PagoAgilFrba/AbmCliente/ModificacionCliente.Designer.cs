@@ -39,6 +39,9 @@
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bajaLogica = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.dnii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,9 +54,6 @@
             this.fechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bajaLogica = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,6 +146,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dnii,
@@ -162,86 +164,10 @@
             this.estadoCliente});
             this.dataGridView1.Location = new System.Drawing.Point(5, 165);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(580, 166);
             this.dataGridView1.TabIndex = 78;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarCliente);
-            // 
-            // dnii
-            // 
-            this.dnii.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dnii.HeaderText = "DNI";
-            this.dnii.Name = "dnii";
-            this.dnii.ReadOnly = true;
-            this.dnii.Width = 51;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 79;
-            // 
-            // DNI
-            // 
-            this.DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DNI.HeaderText = "APELLIDO";
-            this.DNI.Name = "DNI";
-            this.DNI.Width = 84;
-            // 
-            // mailCliente
-            // 
-            this.mailCliente.HeaderText = "MAIL";
-            this.mailCliente.Name = "mailCliente";
-            // 
-            // telefono
-            // 
-            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.telefono.HeaderText = "TEL";
-            this.telefono.Name = "telefono";
-            this.telefono.Width = 52;
-            // 
-            // calleCliente
-            // 
-            this.calleCliente.HeaderText = "CALLE";
-            this.calleCliente.Name = "calleCliente";
-            // 
-            // nroPiso
-            // 
-            this.nroPiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nroPiso.HeaderText = "Nro PISO";
-            this.nroPiso.Name = "nroPiso";
-            this.nroPiso.Width = 77;
-            // 
-            // departamento
-            // 
-            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.departamento.HeaderText = "DEPTO";
-            this.departamento.Name = "departamento";
-            this.departamento.Width = 69;
-            // 
-            // locCliente
-            // 
-            this.locCliente.HeaderText = "LOCALIDAD";
-            this.locCliente.Name = "locCliente";
-            // 
-            // fechaNacimiento
-            // 
-            this.fechaNacimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.fechaNacimiento.HeaderText = "FECHA NAC";
-            this.fechaNacimiento.Name = "fechaNacimiento";
-            this.fechaNacimiento.Width = 92;
-            // 
-            // codPos
-            // 
-            this.codPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.codPos.HeaderText = "COD POSTAL";
-            this.codPos.Name = "codPos";
-            // 
-            // estadoCliente
-            // 
-            this.estadoCliente.HeaderText = "HABILITACION";
-            this.estadoCliente.Name = "estadoCliente";
-            this.estadoCliente.ReadOnly = true;
             // 
             // bajaLogica
             // 
@@ -271,6 +197,93 @@
             this.label4.Size = new System.Drawing.Size(281, 13);
             this.label4.TabIndex = 81;
             this.label4.Text = "Haga click en el cliente que quiera modificar o dar de baja";
+            // 
+            // dnii
+            // 
+            this.dnii.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dnii.HeaderText = "DNI";
+            this.dnii.Name = "dnii";
+            this.dnii.ReadOnly = true;
+            this.dnii.Width = 51;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 79;
+            // 
+            // DNI
+            // 
+            this.DNI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DNI.HeaderText = "APELLIDO";
+            this.DNI.Name = "DNI";
+            this.DNI.ReadOnly = true;
+            this.DNI.Width = 84;
+            // 
+            // mailCliente
+            // 
+            this.mailCliente.HeaderText = "MAIL";
+            this.mailCliente.Name = "mailCliente";
+            this.mailCliente.ReadOnly = true;
+            // 
+            // telefono
+            // 
+            this.telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.telefono.HeaderText = "TEL";
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            this.telefono.Width = 52;
+            // 
+            // calleCliente
+            // 
+            this.calleCliente.HeaderText = "CALLE";
+            this.calleCliente.Name = "calleCliente";
+            this.calleCliente.ReadOnly = true;
+            // 
+            // nroPiso
+            // 
+            this.nroPiso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nroPiso.HeaderText = "Nro PISO";
+            this.nroPiso.Name = "nroPiso";
+            this.nroPiso.ReadOnly = true;
+            this.nroPiso.Width = 77;
+            // 
+            // departamento
+            // 
+            this.departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.departamento.HeaderText = "DEPTO";
+            this.departamento.Name = "departamento";
+            this.departamento.ReadOnly = true;
+            this.departamento.Width = 69;
+            // 
+            // locCliente
+            // 
+            this.locCliente.HeaderText = "LOCALIDAD";
+            this.locCliente.Name = "locCliente";
+            this.locCliente.ReadOnly = true;
+            // 
+            // fechaNacimiento
+            // 
+            this.fechaNacimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.fechaNacimiento.HeaderText = "FECHA NAC";
+            this.fechaNacimiento.Name = "fechaNacimiento";
+            this.fechaNacimiento.ReadOnly = true;
+            this.fechaNacimiento.Width = 92;
+            // 
+            // codPos
+            // 
+            this.codPos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.codPos.HeaderText = "COD POSTAL";
+            this.codPos.Name = "codPos";
+            this.codPos.ReadOnly = true;
+            // 
+            // estadoCliente
+            // 
+            this.estadoCliente.HeaderText = "HABILITACION";
+            this.estadoCliente.Name = "estadoCliente";
+            this.estadoCliente.ReadOnly = true;
             // 
             // ModificacionClienteee
             // 
@@ -314,6 +327,8 @@
         private System.Windows.Forms.Button volverALaPaginaAnterior;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button bajaLogica;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dnii;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
@@ -326,8 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn codPos;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoCliente;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
         
 
 

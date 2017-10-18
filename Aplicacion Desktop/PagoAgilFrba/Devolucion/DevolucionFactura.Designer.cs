@@ -113,6 +113,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num_fact,
@@ -123,6 +125,7 @@
             this.numeroPago});
             this.dataGridView1.Location = new System.Drawing.Point(9, 63);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(568, 164);
             this.dataGridView1.TabIndex = 80;
             // 
@@ -166,6 +169,7 @@
             this.numeroPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.numeroPago.HeaderText = "NUMERO PAGO";
             this.numeroPago.Name = "numeroPago";
+            this.numeroPago.ReadOnly = true;
             // 
             // button1
             // 
