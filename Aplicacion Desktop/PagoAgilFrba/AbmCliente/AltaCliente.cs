@@ -73,11 +73,6 @@ namespace PagoAgilFrba.AbmCliente
             return true;
         }
 
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
         private bool todosLosCamposLLenos()
         {
 
@@ -120,8 +115,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)

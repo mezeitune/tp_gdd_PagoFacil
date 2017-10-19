@@ -20,12 +20,9 @@ namespace PagoAgilFrba.AbmCliente
         private void AltaCliente_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmCliente.AltaCliente();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -36,7 +33,9 @@ namespace PagoAgilFrba.AbmCliente
         private void button1_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void Alta_Load(object sender, EventArgs e)
@@ -46,8 +45,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new MenuPrincipal();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
 
         

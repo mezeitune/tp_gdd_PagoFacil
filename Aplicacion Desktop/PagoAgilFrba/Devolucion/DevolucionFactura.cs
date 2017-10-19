@@ -117,7 +117,9 @@ namespace PagoAgilFrba.Devolucion
             this.limpiarTextos();
             MessageBox.Show("Se ha registrado la devolucion correctamente", "Todo bien", MessageBoxButtons.OK);
             Form formularioSiguiente = new MenuPrincipal();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
 
 
         }
@@ -147,13 +149,7 @@ namespace PagoAgilFrba.Devolucion
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new MenuPrincipal();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void motivosDevolucion_SelectedIndexChanged(object sender, EventArgs e)

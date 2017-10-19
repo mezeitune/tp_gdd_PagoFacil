@@ -26,10 +26,9 @@ namespace PagoAgilFrba
 
         public void iniciar()
         {
-            vaciarTextos();
-
+            /*
             radioAdministrador.Checked = true;
-            radioCobrador.Checked = false;
+            radioCobrador.Checked = false;*/
 
             gbAdministrador.Enabled = true;
             gbInvitado.Enabled = false;
@@ -43,16 +42,6 @@ namespace PagoAgilFrba
             
             gbAdministrador.Enabled = tildadoAdministrador;
             gbInvitado.Enabled = !tildadoAdministrador;
-
-            vaciarTextos();
-        }
-
-        private void vaciarTextos()
-        {
-            
-            txtPassword.Text = "";
-            txtUsuario.Text = "";
-            SucursalesDisponibles.SelectedIndex = -1;
         }
 
         private void cargarSucursalesDisponibles()
@@ -94,13 +83,6 @@ namespace PagoAgilFrba
         }
 
         
-
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
-
         private void ingresarComoAdministrador()
         {
             if (datosCorrectos())
@@ -129,17 +111,17 @@ namespace PagoAgilFrba
             try
             {
                 manager.ejecutarSP();
-                Form formularioSiguiente = new MenuPrincipal();
-                this.cambiarVisibilidades(formularioSiguiente);
-                //cambiarVisibilidades(new Principal("Administrador", txtUsuario.Text, this));
-                
+                using (Form formularioMenuPrincipal = new MenuPrincipal())
+                {
+                    this.Hide();
+                    formularioMenuPrincipal.ShowDialog();
+                    this.Close();
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
             }
-
-            
         }
         
 
@@ -166,11 +148,6 @@ namespace PagoAgilFrba
             return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
         }
 
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
        
 
         private void radioCobrador_CheckedChanged(object sender, EventArgs e)
@@ -178,16 +155,6 @@ namespace PagoAgilFrba
             gbAdministrador.Enabled = true;
             gbInvitado.Enabled = true;
             //aca hay que verificar que el usuario cobrador se loguee piola y mostrar sus sucursales habilitadas, sino tirar error
-        }
-
-        private void SucursalesDisponibles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbInvitado_Enter(object sender, EventArgs e)
-        {
-
         }
 
        

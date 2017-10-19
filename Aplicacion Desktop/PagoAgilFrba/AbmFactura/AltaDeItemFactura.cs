@@ -80,13 +80,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void AltaDeItemFactura_Load(object sender, EventArgs e)
@@ -97,7 +91,9 @@ namespace PagoAgilFrba.AbmFactura
         private void generarFactura_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1);
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
             dataGridView1.ClearSelection();
         }
 

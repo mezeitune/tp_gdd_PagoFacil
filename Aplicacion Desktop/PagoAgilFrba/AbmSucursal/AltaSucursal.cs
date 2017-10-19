@@ -39,8 +39,9 @@ namespace PagoAgilFrba.AbmSucursal
                 }
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmSucursal.Form1();
-                this.cambiarVisibilidades(formularioSiguiente);
-
+                this.Hide();
+                formularioSiguiente.ShowDialog();
+                this.Show();
             }
         }
         private bool todosLosCamposLLenos()
@@ -79,14 +80,7 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmSucursal.Form1();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
-
     }
 }

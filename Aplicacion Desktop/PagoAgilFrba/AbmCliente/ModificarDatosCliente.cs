@@ -60,7 +60,9 @@ namespace PagoAgilFrba.AbmCliente
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " + DNICliente, "", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
-                this.cambiarVisibilidades(formularioSiguiente);
+                this.Hide();
+                formularioSiguiente.ShowDialog();
+                this.Show();
             }
             else {
                 MessageBox.Show("Algun campo esta vacio o el formato es incorrecto.", "", MessageBoxButtons.OK);
@@ -112,15 +114,9 @@ namespace PagoAgilFrba.AbmCliente
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
-
+    
         private void ModificarDatosCliente_Load(object sender, EventArgs e)
         {
             Habilitar.Checked = true;

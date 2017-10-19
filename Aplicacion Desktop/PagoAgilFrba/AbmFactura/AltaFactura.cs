@@ -77,7 +77,9 @@ namespace PagoAgilFrba.AbmFactura
                 dataGridItems.ClearSelection();
                
                 Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
-                this.cambiarVisibilidades(formularioSiguiente);
+                this.Hide();
+                formularioSiguiente.ShowDialog();
+                this.Show();
             }
             else
             {
@@ -137,12 +139,9 @@ namespace PagoAgilFrba.AbmFactura
         private void botonIngresarItem_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.AltaDeItemFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void levantarClientes() {
@@ -188,9 +187,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-
-        Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
-          this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
     }
        

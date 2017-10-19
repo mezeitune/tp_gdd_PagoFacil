@@ -81,7 +81,9 @@ namespace PagoAgilFrba.AbmFactura
 
             this.recorrerListaItems();
             Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFactura,subtotal);
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
             dataGridView1.ClearSelection();
         }
 
@@ -113,13 +115,6 @@ namespace PagoAgilFrba.AbmFactura
            );
             var dataReaderFactura = cmd.ExecuteReader();
 
-        }
-
-
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
         }
     }
 }

@@ -28,33 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.GroupBox groupBox2;
+            System.Windows.Forms.Label label3;
             this.gbAdministrador = new System.Windows.Forms.GroupBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.botonIngresar = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioCobrador = new System.Windows.Forms.RadioButton();
             this.radioAdministrador = new System.Windows.Forms.RadioButton();
             this.gbInvitado = new System.Windows.Forms.GroupBox();
             this.SucursalesDisponibles = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            label3 = new System.Windows.Forms.Label();
             this.gbAdministrador.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            groupBox2.SuspendLayout();
             this.gbInvitado.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbAdministrador
             // 
             this.gbAdministrador.Controls.Add(this.txtPassword);
-            this.gbAdministrador.Controls.Add(this.label2);
+            this.gbAdministrador.Controls.Add(label2);
             this.gbAdministrador.Controls.Add(this.txtUsuario);
-            this.gbAdministrador.Controls.Add(this.label1);
-            this.gbAdministrador.ForeColor = System.Drawing.Color.White;
-            this.gbAdministrador.Location = new System.Drawing.Point(22, 12);
+            this.gbAdministrador.Controls.Add(label1);
+            this.gbAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gbAdministrador.Location = new System.Drawing.Point(13, 12);
+            this.gbAdministrador.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gbAdministrador.Name = "gbAdministrador";
-            this.gbAdministrador.Size = new System.Drawing.Size(248, 96);
+            this.gbAdministrador.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gbAdministrador.Size = new System.Drawing.Size(314, 87);
             this.gbAdministrador.TabIndex = 0;
             this.gbAdministrador.TabStop = false;
             this.gbAdministrador.Text = "Login";
@@ -62,45 +68,50 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(101, 62);
+            this.txtPassword.Location = new System.Drawing.Point(111, 49);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.MaxLength = 20;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(121, 20);
+            this.txtPassword.Size = new System.Drawing.Size(195, 23);
             this.txtPassword.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Contraseña";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(8, 52);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(95, 15);
+            label2.TabIndex = 2;
+            label2.Text = "&Contraseña:";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(101, 29);
+            this.txtUsuario.Location = new System.Drawing.Point(111, 18);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(121, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(195, 25);
             this.txtUsuario.TabIndex = 1;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(8, 21);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(71, 15);
+            label1.TabIndex = 0;
+            label1.Text = "&Usuario:";
             // 
             // botonIngresar
             // 
-            this.botonIngresar.Location = new System.Drawing.Point(422, 135);
+            this.botonIngresar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.botonIngresar.Location = new System.Drawing.Point(514, 136);
+            this.botonIngresar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.botonIngresar.Name = "botonIngresar";
-            this.botonIngresar.Size = new System.Drawing.Size(75, 23);
+            this.botonIngresar.Size = new System.Drawing.Size(100, 27);
             this.botonIngresar.TabIndex = 5;
             this.botonIngresar.Text = "Ingresar";
             this.botonIngresar.UseVisualStyleBackColor = true;
@@ -108,22 +119,25 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioCobrador);
-            this.groupBox2.Controls.Add(this.radioAdministrador);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(22, 114);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(235, 58);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingresar como: ";
+            groupBox2.Controls.Add(this.radioCobrador);
+            groupBox2.Controls.Add(this.radioAdministrador);
+            groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBox2.Location = new System.Drawing.Point(13, 105);
+            groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            groupBox2.Size = new System.Drawing.Size(314, 58);
+            groupBox2.TabIndex = 4;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Ingresar como: ";
             // 
             // radioCobrador
             // 
             this.radioCobrador.AutoSize = true;
-            this.radioCobrador.Location = new System.Drawing.Point(129, 27);
+            this.radioCobrador.Location = new System.Drawing.Point(148, 24);
+            this.radioCobrador.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.radioCobrador.Name = "radioCobrador";
-            this.radioCobrador.Size = new System.Drawing.Size(68, 17);
+            this.radioCobrador.Size = new System.Drawing.Size(92, 19);
             this.radioCobrador.TabIndex = 1;
             this.radioCobrador.Text = "Cobrador";
             this.radioCobrador.UseVisualStyleBackColor = true;
@@ -133,9 +147,10 @@
             // 
             this.radioAdministrador.AutoSize = true;
             this.radioAdministrador.Checked = true;
-            this.radioAdministrador.Location = new System.Drawing.Point(16, 27);
+            this.radioAdministrador.Location = new System.Drawing.Point(8, 24);
+            this.radioAdministrador.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.radioAdministrador.Name = "radioAdministrador";
-            this.radioAdministrador.Size = new System.Drawing.Size(88, 17);
+            this.radioAdministrador.Size = new System.Drawing.Size(132, 19);
             this.radioAdministrador.TabIndex = 0;
             this.radioAdministrador.TabStop = true;
             this.radioAdministrador.Text = "Administrador";
@@ -145,54 +160,58 @@
             // gbInvitado
             // 
             this.gbInvitado.Controls.Add(this.SucursalesDisponibles);
-            this.gbInvitado.Controls.Add(this.label3);
-            this.gbInvitado.ForeColor = System.Drawing.Color.White;
-            this.gbInvitado.Location = new System.Drawing.Point(288, 12);
+            this.gbInvitado.Controls.Add(label3);
+            this.gbInvitado.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.gbInvitado.Location = new System.Drawing.Point(335, 12);
+            this.gbInvitado.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gbInvitado.Name = "gbInvitado";
-            this.gbInvitado.Size = new System.Drawing.Size(209, 96);
+            this.gbInvitado.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gbInvitado.Size = new System.Drawing.Size(279, 87);
             this.gbInvitado.TabIndex = 4;
             this.gbInvitado.TabStop = false;
             this.gbInvitado.Text = "Cobrador - Sucursal";
-            this.gbInvitado.Enter += new System.EventHandler(this.gbInvitado_Enter);
             // 
             // SucursalesDisponibles
             // 
             this.SucursalesDisponibles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SucursalesDisponibles.FormattingEnabled = true;
-            this.SucursalesDisponibles.Location = new System.Drawing.Point(61, 40);
+            this.SucursalesDisponibles.Location = new System.Drawing.Point(95, 24);
+            this.SucursalesDisponibles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.SucursalesDisponibles.Name = "SucursalesDisponibles";
-            this.SucursalesDisponibles.Size = new System.Drawing.Size(121, 21);
+            this.SucursalesDisponibles.Size = new System.Drawing.Size(176, 23);
             this.SucursalesDisponibles.TabIndex = 4;
-            this.SucursalesDisponibles.SelectedIndexChanged += new System.EventHandler(this.SucursalesDisponibles_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Sucursal";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(8, 28);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(79, 15);
+            label3.TabIndex = 3;
+            label3.Text = "&Sucursal:";
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(559, 193);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(631, 178);
             this.Controls.Add(this.gbInvitado);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(groupBox2);
             this.Controls.Add(this.botonIngresar);
             this.Controls.Add(this.gbAdministrador);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Iniciar sesión";
             this.Load += new System.EventHandler(this.FormPrincipalAdministrador_Load);
             this.gbAdministrador.ResumeLayout(false);
             this.gbAdministrador.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             this.gbInvitado.ResumeLayout(false);
             this.gbInvitado.PerformLayout();
             this.ResumeLayout(false);
@@ -200,19 +219,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gbAdministrador;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button botonIngresar;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radioCobrador;
         private System.Windows.Forms.RadioButton radioAdministrador;
-        private System.Windows.Forms.GroupBox gbInvitado;
         private System.Windows.Forms.ComboBox SucursalesDisponibles;
-        private System.Windows.Forms.Label label3;
-
+        private System.Windows.Forms.GroupBox gbInvitado;
+        private System.Windows.Forms.GroupBox gbAdministrador;
     }
 }

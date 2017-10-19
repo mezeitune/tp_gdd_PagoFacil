@@ -26,16 +26,11 @@ namespace PagoAgilFrba.AbmFactura
 
         private void button1_Click(object sender, EventArgs e)
         {
-             Form formularioSiguiente = new AbmFactura.ModificarItemFactura(nroFactura,descripcion);
-            this.cambiarVisibilidades(formularioSiguiente);
+            Form formularioSiguiente = new AbmFactura.ModificarItemFactura(nroFactura, descripcion);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
-
-        
 
         private void txtTotalFactura_TextChanged(object sender, EventArgs e)
         {
@@ -91,8 +86,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.ModificacionFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void ModificarDatosFactura_Load(object sender, EventArgs e)
@@ -127,7 +121,9 @@ namespace PagoAgilFrba.AbmFactura
         private void button1_Click_1(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.agregarItemFacturaModificada(nroFactura);
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void levantarFacturas() {

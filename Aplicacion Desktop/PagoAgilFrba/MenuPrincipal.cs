@@ -16,20 +16,21 @@ namespace PagoAgilFrba
         {
             InitializeComponent();
         }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
-        }
+
         private void botonABMCliente_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
+
         private void botonABMSucursal_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmSucursal.Form1();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void botonABMEmpresa_Click(object sender, EventArgs e)
@@ -43,7 +44,9 @@ namespace PagoAgilFrba
         private void botonABMFactura_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void botonABMRol_Click(object sender, EventArgs e)
@@ -57,19 +60,25 @@ namespace PagoAgilFrba
         private void botonListadoEstadistico_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new ListadoEstadistico.PantallaPrincipalListadoEstadistico();//falta hacer esto
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void botonRegistrarPago_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(); //falta hacer esto
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void botonRendicion_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new Rendicion.PantallaPrincipalRendicion();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -80,7 +89,9 @@ namespace PagoAgilFrba
         private void button1_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new Devolucion.DevolucionFactura();
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.Hide();
+            formularioSiguiente.ShowDialog();
+            this.Show();
         }
 
 

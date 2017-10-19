@@ -38,13 +38,10 @@ namespace PagoAgilFrba.AbmFactura
                 int subtotalAnterior = (Convert.ToInt32(montoAnterior) * Convert.ToInt32(cantidadAnterior));
                 int subtotalParametro = (Convert.ToInt32(txtMontoItem.Text.ToString()) * Convert.ToInt32(txtCantidadItem.Text.ToString())) - subtotalAnterior;
                 Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFact,subtotalParametro);
-                this.cambiarVisibilidades(formularioSiguiente);
+                this.Hide();
+                formularioSiguiente.ShowDialog();
+                this.Show();
             }
-        }
-        private void cambiarVisibilidades(Form formularioSiguiente)
-        {
-            formularioSiguiente.Visible = true;
-            this.Visible = false;
         }
 
         private void limpiar_Click(object sender, EventArgs e)
@@ -104,8 +101,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFact,0);
-            this.cambiarVisibilidades(formularioSiguiente);
+            this.DialogResult = DialogResult.Cancel;
         }
 
     }
