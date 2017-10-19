@@ -418,9 +418,9 @@ CREATE TABLE [SERVOMOTOR].[RENDICIONES](
 	[ID_RENDICION] [numeric](18,0) IDENTITY,
 	[FECHA_COBRO] [datetime] NOT NULL,
 	[PORCENTAJE_COMISION]  [tinyint] NOT NULL DEFAULT 30,
-	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] ,
+	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] DEFAULT 0 ,
 	[PRECIO_COMISION] [numeric] (7,2) NOT NULL DEFAULT 60,
-	[TOTAL_RENDIDO] [numeric] (7,2) ,
+	[TOTAL_RENDIDO] [numeric] (7,2) DEFAULT 0 ,
 	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'rendida' ,
 	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
  CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED 
@@ -635,6 +635,15 @@ SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  OFF
 	[ESTADO] [varchar] (20) NOT NULL,
 	[NUMERO_PAGO][numeric](18,0),
 	[ID_RENDICION] [numeric](18,0) ,
+
+		[ID_RENDICION] [numeric](18,0) IDENTITY,
+	[FECHA_COBRO] [datetime] NOT NULL,
+	[PORCENTAJE_COMISION]  [tinyint] NOT NULL DEFAULT 30,
+	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] ,
+	[PRECIO_COMISION] [numeric] (7,2) NOT NULL DEFAULT 60,
+	[TOTAL_RENDIDO] [numeric] (7,2) ,
+	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'rendida' ,
+	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
 */
 GO
 --SET IDENTITY_INSERT [SERVOMOTOR].[FACTURAS]  ON
@@ -659,7 +668,8 @@ BEGIN TRANSACTION
 	[Cliente-Dni],
 	Empresa_Cuit,
 	Pago_nro,
-    Rendicion_Nro
+    Rendicion_Nro,
+	Factura_Total
 	FROM (
     SELECT *, ROW_NUMBER() OVER (PARTITION BY Nro_Factura ORDER BY Nro_Factura) As rn
     FROM gd_esquema.Maestra) t
@@ -669,20 +679,27 @@ BEGIN TRANSACTION
 	
 	open cursorFacturas
 
-	FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum 
+	FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum,@total 
 
 	WHILE(@@FETCH_STATUS = 0)
 	BEGIN
-		print @facNro
+		
 		--SELECT @turnoID = turno.Turno_ID FROM [SERVOMOTOR].Turno turno WHERE turno.Turno_Descripcion = @turnoDescripcion
 
-		--SELECT @rendImporte = sum(i.ItemRendicion_Importe) FROM [NORMALIZADOS].[ItemRendicion] i WHERE i.Rendicion_Numero = @rendNro
-		--if not exists(select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA = @facNro)
-		--BEGIN 
-			INSERT INTO [SERVOMOTOR].FACTURAS(NUMERO_FACTURA,FECHA_ALTA,FECHA_VENCIMIENTO,DNI_CLIENTE,CUIT_EMPRESA,TOTAL,NUMERO_PAGO,ID_RENDICION)
-			VALUES (@facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa,0, @numPago,@rendNum)
-		--END
-		FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum 
+
+		INSERT INTO [SERVOMOTOR].FACTURAS(NUMERO_FACTURA,FECHA_ALTA,FECHA_VENCIMIENTO,DNI_CLIENTE,CUIT_EMPRESA,TOTAL,NUMERO_PAGO,ID_RENDICION)
+		VALUES (@facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa,0, @numPago,@rendNum)
+
+		if(@rendNum is not null)
+		BEGIN
+			
+			UPDATE [SERVOMOTOR].RENDICIONES SET CANTIDAD_FACTURAS_RENDIDAS += 1 WHERE ID_RENDICION = @rendNum
+			UPDATE [SERVOMOTOR].RENDICIONES SET TOTAL_RENDIDO += @total WHERE ID_RENDICION = @rendNum
+			UPDATE [SERVOMOTOR].RENDICIONES SET PRECIO_COMISION = (TOTAL_RENDIDO*PORCENTAJE_COMISION)/100 WHERE ID_RENDICION = @rendNum
+
+		END
+		
+		FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum,@total
 
 	END
 	close cursorFacturas
@@ -881,5 +898,5 @@ AS BEGIN
 
 END
 
---select * from [SERVOMOTOR].FACTURAS
---select * from [SERVOMOTOR].RENDICIONES
+select * from [SERVOMOTOR].FACTURAS
+select * from [SERVOMOTOR].RENDICIONES
