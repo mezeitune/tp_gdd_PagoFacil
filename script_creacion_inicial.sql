@@ -129,7 +129,6 @@ object_id(N'[SERVOMOTOR].[obtenerFechaDeHoy]') AND type in (N'FN', N'IF',N'TF', 
 drop function [SERVOMOTOR].[obtenerFechaDeHoy]
 
 
-
 GO
 if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[crearTablaFecha]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
@@ -655,16 +654,18 @@ BEGIN TRANSACTION
 	
 	declare cursorFacturas cursor local for
 
-	SELECT  DISTINCT 
-	Nro_Factura ,
-	Factura_Fecha,
-	Factura_Fecha_Vencimiento,
+	SELECT 
+    Nro_Factura, Factura_Fecha,Factura_Fecha_Vencimiento,
 	[Cliente-Dni],
 	Empresa_Cuit,
 	Pago_nro,
     Rendicion_Nro
-	FROM gd_esquema.Maestra WHERE Nro_Factura IS NOT NULL
-	
+	FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY Nro_Factura ORDER BY Nro_Factura) As rn
+    FROM gd_esquema.Maestra) t
+	WHERE rn = 1 order by Nro_Factura ASC
+
+
 	
 	open cursorFacturas
 
