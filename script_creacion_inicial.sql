@@ -160,8 +160,8 @@ drop function [SERVOMOTOR].[datetime_between]
 
 GO
 if exists (select * from dbo.sysobjects where id =
-object_id(N'[SERVOMOTOR].[LoginAdministrador]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-drop procedure [SERVOMOTOR].[LoginAdministrador]
+object_id(N'[SERVOMOTOR].[LoginUsuario]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[LoginUsuario]
 
 GO
 if exists (select * from dbo.sysobjects where id =
@@ -188,12 +188,12 @@ GO
 --//////////// Creacion de tablas //////////////
 
 --Rol: Si el estado es 0, se encuentra inactivo, si es 1 activo.
---Esta tabla contiene cÛdigo, nombre y estado del rol (activo/inactivo)
+--Esta tabla contiene c√≥digo, nombre y estado del rol (activo/inactivo)
 CREATE TABLE [SERVOMOTOR].[ROLES](
 	[ID_ROL] [tinyint] IDENTITY,
-	[NOMBRE] [varchar](30) UNIQUE NOT NULL, 
+	[NOMBRE] [varchar](30) UNIQUE NOT NULL,
 	[ESTADO] [bit] DEFAULT 1,
- CONSTRAINT [PK_ROLES] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ROLES] PRIMARY KEY CLUSTERED
 (
 	[ID_ROL] ASC
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
@@ -202,11 +202,11 @@ CREATE TABLE [SERVOMOTOR].[ROLES](
 GO
 
 
---Tabla Funcionalidad: Contiene los cÛdigos, nombres de cada funcionalidad. 
+--Tabla Funcionalidad: Contiene los c√≥digos, nombres de cada funcionalidad.
 CREATE TABLE [SERVOMOTOR].[FUNCIONALIDADES](
 	[ID_FUNC] [tinyint] IDENTITY,
 	[NOMBRE] [varchar] (60) UNIQUE NOT NULL,
-CONSTRAINT [PK_FUNCIONALIDADES] PRIMARY KEY CLUSTERED 
+CONSTRAINT [PK_FUNCIONALIDADES] PRIMARY KEY CLUSTERED
 (
 	[ID_FUNC] ASC
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
@@ -219,7 +219,7 @@ GO
 CREATE TABLE [SERVOMOTOR].[FUNCIONES_ROLES](
 	[ID_ROL] [tinyint] NOT NULL,
 	[ID_FUNC] [tinyint] NOT NULL,
- CONSTRAINT [PK_FUNCIONES_ROLES] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_FUNCIONES_ROLES] PRIMARY KEY CLUSTERED
 (
 	[ID_ROL] ASC,
 	[ID_FUNC] ASC
@@ -239,29 +239,29 @@ REFERENCES [SERVOMOTOR].[FUNCIONALIDADES] ([ID_FUNC])
 
 GO
 
--- Tabla Sucursales: 
+-- Tabla Sucursales:
 CREATE TABLE [SERVOMOTOR].[SUCURSALES](
 	[COD_POSTAL] [varchar] (20) NOT NULL,
 	[NOMBRE] [varchar] (50) UNIQUE NOT NULL,
 	[DIRECCION] [varchar] (50) UNIQUE,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
- CONSTRAINT [PK_SUCURSALES] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_SUCURSALES] PRIMARY KEY CLUSTERED
 (
-	[COD_POSTAL] 
+	[COD_POSTAL]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
--- Tabla Usuarios: 
+-- Tabla Usuarios:
 CREATE TABLE [SERVOMOTOR].[USUARIOS](
 	[ID_USUARIO] [tinyint] IDENTITY,
 	[USERNAME] [varchar] (20) UNIQUE,
 	[PASSWORD] [varchar] (70) NOT NULL,
 	[HABILITADO] [bit] DEFAULT 1,
 	[CANT_INT_FALL] [tinyint] DEFAULT 0,
- CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED
 (
-	[ID_USUARIO] 
+	[ID_USUARIO]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -273,7 +273,7 @@ CREATE TABLE [SERVOMOTOR].[ROLES_USUARIOS](
 	[ID_ROL] [tinyint] NOT NULL,
 	[ID_USUARIO] [tinyint] NOT NULL,
 	-- [ESTADO] [bit] DEFAULT 1,
- CONSTRAINT [PK_ROLES_USUARIOS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ROLES_USUARIOS] PRIMARY KEY CLUSTERED
 (
 	[ID_ROL] ASC,
 	[ID_USUARIO] ASC
@@ -296,7 +296,7 @@ REFERENCES [SERVOMOTOR].[USUARIOS] ([ID_USUARIO])
 CREATE TABLE [SERVOMOTOR].[SUCURSALES_USUARIOS](
 	[ID_USUARIO] [tinyint] NOT NULL,
 	[COD_POSTAL] [varchar](20) NOT NULL,
- CONSTRAINT [PK_SUCURSALES_USUARIOS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_SUCURSALES_USUARIOS] PRIMARY KEY CLUSTERED
 (
 	[ID_USUARIO] ASC,
 	[COD_POSTAL] ASC
@@ -313,45 +313,45 @@ GO
 
 ALTER TABLE [SERVOMOTOR].[SUCURSALES_USUARIOS]  WITH CHECK ADD  CONSTRAINT [FK_SUCURSALES_USUARIOS_SUCURSAL] FOREIGN KEY([COD_POSTAL])
 REFERENCES [SERVOMOTOR].[SUCURSALES] ([COD_POSTAL])
--- Tabla RUBROS: 
+-- Tabla RUBROS:
 CREATE TABLE [SERVOMOTOR].[RUBROS](
 	[ID_RUBRO] [tinyint] IDENTITY,
 	[DESCRIPCION] [varchar] (20) UNIQUE,
- CONSTRAINT [PK_RUBROS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_RUBROS] PRIMARY KEY CLUSTERED
 (
-	[ID_RUBRO] 
+	[ID_RUBRO]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
 
--- Tabla EMPRESAS: 
+-- Tabla EMPRESAS:
 CREATE TABLE [SERVOMOTOR].[EMPRESAS](
 	[CUIT] [varchar] (50) NOT NULL,
 	[NOMBRE] [varchar] (255) NOT NULL,
 	[DIRECCION] [varchar] (255) NOT NULL,
 	[ID_RUBRO] [tinyint] ,
 	[ESTADO_ACTIVACION] [bit] DEFAULT 1,
- CONSTRAINT [PK_EMPRESAS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_EMPRESAS] PRIMARY KEY CLUSTERED
 (
-	[CUIT] 
+	[CUIT]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
 ALTER TABLE [SERVOMOTOR].[EMPRESAS]  WITH CHECK ADD  CONSTRAINT [FK_EMPRESAS_RUBRO] FOREIGN KEY([ID_RUBRO])
 REFERENCES [SERVOMOTOR].[RUBROS] ([ID_RUBRO])
 
--- Tabla Medios de pago: 
+-- Tabla Medios de pago:
 CREATE TABLE [SERVOMOTOR].[MEDIOS_DE_PAGO](
 	[ID_MEDPAGO] [tinyint] IDENTITY,
 	[TIPO_MEDPAGO] [varchar] (20) UNIQUE,
- CONSTRAINT [PK_MEDPAGO] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_MEDPAGO] PRIMARY KEY CLUSTERED
 (
-	[ID_MEDPAGO] 
+	[ID_MEDPAGO]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
 
--- Tabla CLIENTES: 
+-- Tabla CLIENTES:
 CREATE TABLE [SERVOMOTOR].[CLIENTES](
 	[DNI] [varchar](255) NOT NULL,
 	[NOMBRE] [varchar] (255) NOT NULL,
@@ -365,9 +365,9 @@ CREATE TABLE [SERVOMOTOR].[CLIENTES](
 	[FECHA_NACIMIENTO] [datetime] NOT NULL,
 	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
- CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_CLIENTES] PRIMARY KEY CLUSTERED
 (
-	[DNI] 
+	[DNI]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -380,9 +380,9 @@ CREATE TABLE [SERVOMOTOR].[PAGOS](
 	[COD_POSTAL] [varchar](20) NOT NULL,
 	[ID_MEDPAGO] [tinyint] NOT NULL,
 	[DNI_CLIENTE] [varchar](255)  NOT NULL,
- CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_PAGOS] PRIMARY KEY CLUSTERED
 (
-	[NUMERO_PAGO] 
+	[NUMERO_PAGO]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -401,19 +401,19 @@ REFERENCES [SERVOMOTOR].[CLIENTES] ([DNI])
 
 
 
--- Tabla DEVOLUCIONEs: 
+-- Tabla DEVOLUCIONEs:
 CREATE TABLE [SERVOMOTOR].[DEVOLUCIONES](
 	[ID_DEVOLUCION] [tinyint] IDENTITY,
 	[MOTIVO_DEVOLUCION] [varchar] (255) UNIQUE,
- CONSTRAINT [PK_FACTURA_DEVOLUCION] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_FACTURA_DEVOLUCION] PRIMARY KEY CLUSTERED
 (
-	[ID_DEVOLUCION] 
+	[ID_DEVOLUCION]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
 
 
--- Tabla RENDICIONES: 
+-- Tabla RENDICIONES:
 CREATE TABLE [SERVOMOTOR].[RENDICIONES](
 	[ID_RENDICION] [numeric](18,0) IDENTITY,
 	[FECHA_COBRO] [datetime] NOT NULL,
@@ -423,9 +423,9 @@ CREATE TABLE [SERVOMOTOR].[RENDICIONES](
 	[TOTAL_RENDIDO] [numeric] (7,2) DEFAULT 0 ,
 	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'rendida' ,
 	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
- CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_RENDICIONES] PRIMARY KEY CLUSTERED
 (
-	[ID_RENDICION] 
+	[ID_RENDICION]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -437,7 +437,7 @@ REFERENCES [SERVOMOTOR].[EMPRESAS] ([CUIT])
 
 
 
--- Tabla FACTURAS: 
+-- Tabla FACTURAS:
 CREATE TABLE [SERVOMOTOR].[FACTURAS](
 	[NUMERO_FACTURA] [numeric](18,0) NOT NULL,
 	[FECHA_ALTA] [datetime] NOT NULL,
@@ -448,9 +448,9 @@ CREATE TABLE [SERVOMOTOR].[FACTURAS](
 	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'no paga',
 	[NUMERO_PAGO][numeric](18,0),
 	[ID_RENDICION] [numeric](18,0) ,
- CONSTRAINT [PK_FACTURAS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_FACTURAS] PRIMARY KEY CLUSTERED
 (
-	[NUMERO_FACTURA] 
+	[NUMERO_FACTURA]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -471,10 +471,10 @@ REFERENCES [SERVOMOTOR].[RENDICIONES] ([ID_RENDICION])
 CREATE TABLE [SERVOMOTOR].[FACTURAS_DEVOLUCIONES](
 	[NUMERO_FACTURA] [numeric] (18,0) NOT NULL,
 	[ID_DEVOLUCION] [tinyint] NOT NULL,
- CONSTRAINT [PK_FACTURAS_DEVOLUCIONESm] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_FACTURAS_DEVOLUCIONESm] PRIMARY KEY CLUSTERED
 (
 	[NUMERO_FACTURA] ,
-	[ID_DEVOLUCION] 
+	[ID_DEVOLUCION]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -488,16 +488,16 @@ REFERENCES [SERVOMOTOR].[FACTURAS] ([NUMERO_FACTURA])
 ALTER TABLE [SERVOMOTOR].[FACTURAS_DEVOLUCIONES]  WITH CHECK ADD  CONSTRAINT [FK_DEVOLUCION_FACTURA_DEVOLUCIONES] FOREIGN KEY([ID_DEVOLUCION])
 REFERENCES [SERVOMOTOR].[DEVOLUCIONES] ([ID_DEVOLUCION])
 
--- Tabla ITEMS: 
+-- Tabla ITEMS:
 CREATE TABLE [SERVOMOTOR].[ITEMS](
 	[ID_ITEM] [tinyint] IDENTITY,
 	[DESCRIPCION] [varchar] (20) NOT NULL,
 	[MONTO] [varchar] (20) NOT NULL,
 	[CANTIDAD] [tinyint] NOT NULL,
 	[NUMERO_FACTURA] [numeric](18,0) NOT NULL,
- CONSTRAINT [PK_ITEMS] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_ITEMS] PRIMARY KEY CLUSTERED
 (
-	[ID_ITEM] 
+	[ID_ITEM]
 )WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 
@@ -513,7 +513,7 @@ GO
 
 CREATE FUNCTION [SERVOMOTOR].obtenerFechaDeHoy()
 RETURNS datetime
-AS 
+AS
 	begin
 	return (select top 1 * from [SERVOMOTOR].[FECHA])
 	end
@@ -544,11 +544,11 @@ END
 
 GO
 
---//////////// MigraciÛn de tabla maestra /////////////
+--//////////// Migraci√≥n de tabla maestra /////////////
 -- Inserta los clientes en la tabla clientes
 
 INSERT INTO [SERVOMOTOR].[CLIENTES]
-(	
+(
 		DNI,
 		NOMBRE,
 		APELLIDO,
@@ -558,69 +558,69 @@ INSERT INTO [SERVOMOTOR].[CLIENTES]
 		COD_POSTAL_CLIENTE
 	)
 SELECT DISTINCT (cast([Cliente-Dni] as int))   , [Cliente-Nombre], [Cliente-Apellido], [Cliente_Mail], [Cliente_Direccion] ,cast([Cliente-Fecha_Nac] as datetime) , [Cliente_Codigo_Postal] FROM gd_esquema.Maestra
-	
+
 
 INSERT INTO [SERVOMOTOR].[RUBROS]
-(	
+(
 		DESCRIPCION
 )
 SELECT DISTINCT [Rubro_Descripcion]   FROM gd_esquema.Maestra
 
 INSERT INTO [SERVOMOTOR].[SUCURSALES]
-(	
+(
 		COD_POSTAL,
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_DirecciÛn]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Direcci√≥n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
-(	
+(
 		TIPO_MEDPAGO
 )
 SELECT DISTINCT [FormaPagoDescripcion]   FROM gd_esquema.Maestra where FormaPagoDescripcion is not null
-	
 
-INSERT INTO [SERVOMOTOR].[EMPRESAS] 
-	(	CUIT , 
-		NOMBRE ,   
-		DIRECCION , 
-		ID_RUBRO 
+
+INSERT INTO [SERVOMOTOR].[EMPRESAS]
+	(	CUIT ,
+		NOMBRE ,
+		DIRECCION ,
+		ID_RUBRO
 	)
-SELECT  DISTINCT Empresa_Cuit , 
-		Empresa_Nombre,  
-		Empresa_Direccion , 
-		Empresa_Rubro 		
+SELECT  DISTINCT Empresa_Cuit ,
+		Empresa_Nombre,
+		Empresa_Direccion ,
+		Empresa_Rubro
 FROM gd_esquema.Maestra
 
 SET IDENTITY_INSERT [SERVOMOTOR].[PAGOS]  ON
-INSERT INTO [SERVOMOTOR].[PAGOS] 
-	(	NUMERO_PAGO , 
+INSERT INTO [SERVOMOTOR].[PAGOS]
+	(	NUMERO_PAGO ,
 		FECHA_COBRO ,
 		IMPORTE,
 		COD_POSTAL,
 		ID_MEDPAGO,
 		DNI_CLIENTE
 	)
-SELECT  DISTINCT Pago_nro  , 
-		Pago_Fecha,  
-		Total , 
+SELECT  DISTINCT Pago_nro  ,
+		Pago_Fecha,
+		Total ,
 		Sucursal_Codigo_Postal,
-		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion),		
-		[Cliente-Dni]		 		
+		(SELECT M.ID_MEDPAGO FROM [SERVOMOTOR].[MEDIOS_DE_PAGO] M WHERE M.TIPO_MEDPAGO = FormaPagoDescripcion),
+		[Cliente-Dni]
 FROM gd_esquema.Maestra where Pago_nro is not null
 
 SET IDENTITY_INSERT [SERVOMOTOR].[PAGOS]  OFF
 
 SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  ON
-INSERT INTO [SERVOMOTOR].[RENDICIONES] 
-	(	ID_RENDICION , 
+INSERT INTO [SERVOMOTOR].[RENDICIONES]
+	(	ID_RENDICION ,
 		FECHA_COBRO ,
 		CUIT_EMPRESA
 	)
-SELECT  DISTINCT Rendicion_Nro  , 
-		Rendicion_Fecha,  
-		[Empresa_Cuit]			 		
+SELECT  DISTINCT Rendicion_Nro  ,
+		Rendicion_Fecha,
+		[Empresa_Cuit]
 FROM gd_esquema.Maestra where Rendicion_nro is not null
 
 SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  OFF
@@ -660,10 +660,10 @@ BEGIN TRANSACTION
 	declare @total numeric(7,2)
 	declare @numPago numeric(18,0)
 	declare @rendNum numeric(18,2)
-	
+
 	declare cursorFacturas cursor local for
 
-	SELECT 
+	SELECT
     Nro_Factura, Factura_Fecha,Factura_Fecha_Vencimiento,
 	[Cliente-Dni],
 	Empresa_Cuit,
@@ -676,14 +676,14 @@ BEGIN TRANSACTION
 	WHERE rn = 1 order by Nro_Factura ASC
 
 
-	
+
 	open cursorFacturas
 
-	FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum,@total 
+	FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum,@total
 
 	WHILE(@@FETCH_STATUS = 0)
 	BEGIN
-		
+
 		--SELECT @turnoID = turno.Turno_ID FROM [SERVOMOTOR].Turno turno WHERE turno.Turno_Descripcion = @turnoDescripcion
 
 
@@ -692,13 +692,13 @@ BEGIN TRANSACTION
 
 		if(@rendNum is not null)
 		BEGIN
-			
+
 			UPDATE [SERVOMOTOR].RENDICIONES SET CANTIDAD_FACTURAS_RENDIDAS += 1 WHERE ID_RENDICION = @rendNum
 			UPDATE [SERVOMOTOR].RENDICIONES SET TOTAL_RENDIDO += @total WHERE ID_RENDICION = @rendNum
 			UPDATE [SERVOMOTOR].RENDICIONES SET PRECIO_COMISION = (TOTAL_RENDIDO*PORCENTAJE_COMISION)/100 WHERE ID_RENDICION = @rendNum
 
 		END
-		
+
 		FETCH next from cursorFacturas into @facNro,@facFechaAlt,@facFechaVenc,@dniCli,@cuitEmpresa, @numPago,@rendNum,@total
 
 	END
@@ -717,16 +717,17 @@ GO
 
 
 -- Insert de usuario invitado y un administrador
--- el hash de la contraseÒa w23e est· previamente calculado
+-- el hash de la contrase√±a w23e est√° previamente calculado
 DECLARE @Password VARCHAR(70)
 --SET @Password = 'c6a9b01aeca5e5314845a9b00373f1d1cbe06b93'
 SET @Password = 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7'
 INSERT INTO SERVOMOTOR.USUARIOS (USERNAME,PASSWORD,HABILITADO,CANT_INT_FALL)
-	VALUES ('Invitado','',1,0),
-		   ('admin',@Password,1,0),
-		   ('usuarioX',@Password,1,0),
-		   ('jorge256',@Password,1,0),
-		   ('Alguien',@Password,1,0)
+	VALUES ('Invitado',        '', 1, 0),
+		   (   'admin', @Password, 1, 0),
+		   ('cobrador', @Password, 1, 0),
+		   ('usuarioX', @Password, 1, 0),
+		   ('jorge256', @Password, 1, 0),
+		   ( 'Alguien', @Password, 1, 0)
 
 GO
 
@@ -738,10 +739,34 @@ INSERT INTO SERVOMOTOR.DEVOLUCIONES(MOTIVO_DEVOLUCION) VALUES ('Cliente retrotra
 INSERT INTO SERVOMOTOR.ROLES(NOMBRE) VALUES ('Administrador')
 INSERT INTO SERVOMOTOR.ROLES(NOMBRE) VALUES ('Cobrador')
 
+-- Setear rol Administrador a admin
+INSERT INTO SERVOMOTOR.ROLES_USUARIOS (ID_USUARIO, ID_ROL)
+VALUES ( (SELECT ID_USUARIO
+		  FROM SERVOMOTOR.USUARIOS
+		  WHERE USERNAME = 'admin')
+		  ,
+		 (SELECT ID_ROL
+		  FROM SERVOMOTOR.ROLES
+		  WHERE NOMBRE = 'Administrador') )
+
+INSERT INTO SERVOMOTOR.ROLES_USUARIOS (ID_USUARIO, ID_ROL)
+VALUES ( (SELECT ID_USUARIO
+		  FROM SERVOMOTOR.USUARIOS
+		  WHERE USERNAME = 'cobrador')
+		  ,
+		 (SELECT ID_ROL
+		  FROM SERVOMOTOR.ROLES
+		  WHERE NOMBRE = 'Cobrador') )
+
+INSERT INTO SERVOMOTOR.SUCURSALES_USUARIOS (ID_USUARIO, COD_POSTAL)
+	SELECT (SELECT ID_USUARIO FROM SERVOMOTOR.USUARIOS WHERE USERNAME = 'cobrador'),
+		   COD_POSTAL
+	FROM SERVOMOTOR.SUCURSALES
+
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Rol')
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Cliente')
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Empresa')
-INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Listado EstadÌstico')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Listado Estad√≠stico')
 
 GO
 
@@ -759,7 +784,7 @@ GO
 --////Ver bien que funcionalidades tiene cada rol
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Rol'
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Cliente'
-EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Listado EstadÌstico'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Listado Estad√≠stico'
 
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Cliente'
 
@@ -772,61 +797,78 @@ GO
 --**************** LOGIN *************
 
 -----------------------------Login---------------------------
-CREATE PROCEDURE [SERVOMOTOR].LoginAdministrador
-(@Usuario VARCHAR(20), @ContraseniaIngresada VARCHAR(70))
+CREATE PROCEDURE [SERVOMOTOR].LoginUsuario
+(
+	@Usuario VARCHAR(20),
+	@ContraseniaIngresada VARCHAR(70),
+	@NombreRol VARCHAR(30)
+)
 AS
 BEGIN
-	DECLARE @Contrasenia VARCHAR(70),
-			@CantidadIntentos TINYINT,
-			@ExisteUsuario BIT
+	DECLARE @IDUsuario TINYINT,
+			@Contrasenia VARCHAR(70),
+			@EstadoHabilitacion BIT;
 
-	SELECT @ExisteUsuario = COUNT(*) 
-		FROM SERVOMOTOR.USUARIOS
-		WHERE USERNAME = @Usuario
-	
-
-	IF @ExisteUsuario = 0
+	IF NOT EXISTS ( SELECT 1
+					FROM SERVOMOTOR.USUARIOS
+					WHERE USERNAME = @Usuario)
 	BEGIN
-		RAISERROR('El nombre de usuario ingresado no existe.', 16, 1)
-		RETURN
+		RAISERROR('El nombre de usuario no coincide con la contrase√±a.', 16, 1);
+		RETURN;
 	END
 
-	SELECT @Contrasenia = PASSWORD, @CantidadIntentos = CANT_INT_FALL
-		FROM SERVOMOTOR.USUARIOS
-		WHERE USERNAME = @Usuario
+	SELECT @IDUsuario = ID_USUARIO,
+		   @Contrasenia = PASSWORD,
+		   @EstadoHabilitacion = HABILITADO
+	FROM SERVOMOTOR.USUARIOS
+	WHERE USERNAME = @Usuario;
 
-	IF @CantidadIntentos = 3
+	IF @EstadoHabilitacion = 0
 	BEGIN
-		RAISERROR('Ha ingresado la contraseÒa 3 veces de forma incorrecta. Cont·ctese con un administrador para reestablecer su cuenta.', 16, 1)
-		RETURN
+		RAISERROR('El usuario est√° inhabilitado. Cont√°ctese con un administrador para reestablecer su cuenta.', 16, 1);
+		RETURN;
 	END
 	--[SERVOMOTOR].EncriptarSHA1(
 	--IF (SELECT SERVOMOTOR.EncriptarSHA1(@ContraseniaIngresada) as [resultado]) <> @Contrasenia
 	IF @ContraseniaIngresada <> @Contrasenia
 	BEGIN
-		RAISERROR('ContraseÒa incorrecta.', 16, 1)
-		
-		UPDATE SERVOMOTOR.USUARIOS 
-			SET CANT_INT_FALL = CANT_INT_FALL + 1
-			WHERE USERNAME = @Usuario
+		RAISERROR('El nombre de usuario no coincide con la contrase√±a.', 16, 1);
 
-		SELECT @CantidadIntentos = CANT_INT_FALL
-			FROM SERVOMOTOR.USUARIOS
-			WHERE USERNAME = @Usuario
-		
-		IF @CantidadIntentos = 3
+		UPDATE SERVOMOTOR.USUARIOS
+		SET CANT_INT_FALL = CANT_INT_FALL + 1,
+			HABILITADO = CASE WHEN CANT_INT_FALL + 1 < 3
+							THEN 1
+							ELSE 0 END
+		WHERE ID_USUARIO = @IDUsuario;
+
+		SELECT @EstadoHabilitacion = HABILITADO
+		FROM SERVOMOTOR.USUARIOS
+		WHERE ID_USUARIO = @IDUsuario;
+
+		IF @EstadoHabilitacion = 0
 		BEGIN
-			RAISERROR('Ha ingresado la contraseÒa 3 veces de forma incorrecta. Cont·ctese con un administrador para reestablecer su cuenta.', 16, 1)
+			RAISERROR('Ha ingresado la contrase√±a 3 veces de forma incorrecta. Cont√°ctese con un administrador para reestablecer su cuenta.', 16, 1);
 		END
-		RETURN
+
+		RETURN;
 	END
 
-	UPDATE SERVOMOTOR.USUARIOS 
-		SET CANT_INT_FALL = 0
-		WHERE USERNAME = @Usuario
+	IF NOT EXISTS ( SELECT 1
+					FROM SERVOMOTOR.ROLES_USUARIOS ru
+					JOIN SERVOMOTOR.ROLES r ON r.ID_ROL = ru.ID_ROL
+					WHERE ru.ID_USUARIO = @IDUsuario
+					AND r.NOMBRE = @NombreRol
+					AND r.ESTADO = 1)
+	BEGIN
+		RAISERROR('El usuario no tiene asignado el rol "%s".', 16, 1, @NombreRol);
+		RETURN;
+	END
+
+	UPDATE SERVOMOTOR.USUARIOS
+	SET CANT_INT_FALL = 0,
+		HABILITADO = 1
+	WHERE ID_USUARIO = @IDUsuario;
 END
-
-
 
 GO
 
@@ -847,7 +889,7 @@ BEGIN
 	begin
 		return 1
 	end
-	
+
 	return 0
 END
 GO
