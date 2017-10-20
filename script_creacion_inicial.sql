@@ -160,6 +160,12 @@ drop function [SERVOMOTOR].[datetime_between]
 
 GO
 if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[LoginAdministrador]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[LoginAdministrador]
+
+
+GO
+if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[LoginUsuario]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [SERVOMOTOR].[LoginUsuario]
 
@@ -572,7 +578,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Direcci�n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -766,6 +772,11 @@ INSERT INTO SERVOMOTOR.SUCURSALES_USUARIOS (ID_USUARIO, COD_POSTAL)
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Rol')
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Cliente')
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Empresa')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Facturas')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('ABM Sucursales')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Registro Pagos')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Devoluciones')
+INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Rendiciones')
 INSERT INTO SERVOMOTOR.FUNCIONALIDADES(NOMBRE) VALUES ('Listado Estadístico')
 
 GO
@@ -781,12 +792,25 @@ END
 
 GO
 
---////Ver bien que funcionalidades tiene cada rol
+
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Rol'
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Cliente'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Empresa'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Facturas'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'ABM Sucursales'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Registro Pagos'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Devoluciones'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Rendiciones'
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Administrador', @funcionalidad = 'Listado Estadístico'
 
+
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Rol'
 EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Cliente'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Empresa'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Facturas'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'ABM Sucursales'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'Registro Pagos'
+EXEC SERVOMOTOR.AgregarFuncionalidadARol @nombrerol = 'Cobrador', @funcionalidad = 'Listado Estadístico'
 
 
 GO
@@ -940,5 +964,4 @@ AS BEGIN
 
 END
 
-select * from [SERVOMOTOR].FACTURAS
-select * from [SERVOMOTOR].RENDICIONES
+delete from SERVOMOTOR.FUNCIONES_ROLES where ID_ROL=1;

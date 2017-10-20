@@ -180,5 +180,10 @@ namespace PagoAgilFrba.AbmRol
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void groupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
