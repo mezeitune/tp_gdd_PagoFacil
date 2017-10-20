@@ -496,8 +496,8 @@ REFERENCES [SERVOMOTOR].[DEVOLUCIONES] ([ID_DEVOLUCION])
 
 -- Tabla ITEMS:
 CREATE TABLE [SERVOMOTOR].[ITEMS](
-	[ID_ITEM] [tinyint] IDENTITY,
-	[DESCRIPCION] [varchar] (20) NOT NULL,
+	[ID_ITEM] [numeric](18,0) IDENTITY,
+	[DESCRIPCION] [varchar] (20) NULL,
 	[MONTO] [varchar] (20) NOT NULL,
 	[CANTIDAD] [tinyint] NOT NULL,
 	[NUMERO_FACTURA] [numeric](18,0) NOT NULL,
@@ -631,26 +631,7 @@ FROM gd_esquema.Maestra where Rendicion_nro is not null
 
 SET IDENTITY_INSERT [SERVOMOTOR].[RENDICIONES]  OFF
 
-/*
-	[NUMERO_FACTURA] [varchar](20) NOT NULL,
-	[FECHA_ALTA] [datetime] NOT NULL,
-	[FECHA_VENCIMIENTO] [datetime] NOT NULL,
-	[DNI_CLIENTE] [varchar](255) NOT NULL,
-	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
-	[TOTAL] [numeric] (7,2) NOT NULL,
-	[ESTADO] [varchar] (20) NOT NULL,
-	[NUMERO_PAGO][numeric](18,0),
-	[ID_RENDICION] [numeric](18,0) ,
 
-		[ID_RENDICION] [numeric](18,0) IDENTITY,
-	[FECHA_COBRO] [datetime] NOT NULL,
-	[PORCENTAJE_COMISION]  [tinyint] NOT NULL DEFAULT 30,
-	[CANTIDAD_FACTURAS_RENDIDAS] [tinyint] ,
-	[PRECIO_COMISION] [numeric] (7,2) NOT NULL DEFAULT 60,
-	[TOTAL_RENDIDO] [numeric] (7,2) ,
-	[ESTADO] [varchar] (20) NOT NULL DEFAULT 'rendida' ,
-	[CUIT_EMPRESA] [varchar] (50) NOT NULL,
-*/
 GO
 --SET IDENTITY_INSERT [SERVOMOTOR].[FACTURAS]  ON
 
@@ -718,6 +699,23 @@ GO
 
 EXEC [SERVOMOTOR].[crearFacturas];
 GO
+
+
+INSERT INTO [SERVOMOTOR].[ITEMS]
+	(	
+		MONTO,
+		CANTIDAD,
+		NUMERO_FACTURA
+	)
+SELECT   ItemFactura_Monto ,
+		ItemFactura_Cantidad,
+		Nro_Factura
+FROM gd_esquema.Maestra
+
+
+
+select * from [SERVOMOTOR].ITEMS
+select * from [SERVOMOTOR].FACTURAS
 
 
 
