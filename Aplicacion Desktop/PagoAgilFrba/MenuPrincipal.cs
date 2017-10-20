@@ -15,8 +15,12 @@ namespace PagoAgilFrba
         public String Usuario { get; set; }
         public String Rol { get; set; }
         public String Sucursal { get; set; }
-        public List<int> Funcionalidades = new List<int>();
-        public Dictionary<int, Button> diccionarioFunc = new Dictionary<int, Button>();
+
+        public List<int> FuncionalidadesDelRol = new List<int>();
+        public List<int> idTodasLasFuncionalidades = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        public Dictionary<int, Button> diccionarioTodasLasFunc = new Dictionary<int, Button>();
+        int idRol;
+
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -90,36 +94,30 @@ namespace PagoAgilFrba
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+            if (Rol == "Cobrador")
+                idRol = 2;
+            else
+                idRol = 1;
+                
             this.cargarDiccionario();
             
-            this.obtenerFuncionalidadesRol();
-            var FuncionalidadesTodas = new List<int>{ 1,2,3,4,5,6,7,8,9};
-            List<int> botonesABajar= FuncionalidadesTodas.Except(Funcionalidades).ToList();
-            
-            for (int i = 0; i < botonesABajar.Count;i++ )
-            {
-               
-                if (diccionarioFunc.ContainsKey(botonesABajar[i]))
-                {
-                    Button boton = diccionarioFunc[botonesABajar[i]];
-                    boton.Enabled = false;
-                }
-            }
+            this.cagarListaFuncionalidadesRol();
+           
+            List<int> botonesABajar= idTodasLasFuncionalidades.Except(FuncionalidadesDelRol).ToList();//interseccion entre ambas listas
+
+            this.deshabilitarBotones(botonesABajar);
 
         }
         private void cargarDiccionario() {
-         
-            diccionarioFunc.Add(1, botonABMRol);
-            diccionarioFunc.Add(2, botonABMCliente);
-            diccionarioFunc.Add(3, botonABMEmpresa);
-            diccionarioFunc.Add(4,botonABMFactura);
-            diccionarioFunc.Add(5, botonABMSucursal);
-            diccionarioFunc.Add(6, botonRegistrarPago);
-            diccionarioFunc.Add(7, button1);
-            diccionarioFunc.Add(8,botonRendicion);
-            diccionarioFunc.Add(9, botonListadoEstadistico);
-        
-        
+            diccionarioTodasLasFunc.Add(1, botonABMRol);
+            diccionarioTodasLasFunc.Add(2, botonABMCliente);
+            diccionarioTodasLasFunc.Add(3, botonABMEmpresa);
+            diccionarioTodasLasFunc.Add(4,botonABMFactura);
+            diccionarioTodasLasFunc.Add(5, botonABMSucursal);
+            diccionarioTodasLasFunc.Add(6, botonRegistrarPago);
+            diccionarioTodasLasFunc.Add(7, button1);
+            diccionarioTodasLasFunc.Add(8,botonRendicion);
+            diccionarioTodasLasFunc.Add(9, botonListadoEstadistico);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -128,12 +126,19 @@ namespace PagoAgilFrba
             formularioSiguiente.ShowDialog();
             this.Show();
         }
-        private void obtenerFuncionalidadesRol() {
-            int idRol;
-            if (Rol == "Cobrador")
-            { idRol = 2; }
-            else
-            { idRol = 1; }
+        private void deshabilitarBotones(List<int> botonesABajar)
+        {
+            for (int i = 0; i < botonesABajar.Count; i++)
+            {
+
+                if (diccionarioTodasLasFunc.ContainsKey(botonesABajar[i]))
+                {
+                    Button boton = diccionarioTodasLasFunc[botonesABajar[i]];
+                    boton.Enabled = false;
+                }
+            }
+        }
+        private void cagarListaFuncionalidadesRol() {
 
             var cmd = new SqlCommand(
                        "select * from SERVOMOTOR.FUNCIONES_ROLES where ID_ROL="+idRol+";",
@@ -143,17 +148,10 @@ namespace PagoAgilFrba
             var dataReader = cmd.ExecuteReader();
             while (dataReader.Read())
             {
-                this.Funcionalidades.Add(Convert.ToInt32(dataReader["ID_FUNC"]));
+                this.FuncionalidadesDelRol.Add(Convert.ToInt32(dataReader["ID_FUNC"]));
                
-            }
-           
-             
-            
+            } 
         }
-
-
-
-
         
     }
 }
