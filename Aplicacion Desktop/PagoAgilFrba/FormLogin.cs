@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,145 +20,170 @@ namespace PagoAgilFrba
             InitializeComponent();
         }
 
-        private void FormPrincipalAdministrador_Load(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
-            iniciar();
+            Rol_Init();
         }
 
-        public void iniciar()
+        private void Rol_Init()
         {
-            /*
-            radioAdministrador.Checked = true;
-            radioCobrador.Checked = false;*/
+            using (var conexion = Program.conexion())
+            {
+                var cmd = new SqlCommand(
+                    "SELECT NOMBRE AS ROL " +
+                    "FROM [SERVOMOTOR].ROLES " +
+                    "WHERE ESTADO = 1;",
+                    conexion
+                );
 
-            gbAdministrador.Enabled = true;
-            gbInvitado.Enabled = false;
+                using (var dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
+                        Rol.Items.Add(dataReader["ROL"]);
 
-            cargarSucursalesDisponibles();
+                if (Rol.Items.Count > 0)
+                    Rol.SelectedIndex = 0;
+            }
         }
 
-        private void radioAdministrador_CheckedChanged(object sender, EventArgs e)
+        private void SucursalesDisponibles_Init()
         {
-            Boolean tildadoAdministrador = radioAdministrador.Checked;
-            
-            gbAdministrador.Enabled = tildadoAdministrador;
-            gbInvitado.Enabled = !tildadoAdministrador;
+            using (var conexion = Program.conexion())
+            {
+                var cmd = new SqlCommand(
+                    "SELECT NOMBRE AS SUCURSAL " +
+                    "FROM [SERVOMOTOR].SUCURSALES_USUARIOS su " +
+                    "JOIN [SERVOMOTOR].USUARIOS u " +
+                    "  ON USERNAME = @USERNAME " +
+                    "JOIN [SERVOMOTOR].SUCURSALES s " +
+                    "  ON s.COD_POSTAL = su.COD_POSTAL;",
+                    conexion
+                );
+
+                cmd.Parameters.AddWithValue("@USERNAME", txtUsuario.Text);
+
+                using (var dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
+                        SucursalesDisponibles.Items.Add(dataReader["SUCURSAL"]);
+
+                if (SucursalesDisponibles.Items.Count > 0)
+                {
+                    SucursalesDisponibles.SelectedIndex = 0;
+                    IrAlMenu.Enabled = true;
+                }
+
+                botonIngresar.Visible = false;
+                botonIngresar.Enabled = false;
+                IrAlMenu.Visible = true;
+            }
         }
 
-        private void cargarSucursalesDisponibles()
-        {
-            SucursalesDisponibles.Items.Clear();
-
-            SqlDataReader reader;
-            SqlCommand consultaRoles = new SqlCommand();
-            consultaRoles.CommandType = CommandType.Text;
-            consultaRoles.CommandText = "SELECT * FROM [SERVOMOTOR].SUCURSALES";
-            consultaRoles.Connection = Program.conexion();
-
-            reader = consultaRoles.ExecuteReader();//CONSULTASUCURSALES
-
-            while (reader.Read())
-                SucursalesDisponibles.Items.Add(reader.GetValue(0));
-
-            reader.Close();
-        }
-
-
-        // Se ejcuta al clickear en ingresar. Realiza las validaciones de acuerdo al tipo de usuario 
-        // y pasa al menú principal si todo está bien
         private void botonIngresar_Click(object sender, EventArgs e)
         {
-            if (radioAdministrador.Checked)
+            gbLogin.Enabled = false;
+
+            if (!LoginUsuario())
             {
-                if (txtUsuario.Text.ToLower().Equals("invitado"))
-                {
-                    MessageBox.Show("El nombre de usuario ingresado no existe.", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-                ingresarComoAdministrador();
+                gbLogin.Enabled = true;
+                return;
             }
-            else
-            {
-                ingresarComoInvitado();
-            }
-        }
 
-        
-        private void ingresarComoAdministrador()
-        {
-            if (datosCorrectos())
-            {
-                intentarLoguearse();
-            }
-        }
-
-        private bool datosCorrectos()
-        {
-            Boolean huboErrores = false;
-
-            huboErrores = validarTipos() || huboErrores;
-            huboErrores = validarLongitudes() || huboErrores;
-
-            return !huboErrores;
-        }
-
-        // Verifica la contraseña con la base de datos (y los posibles ingresos erroneos de las mismas
-        private void intentarLoguearse()
-        {
-            SQLManager manager = new SQLManager().generarSP("LoginAdministrador")
-                                                 .agregarStringSP("@Usuario", txtUsuario)
-                                                 .agregarStringSP("@ContraseniaIngresada", Encriptador.encriptarSegunSHA256(txtPassword.Text));
-
-            try
-            {
-                manager.ejecutarSP();
-                using (Form formularioMenuPrincipal = new MenuPrincipal())
+            if (!Rol.SelectedItem.ToString().Equals("Cobrador"))
+                using (Form menuPrincipal = new MenuPrincipal())
                 {
                     this.Hide();
-                    formularioMenuPrincipal.ShowDialog();
-                    this.Close();
+                    menuPrincipal.ShowDialog();
+                    this.Dispose();
+                }
+
+            using (var conexion = Program.conexion())
+            {
+                var cmd = new SqlCommand(
+                    "SELECT NOMBRE AS SUCURSAL " +
+                    "FROM [SERVOMOTOR].SUCURSALES_USUARIOS su " +
+                    "JOIN [SERVOMOTOR].USUARIOS u " +
+                    "  ON USERNAME = @USERNAME " +
+                    "JOIN [SERVOMOTOR].SUCURSALES s " +
+                    "  ON s.COD_POSTAL = su.COD_POSTAL;",
+                    conexion
+                );
+
+                cmd.Parameters.AddWithValue("@USERNAME", txtUsuario.Text);
+            }
+
+            gbSucursal.Enabled = true;
+        }
+
+        private bool LoginUsuario()
+        {
+            using (var conexion = Program.conexion())
+            using (var cmd = new SqlCommand("[SERVOMOTOR].LoginUsuario", conexion))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 20).Value = txtUsuario.Text;
+                cmd.Parameters.Add("@ContraseniaIngresada", SqlDbType.VarChar, 70).Value =
+                    Encriptador.encriptarSegunSHA256(txtPassword.Text);
+                cmd.Parameters.Add("@NombreRol", SqlDbType.VarChar, 30).Value =
+                    Rol.SelectedItem.ToString();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
-            catch (Exception e)
+
+            return true;
+        }
+
+        private void gbSucursal_EnabledChanged(object sender, EventArgs e)
+        {
+            this.SucursalesDisponibles_Init();
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            var textbox = sender as TextBox;
+            Regex alfaNumerico = new Regex("^[a-zA-Z0-9]+$");
+
+            if (alfaNumerico.IsMatch(textbox.Text))
+                textbox.BackColor = SystemColors.Window;
+            else
             {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK);
+                textbox.BackColor = Color.LightPink;
+            }
+            botonIngresar_Refresh();
+        }
+
+        private void botonIngresar_Refresh()
+        {
+            botonIngresar.Enabled = (txtUsuario.BackColor.IsSystemColor &&
+                                     txtPassword.BackColor.IsSystemColor &&
+                                     Rol.BackColor.IsSystemColor);
+            botonIngresar.Enabled &= (!String.IsNullOrEmpty(txtPassword.Text) &&
+                                      !String.IsNullOrEmpty(txtPassword.Text));
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            var textbox = sender as TextBox;
+            textbox.BackColor = String.IsNullOrEmpty(textbox.Text) ? Color.LightPink
+                                                                   : SystemColors.Window;
+            botonIngresar_Refresh();
+        }
+
+        private void IrAlMenu_Click(object sender, EventArgs e)
+        {
+            using (Form menuPrincipal = new MenuPrincipal())
+            {
+                this.Hide();
+                menuPrincipal.ShowDialog();
+                this.Dispose();
             }
         }
-        
-
-        private void ingresarComoInvitado()
-        {
-            if (Validacion.esVacio(SucursalesDisponibles, "rol", true))
-                return;
-
-         
-        }
-
-        private bool validarLongitudes()
-        {
-            Boolean huboErrores = false;
-
-            huboErrores = Validacion.esVacio(txtUsuario, "usuario", true) || huboErrores;
-            huboErrores = Validacion.esVacio(txtPassword, "contraseña", true) || huboErrores;
-
-            return huboErrores;
-        }
-
-        private bool validarTipos()
-        {
-            return !Validacion.esTextoAlfanumerico(txtUsuario,true, "usuario", true);
-        }
-
-       
-
-        private void radioCobrador_CheckedChanged(object sender, EventArgs e)
-        {
-            gbAdministrador.Enabled = true;
-            gbInvitado.Enabled = true;
-            //aca hay que verificar que el usuario cobrador se loguee piola y mostrar sus sucursales habilitadas, sino tirar error
-        }
-
-       
-
     }
 }

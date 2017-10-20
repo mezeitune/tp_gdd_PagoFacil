@@ -25,7 +25,7 @@ namespace PagoAgilFrba
                 cadenaEncriptada.Append(bytesEncriptados[i].ToString("x2").ToLower());
             }
 
-            return cadenaEncriptada.ToString();
+            return cadenaEncriptada.ToString().ToLower();
         }  
     }
 }
