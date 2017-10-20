@@ -88,12 +88,7 @@ namespace PagoAgilFrba
             }
 
             if (!Rol.SelectedItem.ToString().Equals("Cobrador"))
-                using (Form menuPrincipal = new MenuPrincipal())
-                {
-                    this.Hide();
-                    menuPrincipal.ShowDialog();
-                    this.Dispose();
-                }
+                IrAlMenuPrincipal();
 
             using (var conexion = Program.conexion())
             {
@@ -178,8 +173,19 @@ namespace PagoAgilFrba
 
         private void IrAlMenu_Click(object sender, EventArgs e)
         {
-            using (Form menuPrincipal = new MenuPrincipal())
+            gbSucursal.Enabled = false;
+            IrAlMenuPrincipal();
+        }
+
+        private void IrAlMenuPrincipal()
+        {
+            using (MenuPrincipal menuPrincipal = new MenuPrincipal())
             {
+                menuPrincipal.Usuario = txtUsuario.Text;
+                menuPrincipal.Rol = Rol.SelectedItem.ToString();
+                if (menuPrincipal.Rol.Equals("Cobrador"))
+                    menuPrincipal.Sucursal = SucursalesDisponibles.SelectedItem.ToString();
+
                 this.Hide();
                 menuPrincipal.ShowDialog();
                 this.Dispose();

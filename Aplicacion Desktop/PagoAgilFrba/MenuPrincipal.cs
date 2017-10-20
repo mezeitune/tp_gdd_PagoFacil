@@ -12,6 +12,10 @@ namespace PagoAgilFrba
 {
     public partial class MenuPrincipal : Form
     {
+        public String Usuario { get; set; }
+        public String Rol { get; set; }
+        public String Sucursal { get; set; }
+
         public MenuPrincipal()
         {
             InitializeComponent();
