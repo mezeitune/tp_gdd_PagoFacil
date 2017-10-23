@@ -180,6 +180,34 @@ object_id(N'[SERVOMOTOR].[crearFacturas]') and OBJECTPROPERTY(id, N'IsProcedure'
 drop procedure [SERVOMOTOR].[crearFacturas]
 
 GO
+IF EXISTS (SELECT *
+             FROM dbo.sysobjects
+            WHERE id = OBJECT_ID(N'[SERVOMOTOR].[ListadoPorcentajeFacturasCobradas]')
+              AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [SERVOMOTOR].[ListadoPorcentajeFacturasCobradas];
+
+GO
+IF EXISTS (SELECT *
+             FROM dbo.sysobjects
+            WHERE id = OBJECT_ID(N'[SERVOMOTOR].[ListadoEmpresasMayorMontoRendido]')
+              AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [SERVOMOTOR].[ListadoEmpresasMayorMontoRendido];
+
+GO
+IF EXISTS (SELECT *
+             FROM dbo.sysobjects
+            WHERE id = OBJECT_ID(N'[SERVOMOTOR].[ListadoClienteConMasPagos]')
+              AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [SERVOMOTOR].[ListadoClienteConMasPagos];
+
+GO
+IF EXISTS (SELECT *
+             FROM dbo.sysobjects
+            WHERE id = OBJECT_ID(N'[SERVOMOTOR].[ListadoClientesCumplidores]')
+              AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [SERVOMOTOR].[ListadoClientesCumplidores];
+
+GO
 IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'SERVOMOTOR')
 DROP SCHEMA [SERVOMOTOR]
 GO
@@ -578,7 +606,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Direcci�n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -702,7 +730,7 @@ GO
 
 
 INSERT INTO [SERVOMOTOR].[ITEMS]
-	(	
+	(
 		MONTO,
 		CANTIDAD,
 		NUMERO_FACTURA
@@ -821,75 +849,75 @@ GO
 -----------------------------Login---------------------------
 CREATE PROCEDURE [SERVOMOTOR].LoginUsuario
 (
-	@Usuario VARCHAR(20),
-	@ContraseniaIngresada VARCHAR(70),
-	@NombreRol VARCHAR(30)
+  @Usuario VARCHAR(20),
+  @ContraseniaIngresada VARCHAR(70),
+  @NombreRol VARCHAR(30)
 )
 AS
 BEGIN
-	DECLARE @IDUsuario TINYINT,
-			@Contrasenia VARCHAR(70),
-			@EstadoHabilitacion BIT;
+  DECLARE @IDUsuario TINYINT,
+          @Contrasenia VARCHAR(70),
+          @EstadoHabilitacion BIT;
 
-	IF NOT EXISTS ( SELECT 1
-					FROM SERVOMOTOR.USUARIOS
-					WHERE USERNAME = @Usuario)
-	BEGIN
-		RAISERROR('El nombre de usuario no coincide con la contraseña.', 16, 1);
-		RETURN;
-	END
+  IF NOT EXISTS (SELECT 1
+                   FROM SERVOMOTOR.USUARIOS
+                  WHERE USERNAME = @Usuario)
+  BEGIN
+    RAISERROR('El nombre de usuario no coincide con la contraseña.', 16, 1);
+    RETURN;
+  END
 
-	SELECT @IDUsuario = ID_USUARIO,
-		   @Contrasenia = PASSWORD,
-		   @EstadoHabilitacion = HABILITADO
-	FROM SERVOMOTOR.USUARIOS
-	WHERE USERNAME = @Usuario;
+  SELECT @IDUsuario = ID_USUARIO,
+         @Contrasenia = PASSWORD,
+         @EstadoHabilitacion = HABILITADO
+    FROM SERVOMOTOR.USUARIOS
+   WHERE USERNAME = @Usuario;
 
-	IF @EstadoHabilitacion = 0
-	BEGIN
-		RAISERROR('El usuario está inhabilitado. Contáctese con un administrador para reestablecer su cuenta.', 16, 1);
-		RETURN;
-	END
-	--[SERVOMOTOR].EncriptarSHA1(
-	--IF (SELECT SERVOMOTOR.EncriptarSHA1(@ContraseniaIngresada) as [resultado]) <> @Contrasenia
-	IF @ContraseniaIngresada <> @Contrasenia
-	BEGIN
-		RAISERROR('El nombre de usuario no coincide con la contraseña.', 16, 1);
+  IF @EstadoHabilitacion = 0
+  BEGIN
+    RAISERROR('El usuario está inhabilitado. Contáctese con un administrador para reestablecer su cuenta.', 16, 1);
+    RETURN;
+  END
+  --[SERVOMOTOR].EncriptarSHA1(
+  --IF (SELECT SERVOMOTOR.EncriptarSHA1(@ContraseniaIngresada) as [resultado]) <> @Contrasenia
+  IF @ContraseniaIngresada <> @Contrasenia
+  BEGIN
+    RAISERROR('El nombre de usuario no coincide con la contraseña.', 16, 1);
 
-		UPDATE SERVOMOTOR.USUARIOS
-		SET CANT_INT_FALL = CANT_INT_FALL + 1,
-			HABILITADO = CASE WHEN CANT_INT_FALL + 1 < 3
-							THEN 1
-							ELSE 0 END
-		WHERE ID_USUARIO = @IDUsuario;
+    UPDATE SERVOMOTOR.USUARIOS
+       SET CANT_INT_FALL = CANT_INT_FALL + 1,
+           HABILITADO = CASE WHEN CANT_INT_FALL + 1 < 3
+                        THEN 1
+                        ELSE 0 END
+     WHERE ID_USUARIO = @IDUsuario;
 
-		SELECT @EstadoHabilitacion = HABILITADO
-		FROM SERVOMOTOR.USUARIOS
-		WHERE ID_USUARIO = @IDUsuario;
+    SELECT @EstadoHabilitacion = HABILITADO
+      FROM SERVOMOTOR.USUARIOS
+     WHERE ID_USUARIO = @IDUsuario;
 
-		IF @EstadoHabilitacion = 0
-		BEGIN
-			RAISERROR('Ha ingresado la contraseña 3 veces de forma incorrecta. Contáctese con un administrador para reestablecer su cuenta.', 16, 1);
-		END
+    IF @EstadoHabilitacion = 0
+    BEGIN
+      RAISERROR('Ha ingresado la contraseña 3 veces de forma incorrecta. Contáctese con un administrador para reestablecer su cuenta.', 16, 1);
+    END
 
-		RETURN;
-	END
+    RETURN;
+  END
 
-	IF NOT EXISTS ( SELECT 1
-					FROM SERVOMOTOR.ROLES_USUARIOS ru
-					JOIN SERVOMOTOR.ROLES r ON r.ID_ROL = ru.ID_ROL
-					WHERE ru.ID_USUARIO = @IDUsuario
-					AND r.NOMBRE = @NombreRol
-					AND r.ESTADO = 1)
-	BEGIN
-		RAISERROR('El usuario no tiene asignado el rol "%s".', 16, 1, @NombreRol);
-		RETURN;
-	END
+  IF NOT EXISTS (SELECT 1
+                   FROM SERVOMOTOR.ROLES_USUARIOS ru
+                   JOIN SERVOMOTOR.ROLES r ON r.ID_ROL = ru.ID_ROL
+                  WHERE ru.ID_USUARIO = @IDUsuario
+                    AND r.NOMBRE = @NombreRol
+                    AND r.ESTADO = 1)
+  BEGIN
+    RAISERROR('El usuario no tiene asignado el rol "%s".', 16, 1, @NombreRol);
+    RETURN;
+  END
 
-	UPDATE SERVOMOTOR.USUARIOS
-	SET CANT_INT_FALL = 0,
-		HABILITADO = 1
-	WHERE ID_USUARIO = @IDUsuario;
+  UPDATE SERVOMOTOR.USUARIOS
+     SET CANT_INT_FALL = 0,
+         HABILITADO = 1
+   WHERE ID_USUARIO = @IDUsuario;
 END
 
 GO
@@ -962,3 +990,112 @@ AS BEGIN
 
 END
 
+/***************************************************************************/
+/*                    PROCEDURES LISTADO ESTADISTICO                       */
+/***************************************************************************/
+
+GO
+
+/* Porcentaje de facturas cobradas por empresa. */
+CREATE PROCEDURE [SERVOMOTOR].ListadoPorcentajeFacturasCobradas
+  (@ANIO INT, @TRIMESTRE INT)
+AS
+BEGIN
+  IF @TRIMESTRE NOT BETWEEN 1 AND 4
+  BEGIN
+    RAISERROR('El número de trimestre debe ser entre 1 y 4.', 16, 1);
+    RETURN;
+  END;
+
+  SELECT TOP 5
+         CUIT_EMPRESA AS 'CUIT Empresa',
+         NOMBRE AS 'Nombre de Empresa',
+         COUNT(NUMERO_PAGO) * 100 / CAST(COUNT(NUMERO_FACTURA) AS FLOAT)
+           AS 'Porcentaje de facturas cobradas'
+    FROM SERVOMOTOR.FACTURAS AS f
+         LEFT JOIN SERVOMOTOR.EMPRESAS AS e
+                ON e.CUIT = f.CUIT_EMPRESA
+   WHERE YEAR(FECHA_ALTA) = @ANIO
+     AND MONTH(FECHA_ALTA) BETWEEN (@TRIMESTRE * 3 - 2) AND (@TRIMESTRE * 3)
+   GROUP BY CUIT_EMPRESA, NOMBRE
+   ORDER BY 'Porcentaje de facturas cobradas' DESC;
+END;
+
+GO
+
+/* Empresas con mayor monto rendido. */
+CREATE PROCEDURE [SERVOMOTOR].ListadoEmpresasMayorMontoRendido
+  (@ANIO INT, @TRIMESTRE INT)
+AS
+BEGIN
+  IF @TRIMESTRE NOT BETWEEN 1 AND 4
+  BEGIN
+    RAISERROR('El número de trimestre debe ser entre 1 y 4.', 16, 1);
+    RETURN;
+  END;
+
+  SELECT TOP 5
+         emp.CUIT AS 'CUIT Empresa',
+         emp.NOMBRE AS 'Nombre de Empresa',
+         SUM(COALESCE(rend.TOTAL_RENDIDO, 0)) AS 'Monto total rendido'
+    FROM SERVOMOTOR.RENDICIONES AS rend
+         LEFT JOIN SERVOMOTOR.EMPRESAS AS emp
+                ON emp.CUIT = rend.CUIT_EMPRESA
+   WHERE YEAR(rend.FECHA_COBRO) = @ANIO
+     AND MONTH(rend.FECHA_COBRO) BETWEEN (@TRIMESTRE * 3 - 2) AND (@TRIMESTRE * 3)
+   GROUP BY emp.NOMBRE, emp.CUIT
+   ORDER BY 'Monto total rendido' DESC;
+END;
+
+GO
+
+/* Clientes con mas pagos. */
+CREATE PROCEDURE [SERVOMOTOR].ListadoClienteConMasPagos
+  (@ANIO INT, @TRIMESTRE INT)
+AS
+BEGIN
+  IF @TRIMESTRE NOT BETWEEN 1 AND 4
+  BEGIN
+    RAISERROR('El número de trimestre debe ser entre 1 y 4.', 16, 1);
+    RETURN;
+  END;
+
+  SELECT TOP 5
+         DNI_CLIENTE AS 'DNI de Cliente',
+         APELLIDO + ', ' + NOMBRE AS 'Nombre y Apellido',
+         COUNT(DISTINCT NUMERO_PAGO) AS 'Cantidad de pagos'
+    FROM SERVOMOTOR.PAGOS AS pago
+         RIGHT JOIN SERVOMOTOR.CLIENTES AS cli
+                 ON cli.DNI = pago.DNI_CLIENTE
+   WHERE YEAR(FECHA_COBRO) = @ANIO
+     AND MONTH(FECHA_COBRO) BETWEEN (@TRIMESTRE * 3 - 2) AND (@TRIMESTRE * 3)
+   GROUP BY DNI_CLIENTE, APELLIDO + ', ' + NOMBRE
+   ORDER BY 'Cantidad de pagos' DESC;
+END;
+
+GO
+
+/* Clientes con mayor porcentaje de facturas pagadas. */
+CREATE PROCEDURE [SERVOMOTOR].ListadoClientesCumplidores
+  (@ANIO INT, @TRIMESTRE INT)
+AS
+BEGIN
+  IF @TRIMESTRE NOT BETWEEN 1 AND 4
+  BEGIN
+    RAISERROR('El número de trimestre debe ser entre 1 y 4.', 16, 1);
+    RETURN;
+  END;
+
+  SELECT TOP 5
+         DNI_CLIENTE AS 'DNI de Cliente',
+         APELLIDO + ', ' + NOMBRE AS 'Nombre y Apellido',
+         COUNT(NUMERO_PAGO) * 100 / CAST(COUNT(NUMERO_FACTURA) AS FLOAT)
+           AS 'Porcentaje de Facturas Pagadas'
+    FROM SERVOMOTOR.FACTURAS AS f
+         LEFT JOIN SERVOMOTOR.CLIENTES AS c
+                ON c.DNI = f.DNI_CLIENTE
+   WHERE YEAR(FECHA_ALTA) = @ANIO
+     AND MONTH(FECHA_ALTA) BETWEEN (@TRIMESTRE * 3 - 2) AND (@TRIMESTRE * 3)
+   GROUP BY DNI_CLIENTE, APELLIDO + ', ' + NOMBRE
+   ORDER BY 'Porcentaje de Facturas Pagadas' DESC;
+END;
