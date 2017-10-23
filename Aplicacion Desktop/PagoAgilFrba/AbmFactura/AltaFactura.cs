@@ -59,7 +59,7 @@ namespace PagoAgilFrba.AbmFactura
                 {
                 var cmd = new SqlCommand(
                "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
-               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','NO PAGA',NULL,NULL);",
+               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','no paga',NULL,NULL);",
                 Program.conexion()   
                   );
                 var dataReaderFactura = cmd.ExecuteReader();
@@ -75,8 +75,8 @@ namespace PagoAgilFrba.AbmFactura
                MessageBox.Show("Se ha dado de alta correctamente la factura", "Correcto", MessageBoxButtons.OK);
                 this.limpiarTextos();
                 dataGridItems.ClearSelection();
-               
-                Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
+
+                Form formularioSiguiente = new MenuPrincipal();
                 this.Hide();
                 formularioSiguiente.ShowDialog();
                 this.Show();

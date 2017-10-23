@@ -108,7 +108,7 @@ namespace PagoAgilFrba.Rendicion
                 {
 
                     var cmd = new SqlCommand(
-                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='RENDIDA',ID_RENDICION=" + idRendicion + " where NUMERO_FACTURA='" + row.Cells[0].Value.ToString() + "';",
+                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='RENDIDA',ID_RENDICION="+ idRendicion +" where NUMERO_FACTURA=" + Convert.ToDecimal(row.Cells[0].Value) + ";",
                              Program.conexion()
                          );
 
@@ -119,8 +119,10 @@ namespace PagoAgilFrba.Rendicion
         
         }
         private void buscarRendicion(){
+         
+               
         var cmd = new SqlCommand(
-                            "select * from [SERVOMOTOR].[RENDICIONES] where FECHA_COBRO='" + FechaRendicion.Value + "';",
+                            "select TOP 1 * from SERVOMOTOR.RENDICIONES ORDER BY ID_RENDICION DESC;",
                              Program.conexion()
                          );
 
@@ -128,14 +130,16 @@ namespace PagoAgilFrba.Rendicion
                     while (dataReader.Read())
                     {
                         idRendicion = Convert.ToInt32(dataReader["ID_RENDICION"]);
-                    }
+                    
+               }
+                    
         }
 
         private bool todosLosCamposLLenos()
         {
 
             Boolean huboErrores = false;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
+           // huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
             huboErrores = Validacion.esVacio(porcentajeComision, "Porcentaje comision", true) || huboErrores;
 
 
@@ -155,32 +159,62 @@ namespace PagoAgilFrba.Rendicion
 
         private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!empresaRendida())
+            {
+                var cmd = new SqlCommand(
+                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
+                    Program.conexion()
+                );
+
+                var dataReader = cmd.ExecuteReader();
+
+
+                while (dataReader.Read())
+                {
+
+                    this.dataGridView1.Rows.Add(
+                        dataReader["NUMERO_FACTURA"],
+                        dataReader["TOTAL"]
+
+                    );
+                    importeTotalARendir += Convert.ToDecimal(dataReader["TOTAL"]);
+
+
+
+                }
+                CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
+                importeTotalRendicion.Text = importeTotalARendir.ToString();
+            }
+            else {
+                MessageBox.Show("Empresa ya rendida en este mes", "Todo bien", MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private Boolean empresaRendida() {
+            DateTime fechaRendicionAVer;
             var cmd = new SqlCommand(
-                "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
-                Program.conexion()
-            );
+                   "select FECHA_COBRO from SERVOMOTOR.RENDICIONES where CUIT_EMPRESA like '"+comboEmpresa.SelectedItem.ToString()+"'",
+                   Program.conexion()
+               );
 
             var dataReader = cmd.ExecuteReader();
-           
+
 
             while (dataReader.Read())
             {
-                
-                this.dataGridView1.Rows.Add(
-                    dataReader["NUMERO_FACTURA"],
-                    dataReader["TOTAL"]
 
-                );
-                importeTotalARendir+= Convert.ToDecimal(dataReader["TOTAL"]);
-                comboEmpresa.Items.Remove(comboEmpresa.SelectedItem);
-                comboEmpresa.SelectedItem = null;
                
-            }
-            CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
-            importeTotalRendicion.Text = importeTotalARendir.ToString();
-        }
+                fechaRendicionAVer = Convert.ToDateTime(dataReader["FECHA_COBRO"]);
+                if (FechaRendicion.Value.Month == fechaRendicionAVer.Month && FechaRendicion.Value.Year == fechaRendicionAVer.Year)
+                {
+                    return true;
+                }
 
-       
+            }
+            return false;
+
+        }
 
     }
 }
