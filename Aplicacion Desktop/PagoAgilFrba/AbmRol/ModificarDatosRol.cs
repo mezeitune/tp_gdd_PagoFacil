@@ -181,9 +181,11 @@ namespace PagoAgilFrba.AbmRol
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void groupBox_Enter(object sender, EventArgs e)
+        private void EliminarFuncionalidad_Click(object sender, EventArgs e)
         {
-
+            if (ListadoFuncionalidades.SelectedRows.Count > 0 &&
+                !ListadoFuncionalidades.SelectedRows[0].IsNewRow)
+                ListadoFuncionalidades.Rows.Remove(ListadoFuncionalidades.SelectedRows[0]);
         }
     }
 }
