@@ -17,13 +17,16 @@ namespace PagoAgilFrba.AbmFactura
         int subtotal=0;
         decimal totalFacturaDecimal;
         int totalFacturaInt;
+
+
+
         public ModificarDatosFactura(string nroFact,int subtot)
        {
             subtotal = subtot;
             nroFactura = nroFact;
             InitializeComponent();
         }
-
+        //AL SELECCIONAR UN ITEM LE PASO EL NUMERO DE FACTURA Y LA DESCRIPCION PARA PODER MODIFICAR SUS DATOS
         private void button1_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.ModificarItemFactura(nroFactura, descripcion);
@@ -44,7 +47,7 @@ namespace PagoAgilFrba.AbmFactura
 
             MessageBox.Show("Se ha seleccionado el item: " + descripcion, "", MessageBoxButtons.OK);
         }
-
+        //CONFIRMO LA MODIFICACION
         private void ModificarUnaFactura_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && 
@@ -118,6 +121,7 @@ namespace PagoAgilFrba.AbmFactura
             totalFactura.Text = (totalFacturaInt + subtotal).ToString();
         
         }
+        //PARA AGREGAR UN ITEM A UNA FACTURA YA DADA DE ALTA
         private void button1_Click_1(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.agregarItemFacturaModificada(nroFactura);

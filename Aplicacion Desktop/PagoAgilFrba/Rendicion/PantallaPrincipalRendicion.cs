@@ -79,7 +79,7 @@ namespace PagoAgilFrba.Rendicion
         }
 
 
-
+        //SE DA DE ALTA LA RENDICION CALCULANDO EL TOTAL A RENDIR Y EL TOTAL DE COMISION A NUESTRA ORGANIZACION
         private void darDeAltaRendicion() {
 
             totalComision = Convert.ToDecimal(Convert.ToDecimal(porcentajeComision.Text) * Convert.ToDecimal(importeTotalRendicion.Text) / 100);
@@ -99,7 +99,7 @@ namespace PagoAgilFrba.Rendicion
                 
         
         }
-
+        //CAMBIAMOS EL ESTADO DE LAS FACTURAS A "REMDIDA" Y LAS LIGAMOS A UNA RENDICION EN PARTICULAR (LA QUE RECIEN DIMOS DE ALTA)
         private void cambiarEstadoFacturas() {
            
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -118,9 +118,8 @@ namespace PagoAgilFrba.Rendicion
             }
         
         }
+        //BUSCO EL ID DE LA RENDICION QUE RECIEN INGRESE PARA PODER LIGAR LAS FACTURAS A DICHA OPERACION
         private void buscarRendicion(){
-         
-               
         var cmd = new SqlCommand(
                             "select TOP 1 * from SERVOMOTOR.RENDICIONES ORDER BY ID_RENDICION DESC;",
                              Program.conexion()
@@ -139,7 +138,6 @@ namespace PagoAgilFrba.Rendicion
         {
 
             Boolean huboErrores = false;
-           // huboErrores = Validacion.estaCheckeadoComboBox(comboEmpresa) || huboErrores;
             huboErrores = Validacion.esVacio(porcentajeComision, "Porcentaje comision", true) || huboErrores;
 
 
@@ -159,6 +157,7 @@ namespace PagoAgilFrba.Rendicion
 
         private void comboEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // ACA VERIFICAMOS QUE LA EMPRESA ELEGIDA NO HAYA SIDO YA RENDIDA EN UN DIA DENTRO DEL MES Y ANIO ELEGIDO
             if (!empresaRendida())
             {
                 var cmd = new SqlCommand(
@@ -177,11 +176,13 @@ namespace PagoAgilFrba.Rendicion
                         dataReader["TOTAL"]
 
                     );
+                    //CALCULAMOS EL IMPORTE TOTAL A RENDIR
                     importeTotalARendir += Convert.ToDecimal(dataReader["TOTAL"]);
 
 
 
                 }
+                //CALCULAMOS LA CANTIDAD DE FACTURAS A RENDIR
                 CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
                 importeTotalRendicion.Text = importeTotalARendir.ToString();
             }
@@ -190,7 +191,7 @@ namespace PagoAgilFrba.Rendicion
             }
             
         }
-
+        // ACA VERIFICAMOS QUE LA EMPRESA ELEGIDA NO HAYA SIDO YA RENDIDA EN UN DIA DENTRO DEL MES Y ANIO ELEGIDO
         private Boolean empresaRendida() {
             DateTime fechaRendicionAVer;
             var cmd = new SqlCommand(
@@ -206,6 +207,7 @@ namespace PagoAgilFrba.Rendicion
 
                
                 fechaRendicionAVer = Convert.ToDateTime(dataReader["FECHA_COBRO"]);
+                // ACA VERIFICAMOS QUE LA EMPRESA ELEGIDA NO HAYA SIDO YA RENDIDA EN UN DIA DENTRO DEL MES Y ANIO ELEGIDO
                 if (FechaRendicion.Value.Month == fechaRendicionAVer.Month && FechaRendicion.Value.Year == fechaRendicionAVer.Year)
                 {
                     return true;

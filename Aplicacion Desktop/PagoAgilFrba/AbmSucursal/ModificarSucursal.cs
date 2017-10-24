@@ -20,7 +20,7 @@ namespace PagoAgilFrba.AbmSucursal
             InitializeComponent();
         }
 
-      
+      //NO MOSTRAMOS EL CODIGO POSTAL PORQUE YA SE INGRESO PREVIAMENTE Y ADEMAS NO SE PUEDE MODIFICAR
         private void ModificarSucursal_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && !validarTipos())

@@ -27,7 +27,7 @@ namespace PagoAgilFrba.Devolucion
             registrarDevolucion.Enabled = false;
 
         }
-
+        //LEVANTAMOS LAS FACTURAS PAGAS Y CON EMPRESA ACTIVA
         private void levantarFacturas()
         {
             var cmd = new SqlCommand(
@@ -70,7 +70,7 @@ namespace PagoAgilFrba.Devolucion
             this.dataGridView1.Rows.Clear();
 
         }
-
+        //AGREGAMOS AL DATA GRID LA FACTURA A DEVOLVER YA CARGADA PREVIAMENTE EN EL COMBO 
         private void button1_Click(object sender, EventArgs e)
         {
             var cmd = new SqlCommand(
@@ -99,7 +99,7 @@ namespace PagoAgilFrba.Devolucion
 
 
         }
-
+        //CAMBIAMOS EL ESTADO DE LAS FACTURAS Y REGISTRAMOS UNA NUEVA DEVOLUCION
         private void registrarDevolucion_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -151,7 +151,7 @@ namespace PagoAgilFrba.Devolucion
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
+        //EL BOTON "REGISTRAR DEVOLUCION" SE HABILITA CUANDO AL MENOS SE HAYA SELECCIONADO UNA EMPRESA A DEVOLVER
         private void motivosDevolucion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (dataGridView1.Rows[0].Cells[0] != null)

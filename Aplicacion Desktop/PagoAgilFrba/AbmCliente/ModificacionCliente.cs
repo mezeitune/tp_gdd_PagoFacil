@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace PagoAgilFrba.AbmCliente
 {
     public partial class ModificacionClienteee : Form
@@ -149,6 +150,7 @@ namespace PagoAgilFrba.AbmCliente
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //PASAMOS POR CONSTRUCTOR EL DNI DEL CLIENTE PARA PODER CONSULTAR SUS DATOS PARA MODIFICARLOS
             Form formularioSiguiente = new AbmCliente.ModificarDatosCliente(DNICliente);
             this.Hide();
             formularioSiguiente.ShowDialog();

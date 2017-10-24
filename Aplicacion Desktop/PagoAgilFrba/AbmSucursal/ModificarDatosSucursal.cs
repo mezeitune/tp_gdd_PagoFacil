@@ -18,7 +18,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             InitializeComponent();
         }
-
+        //CONSIDERMOS LA MISMA PANTALLA PARA BAJA Y MODIFICACION, REUTILIZANDO EL DATA GRID
        
 
         private void ModificacionSucursal_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
 
             if (CodPostalSucursal != null)
-            {
+            {//PASO EL CODIGO POSTAL PARA ASI PODER MODIFICAR LOS DATOS DE UNA SUCURSAL
                 Form formularioSiguiente = new AbmSucursal.ModificarSucursal(CodPostalSucursal);
                 this.Hide();
                 formularioSiguiente.ShowDialog();
@@ -73,8 +73,7 @@ namespace PagoAgilFrba.AbmSucursal
 
                 "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
                 "  AND (DIRECCION LIKE @DIRECCION OR @DIRECCION = '') " +
-                "  AND (COD_POSTAL= @COD_POSTAL OR @COD_POSTAL = '')" +
-                "  AND (ESTADO_HABILITACION = 1 )",
+                "  AND (COD_POSTAL= @COD_POSTAL OR @COD_POSTAL = '')",
                 Program.conexion()
             );
 

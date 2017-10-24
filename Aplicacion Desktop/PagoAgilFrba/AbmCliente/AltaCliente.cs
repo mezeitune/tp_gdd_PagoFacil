@@ -59,7 +59,7 @@ namespace PagoAgilFrba.AbmCliente
                     var dataReader = cmd.ExecuteReader();
                 }
                 catch (System.Data.SqlClient.SqlException)
-                {
+                {//catcheamos la excepcion por alta duplicada
 
                     MessageBox.Show("El campo nombre o mail estan duplicados, vuelva a ingresar otro","", MessageBoxButtons.OK);
                     return;

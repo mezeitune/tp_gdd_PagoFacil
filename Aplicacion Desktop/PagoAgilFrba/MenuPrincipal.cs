@@ -15,12 +15,12 @@ namespace PagoAgilFrba
         public String Usuario { get; set; }
         public String Rol { get; set; }
         public String Sucursal { get; set; }
-
+     //ESTRUCTURAS NECESARIAS PARA PODER LIMITAR EL MENU DEPENDIENDO EL ROL LOGEADO
         public List<int> FuncionalidadesDelRol = new List<int>();
         public List<int> idTodasLasFuncionalidades = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         public Dictionary<int, Button> diccionarioTodasLasFunc = new Dictionary<int, Button>();
         int idRol;
-
+        //ESTRUCTURAS NECESARIAS PARA PODER LIMITAR EL MENU DEPENDIENDO EL ROL LOGEADO
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -91,20 +91,20 @@ namespace PagoAgilFrba
             formularioSiguiente.ShowDialog();
             this.Show();
         }
-
+        //ACA VERIFICAMOS QUE TIPO DE ROL ES, SI COBRADOR O ADMINISTRADOR
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
             if (Rol == "Cobrador")
                 idRol = 2;
             else
                 idRol = 1;
-                
+              //CARGAMOS UN DICCIONARIO QUE VINCULA EL ID DE LA FUNCIONALIDAD EN LA BDD CON LOS BOTONES DE LA APLIACION
             this.cargarDiccionario();
-            
+            //CARGAMOS LAS FUNCIONALIDADES DEL ROL QUE SE LOGEO
             this.cagarListaFuncionalidadesRol();
-           
-            List<int> botonesABajar= idTodasLasFuncionalidades.Except(FuncionalidadesDelRol).ToList();//interseccion entre ambas listas
-
+           //REALIZAMOS LA RESTA DE ELEMENTOS DE LA LISTA DE TODAS LAS FUNCIONALIDADES EXISTENTES Y LAS QUE TIENE
+            //ACTUALMENTE EL ROL
+            List<int> botonesABajar= idTodasLasFuncionalidades.Except(FuncionalidadesDelRol).ToList();
             this.deshabilitarBotones(botonesABajar);
 
         }
@@ -126,6 +126,7 @@ namespace PagoAgilFrba
             formularioSiguiente.ShowDialog();
             this.Show();
         }
+        //DESHABLIITAMOS LOS BOTONES QUE QUEDARON EN LA LISTA DONDE HICIMOS LA RESTA
         private void deshabilitarBotones(List<int> botonesABajar)
         {
             for (int i = 0; i < botonesABajar.Count; i++)
@@ -138,6 +139,7 @@ namespace PagoAgilFrba
                 }
             }
         }
+        //CARGO LA LISTA DE FUNCIONALIDADES DEL ROL LOGEADO
         private void cagarListaFuncionalidadesRol() {
 
             var cmd = new SqlCommand(

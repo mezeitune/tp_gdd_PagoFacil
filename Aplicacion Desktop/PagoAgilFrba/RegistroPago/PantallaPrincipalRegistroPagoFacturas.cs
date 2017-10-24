@@ -152,7 +152,7 @@ namespace PagoAgilFrba.RegistroPago
             registrarUnPago.Enabled = false;
             ImporteFact.Enabled = false;
         }
-
+        //LEVANTAMOS CLIENTES HABILITADOS
         private void levantarClientes()
         {
             var cmd = new SqlCommand(
@@ -168,11 +168,11 @@ namespace PagoAgilFrba.RegistroPago
 
 
         }
-
+        //LEVANTAMOS FACTURAS CON EMPRESA Y CLIENTES ACTIVOS Y ADEMAS CON SU FECHA DE VENCIMIENTO POSTERIOR A LA FECHA DE HOY
         private void levantarFacturas()
         {
             var cmd = new SqlCommand(
-                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT LIKE f.CUIT_EMPRESA JOIN [SERVOMOTOR].CLIENTES C ON C.DNI LIKE F.DNI_CLIENTE where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND C.ESTADO_HABILITACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
                      Program.conexion()
                  );
 
@@ -184,6 +184,7 @@ namespace PagoAgilFrba.RegistroPago
 
 
         }
+
         private void levantarSucursales() {
 
             var cmd = new SqlCommand(
@@ -213,7 +214,7 @@ namespace PagoAgilFrba.RegistroPago
             }
 
         }
-
+        //AGREGAMOS UNA FACTURA AL DATA GRID Y HABILITAMOS EL BOTON PARA PODER REGISTRAR UN PAGO
         private void agregarFactura(object sender, EventArgs e)
         {
            
@@ -238,6 +239,7 @@ namespace PagoAgilFrba.RegistroPago
                    
                 );
                 importePago += Convert.ToDecimal(dataReader["TOTAL"]);
+                //ACA CALCULAMOS EL TOTAL DEL PAGO DE TODAS LAS FACTURAS
             }
             
             ImporteFact.Text = Convert.ToString(importePago);

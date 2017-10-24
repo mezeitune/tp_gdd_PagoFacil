@@ -165,14 +165,7 @@ namespace PagoAgilFrba
                     MessageBox.Show("El campo " + nombreCampo + " debe comenzar con una letra.", "Error en los datos de entrada", MessageBoxButtons.OK);
                     return false;
                 }
-                /*for (int i = 0; i < cadena.Length - 1; i++)
-                {
-                    if (Char.IsWhiteSpace(cadena[i]) && cadena[i]==cadena[i+1])
-                    {
-                        MessageBox.Show("El campo " + nombreCampo + " no puede contener varios espacios consecutivos", "Error en los datos de entrada", MessageBoxButtons.OK);
-                        return false;
-                    }
-                }*/
+                
                 return true;
             }
             else
@@ -186,7 +179,7 @@ namespace PagoAgilFrba
             }
           
         }
-
+        //Valida que el texto tenga primero una letra y luego un numero
         public static Boolean esTextoAlfanumerico(TextBox txtBox, Boolean primeroLetra,string nombreCampo = "Opcional", Boolean mostrarMensaje = false)
         {
             string cadena = txtBox.Text;
@@ -227,20 +220,6 @@ namespace PagoAgilFrba
         }
 
         
-        public static Boolean esFormatoDeFecha(TextBox txt, string nombreCampo = "Opcional") {
-            DateTime temp;
-
-            if (DateTime.TryParse(txt.ToString(), out temp))
-            {
-                return true;
-            }
-            else {
-                MessageBox.Show("El formato de la fecha es invalido debe ser DD/MM/AAAA " , "Error en los datos de entrada", MessageBoxButtons.OK);
-                return false;
-            }
-               
-            
-        }
 
 
         //******* VALIDACIONES DE CAMPOS VACIOS ******//
@@ -260,36 +239,8 @@ namespace PagoAgilFrba
             return vacio;
         }
 
-        public static Boolean esVacio(ListBox txtBox, string nombreCampo = "Opcional", bool mostrarMensaje = false)
-        {
-            Boolean vacio = false;
-            if (txtBox.Text == "")
-            {
-                vacio = true;
-                if (mostrarMensaje)
-                {
-                    MessageBox.Show("El campo " + nombreCampo + " no puede estar vacío", "Error en los datos de entrada", MessageBoxButtons.OK);
-                }
-            }
-
-            return vacio;
-        }
-
-        public static Boolean esVacio(ComboBox cboBox, string nombreCampo = "Opcional", bool mostrarMensaje = false)
-        {
-            Boolean vacio = false;
-            if (cboBox.Text.Length == 0)
-            {
-                vacio = true;
-                if (mostrarMensaje)
-                {
-                    MessageBox.Show("El campo " + nombreCampo + " no puede estar vacio", "Error en los datos de entrada", MessageBoxButtons.OK);
-                }
-            }
-
-            return vacio;
-        }
-      
+        
+      //Valida que un numero sea de solo 4 cifras 
         public static Boolean esNumeroDe4(TextBox txt,string campo)
         {
 
@@ -304,7 +255,7 @@ namespace PagoAgilFrba
             }
 
         }
-
+        //combo box seleccionado
         public static Boolean estaSeleccionado(ComboBox combo , Boolean mostrarMensaje = false , String opcional = "opciones")
         {
             
@@ -335,25 +286,6 @@ namespace PagoAgilFrba
             return option.Checked;
         }
 
-
-        public static Boolean numeroCorrecto(TextBox txtBox, string campo , bool debeSerDecimal)
-        {
-            if (!esVacio(txtBox))
-            {
-                if ((debeSerDecimal && !esDecimal(txtBox)) || (!debeSerDecimal && !esNumero(txtBox)))
-                {
-                    MessageBox.Show("El campo " + campo + " debe ser un número", "Error en los datos ingresados", MessageBoxButtons.OK);
-                    return false;
-                }
-            }
-            else
-            {
-                //MessageBox.Show("El campo " + campo + " debe ser un número", "Error en los datos ingresados", MessageBoxButtons.OK);
-                return false;
-            }
-
-            return true;
-        }
 
         public static Boolean fechaPosteriorALaDeHoy(DateTimePicker dateTimePicker1)
         {

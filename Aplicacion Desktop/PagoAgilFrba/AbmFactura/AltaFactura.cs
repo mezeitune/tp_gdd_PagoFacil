@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace PagoAgilFrba.AbmFactura
 {
+    //PRIMERO CARGAMOS LOS ITEMS Y LOS PASAMOS POR CONSTRUCTOR A "ALTA FACTURA" YA QUE ESOS ITEMS 
+    //NO SE PUEDEN VINCULAR A UNA FACTURA QUE TODAVIA NO FUE DADA DE ALTA
     public partial class AltaFactura : Form
     {
         int totalFactura;
@@ -30,7 +32,7 @@ namespace PagoAgilFrba.AbmFactura
             txtTotalFactura.Enabled = false;
             txtTotalFactura.Text = totalFactura.ToString();
         }
-
+        //CALCULAMOS EL TOTAL DE LA FACTURA A DAR DE ALTA
         private void calcularTotalFactura() {
 
             foreach (DataGridViewRow row in dataGridItems.Rows)
@@ -99,7 +101,7 @@ namespace PagoAgilFrba.AbmFactura
             }
 
         }
-
+        //RECORREMOS CADA ITEMS Y LO VAMOS INGRESANDO A PARTIR DE LA FACTURA YA DEDA DE ALTA
         private void insertarItem(String m,String d, String c) {
             var cmd = new SqlCommand(
               "insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
@@ -144,6 +146,8 @@ namespace PagoAgilFrba.AbmFactura
             this.Show();
         }
 
+
+        //BATCHS PARA LEVANTAR DATOS
         private void levantarClientes() {
             var cmdCliente = new SqlCommand(
                   "select DNI from [SERVOMOTOR].[CLIENTES] where ESTADO_HABILITACION=1;",

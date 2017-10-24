@@ -14,8 +14,10 @@ namespace PagoAgilFrba.AbmCliente
     public partial class ModificarDatosCliente : Form
     {
         private String DNICliente;
-      
-       
+
+
+        //PASAMOS POR CONSTRUCTOR EL DNI DEL CLIENTE PARA PODER CONSULTAR SUS DATOS PARA MODIFICARLOS
+        //NO MOSTRAMOS EL DNI YA QUE PREVIAMENTE SE ELIGIO Y TAMPOCO SE PUEDE MODIFICAR EN EL SISTEMA
         public ModificarDatosCliente(String DNIClientee)
         {
             DNICliente = DNIClientee;

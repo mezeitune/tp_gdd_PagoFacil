@@ -11,6 +11,8 @@ using System.Windows.Forms;
 namespace PagoAgilFrba.AbmFactura
 {
 
+    //PRIMERO CARGAMOS LOS ITEMS Y LOS PASAMOS POR CONSTRUCTOR A "ALTA FACTURA" YA QUE ESOS ITEMS 
+    //NO SE PUEDEN VINCULAR A UNA FACTURA QUE TODAVIA NO FUE DADA DE ALTA
     
     public partial class AltaDeItemFactura : Form
     {
