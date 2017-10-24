@@ -203,6 +203,12 @@
       <DependentUpon>DevolucionFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Encriptador.cs" />
+    <Compile Include="ListadoEstadistico\ListadoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListadoEstadistico\ListadoUserControl.Designer.cs">
+      <DependentUpon>ListadoUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEstadistico\ListadoUserControl.resx">
+      <DependentUpon>ListadoUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\PantallaPrincipalListadoEstadistico.resx">
       <DependentUpon>PantallaPrincipalListadoEstadistico.cs</DependentUpon>

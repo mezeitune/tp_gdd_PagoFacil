@@ -12,87 +12,80 @@ namespace PagoAgilFrba.ListadoEstadistico
 {
     public partial class PantallaPrincipalListadoEstadistico : Form
     {
+        private const int CANTIDAD_LISTADOS = 4;
+        private Dictionary<String, ListadoUserControl> ListadoUserControls;
+
         public PantallaPrincipalListadoEstadistico()
         {
             InitializeComponent();
         }
+
         private void PantallaPrincipalListadoEstadistico_Load(object sender, EventArgs e) {
-            this.inicio();
+            TipoListado_Init();
+
+            /* No puede ingresar un año mayor que el año actual. */
+            Anio.Maximum = DateTime.Now.Year;
+
+            /* Seleccionar primer trimestre por defecto. */
+            Trimestre.SelectedIndex = 0;
         }
 
-        private void inicio()
+        private void TipoListado_Init()
         {
+            this.ListadoUserControls = new Dictionary<String, ListadoUserControl>(CANTIDAD_LISTADOS);
+
+            this.ListadoUserControls.Add(
+                "Porcentaje de facturas cobradas por empresa",
+                new ListadoUserControl("[SERVOMOTOR].ListadoPorcentajeFacturasCobradas")
+            );
+
+            this.ListadoUserControls.Add(
+                "Empresas con mayor monto rendido",
+                new ListadoUserControl("[SERVOMOTOR].ListadoEmpresasMayorMontoRendido")
+            );
+
+            this.ListadoUserControls.Add(
+                "Clientes con mas pagos",
+                new ListadoUserControl("[SERVOMOTOR].ListadoClienteConMasPagos")
+            );
+
+            this.ListadoUserControls.Add(
+                "Clientes con mayor porcentaje de facturas pagadas",
+                new ListadoUserControl("[SERVOMOTOR].ListadoClientesCumplidores")
+            );
+
+            foreach (var tipo in ListadoUserControls)
+                this.TipoListado.Items.Add(tipo.Key);
+
+            /* Selecciona el primer item por defecto. */
+            this.TipoListado.SelectedIndex = 0;
         }
-        private void tiposDeListados_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void TipoListado_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-        }
+            this.PanelListado.Controls.Clear();
+            this.PanelListado.Visible = true;
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            var listado = ListadoUserControls[TipoListado.SelectedItem.ToString()];
+            listado.Dock = DockStyle.Fill;
 
-        }
-
-        private void consultaTOP5_Click(object sender, EventArgs e)
-        {
-            if (!todosLosCamposCorrectos())
-            {
-               //SQLManager.ejecutarQuery("select * from " + this.estadisticaSeleccionada() + "(" + this.trimestreSeleccionado() + ", '" + anioDeConsulta.Text + "')", dg);
-                      
-
-            }
-            else
-            {
-                MessageBox.Show("Algun Campo no es correcto o se encuentra vacio", "Error daros de entrada", MessageBoxButtons.OK);
-            }
-        }
-
-
-        //este metodo le manda a la consulta el tipo 
-        private string estadisticaSeleccionada()
-        {
-            //respetar el nombre de los procedures plis
-            if (tiposDeListados.SelectedIndex == 0)
-            {
-                return "[SERVOMOTOR].porcentajeFacturasCobradasPorEmpresa";
-            }
-            if (tiposDeListados.SelectedIndex == 1)
-            {
-                return "[SERVOMOTOR].empresasConMayorMontoRecibido";
-            }
-            if (tiposDeListados.SelectedIndex == 2)
-            {
-                return "[SERVOMOTOR].clientesConMasPagos";
-            }
-            
-            else
-            return "[SERVOMOTOR].clientesMasCumplidores";
-        }
-        //este selecciona el trimestre
-        private string trimestreSeleccionado()
-        {
-            if (comboTrimestre.SelectedIndex == 0)
-                return "1";
-            else if (comboTrimestre.SelectedIndex == 1)
-                return "2";
-            else
-                return "3";
-        }
-        private bool todosLosCamposCorrectos()
-        {
-
-            Boolean huboErrores = false;
-
-            huboErrores = Validacion.estaCheckeadoComboBox(tiposDeListados) || huboErrores;
-            huboErrores = Validacion.estaCheckeadoComboBox(comboTrimestre) || huboErrores;
-            huboErrores = !Validacion.esNumero(anioDeConsulta) || huboErrores;
-            huboErrores = !Validacion.estaEntreLimites(anioDeConsulta, 1990, 2050, false, "Año") || huboErrores;
-            return huboErrores;
+            listado.Show();
+            PanelListado.Controls.Add(listado);
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void GenerarListado_Click(object sender, EventArgs e)
+        {
+            ListadoUserControls[TipoListado.SelectedItem.ToString()]
+                .ActualizarTabla(
+                    Anio.Value.ToString(),
+                    /* Sumarle 1 porque el indice comienza en 0. */
+                    (Trimestre.SelectedIndex + 1).ToString()
+                 );
         }
     }
 }

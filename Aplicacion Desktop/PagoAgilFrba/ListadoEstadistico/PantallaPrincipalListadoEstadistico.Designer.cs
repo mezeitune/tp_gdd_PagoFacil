@@ -28,153 +28,186 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.tiposDeListados = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.Label labelAnio;
+            System.Windows.Forms.Label labelTrimestre;
+            System.Windows.Forms.GroupBox GroupBoxDatos;
+            System.Windows.Forms.Label labelTipoListado;
+            System.Windows.Forms.GroupBox GroupBoxTop5;
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.anioDeConsulta = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboTrimestre = new System.Windows.Forms.ComboBox();
-            this.consultaTOP5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.Trimestre = new System.Windows.Forms.ComboBox();
+            this.GenerarListado = new System.Windows.Forms.Button();
+            this.PanelListado = new System.Windows.Forms.Panel();
+            this.Anio = new System.Windows.Forms.NumericUpDown();
+            this.TipoListado = new System.Windows.Forms.ComboBox();
+            labelAnio = new System.Windows.Forms.Label();
+            labelTrimestre = new System.Windows.Forms.Label();
+            GroupBoxDatos = new System.Windows.Forms.GroupBox();
+            labelTipoListado = new System.Windows.Forms.Label();
+            GroupBoxTop5 = new System.Windows.Forms.GroupBox();
+            GroupBoxDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Anio)).BeginInit();
+            GroupBoxTop5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Seleccione el tipo de consulta";
-            // 
-            // tiposDeListados
-            // 
-            this.tiposDeListados.FormattingEnabled = true;
-            this.tiposDeListados.Items.AddRange(new object[] {
-            "Porcentaje de facturas cobradas por empresa",
-            "Empresas con mayor monto recibido",
-            "Clientes con mas pagos",
-            "Clientes mas cumplidores (Mayor % de facturas pagadas)"});
-            this.tiposDeListados.Location = new System.Drawing.Point(202, 22);
-            this.tiposDeListados.Name = "tiposDeListados";
-            this.tiposDeListados.Size = new System.Drawing.Size(305, 21);
-            this.tiposDeListados.TabIndex = 1;
-            this.tiposDeListados.SelectedIndexChanged += new System.EventHandler(this.tiposDeListados_SelectedIndexChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(524, 209);
-            this.dataGridView1.TabIndex = 2;
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(479, 381);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(661, 410);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
-            this.volverALaPaginaAnterior.TabIndex = 68;
-            this.volverALaPaginaAnterior.Text = "Volver";
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
+            this.volverALaPaginaAnterior.TabIndex = 9;
+            this.volverALaPaginaAnterior.Text = "&Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
             // 
-            // groupBox1
+            // labelAnio
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 91);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(548, 254);
-            this.groupBox1.TabIndex = 69;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "TOP 5";
+            labelAnio.AutoSize = true;
+            labelAnio.Location = new System.Drawing.Point(7, 58);
+            labelAnio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelAnio.Name = "labelAnio";
+            labelAnio.Size = new System.Drawing.Size(39, 15);
+            labelAnio.TabIndex = 3;
+            labelAnio.Text = "&Año:";
             // 
-            // label2
+            // labelTrimestre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 70;
-            this.label2.Text = "Año:";
+            labelTrimestre.AutoSize = true;
+            labelTrimestre.Location = new System.Drawing.Point(240, 58);
+            labelTrimestre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            labelTrimestre.Name = "labelTrimestre";
+            labelTrimestre.Size = new System.Drawing.Size(87, 15);
+            labelTrimestre.TabIndex = 5;
+            labelTrimestre.Text = "&Trimestre:";
             // 
-            // anioDeConsulta
+            // Trimestre
             // 
-            this.anioDeConsulta.Location = new System.Drawing.Point(88, 59);
-            this.anioDeConsulta.Name = "anioDeConsulta";
-            this.anioDeConsulta.Size = new System.Drawing.Size(100, 20);
-            this.anioDeConsulta.TabIndex = 71;
-            this.anioDeConsulta.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(244, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 72;
-            this.label3.Text = "Trimestre:";
-            // 
-            // comboTrimestre
-            // 
-            this.comboTrimestre.FormattingEnabled = true;
-            this.comboTrimestre.Items.AddRange(new object[] {
+            this.Trimestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Trimestre.FormattingEnabled = true;
+            this.Trimestre.Items.AddRange(new object[] {
             "Primero",
             "Segundo",
-            "Tercero"});
-            this.comboTrimestre.Location = new System.Drawing.Point(312, 59);
-            this.comboTrimestre.Name = "comboTrimestre";
-            this.comboTrimestre.Size = new System.Drawing.Size(99, 21);
-            this.comboTrimestre.TabIndex = 73;
+            "Tercero",
+            "Cuarto"});
+            this.Trimestre.Location = new System.Drawing.Point(335, 55);
+            this.Trimestre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Trimestre.Name = "Trimestre";
+            this.Trimestre.Size = new System.Drawing.Size(187, 23);
+            this.Trimestre.TabIndex = 6;
             // 
-            // consultaTOP5
+            // GenerarListado
             // 
-            this.consultaTOP5.Location = new System.Drawing.Point(443, 59);
-            this.consultaTOP5.Name = "consultaTOP5";
-            this.consultaTOP5.Size = new System.Drawing.Size(111, 23);
-            this.consultaTOP5.TabIndex = 74;
-            this.consultaTOP5.Text = "Ejecutar Consulta";
-            this.consultaTOP5.UseVisualStyleBackColor = true;
-            this.consultaTOP5.Click += new System.EventHandler(this.consultaTOP5_Click);
+            this.GenerarListado.Location = new System.Drawing.Point(580, 53);
+            this.GenerarListado.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.GenerarListado.Name = "GenerarListado";
+            this.GenerarListado.Size = new System.Drawing.Size(162, 25);
+            this.GenerarListado.TabIndex = 7;
+            this.GenerarListado.Text = "&Generar listado";
+            this.GenerarListado.UseVisualStyleBackColor = true;
+            this.GenerarListado.Click += new System.EventHandler(this.GenerarListado_Click);
+            // 
+            // PanelListado
+            // 
+            this.PanelListado.Location = new System.Drawing.Point(10, 24);
+            this.PanelListado.Name = "PanelListado";
+            this.PanelListado.Size = new System.Drawing.Size(732, 270);
+            this.PanelListado.TabIndex = 8;
+            // 
+            // GroupBoxDatos
+            // 
+            GroupBoxDatos.Controls.Add(this.TipoListado);
+            GroupBoxDatos.Controls.Add(labelTipoListado);
+            GroupBoxDatos.Controls.Add(this.Anio);
+            GroupBoxDatos.Controls.Add(this.GenerarListado);
+            GroupBoxDatos.Controls.Add(labelAnio);
+            GroupBoxDatos.Controls.Add(labelTrimestre);
+            GroupBoxDatos.Controls.Add(this.Trimestre);
+            GroupBoxDatos.Location = new System.Drawing.Point(12, 12);
+            GroupBoxDatos.Name = "GroupBoxDatos";
+            GroupBoxDatos.Size = new System.Drawing.Size(749, 86);
+            GroupBoxDatos.TabIndex = 0;
+            GroupBoxDatos.TabStop = false;
+            GroupBoxDatos.Text = "Datos de consulta";
+            // 
+            // Anio
+            // 
+            this.Anio.Location = new System.Drawing.Point(53, 53);
+            this.Anio.Maximum = new decimal(new int[] {
+            2999,
+            0,
+            0,
+            0});
+            this.Anio.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.Anio.Name = "Anio";
+            this.Anio.Size = new System.Drawing.Size(133, 25);
+            this.Anio.TabIndex = 4;
+            this.Anio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Anio.Value = new decimal(new int[] {
+            2017,
+            0,
+            0,
+            0});
+            // 
+            // labelTipoListado
+            // 
+            labelTipoListado.AutoSize = true;
+            labelTipoListado.Location = new System.Drawing.Point(7, 27);
+            labelTipoListado.Name = "labelTipoListado";
+            labelTipoListado.Size = new System.Drawing.Size(247, 15);
+            labelTipoListado.TabIndex = 1;
+            labelTipoListado.Text = "&Seleccione el tipo de listado:";
+            // 
+            // TipoListado
+            // 
+            this.TipoListado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TipoListado.FormattingEnabled = true;
+            this.TipoListado.Location = new System.Drawing.Point(260, 24);
+            this.TipoListado.Name = "TipoListado";
+            this.TipoListado.Size = new System.Drawing.Size(482, 23);
+            this.TipoListado.TabIndex = 2;
+            this.TipoListado.SelectedIndexChanged += new System.EventHandler(this.TipoListado_SelectedIndexChanged);
+            // 
+            // GroupBoxTop5
+            // 
+            GroupBoxTop5.Controls.Add(this.PanelListado);
+            GroupBoxTop5.Location = new System.Drawing.Point(12, 104);
+            GroupBoxTop5.Name = "GroupBoxTop5";
+            GroupBoxTop5.Size = new System.Drawing.Size(749, 300);
+            GroupBoxTop5.TabIndex = 0;
+            GroupBoxTop5.TabStop = false;
+            GroupBoxTop5.Text = "Top 5";
             // 
             // PantallaPrincipalListadoEstadistico
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 416);
-            this.Controls.Add(this.consultaTOP5);
-            this.Controls.Add(this.comboTrimestre);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.anioDeConsulta);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(773, 446);
+            this.Controls.Add(GroupBoxTop5);
+            this.Controls.Add(GroupBoxDatos);
             this.Controls.Add(this.volverALaPaginaAnterior);
-            this.Controls.Add(this.tiposDeListados);
-            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "PantallaPrincipalListadoEstadistico";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.Text = "Listado Estadístico";
+            this.Load += new System.EventHandler(this.PantallaPrincipalListadoEstadistico_Load);
+            GroupBoxDatos.ResumeLayout(false);
+            GroupBoxDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Anio)).EndInit();
+            GroupBoxTop5.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox tiposDeListados;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button volverALaPaginaAnterior;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox anioDeConsulta;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboTrimestre;
-        private System.Windows.Forms.Button consultaTOP5;
+        private System.Windows.Forms.ComboBox Trimestre;
+        private System.Windows.Forms.Button GenerarListado;
+        private System.Windows.Forms.Panel PanelListado;
+        private System.Windows.Forms.NumericUpDown Anio;
+        private System.Windows.Forms.ComboBox TipoListado;
     }
 }
