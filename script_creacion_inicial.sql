@@ -1099,5 +1099,3 @@ BEGIN
    GROUP BY DNI_CLIENTE, APELLIDO + ', ' + NOMBRE
    ORDER BY 'Porcentaje de Facturas Pagadas' DESC;
 END;
-
-

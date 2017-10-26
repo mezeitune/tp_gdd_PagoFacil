@@ -32,6 +32,7 @@
             this.limpiar = new System.Windows.Forms.Button();
             this.registrarDevolucion = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.motivosDevolucion = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,14 +45,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboFacturasADevolver = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 334);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 405);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 71;
@@ -61,7 +64,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(21, 334);
+            this.limpiar.Location = new System.Drawing.Point(12, 405);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 70;
@@ -71,7 +74,7 @@
             // 
             // registrarDevolucion
             // 
-            this.registrarDevolucion.Location = new System.Drawing.Point(258, 328);
+            this.registrarDevolucion.Location = new System.Drawing.Point(260, 394);
             this.registrarDevolucion.Name = "registrarDevolucion";
             this.registrarDevolucion.Size = new System.Drawing.Size(109, 34);
             this.registrarDevolucion.TabIndex = 69;
@@ -94,6 +97,15 @@
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Devolucion";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(180, 13);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Seleccione la/s factura/s a devolver";
             // 
             // label1
             // 
@@ -200,20 +212,42 @@
             this.label10.TabIndex = 59;
             this.label10.Text = "Numero de Factura:";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 13);
-            this.label2.TabIndex = 82;
-            this.label2.Text = "Seleccione la/s factura/s a devolver";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 340);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(458, 13);
+            this.label4.TabIndex = 84;
+            this.label4.Text = "Si esto ocurre, por favor, dirijase a \"Modifacion\" ubicada en \"ABM\" para corrobar" +
+    " la informacion";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 360);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(309, 13);
+            this.label8.TabIndex = 89;
+            this.label8.Text = "Nota 2: Las facturas ya rendidas no se mostraran para devolver.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 327);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(381, 13);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "Nota: Si no puede visualizar algun dato es probable que no este/n habilitado/s.";
             // 
             // DevolucionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 374);
+            this.ClientSize = new System.Drawing.Size(623, 440);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.registrarDevolucion);
@@ -225,6 +259,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -247,5 +282,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox motivosDevolucion;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -49,6 +49,9 @@
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.limpiar = new System.Windows.Forms.Button();
             this.registrarUnPago = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -223,7 +226,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 335);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 401);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 67;
@@ -233,7 +236,7 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(21, 335);
+            this.limpiar.Location = new System.Drawing.Point(21, 401);
             this.limpiar.Name = "limpiar";
             this.limpiar.Size = new System.Drawing.Size(75, 23);
             this.limpiar.TabIndex = 66;
@@ -243,7 +246,7 @@
             // 
             // registrarUnPago
             // 
-            this.registrarUnPago.Location = new System.Drawing.Point(251, 329);
+            this.registrarUnPago.Location = new System.Drawing.Point(259, 395);
             this.registrarUnPago.Name = "registrarUnPago";
             this.registrarUnPago.Size = new System.Drawing.Size(109, 34);
             this.registrarUnPago.TabIndex = 64;
@@ -251,11 +254,42 @@
             this.registrarUnPago.UseVisualStyleBackColor = true;
             this.registrarUnPago.Click += new System.EventHandler(this.registrarUnPago_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 331);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(381, 13);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "Nota: Si no puede visualizar algun dato es probable que no este/n habilitado/s.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 379);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(458, 13);
+            this.label2.TabIndex = 85;
+            this.label2.Text = "Si esto ocurre, por favor, dirijase a \"Modifacion\" ubicada en \"ABM\" para corrobar" +
+    " la informacion";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 354);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(230, 13);
+            this.label7.TabIndex = 86;
+            this.label7.Text = "Nota 2: Las facturas vencidas no se mostraran.";
+            // 
             // PantallaPrincipalRegistroPagoFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 367);
+            this.ClientSize = new System.Drawing.Size(617, 441);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.registrarUnPago);
@@ -267,6 +301,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -293,6 +328,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalFactura;
         private System.Windows.Forms.ComboBox comboClientes;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label7;
 
     }
 }
