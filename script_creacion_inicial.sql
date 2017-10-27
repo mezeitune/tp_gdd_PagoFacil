@@ -180,6 +180,13 @@ object_id(N'[SERVOMOTOR].[crearFacturas]') and OBJECTPROPERTY(id, N'IsProcedure'
 drop procedure [SERVOMOTOR].[crearFacturas]
 
 GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertOUpdateEnClientes]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertOUpdateEnClientes]
+
+
+
+GO
 IF EXISTS (SELECT *
              FROM dbo.sysobjects
             WHERE id = OBJECT_ID(N'[SERVOMOTOR].[ListadoPorcentajeFacturasCobradas]')
@@ -606,7 +613,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_DirecciÃ³n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -1100,6 +1107,34 @@ BEGIN
    ORDER BY 'Porcentaje de Facturas Pagadas' DESC;
 END;
 
+/*	[DNI] [varchar](255) NOT NULL,
+	[NOMBRE] [varchar] (255) NOT NULL,
+	[APELLIDO] [varchar] (255) NOT NULL,
+	[MAIL] [varchar] (255) NOT NULL,
+	[TELEFONO] [varchar] (255) NULL,
+	[CALLE] [varchar] (255) NOT NULL,
+	[PISO] [varchar] (255) NULL,
+	[DEPTO] [varchar] (255) NULL,
+	[LOCALIDAD] [varchar] (255) NULL,
+	[FECHA_NACIMIENTO] [datetime] NOT NULL,
+	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
+	[ESTADO_HABILITACION] [bit] DEFAULT 1,*/
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertOUpdateEnClientes
+  (@TIPOOPERACION INT,@DNI [varchar](255),@NOMBRE [varchar](255),@APELLIDO [varchar](255),@MAIL [varchar](255),@TELEFONO [varchar](255),@CALLE [varchar](255),@PISO [varchar](255),@DEPTO [varchar](255),@LOCALIDAD [varchar](255),@FECHANAC DATETIME, @CODPOSTAL [varchar](255),@ESTADO BIT)
+AS
+BEGIN
+
+  IF @TIPOOPERACION <> 0--si es 1 hace un insert , sino un update
+  BEGIN
+    	insert into [SERVOMOTOR].[CLIENTES] values (@DNI,@NOMBRE,@APELLIDO,@MAIL,@TELEFONO,@CALLE,@PISO,@DEPTO,@LOCALIDAD,@FECHANAC,@CODPOSTAL,@ESTADO);
+	END  
+  ELSE
+	BEGIN
+		update [SERVOMOTOR].[CLIENTES] set NOMBRE=@NOMBRE,APELLIDO=@APELLIDO,COD_POSTAL_CLIENTE=@CODPOSTAL,MAIL=@MAIL,TELEFONO=@TELEFONO,CALLE=@CALLE,PISO=@PISO,DEPTO=@DEPTO,LOCALIDAD=@LOCALIDAD,FECHA_NACIMIENTO=@FECHANAC,ESTADO_HABILITACION=@ESTADO where DNI=@DNI;
+                
+  END
+END
 /*querys de procedures a pasar
 
   "insert into [SERVOMOTOR].[CLIENTES] values (" + txtDNICliente.Text + ",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text +
