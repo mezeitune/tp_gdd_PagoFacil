@@ -184,6 +184,16 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[insertOUpdateEnClientes]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [SERVOMOTOR].[insertOUpdateEnClientes]
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertOUpdateEnItems]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertOUpdateEnItems]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertOUpdateEnSucursales]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertOUpdateEnSucursales]
+
 
 
 GO
@@ -1107,18 +1117,7 @@ BEGIN
    ORDER BY 'Porcentaje de Facturas Pagadas' DESC;
 END;
 
-/*	[DNI] [varchar](255) NOT NULL,
-	[NOMBRE] [varchar] (255) NOT NULL,
-	[APELLIDO] [varchar] (255) NOT NULL,
-	[MAIL] [varchar] (255) NOT NULL,
-	[TELEFONO] [varchar] (255) NULL,
-	[CALLE] [varchar] (255) NOT NULL,
-	[PISO] [varchar] (255) NULL,
-	[DEPTO] [varchar] (255) NULL,
-	[LOCALIDAD] [varchar] (255) NULL,
-	[FECHA_NACIMIENTO] [datetime] NOT NULL,
-	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
-	[ESTADO_HABILITACION] [bit] DEFAULT 1,*/
+
 GO
 CREATE PROCEDURE [SERVOMOTOR].insertOUpdateEnClientes
   (@TIPOOPERACION INT,@DNI [varchar](255),@NOMBRE [varchar](255),@APELLIDO [varchar](255),@MAIL [varchar](255),@TELEFONO [varchar](255),@CALLE [varchar](255),@PISO [varchar](255),@DEPTO [varchar](255),@LOCALIDAD [varchar](255),@FECHANAC DATETIME, @CODPOSTAL [varchar](255),@ESTADO BIT)
@@ -1135,28 +1134,54 @@ BEGIN
                 
   END
 END
+
+
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertOUpdateEnItems
+  (@TIPOOPERACION INT,@DESCRIPCION [varchar] (20),@MONTO [varchar] (20),@CANTIDAD [tinyint],@NUMERO_FACTURA [numeric](18,0))
+AS
+BEGIN
+
+  IF @TIPOOPERACION <> 0--si es 1 hace un insert , sino un update
+  BEGIN
+  	  insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values (@DESCRIPCION,@MONTO,@CANTIDAD,@NUMERO_FACTURA);
+              
+    
+   END  
+  ELSE
+	BEGIN
+		update [SERVOMOTOR].[ITEMS] set MONTO=@MONTO,CANTIDAD=@CANTIDAD where NUMERO_FACTURA=@NUMERO_FACTURA AND DESCRIPCION=@DESCRIPCION;
+                   
+  END
+END
+
+
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertOUpdateEnSucursales
+  (@TIPOOPERACION INT,@COD_POSTAL [varchar] (20),@NOMBRE [varchar] (50),@DIRECCION [varchar] (50),@ESTADO_HABILITACION [bit])
+AS
+BEGIN
+
+  IF @TIPOOPERACION <> 0--si es 1 hace un insert , sino un update
+  BEGIN
+  	  insert into [SERVOMOTOR].[SUCURSALES] (COD_POSTAL,NOMBRE,DIRECCION) values (@COD_POSTAL,@NOMBRE,@DIRECCION);
+              
+   END  
+  ELSE
+	BEGIN
+		update [SERVOMOTOR].[SUCURSALES] set NOMBRE=@NOMBRE,DIRECCION=@DIRECCION,ESTADO_HABILITACION=@ESTADO_HABILITACION where COD_POSTAL=@COD_POSTAL;
+            
+  END
+END
 /*querys de procedures a pasar
 
-  "insert into [SERVOMOTOR].[CLIENTES] values (" + txtDNICliente.Text + ",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text +
-                   "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text + "','" + estadoHab + "');",
-   
-   "update [SERVOMOTOR].[CLIENTES] set NOMBRE='" + txtNombre.Text + "',APELLIDO='" + txtApellidoCliente.Text + "',COD_POSTAL_CLIENTE='" + txtCodPostalCliente.Text +
-                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "',ESTADO_HABILITACION="+( Habilitar.Checked ? 1 : 0)+" where DNI='" + DNICliente + "';",
-                
 
 	  "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
                "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','no paga',NULL,NULL);",
               
 
-	  "insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
-              "','" + txtNroFactura.Text + "');",
-              
-	  "update [SERVOMOTOR].[ITEMS] set MONTO='" + txtMontoItem.Text + "',CANTIDAD='" + txtCantidadItem.Text + "' where NUMERO_FACTURA='" +nroFact + "' AND DESCRIPCION='"+descripcion+"';",
-                
-	"insert into [SERVOMOTOR].[SUCURSALES] (COD_POSTAL,NOMBRE,DIRECCION) values ('" + txtCodPostalSucursal.Text + "','" + txtNombreSucursal.Text + "','" + txtDireccionSucursal.Text + "');",
-               
-	  "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + "',ESTADO_HABILITACION=" + (Habilitar.Checked ? 1 : 0) + " where COD_POSTAL='" + codigoPostal + "';",
-                
+
+  
 		 "insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values ('"+nroFactura+"',"+(motivosDevolucion.SelectedIndex+1)+");",
                                
 		"select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='PAGA' AND e.ESTADO_ACTIVACION=1 ",
