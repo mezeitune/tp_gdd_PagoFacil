@@ -85,15 +85,15 @@ namespace PagoAgilFrba.Rendicion
             totalComision = Convert.ToDecimal(Convert.ToDecimal(porcentajeComision.Text) * Convert.ToDecimal(importeTotalRendicion.Text) / 100);
 
             var cmd = new SqlCommand(
-           "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES (@fecha,@porc_com,@cant_fact,@precio_comision,@total_rendido,@cuit_empresa);",
+           "EXEC [SERVOMOTOR].insertRendiciones @FECHA_COBRO,@PORCENTAJE_COMISION,@CANTIDAD_FACTURAS_RENDIDAS,@PRECIO_COMISION,@TOTAL_RENDIDO,@CUIT_EMPRESA;",
            Program.conexion()
        );
-            cmd.Parameters.Add("@fecha", SqlDbType.DateTime, 13).Value = FechaRendicion.Value;
-            cmd.Parameters.Add("@porc_com", SqlDbType.Int, 20).Value = Convert.ToInt32(porcentajeComision.Text);
-            cmd.Parameters.Add("@cant_fact", SqlDbType.Int, 20).Value = Convert.ToInt32(CantidadFacturasRendidas.Text);
-            cmd.Parameters.Add("@precio_comision", SqlDbType.Decimal, 20).Value = totalComision;
-            cmd.Parameters.Add("@total_rendido", SqlDbType.Decimal).Value = Convert.ToDecimal(importeTotalRendicion.Text);
-            cmd.Parameters.Add("@cuit_empresa", SqlDbType.VarChar, 13).Value = comboEmpresa.SelectedItem.ToString();
+            cmd.Parameters.AddWithValue("@FECHA_COBRO", FechaRendicion.Value);
+            cmd.Parameters.AddWithValue("@PORCENTAJE_COMISION", Convert.ToInt32(porcentajeComision.Text));
+            cmd.Parameters.AddWithValue("@CANTIDAD_FACTURAS_RENDIDAS", Convert.ToInt32(CantidadFacturasRendidas.Text));
+            cmd.Parameters.AddWithValue("@PRECIO_COMISION", totalComision);
+            cmd.Parameters.AddWithValue("@TOTAL_RENDIDO", Convert.ToDecimal(importeTotalRendicion.Text));
+            cmd.Parameters.AddWithValue("@CUIT_EMPRESA", comboEmpresa.SelectedItem.ToString());
 
             var dataReader = cmd.ExecuteReader();
                 
@@ -161,7 +161,7 @@ namespace PagoAgilFrba.Rendicion
             if (!empresaRendida())
             {
                 var cmd = new SqlCommand(
-                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
+                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('30/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
                     Program.conexion()
                 );
 

@@ -60,10 +60,16 @@ namespace PagoAgilFrba.AbmFactura
                 try
                 {
                 var cmd = new SqlCommand(
-               "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
-               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','no paga',NULL,NULL);",
-                Program.conexion()   
+                    "EXEC [SERVOMOTOR].insertFacturas @NUMERO_FACTURA,@FECHA_ALTA,@FECHA_VENCIMIENTO,@DNI_CLIENTE,@CUIT_EMPRESA,@TOTAL,@ESTADO",
+               Program.conexion()
                   );
+                cmd.Parameters.AddWithValue("@NUMERO_FACTURA", txtNroFactura.Text);
+                cmd.Parameters.AddWithValue("@FECHA_ALTA",  FechaAltaFac.Value);
+                cmd.Parameters.AddWithValue("@FECHA_VENCIMIENTO", FechaVencFact.Value);
+                cmd.Parameters.AddWithValue("@DNI_CLIENTE", comboCliente.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@CUIT_EMPRESA", comboEmpresa.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@TOTAL", totalFactura);
+                cmd.Parameters.AddWithValue("@ESTADO", "no paga");
                 var dataReaderFactura = cmd.ExecuteReader();
                 }
                 catch (System.Data.SqlClient.SqlException)
@@ -104,10 +110,16 @@ namespace PagoAgilFrba.AbmFactura
         //RECORREMOS CADA ITEMS Y LO VAMOS INGRESANDO A PARTIR DE LA FACTURA YA DEDA DE ALTA
         private void insertarItem(String m,String d, String c) {
             var cmd = new SqlCommand(
-              "insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
-              "','" + txtNroFactura.Text + "');",
+              "EXEC [SERVOMOTOR].insertOUpdateEnItems @TIPOOPERACION,@DESCRIPCION,@MONTO,@CANTIDAD,@NUMERO_FACTURA",
                Program.conexion()
-           );
+                  );
+            cmd.Parameters.AddWithValue("@TIPOOPERACION", 1);
+            cmd.Parameters.AddWithValue("@DESCRIPCION", d);
+            cmd.Parameters.AddWithValue("@MONTO", m);
+            cmd.Parameters.AddWithValue("@CANTIDAD", c);
+            cmd.Parameters.AddWithValue("@NUMERO_FACTURA", Convert.ToInt32(txtNroFactura.Text));
+           
+              
             var dataReaderFactura = cmd.ExecuteReader();
 
         }

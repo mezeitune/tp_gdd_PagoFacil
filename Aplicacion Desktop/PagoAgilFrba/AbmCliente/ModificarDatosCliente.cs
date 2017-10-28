@@ -55,10 +55,22 @@ namespace PagoAgilFrba.AbmCliente
             {
 
                 var cmd = new SqlCommand(
-                "update [SERVOMOTOR].[CLIENTES] set NOMBRE='" + txtNombre.Text + "',APELLIDO='" + txtApellidoCliente.Text + "',COD_POSTAL_CLIENTE='" + txtCodPostalCliente.Text +
-                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "',ESTADO_HABILITACION="+( Habilitar.Checked ? 1 : 0)+" where DNI='" + DNICliente + "';",
-                 Program.conexion()
-             );
+                 "EXEC [SERVOMOTOR].insertOUpdateEnClientes @TIPOOPERACION,@DNI,@NOMBRE,@APELLIDO,@MAIL,@TELEFONO,@CALLE,@PISO,@DEPTO,@LOCALIDAD,@FECHANAC,@COD_POSTAL,@ESTADO",
+               Program.conexion()
+                  );
+                cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
+                cmd.Parameters.AddWithValue("@DNI", DNICliente);
+                cmd.Parameters.AddWithValue("@NOMBRE", txtNombreCliente.Text);
+                cmd.Parameters.AddWithValue("@APELLIDO", txtApellidoCliente.Text);
+                cmd.Parameters.AddWithValue("@MAIL", txtMailCliente.Text);
+                cmd.Parameters.AddWithValue("@TELEFONO", txtTelCliente.Text);
+                cmd.Parameters.AddWithValue("@CALLE", txtCalleCliente.Text);
+                cmd.Parameters.AddWithValue("@PISO", txtNroPisoCliente.Text);
+                cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.TextAlign);
+                cmd.Parameters.AddWithValue("@LOCALIDAD", txtLocalidadCliente.Text);
+                cmd.Parameters.AddWithValue("@FECHANAC", FechaNacCliente.Value);
+                cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalCliente.Text);
+                cmd.Parameters.AddWithValue("@ESTADO", Habilitar.Checked ? 0:1);
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " + DNICliente, "", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmCliente.ModificacionClienteee();

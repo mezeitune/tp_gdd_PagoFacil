@@ -30,9 +30,15 @@ namespace PagoAgilFrba.AbmFactura
             {
 
                 var cmd = new SqlCommand(
-                "update [SERVOMOTOR].[ITEMS] set MONTO='" + txtMontoItem.Text + "',CANTIDAD='" + txtCantidadItem.Text + "' where NUMERO_FACTURA='" +nroFact + "' AND DESCRIPCION='"+descripcion+"';",
-                 Program.conexion()
-             );
+                     "EXEC [SERVOMOTOR].insertOUpdateEnItems @TIPOOPERACION,@DESCRIPCION,@MONTO,@CANTIDAD,@NUMERO_FACTURA",
+               Program.conexion()
+                  );
+            cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
+            cmd.Parameters.AddWithValue("@DESCRIPCION", descripcion);
+            cmd.Parameters.AddWithValue("@MONTO", txtMontoItem.Text);
+            cmd.Parameters.AddWithValue("@CANTIDAD", txtCantidadItem.Text);
+            cmd.Parameters.AddWithValue("@NUMERO_FACTURA", nroFact);
+           
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el item : " + descripcion, "", MessageBoxButtons.OK);
                 int subtotalAnterior = (Convert.ToInt32(montoAnterior) * Convert.ToInt32(cantidadAnterior));

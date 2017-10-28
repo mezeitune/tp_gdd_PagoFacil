@@ -73,7 +73,7 @@ namespace PagoAgilFrba.RegistroPago
         private void actualizarEstadoEmpresa() {
            
             var cmdPago = new SqlCommand(
-                         "select * from [SERVOMOTOR].[PAGOS] where DNI_CLIENTE='" + comboClientes.SelectedItem.ToString() + "' AND FECHA_COBRO='" + fechaDeAhora.Value+ "';",
+                         "select top 1 * from [SERVOMOTOR].[PAGOS] order by NUMERO_PAGO DESC",
                           Program.conexion()
                       );
 
@@ -95,7 +95,7 @@ namespace PagoAgilFrba.RegistroPago
                 {
 
                     var cmd = new SqlCommand(
-                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='PAGA',NUMERO_PAGO=" + numPago + " where NUMERO_FACTURA='" +row.Cells[0].Value.ToString() + "';",
+                            "update [SERVOMOTOR].[FACTURAS] set  ESTADO='PAGA',NUMERO_PAGO=" + numPago + " where NUMERO_FACTURA=" +Convert.ToInt64(row.Cells[0].Value.ToString()) + ";",
                              Program.conexion()
                          );
 
@@ -112,9 +112,14 @@ namespace PagoAgilFrba.RegistroPago
         }
         private void insertarPago() {
             var cmd = new SqlCommand(
-                     "insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + (medioPago.SelectedIndex+1) + ",'" + comboClientes.SelectedItem.ToString() + "')",
-                      Program.conexion()
+                   "EXEC [SERVOMOTOR].insertPagos @FECHA_COBRO,@IMPORTE,@COD_POSTAL,@ID_MEDPAGO,@DNI_CLIENTE",
+               Program.conexion()
                   );
+                 cmd.Parameters.AddWithValue("@FECHA_COBRO", fechaDeAhora.Value);
+                 cmd.Parameters.AddWithValue("@IMPORTE", (ImporteFact.Text));
+                 cmd.Parameters.AddWithValue("@COD_POSTAL", comboSucursal.SelectedItem.ToString());
+                 cmd.Parameters.AddWithValue("@ID_MEDPAGO", (medioPago.SelectedIndex+1) );
+                 cmd.Parameters.AddWithValue("@DNI_CLIENTE", comboClientes.SelectedItem.ToString());
 
             var dataReader = cmd.ExecuteReader();
         
@@ -219,7 +224,7 @@ namespace PagoAgilFrba.RegistroPago
         {
            
             var cmd = new SqlCommand(
-                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= '"+comboFacturasAPagar.SelectedItem.ToString()+"';",
+                "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= "+Convert.ToInt64(comboFacturasAPagar.SelectedItem.ToString())+";",
                 Program.conexion()
             );
 

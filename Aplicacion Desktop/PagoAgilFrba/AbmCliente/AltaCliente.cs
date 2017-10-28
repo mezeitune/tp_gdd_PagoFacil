@@ -52,10 +52,23 @@ namespace PagoAgilFrba.AbmCliente
                 try
                 {
                     var cmd = new SqlCommand(
-                   "insert into [SERVOMOTOR].[CLIENTES] values (" + txtDNICliente.Text + ",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text +
-                   "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text + "','" + estadoHab + "');",
-                    Program.conexion()
-                );
+                   "EXEC [SERVOMOTOR].insertOUpdateEnClientes @TIPOOPERACION,@DNI,@NOMBRE,@APELLIDO,@MAIL,@TELEFONO,@CALLE,@PISO,@DEPTO,@LOCALIDAD,@FECHANAC,@COD_POSTAL,@ESTADO",
+               Program.conexion()
+                  );
+                    cmd.Parameters.AddWithValue("@TIPOOPERACION", 1);
+                    cmd.Parameters.AddWithValue("@DNI", txtDNICliente.Text);
+                    cmd.Parameters.AddWithValue("@NOMBRE", txtNombreCliente.Text);
+                    cmd.Parameters.AddWithValue("@APELLIDO", txtApellidoCliente.Text);
+                    cmd.Parameters.AddWithValue("@MAIL", txtMailCliente.Text);
+                    cmd.Parameters.AddWithValue("@TELEFONO", txtTelCliente.Text);
+                    cmd.Parameters.AddWithValue("@CALLE", txtCalleCliente.Text);
+                    cmd.Parameters.AddWithValue("@PISO", txtNroPisoCliente.Text);
+                    cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.TextAlign);
+                    cmd.Parameters.AddWithValue("@LOCALIDAD", txtLocalidadCliente.Text);
+                    cmd.Parameters.AddWithValue("@FECHANAC", FechaNacCliente.Value);
+                    cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalCliente.Text);
+                    cmd.Parameters.AddWithValue("@ESTADO", 1);
+
                     var dataReader = cmd.ExecuteReader();
                 }
                 catch (System.Data.SqlClient.SqlException)

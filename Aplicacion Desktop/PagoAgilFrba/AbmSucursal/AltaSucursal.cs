@@ -26,17 +26,23 @@ namespace PagoAgilFrba.AbmSucursal
                 try
                 {
                     var cmd = new SqlCommand(
-               "insert into [SERVOMOTOR].[SUCURSALES] (COD_POSTAL,NOMBRE,DIRECCION) values ('" + txtCodPostalSucursal.Text + "','" + txtNombreSucursal.Text + "','" + txtDireccionSucursal.Text + "');",
-                Program.conexion()
+                "EXEC [SERVOMOTOR].insertOUpdateEnSucursales @TIPOOPERACION,@COD_POSTAL,@NOMBRE,@DIRECCION,@ESTADO_HABILITACION", 
+               Program.conexion()
                   );
+                    cmd.Parameters.AddWithValue("@TIPOOPERACION", 1);
+                    cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalSucursal.Text);
+                    cmd.Parameters.AddWithValue("@NOMBRE", txtNombreSucursal.Text);
+                    cmd.Parameters.AddWithValue("@DIRECCION", txtDireccionSucursal.Text);
+                    cmd.Parameters.AddWithValue("@ESTADO_HABILITACION", 1);
+           
                     var dataReaderFactura = cmd.ExecuteReader();
-                }
-                catch (System.Data.SqlClient.SqlException)
-                {
+                     }
+                      catch (System.Data.SqlClient.SqlException)
+                      {
 
-                    MessageBox.Show("El campo codigo postal esta duplicado, vuelva a ingresar otro", "", MessageBoxButtons.OK);
-                    return;
-                }
+                          MessageBox.Show("El campo codigo postal esta duplicado, vuelva a ingresar otro", "", MessageBoxButtons.OK);
+                          return;
+                      }
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmSucursal.Form1();
                 this.Hide();

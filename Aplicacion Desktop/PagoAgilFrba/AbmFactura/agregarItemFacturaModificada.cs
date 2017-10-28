@@ -109,11 +109,16 @@ namespace PagoAgilFrba.AbmFactura
 
 
             var cmd = new SqlCommand(
-              "insert into [SERVOMOTOR].[ITEMS] (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
-              "','" + nroFactura + "');",
+             "EXEC [SERVOMOTOR].insertOUpdateEnItems @TIPOOPERACION,@DESCRIPCION,@MONTO,@CANTIDAD,@NUMERO_FACTURA",
                Program.conexion()
-           );
-            var dataReaderFactura = cmd.ExecuteReader();
+                  );
+            cmd.Parameters.AddWithValue("@TIPOOPERACION", 1);
+            cmd.Parameters.AddWithValue("@DESCRIPCION", d);
+            cmd.Parameters.AddWithValue("@MONTO", m);
+            cmd.Parameters.AddWithValue("@CANTIDAD", c);
+            cmd.Parameters.AddWithValue("@NUMERO_FACTURA", Convert.ToInt32(nroFactura));
+           
+              
 
         }
     }

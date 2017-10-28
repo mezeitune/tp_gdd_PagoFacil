@@ -139,9 +139,11 @@ namespace PagoAgilFrba.Devolucion
         private void registarDevolucionFactura(String nroFactura)
         {
             var cmd = new SqlCommand(
-                                "insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values ('"+nroFactura+"',"+(motivosDevolucion.SelectedIndex+1)+");",
-                                 Program.conexion()
-                             );
+                                "EXEC [SERVOMOTOR].insertFacturasDevoluciones @NUMERO_FACTURA,@ID_DEVOLUCION",
+               Program.conexion()
+                  );
+            cmd.Parameters.AddWithValue("@NUMERO_FACTURA", Convert.ToInt32(nroFactura));
+            cmd.Parameters.AddWithValue("@ID_DEVOLUCION", (motivosDevolucion.SelectedIndex + 1));
 
             var dataReader = cmd.ExecuteReader(); 
         

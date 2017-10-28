@@ -61,7 +61,7 @@ namespace PagoAgilFrba.AbmFactura
                 
 
                 MessageBox.Show("Se ha dado modificado correctamente", "Todo bien", MessageBoxButtons.OK);
-
+                this.DialogResult = DialogResult.Cancel;
             }
             
         }
@@ -100,7 +100,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void updatearTotalFactura() {
             var cmd = new SqlCommand(
-                    "update [SERVOMOTOR].[FACTURAS] set TOTAL=" + (totalFacturaInt + subtotal) + "where NUMERO_FACTURA='" + nroFactura + "';",
+                    "update [SERVOMOTOR].[FACTURAS] set TOTAL=" + (totalFacturaInt + subtotal) + "where NUMERO_FACTURA='" + Convert.ToInt32(nroFactura) + "';",
                      Program.conexion()
                  );
             var dataReader = cmd.ExecuteReader();
@@ -132,7 +132,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void levantarFacturas() {
             var cmd = new SqlCommand(
-                   "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + nroFactura + "';",
+                   "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + Convert.ToInt32(nroFactura) + "';",
                     Program.conexion()
                 );
 
@@ -145,7 +145,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void levantarItemsFactura() {
             var cmd2 = new SqlCommand(
-                   "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + nroFactura + "';",
+                   "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + Convert.ToInt32(nroFactura) + "';",
                     Program.conexion()
                 );
 
