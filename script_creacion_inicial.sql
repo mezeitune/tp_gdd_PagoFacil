@@ -1099,3 +1099,40 @@ BEGIN
    GROUP BY DNI_CLIENTE, APELLIDO + ', ' + NOMBRE
    ORDER BY 'Porcentaje de Facturas Pagadas' DESC;
 END;
+
+/*querys de procedures a pasar
+
+  "insert into [SERVOMOTOR].[CLIENTES] values (" + txtDNICliente.Text + ",'" + txtNombreCliente.Text + "','" + txtApellidoCliente.Text + "','" + txtMailCliente.Text +
+                   "','" + txtCodPostalCliente.Text + "','" + txtCalleCliente.Text + "','" + txtNroPisoCliente.Text + "','" + txtDptoCliente.Text + "','" + txtLocalidadCliente.Text + "','" + FechaNacCliente.Value + "','" + txtCodPostalCliente.Text + "','" + estadoHab + "');",
+   
+   "update [SERVOMOTOR].[CLIENTES] set NOMBRE='" + txtNombre.Text + "',APELLIDO='" + txtApellidoCliente.Text + "',COD_POSTAL_CLIENTE='" + txtCodPostalCliente.Text +
+                "',MAIL='" + txtMailCliente.Text + "',TELEFONO=" + txtTelCliente.Text + ",CALLE='" + txtCalleCliente.Text + "',PISO='" + txtNroPisoCliente.Text + "',DEPTO='" + txtDptoCliente.Text + "',LOCALIDAD='" + txtLocalidadCliente.Text + "',FECHA_NACIMIENTO='" + FechaNacCliente.Value + "',ESTADO_HABILITACION="+( Habilitar.Checked ? 1 : 0)+" where DNI='" + DNICliente + "';",
+                
+
+	  "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
+               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','no paga',NULL,NULL);",
+              
+
+	  "insert into SERVOMOTOR.ITEMS (DESCRIPCION,MONTO,CANTIDAD,NUMERO_FACTURA) values ('" + d + "','" + m + "','" + c +
+              "','" + txtNroFactura.Text + "');",
+              
+	  "update [SERVOMOTOR].[ITEMS] set MONTO='" + txtMontoItem.Text + "',CANTIDAD='" + txtCantidadItem.Text + "' where NUMERO_FACTURA='" +nroFact + "' AND DESCRIPCION='"+descripcion+"';",
+                
+	"insert into [SERVOMOTOR].[SUCURSALES] (COD_POSTAL,NOMBRE,DIRECCION) values ('" + txtCodPostalSucursal.Text + "','" + txtNombreSucursal.Text + "','" + txtDireccionSucursal.Text + "');",
+               
+	  "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + "',ESTADO_HABILITACION=" + (Habilitar.Checked ? 1 : 0) + " where COD_POSTAL='" + codigoPostal + "';",
+                
+		 "insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values ('"+nroFactura+"',"+(motivosDevolucion.SelectedIndex+1)+");",
+                               
+		"select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='PAGA' AND e.ESTADO_ACTIVACION=1 ",
+                    
+	"insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + (medioPago.SelectedIndex+1) + ",'" + comboClientes.SelectedItem.ToString() + "')",
+                      
+	 "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT LIKE f.CUIT_EMPRESA JOIN [SERVOMOTOR].CLIENTES C ON C.DNI LIKE F.DNI_CLIENTE where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND C.ESTADO_HABILITACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
+                    
+
+		 "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES (@fecha,@porc_com,@cant_fact,@precio_comision,@total_rendido,@cuit_empresa);",
+          
+		   "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
+                
+*/

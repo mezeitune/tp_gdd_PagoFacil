@@ -21,9 +21,9 @@ namespace PagoAgilFrba.RegistroPago
         DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
-            
-         }
+
+
+        }
         
 
         
