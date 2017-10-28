@@ -194,7 +194,25 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[insertOUpdateEnSucursales]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [SERVOMOTOR].[insertOUpdateEnSucursales]
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertPagos]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertPagos]
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertRendiciones]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertRendiciones]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertFacturasDevoluciones]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertFacturasDevoluciones]
+
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[insertFacturas]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [SERVOMOTOR].[insertFacturas]
 
 GO
 IF EXISTS (SELECT *
@@ -1173,26 +1191,44 @@ BEGIN
             
   END
 END
-/*querys de procedures a pasar
 
 
-	  "insert into [SERVOMOTOR].[FACTURAS] values ('" + txtNroFactura.Text + "','" + FechaAltaFac.Value + "','" + FechaVencFact.Value + "','" + comboCliente.SelectedItem.ToString() +
-               "','" + comboEmpresa.SelectedItem.ToString()+ "','" + totalFactura + "','no paga',NULL,NULL);",
-              
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertFacturas
+  (@NUMERO_FACTURA [numeric](18,0),@FECHA_ALTA [datetime],@FECHA_VENCIMIENTO [datetime],@DNI_CLIENTE [varchar](255),@CUIT_EMPRESA [varchar] (50),@TOTAL [numeric] (7,2),@ESTADO [varchar] (20),@NUMERO_PAGO [numeric](18,0),@ID_RENDICION [numeric](18,0))
+AS
+BEGIN
+	insert into [SERVOMOTOR].[FACTURAS] values (@NUMERO_FACTURA,@FECHA_ALTA,@FECHA_VENCIMIENTO,@DNI_CLIENTE,@CUIT_EMPRESA,@TOTAL,@ESTADO,NULL,NULL);
+
+END
+
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertFacturasDevoluciones
+  (@NUMERO_FACTURA [numeric](18,0),@ID_DEVOLUCION [tinyint] )
+AS
+BEGIN
+	insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values (@NUMERO_FACTURA,@ID_DEVOLUCION);
+                             
+END
 
 
-  
-		 "insert into [SERVOMOTOR].[FACTURAS_DEVOLUCIONES] values ('"+nroFactura+"',"+(motivosDevolucion.SelectedIndex+1)+");",
+
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertPagos
+  (@NUMERO_PAGO [numeric](18,0),@FECHA_COBRO [datetime],@IMPORTE [varchar] (255),@COD_POSTAL [varchar](20),@ID_MEDPAGO [tinyint],@DNI_CLIENTE [varchar](255) )
+AS
+BEGIN
+	insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values (@FECHA_COBRO,@IMPORTE,@COD_POSTAL,@ID_MEDPAGO,@DNI_CLIENTE);
+                                    
+END
+
+
+
+GO
+CREATE PROCEDURE [SERVOMOTOR].insertRendiciones
+  (@FECHA_COBRO [datetime],@PORCENTAJE_COMISION  [tinyint],@CANTIDAD_FACTURAS_RENDIDAS [tinyint] ,@PRECIO_COMISION [numeric] (7,2),@TOTAL_RENDIDO [numeric] (7,2),@ESTADO [varchar] (20),@CUIT_EMPRESA [varchar] (50))
+AS
+BEGIN
+	INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES (@FECHA_COBRO,@PORCENTAJE_COMISION,@CANTIDAD_FACTURAS_RENDIDAS,@PRECIO_COMISION,@TOTAL_RENDIDO,@CUIT_EMPRESA);
                                
-		"select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT=f.CUIT_EMPRESA  where ESTADO='PAGA' AND e.ESTADO_ACTIVACION=1 ",
-                    
-	"insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values ('" + fechaDeAhora.Value + "','" + ImporteFact.Text + "','" + comboSucursal.SelectedItem.ToString() + "'," + (medioPago.SelectedIndex+1) + ",'" + comboClientes.SelectedItem.ToString() + "')",
-                      
-	 "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT LIKE f.CUIT_EMPRESA JOIN [SERVOMOTOR].CLIENTES C ON C.DNI LIKE F.DNI_CLIENTE where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND C.ESTADO_HABILITACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
-                    
-
-		 "INSERT INTO [SERVOMOTOR].[RENDICIONES] (FECHA_COBRO,PORCENTAJE_COMISION,CANTIDAD_FACTURAS_RENDIDAS,PRECIO_COMISION,TOTAL_RENDIDO,CUIT_EMPRESA) VALUES (@fecha,@porc_com,@cant_fact,@precio_comision,@total_rendido,@cuit_empresa);",
-          
-		   "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('31/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
-                
-*/
+END
