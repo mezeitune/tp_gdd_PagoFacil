@@ -32,10 +32,10 @@
             System.Windows.Forms.GroupBox groupBox;
             System.Windows.Forms.Button EliminarFuncionalidad;
             this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
+            this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nombreRol = new System.Windows.Forms.TextBox();
             this.DarDeAlta = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
-            this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
             labelNombreDeRol = new System.Windows.Forms.Label();
             groupBox = new System.Windows.Forms.GroupBox();
             EliminarFuncionalidad = new System.Windows.Forms.Button();
@@ -66,6 +66,17 @@
             groupBox.TabStop = false;
             groupBox.Text = "Datos";
             // 
+            // EliminarFuncionalidad
+            // 
+            EliminarFuncionalidad.Location = new System.Drawing.Point(250, 49);
+            EliminarFuncionalidad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            EliminarFuncionalidad.Name = "EliminarFuncionalidad";
+            EliminarFuncionalidad.Size = new System.Drawing.Size(227, 27);
+            EliminarFuncionalidad.TabIndex = 64;
+            EliminarFuncionalidad.Text = "&Eliminar funcionalidad";
+            EliminarFuncionalidad.UseVisualStyleBackColor = true;
+            EliminarFuncionalidad.Click += new System.EventHandler(this.EliminarFuncionalidad_Click);
+            // 
             // ListadoFuncionalidades
             // 
             this.ListadoFuncionalidades.AllowUserToResizeColumns = false;
@@ -81,10 +92,17 @@
             this.ListadoFuncionalidades.TabIndex = 62;
             this.ListadoFuncionalidades.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoFuncionalidades_CellValueChanged);
             // 
+            // Funcionalidad
+            // 
+            this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Funcionalidad.HeaderText = "Funcionalidad";
+            this.Funcionalidad.Name = "Funcionalidad";
+            // 
             // nombreRol
             // 
             this.nombreRol.Location = new System.Drawing.Point(130, 18);
             this.nombreRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.nombreRol.MaxLength = 30;
             this.nombreRol.Name = "nombreRol";
             this.nombreRol.Size = new System.Drawing.Size(348, 25);
             this.nombreRol.TabIndex = 1;
@@ -112,23 +130,6 @@
             this.volverALaPaginaAnterior.Text = "&Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
             this.volverALaPaginaAnterior.Click += new System.EventHandler(this.volverALaPaginaAnterior_Click);
-            // 
-            // Funcionalidad
-            // 
-            this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Funcionalidad.HeaderText = "Funcionalidad";
-            this.Funcionalidad.Name = "Funcionalidad";
-            // 
-            // EliminarFuncionalidad
-            // 
-            EliminarFuncionalidad.Location = new System.Drawing.Point(250, 49);
-            EliminarFuncionalidad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            EliminarFuncionalidad.Name = "EliminarFuncionalidad";
-            EliminarFuncionalidad.Size = new System.Drawing.Size(227, 27);
-            EliminarFuncionalidad.TabIndex = 64;
-            EliminarFuncionalidad.Text = "&Eliminar funcionalidad";
-            EliminarFuncionalidad.UseVisualStyleBackColor = true;
-            EliminarFuncionalidad.Click += new System.EventHandler(this.EliminarFuncionalidad_Click);
             // 
             // AltaRol
             // 

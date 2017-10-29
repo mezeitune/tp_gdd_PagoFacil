@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.GroupBox groupBox;
-            System.Windows.Forms.Label labelNombreDeRol;
             System.Windows.Forms.Button EliminarFuncionalidad;
+            System.Windows.Forms.Label labelNombreDeRol;
             this.EstadoHabilitacion = new System.Windows.Forms.CheckBox();
             this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
             this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -38,8 +38,8 @@
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.Actualizar = new System.Windows.Forms.Button();
             groupBox = new System.Windows.Forms.GroupBox();
-            labelNombreDeRol = new System.Windows.Forms.Label();
             EliminarFuncionalidad = new System.Windows.Forms.Button();
+            labelNombreDeRol = new System.Windows.Forms.Label();
             groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,17 @@
             groupBox.TabIndex = 66;
             groupBox.TabStop = false;
             groupBox.Text = "Datos";
+            // 
+            // EliminarFuncionalidad
+            // 
+            EliminarFuncionalidad.Location = new System.Drawing.Point(252, 49);
+            EliminarFuncionalidad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            EliminarFuncionalidad.Name = "EliminarFuncionalidad";
+            EliminarFuncionalidad.Size = new System.Drawing.Size(227, 27);
+            EliminarFuncionalidad.TabIndex = 65;
+            EliminarFuncionalidad.Text = "&Eliminar funcionalidad";
+            EliminarFuncionalidad.UseVisualStyleBackColor = true;
+            EliminarFuncionalidad.Click += new System.EventHandler(this.EliminarFuncionalidad_Click);
             // 
             // EstadoHabilitacion
             // 
@@ -103,6 +114,7 @@
             // 
             this.nombreRol.Location = new System.Drawing.Point(131, 18);
             this.nombreRol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.nombreRol.MaxLength = 30;
             this.nombreRol.Name = "nombreRol";
             this.nombreRol.Size = new System.Drawing.Size(348, 25);
             this.nombreRol.TabIndex = 1;
@@ -128,17 +140,6 @@
             this.Actualizar.Text = "&Actualizar";
             this.Actualizar.UseVisualStyleBackColor = true;
             this.Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
-            // 
-            // EliminarFuncionalidad
-            // 
-            EliminarFuncionalidad.Location = new System.Drawing.Point(252, 49);
-            EliminarFuncionalidad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            EliminarFuncionalidad.Name = "EliminarFuncionalidad";
-            EliminarFuncionalidad.Size = new System.Drawing.Size(227, 27);
-            EliminarFuncionalidad.TabIndex = 65;
-            EliminarFuncionalidad.Text = "&Eliminar funcionalidad";
-            EliminarFuncionalidad.UseVisualStyleBackColor = true;
-            EliminarFuncionalidad.Click += new System.EventHandler(this.EliminarFuncionalidad_Click);
             // 
             // ModificarDatosRol
             // 
