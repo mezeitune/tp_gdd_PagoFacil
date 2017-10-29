@@ -100,6 +100,7 @@
     <Compile Include="AbmEmpresa\PantallaPrincipalABMEmpresa.Designer.cs">
       <DependentUpon>PantallaPrincipalABMEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmEmpresa\ValidacionCUIT.cs" />
     <Compile Include="AbmFactura\agregarItemFacturaModificada.cs">
       <SubType>Form</SubType>
     </Compile>

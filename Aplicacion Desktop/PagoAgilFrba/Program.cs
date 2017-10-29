@@ -32,7 +32,17 @@ namespace PagoAgilFrba
         {
             string configuracion = ConfigurationManager.AppSettings["configuracionSQL"].ToString();
             SqlConnection laConexion = new SqlConnection(configuracion);
-            laConexion.Open();
+            try
+            {
+                laConexion.Open();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Error al intentar establacer conexión con la base de datos.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Environment.Exit(exitCode: 1);
+            }
             return laConexion;
         }
 
