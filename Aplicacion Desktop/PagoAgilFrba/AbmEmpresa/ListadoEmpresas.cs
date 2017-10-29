@@ -73,6 +73,10 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void Rubro_Init()
         {
+            // Agregar una opción vacía (no filtrar por ese campo).
+            this.Rubro.Items.Add("");
+            this.Rubro.SelectedIndex = 0;
+
             var cmd = new SqlCommand(
                 "SELECT DESCRIPCION AS RUBRO " +
                 "FROM [SERVOMOTOR].RUBROS",

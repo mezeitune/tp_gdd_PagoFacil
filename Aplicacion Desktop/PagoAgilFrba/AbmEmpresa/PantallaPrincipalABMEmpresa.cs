@@ -68,7 +68,7 @@ namespace PagoAgilFrba.AbmEmpresa
                     var values = formListado.Listado.SelectedRows[0].Cells;
                     using (var formModificacion = new ModificacionEmpresa())
                     {
-                        formModificacion.values = values;
+                        formModificacion.Values = values;
                         formModificacion.ShowDialog();
                     }
                 }

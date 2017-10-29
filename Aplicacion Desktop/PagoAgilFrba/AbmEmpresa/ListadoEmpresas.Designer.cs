@@ -91,6 +91,7 @@
             // 
             // Rubro
             // 
+            this.Rubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Rubro.FormattingEnabled = true;
             this.Rubro.Location = new System.Drawing.Point(323, 27);
             this.Rubro.Name = "Rubro";
@@ -184,30 +185,39 @@
             // 
             // ColNombre
             // 
+            this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColNombre.HeaderText = "Nombre";
             this.ColNombre.Name = "ColNombre";
             this.ColNombre.ReadOnly = true;
+            this.ColNombre.Width = 84;
             // 
             // ColCUIT
             // 
+            this.ColCUIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColCUIT.HeaderText = "CUIT";
             this.ColCUIT.Name = "ColCUIT";
             this.ColCUIT.ReadOnly = true;
+            this.ColCUIT.Width = 68;
             // 
             // ColRubro
             // 
+            this.ColRubro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColRubro.HeaderText = "Rubro";
             this.ColRubro.Name = "ColRubro";
             this.ColRubro.ReadOnly = true;
+            this.ColRubro.Width = 76;
             // 
             // ColDireccion
             // 
+            this.ColDireccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ColDireccion.HeaderText = "Direccion";
             this.ColDireccion.Name = "ColDireccion";
             this.ColDireccion.ReadOnly = true;
+            this.ColDireccion.Width = 108;
             // 
             // ColEstado
             // 
+            this.ColEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColEstado.HeaderText = "Estado";
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
