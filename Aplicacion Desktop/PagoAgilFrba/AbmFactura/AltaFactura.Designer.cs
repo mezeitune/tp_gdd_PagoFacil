@@ -117,9 +117,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(43, 225);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.Size = new System.Drawing.Size(181, 13);
             this.label8.TabIndex = 49;
-            this.label8.Text = "Total";
+            this.label8.Text = "Total                                                $";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label9
@@ -133,7 +133,7 @@
             // 
             // txtTotalFactura
             // 
-            this.txtTotalFactura.Location = new System.Drawing.Point(225, 225);
+            this.txtTotalFactura.Location = new System.Drawing.Point(225, 222);
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(200, 20);
             this.txtTotalFactura.TabIndex = 51;

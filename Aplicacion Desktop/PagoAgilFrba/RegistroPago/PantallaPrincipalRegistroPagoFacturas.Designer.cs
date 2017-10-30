@@ -32,11 +32,6 @@
             this.comboClientes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.medioPago = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,6 +47,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -110,41 +110,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(568, 118);
             this.dataGridView1.TabIndex = 80;
-            // 
-            // num_fact
-            // 
-            this.num_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.num_fact.HeaderText = "NUM FACT";
-            this.num_fact.Name = "num_fact";
-            this.num_fact.ReadOnly = true;
-            // 
-            // fecha_venc_fact
-            // 
-            this.fecha_venc_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fecha_venc_fact.HeaderText = "FECHA VENC";
-            this.fecha_venc_fact.Name = "fecha_venc_fact";
-            this.fecha_venc_fact.ReadOnly = true;
-            // 
-            // dni_cliente
-            // 
-            this.dni_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dni_cliente.HeaderText = "DNI CLIENTE";
-            this.dni_cliente.Name = "dni_cliente";
-            this.dni_cliente.ReadOnly = true;
-            // 
-            // cuit_empresa
-            // 
-            this.cuit_empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cuit_empresa.HeaderText = "CUIT EMPRESA";
-            this.cuit_empresa.Name = "cuit_empresa";
-            this.cuit_empresa.ReadOnly = true;
-            // 
-            // totalFactura
-            // 
-            this.totalFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.totalFactura.HeaderText = "TOTAL";
-            this.totalFactura.Name = "totalFactura";
-            this.totalFactura.ReadOnly = true;
             // 
             // button1
             // 
@@ -282,6 +247,41 @@
             this.label7.TabIndex = 86;
             this.label7.Text = "Nota 2: Las facturas vencidas no se mostraran.";
             // 
+            // num_fact
+            // 
+            this.num_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.num_fact.HeaderText = "NUM FACT";
+            this.num_fact.Name = "num_fact";
+            this.num_fact.ReadOnly = true;
+            // 
+            // fecha_venc_fact
+            // 
+            this.fecha_venc_fact.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fecha_venc_fact.HeaderText = "FECHA VENC";
+            this.fecha_venc_fact.Name = "fecha_venc_fact";
+            this.fecha_venc_fact.ReadOnly = true;
+            // 
+            // dni_cliente
+            // 
+            this.dni_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dni_cliente.HeaderText = "DNI CLIENTE";
+            this.dni_cliente.Name = "dni_cliente";
+            this.dni_cliente.ReadOnly = true;
+            // 
+            // cuit_empresa
+            // 
+            this.cuit_empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cuit_empresa.HeaderText = "CUIT EMPRESA";
+            this.cuit_empresa.Name = "cuit_empresa";
+            this.cuit_empresa.ReadOnly = true;
+            // 
+            // totalFactura
+            // 
+            this.totalFactura.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalFactura.HeaderText = "TOTAL FACTURA";
+            this.totalFactura.Name = "totalFactura";
+            this.totalFactura.ReadOnly = true;
+            // 
             // PantallaPrincipalRegistroPagoFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,16 +321,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num_fact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_venc_fact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cuit_empresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalFactura;
         private System.Windows.Forms.ComboBox comboClientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num_fact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_venc_fact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuit_empresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalFactura;
 
     }
 }
