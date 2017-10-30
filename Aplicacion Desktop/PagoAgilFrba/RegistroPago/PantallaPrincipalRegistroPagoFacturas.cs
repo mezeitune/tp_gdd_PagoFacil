@@ -13,14 +13,15 @@ namespace PagoAgilFrba.RegistroPago
     public partial class PantallaPrincipalRegistroPagoFacturas : Form
     {
        
-        public PantallaPrincipalRegistroPagoFacturas(String sucursal)
+        public PantallaPrincipalRegistroPagoFacturas(String sucursal,String usuario)
         {
+            usuarioLogin = usuario;
             sucursalLogin = sucursal;
             InitializeComponent();
         }
-        String sucursalLogin;
+        String sucursalLogin,usuarioLogin;
         decimal importePago;
-        int numPago,idUsuario;
+        int numPago;
         DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -190,18 +191,30 @@ namespace PagoAgilFrba.RegistroPago
         }
 
         private void levantarSucursales() {
-            
-            var cmd = new SqlCommand(
-                     "select * from SERVOMOTOR.SUCURSALES where NOMBRE LIKE '"+sucursalLogin+"' AND ESTADO_HABILITACION=1;",
-                      Program.conexion()
-                  );
+            if(usuarioLogin=="Cobrador"){
+                var cmd = new SqlCommand(
+                         "select * from SERVOMOTOR.SUCURSALES where NOMBRE LIKE '" + sucursalLogin + "' AND ESTADO_HABILITACION=1;",
+                          Program.conexion()
+                      );
 
-            var dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-               comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
+                var dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
+                }
             }
-        
+            else{
+                var cmd = new SqlCommand(
+                      "select * from SERVOMOTOR.SUCURSALES where ESTADO_HABILITACION=1;",
+                       Program.conexion()
+                   );
+
+                var dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    comboSucursal.Items.Add(dataReader["COD_POSTAL"]);
+                }
+            }
         }
         private void levantarMediosDePago()
         {

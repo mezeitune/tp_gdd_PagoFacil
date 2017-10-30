@@ -77,7 +77,7 @@ namespace PagoAgilFrba
 
         private void botonRegistrarPago_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(Sucursal); 
+            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(Sucursal,Rol); 
             this.Hide();
             formularioSiguiente.ShowDialog();
             this.Show();
