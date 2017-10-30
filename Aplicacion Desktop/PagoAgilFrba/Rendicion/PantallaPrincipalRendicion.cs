@@ -160,31 +160,40 @@ namespace PagoAgilFrba.Rendicion
             // ACA VERIFICAMOS QUE LA EMPRESA ELEGIDA NO HAYA SIDO YA RENDIDA EN UN DIA DENTRO DEL MES Y ANIO ELEGIDO
             if (!empresaRendida())
             {
-                var cmd = new SqlCommand(
-                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO LIKE 'PAGA' AND p.FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('" + DateTime.DaysInMonth(FechaRendicion.Value.Year, FechaRendicion.Value.Month) + "/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
-                    Program.conexion()
-                );
-
-                var dataReader = cmd.ExecuteReader();
-
-
-                while (dataReader.Read())
+                using (var conexion = Program.conexion())
+                using (var cmd = new SqlCommand())
                 {
+                    cmd.CommandText =
+                        "SELECT * " +
+                        "FROM [SERVOMOTOR].FACTURAS f " +
+                        "  JOIN [SERVOMOTOR].PAGOS p" +
+                        "    ON f.NUMERO_PAGO = p.NUMERO_PAGO " +
+                        "WHERE CUIT_EMPRESA = @CUIT " +
+                        "  AND f.NUMERO_PAGO IS NOT NULL " +
+                        "  AND f.ID_RENDICION IS NULL " +
+                        "  AND YEAR(p.FECHA_COBRO) = YEAR(@FECHA_RENDICION) " +
+                        "  AND MONTH(p.FECHA_COBRO) = MONTH(@FECHA_RENDICION);";
 
-                    this.dataGridView1.Rows.Add(
-                        dataReader["NUMERO_FACTURA"],
-                        dataReader["TOTAL"]
+                    cmd.Connection = conexion;
 
-                    );
-                    //CALCULAMOS EL IMPORTE TOTAL A RENDIR
-                    importeTotalARendir += Convert.ToDecimal(dataReader["TOTAL"]);
+                    cmd.Parameters.AddWithValue("@CUIT", comboEmpresa.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@FECHA_RENDICION", FechaRendicion.Value);
 
+                    using (var dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
+                    {
+                        this.dataGridView1.Rows.Add(
+                            dataReader["NUMERO_FACTURA"],
+                            dataReader["TOTAL"]
+                        );
+                        //CALCULAMOS EL IMPORTE TOTAL A RENDIR
+                        importeTotalARendir += Convert.ToDecimal(dataReader["TOTAL"]);
+                    }
 
-
+                    //CALCULAMOS LA CANTIDAD DE FACTURAS A RENDIR
+                    CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
+                    importeTotalRendicion.Text = importeTotalARendir.ToString();
                 }
-                //CALCULAMOS LA CANTIDAD DE FACTURAS A RENDIR
-                CantidadFacturasRendidas.Text = (dataGridView1.Rows.Count).ToString();
-                importeTotalRendicion.Text = importeTotalARendir.ToString();
             }
             else {
                 MessageBox.Show("Empresa ya rendida en este mes", "", MessageBoxButtons.OK);
