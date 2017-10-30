@@ -73,6 +73,11 @@ namespace PagoAgilFrba.Devolucion
         //AGREGAMOS AL DATA GRID LA FACTURA A DEVOLVER YA CARGADA PREVIAMENTE EN EL COMBO 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (comboFacturasADevolver.SelectedItem == null)
+            {
+                MessageBox.Show("No hay mas facturas para devolver", "Error daros de entrada", MessageBoxButtons.OK);
+                return;
+            }
             var cmd = new SqlCommand(
                 "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= '" + comboFacturasADevolver.SelectedItem.ToString() + "';",
                 Program.conexion()

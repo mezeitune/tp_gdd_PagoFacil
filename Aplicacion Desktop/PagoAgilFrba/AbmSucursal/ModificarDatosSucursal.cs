@@ -67,15 +67,19 @@ namespace PagoAgilFrba.AbmSucursal
        
         {
 
+            this.listadoRefresh();
+            
+        }
+        private void listadoRefresh() {
             var cmd = new SqlCommand(
-                "SELECT * " +
-                "FROM [SERVOMOTOR].[SUCURSALES] s " +
+                   "SELECT * " +
+                   "FROM [SERVOMOTOR].[SUCURSALES] s " +
 
-                "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
-                "  AND (DIRECCION LIKE @DIRECCION OR @DIRECCION = '') " +
-                "  AND (COD_POSTAL= @COD_POSTAL OR @COD_POSTAL = '')",
-                Program.conexion()
-            );
+                   "WHERE (NOMBRE LIKE @NOMBRE OR @NOMBRE = '') " +
+                   "  AND (DIRECCION LIKE @DIRECCION OR @DIRECCION = '') " +
+                   "  AND (COD_POSTAL= @COD_POSTAL OR @COD_POSTAL = '')",
+                   Program.conexion()
+               );
 
             cmd.Parameters.AddWithValue("@NOMBRE", "%" + txtNombreSucursal.Text + "%");
             cmd.Parameters.AddWithValue("@DIRECCION", "%" + txtDireccionSucursal.Text + "%");
@@ -85,20 +89,18 @@ namespace PagoAgilFrba.AbmSucursal
 
             this.dataGridItems.Rows.Clear();
 
-             while (dataReader.Read())
+            while (dataReader.Read())
             {
                 this.dataGridItems.Rows.Add(
                     dataReader["COD_POSTAL"],
                     dataReader["NOMBRE"],
                     dataReader["DIRECCION"],
                     dataReader["ESTADO_HABILITACION"]
-                 
+
 
                 );
             }
-            
         }
-
 
         private void limpiar_Click(object sender, EventArgs e)
         {
@@ -118,18 +120,19 @@ namespace PagoAgilFrba.AbmSucursal
             if (CodPostalSucursal != null)
             {
                 var cmd = new SqlCommand(
-                 "EXEC [SERVOMOTOR].insertOUpdateEnSucursales @TIPOOPERACION,@COD_POSTAL,@NOMBRE,@DIRECCION,@ESTADO_HABILITACION",
+                 "update SERVOMOTOR.SUCURSALES set ESTADO_HABILITACION=0 WHERE COD_POSTAL='"+CodPostalSucursal+"'",
                Program.conexion()
                   );
-                cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
-                cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalSucursal.Text);
-                cmd.Parameters.AddWithValue("@NOMBRE", txtNombreSucursal.Text);
-                cmd.Parameters.AddWithValue("@DIRECCION", txtDireccionSucursal.Text);
-                cmd.Parameters.AddWithValue("@ESTADO_HABILITACION", 1);
-           
+               
+
 
                 var dataReader = cmd.ExecuteReader();
+                
                 MessageBox.Show("Se ha dado de baja la sucursal de codigo postal: " + CodPostalSucursal, "", MessageBoxButtons.OK);
+                txtCodPostalSucursal.Text = "";
+                txtDireccionSucursal.Text = "";
+                txtNombreSucursal.Text = "";
+                this.listadoRefresh();
             }
             else
             {

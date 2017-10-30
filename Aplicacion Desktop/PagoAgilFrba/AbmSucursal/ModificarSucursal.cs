@@ -27,9 +27,16 @@ namespace PagoAgilFrba.AbmSucursal
             {
 
                 var cmd = new SqlCommand(
-                "update [SERVOMOTOR].[SUCURSALES] set NOMBRE='" + txtNombreSucursal.Text + "',DIRECCION='" + txtDireccionSucursal.Text + "',ESTADO_HABILITACION=" + (Habilitar.Checked ? 1 : 0) + " where COD_POSTAL='" + codigoPostal + "';",
-                 Program.conexion()
-             );
+                 "EXEC [SERVOMOTOR].insertOUpdateEnSucursales @TIPOOPERACION,@COD_POSTAL,@NOMBRE,@DIRECCION,@ESTADO_HABILITACION",
+               Program.conexion()
+                  );
+                cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
+                cmd.Parameters.AddWithValue("@COD_POSTAL", codigoPostal);
+                cmd.Parameters.AddWithValue("@NOMBRE", txtNombreSucursal.Text);
+                cmd.Parameters.AddWithValue("@DIRECCION", txtDireccionSucursal.Text);
+                cmd.Parameters.AddWithValue("@ESTADO_HABILITACION", 1);
+
+
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente la sucursal de Cod Postal: " +  codigoPostal, "", MessageBoxButtons.OK);
                

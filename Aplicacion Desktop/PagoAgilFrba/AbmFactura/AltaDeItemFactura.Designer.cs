@@ -44,14 +44,15 @@
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
+            this.eliminarUnItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(146, 230);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(110, 235);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
-            this.botonGuardarUnItem.Size = new System.Drawing.Size(109, 42);
+            this.botonGuardarUnItem.Size = new System.Drawing.Size(84, 33);
             this.botonGuardarUnItem.TabIndex = 60;
             this.botonGuardarUnItem.Text = "Guardar Item";
             this.botonGuardarUnItem.UseVisualStyleBackColor = true;
@@ -109,7 +110,7 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(418, 240);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(420, 240);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
             this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
             this.volverALaPaginaAnterior.TabIndex = 77;
@@ -119,7 +120,7 @@
             // 
             // generarFactura
             // 
-            this.generarFactura.Location = new System.Drawing.Point(282, 230);
+            this.generarFactura.Location = new System.Drawing.Point(210, 230);
             this.generarFactura.Name = "generarFactura";
             this.generarFactura.Size = new System.Drawing.Size(109, 42);
             this.generarFactura.TabIndex = 78;
@@ -157,6 +158,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(477, 116);
             this.dataGridView1.TabIndex = 81;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarItem);
             // 
             // descripcion
             // 
@@ -188,11 +190,22 @@
             this.label5.TabIndex = 82;
             this.label5.Text = "Ingrese los datos de los items de la factura a cargar.";
             // 
+            // eliminarUnItem
+            // 
+            this.eliminarUnItem.Location = new System.Drawing.Point(334, 235);
+            this.eliminarUnItem.Name = "eliminarUnItem";
+            this.eliminarUnItem.Size = new System.Drawing.Size(80, 33);
+            this.eliminarUnItem.TabIndex = 83;
+            this.eliminarUnItem.Text = "Eliminar Item";
+            this.eliminarUnItem.UseVisualStyleBackColor = true;
+            this.eliminarUnItem.Click += new System.EventHandler(this.eliminarUnItem_Click);
+            // 
             // AltaDeItemFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 289);
+            this.Controls.Add(this.eliminarUnItem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtDescripcion);
@@ -233,5 +246,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button eliminarUnItem;
     }
 }

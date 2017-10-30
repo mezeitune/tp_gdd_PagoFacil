@@ -234,7 +234,11 @@ namespace PagoAgilFrba.RegistroPago
         //AGREGAMOS UNA FACTURA AL DATA GRID Y HABILITAMOS EL BOTON PARA PODER REGISTRAR UN PAGO
         private void agregarFactura(object sender, EventArgs e)
         {
-           
+            if (comboFacturasAPagar.SelectedItem == null)
+            {
+                MessageBox.Show("No hay mas facturas para pagar", "Error daros de entrada", MessageBoxButtons.OK);
+                return;
+            }
             var cmd = new SqlCommand(
                 "SELECT * FROM [SERVOMOTOR].[FACTURAS] WHERE NUMERO_FACTURA= "+Convert.ToInt64(comboFacturasAPagar.SelectedItem.ToString())+";",
                 Program.conexion()

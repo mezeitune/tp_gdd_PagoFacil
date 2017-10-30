@@ -60,7 +60,7 @@ namespace PagoAgilFrba.AbmCliente
                   );
                 cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
                 cmd.Parameters.AddWithValue("@DNI", DNICliente);
-                cmd.Parameters.AddWithValue("@NOMBRE", txtNombreCliente.Text);
+                cmd.Parameters.AddWithValue("@NOMBRE", txtNombre.Text);
                 cmd.Parameters.AddWithValue("@APELLIDO", txtApellidoCliente.Text);
                 cmd.Parameters.AddWithValue("@MAIL", txtMailCliente.Text);
                 cmd.Parameters.AddWithValue("@TELEFONO", txtTelCliente.Text);

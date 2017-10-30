@@ -45,7 +45,7 @@ namespace PagoAgilFrba.AbmCliente
         
         private void DarAltaCliente_Click(object sender, EventArgs e)
         {
-            int estadoHab = 1;
+            
             
             if (!todosLosCamposLLenos() && !validarTipos() && existenDatosDuplicados())
             {
@@ -77,6 +77,8 @@ namespace PagoAgilFrba.AbmCliente
                     MessageBox.Show("El campo nombre o mail estan duplicados, vuelva a ingresar otro","", MessageBoxButtons.OK);
                     return;
                 }
+                MessageBox.Show("Se ha dado de alta correctamente al cliente", "", MessageBoxButtons.OK);
+                this.DialogResult = DialogResult.Cancel;
                 this.vaciarTextos();
             }
             

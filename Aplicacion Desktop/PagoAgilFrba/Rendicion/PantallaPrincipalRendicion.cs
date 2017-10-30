@@ -161,7 +161,7 @@ namespace PagoAgilFrba.Rendicion
             if (!empresaRendida())
             {
                 var cmd = new SqlCommand(
-                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO='PAGA' AND FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('30/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
+                    "SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '" + comboEmpresa.SelectedItem.ToString() + "' AND ESTADO LIKE 'PAGA' AND p.FECHA_COBRO BETWEEN ('1/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "') AND ('" + DateTime.DaysInMonth(FechaRendicion.Value.Year, FechaRendicion.Value.Month) + "/" + FechaRendicion.Value.Month + "/" + FechaRendicion.Value.Year + "');",
                     Program.conexion()
                 );
 
@@ -187,7 +187,7 @@ namespace PagoAgilFrba.Rendicion
                 importeTotalRendicion.Text = importeTotalARendir.ToString();
             }
             else {
-                MessageBox.Show("Empresa ya rendida en este mes", "Todo bien", MessageBoxButtons.OK);
+                MessageBox.Show("Empresa ya rendida en este mes", "", MessageBoxButtons.OK);
             }
             
         }

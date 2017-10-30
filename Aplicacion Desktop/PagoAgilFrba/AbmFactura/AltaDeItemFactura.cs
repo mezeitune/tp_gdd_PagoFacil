@@ -13,7 +13,7 @@ namespace PagoAgilFrba.AbmFactura
 
     //PRIMERO CARGAMOS LOS ITEMS Y LOS PASAMOS POR CONSTRUCTOR A "ALTA FACTURA" YA QUE ESOS ITEMS 
     //NO SE PUEDEN VINCULAR A UNA FACTURA QUE TODAVIA NO FUE DADA DE ALTA
-    
+
     public partial class AltaDeItemFactura : Form
     {
        
@@ -21,7 +21,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
         }
-
+        int indexItem;
 
         private void botonGuardarUnItem_Click(object sender, EventArgs e)
         {
@@ -88,15 +88,37 @@ namespace PagoAgilFrba.AbmFactura
         private void AltaDeItemFactura_Load(object sender, EventArgs e)
         {
             generarFactura.Enabled = false;
+            eliminarUnItem.Enabled = false;
         }
 
         private void generarFactura_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0) {
+                MessageBox.Show("Debe registrar al menos un item ", "error", MessageBoxButtons.OK);
+                return;
+            }
             Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1);
             this.Hide();
             formularioSiguiente.ShowDialog();
             this.Show();
             dataGridView1.ClearSelection();
+        }
+
+        private void eliminarUnItem_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
+            {
+                if (oneCell.Selected)
+                    dataGridView1.Rows.RemoveAt(oneCell.RowIndex);
+            }
+        }
+
+        private void seleccionarItem(object sender, DataGridViewCellEventArgs e)
+        {
+            indexItem= dataGridView1.CurrentRow.Index;
+
+            MessageBox.Show("Se ha seleccionado un item a eliminar: ", "", MessageBoxButtons.OK);
+            eliminarUnItem.Enabled = true;
         }
 
     }

@@ -137,6 +137,10 @@ namespace PagoAgilFrba.AbmCliente
 
             var dataReader = cmd.ExecuteReader();
             MessageBox.Show("Se ha dado de baja el cliente de DNI: " + DNICliente, "", MessageBoxButtons.OK);
+            txtApellido.Text = "";
+            txtDniExacto.Text = "";
+            txtNombre.Text = "";
+            this.Listado_Refresh();
         }
 
         private void seleccionarCliente(object sender, DataGridViewCellEventArgs e)

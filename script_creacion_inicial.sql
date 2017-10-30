@@ -426,11 +426,11 @@ CREATE TABLE [SERVOMOTOR].[CLIENTES](
 	[NOMBRE] [varchar] (255) NOT NULL,
 	[APELLIDO] [varchar] (255) NOT NULL,
 	[MAIL] [varchar] (255) NOT NULL,
-	[TELEFONO] [varchar] (255) NULL,
+	[TELEFONO] [varchar] (255) DEFAULT '44444444',
 	[CALLE] [varchar] (255) NOT NULL,
-	[PISO] [varchar] (255) NULL,
-	[DEPTO] [varchar] (255) NULL,
-	[LOCALIDAD] [varchar] (255) NULL,
+	[PISO] [varchar] (255) DEFAULT 'PB',
+	[DEPTO] [varchar] (255) DEFAULT '1A',
+	[LOCALIDAD] [varchar] (255) DEFAULT 'Capital Federal',
 	[FECHA_NACIMIENTO] [datetime] NOT NULL,
 	[COD_POSTAL_CLIENTE] [varchar] (255) NOT NULL,
 	[ESTADO_HABILITACION] [bit] DEFAULT 1,
@@ -774,14 +774,6 @@ SELECT   ItemFactura_Monto ,
 		ItemFactura_Cantidad,
 		Nro_Factura
 FROM gd_esquema.Maestra
-
-
-
-select * from [SERVOMOTOR].ITEMS
-select * from [SERVOMOTOR].FACTURAS
-
-
-
 
 -- Insert de usuario invitado y un administrador
 -- el hash de la contraseña w23e está previamente calculado
@@ -1220,9 +1212,8 @@ BEGIN
 	insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values (@FECHA_COBRO,@IMPORTE,@COD_POSTAL,@ID_MEDPAGO,@DNI_CLIENTE);
                                     
 END
-
-
-select * from [SERVOMOTOR].[PAGOS] order by NUMERO_PAGO DESC
+SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '6-18883376-9' AND ESTADO LIKE 'PAGA'
+select * from SERVOMOTOR.FACTURAS
 GO
 CREATE PROCEDURE [SERVOMOTOR].insertRendiciones
   (@FECHA_COBRO [datetime],@PORCENTAJE_COMISION  [tinyint],@CANTIDAD_FACTURAS_RENDIDAS [tinyint] ,@PRECIO_COMISION [numeric] (7,2),@TOTAL_RENDIDO [numeric] (7,2),@CUIT_EMPRESA [varchar] (50))
