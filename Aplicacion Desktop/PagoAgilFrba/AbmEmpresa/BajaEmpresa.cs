@@ -20,25 +20,40 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void DarDeBaja_Click(object sender, EventArgs e)
         {
-            var cmd = new SqlCommand(
-                "UPDATE [SERVOMOTOR].EMPRESAS " +
-                "SET ESTADO_ACTIVACION = 0 " +
-                "WHERE CUIT = @CUIT",
-                Program.conexion()
-            );
-
-            cmd.Parameters.AddWithValue("@CUIT", textCUIT.Text);
-
-            if (cmd.ExecuteNonQuery() == 1)
+            using (var conexion = Program.conexion())
+            using (var cmd = new SqlCommand())
             {
-                MessageBox.Show("La empresa " + textNombre.Text + " fue dada de baja.",
-                    "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
+                cmd.CommandText = "UPDATE [SERVOMOTOR].EMPRESAS " +
+                                  "SET ESTADO_ACTIVACION = 0 " +
+                                  "WHERE CUIT = @CUIT";
+                cmd.Connection = conexion;
+
+                cmd.Parameters.AddWithValue("@CUIT", textCUIT.Text);
+
+                try
+                {
+                    if (cmd.ExecuteNonQuery() != 1)
+                        throw new Exception();
+                }
+                // Código de error = 3
+                // Error al intentar dar de baja una empresa con rendiciones pendientes.
+                catch (SqlException ex) when (ex.State == 3)
+                {
+                    MessageBox.Show(ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al intentar dar de baja la empresa.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            else
-                MessageBox.Show("Error al intentar dar de baja la empresa.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+
+            MessageBox.Show("La empresa " + textNombre.Text + " fue dada de baja.",
+                "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
         }
     }
 }
