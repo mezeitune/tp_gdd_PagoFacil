@@ -12,23 +12,21 @@ namespace PagoAgilFrba.RegistroPago
 {
     public partial class PantallaPrincipalRegistroPagoFacturas : Form
     {
-        public PantallaPrincipalRegistroPagoFacturas()
+       
+        public PantallaPrincipalRegistroPagoFacturas(String sucursal)
         {
+            sucursalLogin = sucursal;
             InitializeComponent();
         }
+        String sucursalLogin;
         decimal importePago;
-        int numPago;
+        int numPago,idUsuario;
         DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
 
 
         }
-        
-
-        
-
-        
 
         private void limpiar_Click(object sender, EventArgs e)
         {
@@ -150,6 +148,7 @@ namespace PagoAgilFrba.RegistroPago
 
         private void PantallaPrincipalRegistroPagoFacturas_Load(object sender, EventArgs e)
         {
+           
             this.levantarFacturas(); 
             this.levantarSucursales();
             this.levantarMediosDePago();
@@ -191,9 +190,9 @@ namespace PagoAgilFrba.RegistroPago
         }
 
         private void levantarSucursales() {
-
+            
             var cmd = new SqlCommand(
-                     "select * from [SERVOMOTOR].SUCURSALES where ESTADO_HABILITACION=1;",
+                     "select * from SERVOMOTOR.SUCURSALES where NOMBRE LIKE '"+sucursalLogin+"' AND ESTADO_HABILITACION=1;",
                       Program.conexion()
                   );
 

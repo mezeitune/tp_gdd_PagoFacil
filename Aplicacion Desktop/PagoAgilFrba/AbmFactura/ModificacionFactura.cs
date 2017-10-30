@@ -43,7 +43,7 @@ namespace PagoAgilFrba.AbmFactura
         //BATCH LEVANTAR FACTURAS, DECIDIMOS SOLO MOSTRAR EL NUMERO DE FACTURA PARA SELECCIONAR
         private void query_inicial(){
             var cmd = new SqlCommand(
-                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS ",
+                    "select * from [SERVOMOTOR].FACTURAS F where ISNULL(F.NUMERO_PAGO,0)=0 AND ISNULL(F.ID_RENDICION,0)=0 ",
                      Program.conexion()
                  );
 

@@ -69,7 +69,7 @@ namespace PagoAgilFrba
 
         private void botonListadoEstadistico_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new ListadoEstadistico.PantallaPrincipalListadoEstadistico();//falta hacer esto
+            Form formularioSiguiente = new ListadoEstadistico.PantallaPrincipalListadoEstadistico();
             this.Hide();
             formularioSiguiente.ShowDialog();
             this.Show();
@@ -77,7 +77,7 @@ namespace PagoAgilFrba
 
         private void botonRegistrarPago_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(); //falta hacer esto
+            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(Sucursal); 
             this.Hide();
             formularioSiguiente.ShowDialog();
             this.Show();

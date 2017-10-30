@@ -77,6 +77,20 @@ namespace PagoAgilFrba
             return false;       
         }
 
+        public static Boolean esNumeroMayorA0(TextBox txtBox, string nombreCampo = "Opcional", Boolean mostrarMensaje = false)
+        {
+            decimal numero = Convert.ToDecimal(txtBox.Text);
+            if (numero > 0) {
+                return true;
+            }
+            if (mostrarMensaje)
+            {
+                MessageBox.Show("El valor del campo " + nombreCampo + " debe ser mayor a 0", "Error en los datos de entrada", MessageBoxButtons.OK);
+            }
+            return false;
+        }
+
+
         // Usado para validar números decimales
         public static Boolean esDecimal(TextBox txtBox, string nombreCampo = "Opcional", Boolean mostrarMensaje = false)
         {

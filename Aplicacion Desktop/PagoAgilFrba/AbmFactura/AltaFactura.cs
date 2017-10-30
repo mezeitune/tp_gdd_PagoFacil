@@ -143,7 +143,7 @@ namespace PagoAgilFrba.AbmFactura
             Boolean huboErrores = false;
             huboErrores = !Validacion.esNumero(txtNroFactura, "numero factura", true) || huboErrores;
             huboErrores = !Validacion.esNumero(txtTotalFactura,"total factura", true) || huboErrores;
-            
+            huboErrores = !Validacion.esNumeroMayorA0(txtTotalFactura, "total factura", true) || huboErrores;
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact) || huboErrores;
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaAltaFac) || huboErrores;
             return huboErrores;
