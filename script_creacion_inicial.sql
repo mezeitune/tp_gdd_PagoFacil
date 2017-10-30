@@ -17,6 +17,10 @@ if exists (select * from dbo.sysobjects where id =
 object_id(N'[SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
 drop trigger [SERVOMOTOR].[cambiarTotalDelasFacturasPorModificacionItem]
 
+GO
+if exists (select * from dbo.sysobjects where id =
+object_id(N'[SERVOMOTOR].[ControlarRendicionesPendientesEmpresa]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
+drop trigger [SERVOMOTOR].[ControlarRendicionesPendientesEmpresa]
 
 GO
 if exists (select * from dbo.sysobjects where id =
@@ -641,7 +645,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Direcci�n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -1016,6 +1020,54 @@ AS BEGIN
 	ON F.NUMERO_FACTURA=Modificados.NUMERO_FACTURA
 
 END
+
+GO
+
+CREATE TRIGGER ControlarRendicionesPendientesEmpresa
+ON [SERVOMOTOR].EMPRESAS
+AFTER UPDATE
+AS
+BEGIN
+  IF NOT UPDATE(ESTADO_ACTIVACION)
+  BEGIN
+    RETURN;
+  END;
+
+  DECLARE CursorEstadosInsertados CURSOR FOR
+   SELECT ESTADO_ACTIVACION, CUIT
+     FROM inserted;
+
+  DECLARE @ESTADO bit, @CUIT varchar(50);
+
+  OPEN CursorEstadosInsertados;
+  FETCH NEXT FROM CursorEstadosInsertados
+             INTO @ESTADO, @CUIT;
+  WHILE @@FETCH_STATUS = 0
+  BEGIN
+    /* Si fue dada de baja y tiene facturas no rendidas. */
+    IF @ESTADO = 0 AND EXISTS (SELECT 1
+                                 FROM [SERVOMOTOR].FACTURAS
+				                WHERE CUIT_EMPRESA = @CUIT
+								  AND ID_RENDICION IS NULL)
+	BEGIN
+      DECLARE @CR AS CHAR(2);
+	  SET @CR = CHAR(13) + CHAR(10);
+      RAISERROR('No pudo dar de baja la empresa porque tiene facturas pendientes de rendición.
+	            %sLa empresa fue rehabilitada.', 16, 3, @CR);
+
+	  /* Rehabilitar la empresa. */
+	  UPDATE [SERVOMOTOR].EMPRESAS
+	     SET ESTADO_ACTIVACION = 1
+       WHERE CUIT = @CUIT;
+	END;
+
+    FETCH NEXT FROM CursorEstadosInsertados
+               INTO @ESTADO, @CUIT;
+  END;
+
+  CLOSE CursorEstadosInsertados;
+  DEALLOCATE CursorEstadosInsertados;
+END;
 
 /***************************************************************************/
 /*                    PROCEDURES LISTADO ESTADISTICO                       */
