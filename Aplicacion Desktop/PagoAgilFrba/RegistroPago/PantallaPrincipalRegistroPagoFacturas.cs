@@ -22,7 +22,7 @@ namespace PagoAgilFrba.RegistroPago
         String sucursalLogin,usuarioLogin;
         decimal importePago;
         int numPago;
-        DateTimePicker fechaDeAhora = new DateTimePicker();
+        //DateTimePicker fechaDeAhora = new DateTimePicker();
         private void comboFacturasAPagar_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -35,7 +35,7 @@ namespace PagoAgilFrba.RegistroPago
         }
         private void limpiarTextos() {
             ImporteFact.Clear();
-            DateTimePicker fechaDeAhora = new DateTimePicker();
+            //DateTimePicker fechaDeAhora = new DateTimePicker();
 
             comboFacturasAPagar.SelectedItem = null;
             comboSucursal.SelectedItem = null;
@@ -114,7 +114,7 @@ namespace PagoAgilFrba.RegistroPago
                    "EXEC [SERVOMOTOR].insertPagos @FECHA_COBRO,@IMPORTE,@COD_POSTAL,@ID_MEDPAGO,@DNI_CLIENTE",
                Program.conexion()
                   );
-                 cmd.Parameters.AddWithValue("@FECHA_COBRO", fechaDeAhora.Value);
+                 cmd.Parameters.AddWithValue("@FECHA_COBRO", DateTime.Now);
                  cmd.Parameters.AddWithValue("@IMPORTE", (ImporteFact.Text));
                  cmd.Parameters.AddWithValue("@COD_POSTAL", comboSucursal.SelectedItem.ToString());
                  cmd.Parameters.AddWithValue("@ID_MEDPAGO", (medioPago.SelectedIndex+1) );
@@ -177,7 +177,7 @@ namespace PagoAgilFrba.RegistroPago
         private void levantarFacturas()
         {
             var cmd = new SqlCommand(
-                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT LIKE f.CUIT_EMPRESA JOIN [SERVOMOTOR].CLIENTES C ON C.DNI LIKE F.DNI_CLIENTE where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND C.ESTADO_HABILITACION=1 AND f.FECHA_VENCIMIENTO>='" + fechaDeAhora.Value + "' ",
+                    "select NUMERO_FACTURA from [SERVOMOTOR].FACTURAS f JOIN [SERVOMOTOR].EMPRESAS e ON e.CUIT LIKE f.CUIT_EMPRESA JOIN [SERVOMOTOR].CLIENTES C ON C.DNI LIKE F.DNI_CLIENTE where ESTADO='no paga' AND e.ESTADO_ACTIVACION=1 AND C.ESTADO_HABILITACION=1 AND f.FECHA_VENCIMIENTO>='" + DateTime.Now + "' ",
                      Program.conexion()
                  );
 
