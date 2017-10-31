@@ -69,6 +69,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PantallaPrincipalABMCliente";
             this.Load += new System.EventHandler(this.Alta_Load);
             this.ResumeLayout(false);

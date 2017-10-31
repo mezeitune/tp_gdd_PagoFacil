@@ -83,6 +83,7 @@
             this.Controls.Add(this.Modificacion);
             this.Controls.Add(this.Baja);
             this.Controls.Add(this.Alta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "PantallaPrincipalABMEmpresa";
             this.Text = "ABM Empresa";

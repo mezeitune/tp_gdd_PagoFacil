@@ -41,13 +41,13 @@
             this.Buscar = new System.Windows.Forms.Button();
             this.Limpiar = new System.Windows.Forms.Button();
             this.Listado = new System.Windows.Forms.DataGridView();
-            this.Direccion = new System.Windows.Forms.TextBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCUIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRubro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             DatosDeBusqueda = new System.Windows.Forms.GroupBox();
             DatosDeBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Listado)).BeginInit();
@@ -172,17 +172,6 @@
             this.Listado.Size = new System.Drawing.Size(499, 327);
             this.Listado.TabIndex = 7;
             // 
-            // Direccion
-            // 
-            this.Direccion.Location = new System.Drawing.Point(75, 24);
-            this.Direccion.Name = "Direccion";
-            this.Direccion.Size = new System.Drawing.Size(160, 25);
-            this.Direccion.TabIndex = 0;
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
             // ColNombre
             // 
             this.ColNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -222,6 +211,17 @@
             this.ColEstado.Name = "ColEstado";
             this.ColEstado.ReadOnly = true;
             // 
+            // Direccion
+            // 
+            this.Direccion.Location = new System.Drawing.Point(75, 24);
+            this.Direccion.Name = "Direccion";
+            this.Direccion.Size = new System.Drawing.Size(160, 25);
+            this.Direccion.TabIndex = 0;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // ListadoEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -231,6 +231,7 @@
             this.Controls.Add(this.Limpiar);
             this.Controls.Add(this.Buscar);
             this.Controls.Add(DatosDeBusqueda);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "ListadoEmpresas";
             this.Text = "Seleccionar empresa";

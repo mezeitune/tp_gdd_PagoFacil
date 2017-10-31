@@ -35,9 +35,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(75, 142);
+            this.button1.Location = new System.Drawing.Point(100, 164);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 43);
+            this.button1.Size = new System.Drawing.Size(179, 50);
             this.button1.TabIndex = 5;
             this.button1.Text = " BAJA - MODIFICACION";
             this.button1.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(75, 39);
+            this.button2.Location = new System.Drawing.Point(100, 45);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 46);
+            this.button2.Size = new System.Drawing.Size(179, 53);
             this.button2.TabIndex = 3;
             this.button2.Text = "ALTA";
             this.button2.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(208, 240);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(277, 277);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 6;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -65,12 +68,14 @@
             // 
             // PantallaPrincipalABMFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(379, 302);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "PantallaPrincipalABMFactura";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

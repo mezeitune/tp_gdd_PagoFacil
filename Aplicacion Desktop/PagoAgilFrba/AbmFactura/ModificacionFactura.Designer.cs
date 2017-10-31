@@ -37,9 +37,10 @@
             // 
             // BajaLogicaCliente
             // 
-            this.BajaLogicaCliente.Location = new System.Drawing.Point(195, 144);
+            this.BajaLogicaCliente.Location = new System.Drawing.Point(260, 166);
+            this.BajaLogicaCliente.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BajaLogicaCliente.Name = "BajaLogicaCliente";
-            this.BajaLogicaCliente.Size = new System.Drawing.Size(96, 38);
+            this.BajaLogicaCliente.Size = new System.Drawing.Size(128, 44);
             this.BajaLogicaCliente.TabIndex = 33;
             this.BajaLogicaCliente.Text = "Modificar Factura";
             this.BajaLogicaCliente.UseVisualStyleBackColor = true;
@@ -48,36 +49,40 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 78);
+            this.label4.Location = new System.Drawing.Point(16, 90);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.Size = new System.Drawing.Size(143, 15);
             this.label4.TabIndex = 32;
             this.label4.Text = "Numero de Factura";
             // 
             // comboBoxNroFacturaModif
             // 
             this.comboBoxNroFacturaModif.FormattingEnabled = true;
-            this.comboBoxNroFacturaModif.Location = new System.Drawing.Point(180, 70);
+            this.comboBoxNroFacturaModif.Location = new System.Drawing.Point(240, 81);
+            this.comboBoxNroFacturaModif.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBoxNroFacturaModif.Name = "comboBoxNroFacturaModif";
-            this.comboBoxNroFacturaModif.Size = new System.Drawing.Size(330, 21);
+            this.comboBoxNroFacturaModif.Size = new System.Drawing.Size(439, 23);
             this.comboBoxNroFacturaModif.TabIndex = 31;
             this.comboBoxNroFacturaModif.SelectedIndexChanged += new System.EventHandler(this.comboBoxNroFacturaModif_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 28);
+            this.label1.Location = new System.Drawing.Point(16, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(498, 13);
+            this.label1.Size = new System.Drawing.Size(823, 15);
             this.label1.TabIndex = 30;
             this.label1.Text = "Elija una Factura a modificar, recuerde que no apareceran las facturas pagas como" +
     " tambien las rendidas";
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(435, 159);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(580, 183);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 61;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -85,14 +90,16 @@
             // 
             // ModificacionFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 187);
+            this.ClientSize = new System.Drawing.Size(688, 216);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.BajaLogicaCliente);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxNroFacturaModif);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ModificacionFactura";
             this.Text = "ModificacionFactura";
             this.Load += new System.EventHandler(this.ModificacionFactura_Load);

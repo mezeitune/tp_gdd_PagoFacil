@@ -39,9 +39,6 @@
             this.limpiar = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bajaLogica = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.dnii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,41 +51,48 @@
             this.fechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codPos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bajaLogica = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 64);
+            this.label3.Location = new System.Drawing.Point(280, 74);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(71, 15);
             this.label3.TabIndex = 28;
             this.label3.Text = "Apellido";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(429, 64);
+            this.label2.Location = new System.Drawing.Point(572, 74);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 27;
             this.label2.Text = "DNI";
             // 
             // Nombre
             // 
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(2, 67);
+            this.Nombre.Location = new System.Drawing.Point(3, 77);
+            this.Nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(44, 13);
+            this.Nombre.Size = new System.Drawing.Size(55, 15);
             this.Nombre.TabIndex = 26;
             this.Nombre.Text = "Nombre";
             // 
             // buscar
             // 
-            this.buscar.Location = new System.Drawing.Point(262, 100);
+            this.buscar.Location = new System.Drawing.Point(349, 115);
+            this.buscar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buscar.Name = "buscar";
-            this.buscar.Size = new System.Drawing.Size(116, 23);
+            this.buscar.Size = new System.Drawing.Size(155, 27);
             this.buscar.TabIndex = 25;
             this.buscar.Text = "Buscar";
             this.buscar.UseVisualStyleBackColor = true;
@@ -96,39 +100,44 @@
             // 
             // txtDniExacto
             // 
-            this.txtDniExacto.Location = new System.Drawing.Point(461, 64);
+            this.txtDniExacto.Location = new System.Drawing.Point(615, 74);
+            this.txtDniExacto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDniExacto.Name = "txtDniExacto";
-            this.txtDniExacto.Size = new System.Drawing.Size(124, 20);
+            this.txtDniExacto.Size = new System.Drawing.Size(164, 25);
             this.txtDniExacto.TabIndex = 24;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(262, 64);
+            this.txtApellido.Location = new System.Drawing.Point(349, 74);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(127, 20);
+            this.txtApellido.Size = new System.Drawing.Size(168, 25);
             this.txtApellido.TabIndex = 23;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(52, 64);
+            this.txtNombre.Location = new System.Drawing.Point(69, 74);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(134, 20);
+            this.txtNombre.Size = new System.Drawing.Size(177, 25);
             this.txtNombre.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 34);
+            this.label1.Location = new System.Drawing.Point(85, 39);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(361, 13);
+            this.label1.Size = new System.Drawing.Size(623, 15);
             this.label1.TabIndex = 21;
             this.label1.Text = "Ingrese el nombre, apellido o dni (este ultimo exacto) para buscar un cliente";
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(77, 100);
+            this.limpiar.Location = new System.Drawing.Point(103, 115);
+            this.limpiar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.Size = new System.Drawing.Size(100, 27);
             this.limpiar.TabIndex = 58;
             this.limpiar.Text = "Limpiar";
             this.limpiar.UseVisualStyleBackColor = true;
@@ -136,9 +145,10 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(510, 354);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(680, 408);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 59;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -162,41 +172,13 @@
             this.fechaNacimiento,
             this.codPos,
             this.estadoCliente});
-            this.dataGridView1.Location = new System.Drawing.Point(5, 165);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 190);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(580, 166);
+            this.dataGridView1.Size = new System.Drawing.Size(773, 192);
             this.dataGridView1.TabIndex = 78;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarCliente);
-            // 
-            // bajaLogica
-            // 
-            this.bajaLogica.Location = new System.Drawing.Point(77, 354);
-            this.bajaLogica.Name = "bajaLogica";
-            this.bajaLogica.Size = new System.Drawing.Size(109, 23);
-            this.bajaLogica.TabIndex = 79;
-            this.bajaLogica.Text = "Baja Logica";
-            this.bajaLogica.UseVisualStyleBackColor = true;
-            this.bajaLogica.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(262, 354);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 80;
-            this.button1.Text = "Modificar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(281, 13);
-            this.label4.TabIndex = 81;
-            this.label4.Text = "Haga click en el cliente que quiera modificar o dar de baja";
             // 
             // dnii
             // 
@@ -204,7 +186,7 @@
             this.dnii.HeaderText = "DNI";
             this.dnii.Name = "dnii";
             this.dnii.ReadOnly = true;
-            this.dnii.Width = 51;
+            this.dnii.Width = 60;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -212,7 +194,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "NOMBRE";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 79;
+            this.dataGridViewTextBoxColumn1.Width = 84;
             // 
             // DNI
             // 
@@ -220,7 +202,6 @@
             this.DNI.HeaderText = "APELLIDO";
             this.DNI.Name = "DNI";
             this.DNI.ReadOnly = true;
-            this.DNI.Width = 84;
             // 
             // mailCliente
             // 
@@ -234,7 +215,7 @@
             this.telefono.HeaderText = "TEL";
             this.telefono.Name = "telefono";
             this.telefono.ReadOnly = true;
-            this.telefono.Width = 52;
+            this.telefono.Width = 60;
             // 
             // calleCliente
             // 
@@ -248,7 +229,6 @@
             this.nroPiso.HeaderText = "Nro PISO";
             this.nroPiso.Name = "nroPiso";
             this.nroPiso.ReadOnly = true;
-            this.nroPiso.Width = 77;
             // 
             // departamento
             // 
@@ -256,7 +236,7 @@
             this.departamento.HeaderText = "DEPTO";
             this.departamento.Name = "departamento";
             this.departamento.ReadOnly = true;
-            this.departamento.Width = 69;
+            this.departamento.Width = 76;
             // 
             // locCliente
             // 
@@ -270,7 +250,7 @@
             this.fechaNacimiento.HeaderText = "FECHA NAC";
             this.fechaNacimiento.Name = "fechaNacimiento";
             this.fechaNacimiento.ReadOnly = true;
-            this.fechaNacimiento.Width = 92;
+            this.fechaNacimiento.Width = 108;
             // 
             // codPos
             // 
@@ -278,6 +258,7 @@
             this.codPos.HeaderText = "COD POSTAL";
             this.codPos.Name = "codPos";
             this.codPos.ReadOnly = true;
+            this.codPos.Width = 116;
             // 
             // estadoCliente
             // 
@@ -285,11 +266,43 @@
             this.estadoCliente.Name = "estadoCliente";
             this.estadoCliente.ReadOnly = true;
             // 
+            // bajaLogica
+            // 
+            this.bajaLogica.Location = new System.Drawing.Point(103, 408);
+            this.bajaLogica.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.bajaLogica.Name = "bajaLogica";
+            this.bajaLogica.Size = new System.Drawing.Size(145, 27);
+            this.bajaLogica.TabIndex = 79;
+            this.bajaLogica.Text = "Baja Logica";
+            this.bajaLogica.UseVisualStyleBackColor = true;
+            this.bajaLogica.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(349, 408);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 27);
+            this.button1.TabIndex = 80;
+            this.button1.Text = "Modificar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(85, 157);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(479, 15);
+            this.label4.TabIndex = 81;
+            this.label4.Text = "Haga click en el cliente que quiera modificar o dar de baja";
+            // 
             // ModificacionClienteee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 389);
+            this.ClientSize = new System.Drawing.Size(785, 449);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bajaLogica);
@@ -304,8 +317,10 @@
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ModificacionClienteee";
-            this.Text = "Baja_Modificacion_Cliente";
+            this.Text = "Baja Modificacion Cliente";
             this.Load += new System.EventHandler(this.Baja_Modificacion_Cliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

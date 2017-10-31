@@ -41,41 +41,46 @@
             // 
             // txtNombreSucursal
             // 
-            this.txtNombreSucursal.Location = new System.Drawing.Point(119, 33);
+            this.txtNombreSucursal.Location = new System.Drawing.Point(159, 38);
+            this.txtNombreSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombreSucursal.Name = "txtNombreSucursal";
-            this.txtNombreSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtNombreSucursal.Size = new System.Drawing.Size(256, 25);
             this.txtNombreSucursal.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 36);
+            this.label2.Location = new System.Drawing.Point(48, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 13;
             this.label2.Text = "Nombre";
             // 
             // txtCodPostalSucursal
             // 
-            this.txtCodPostalSucursal.Location = new System.Drawing.Point(119, 125);
+            this.txtCodPostalSucursal.Location = new System.Drawing.Point(159, 144);
+            this.txtCodPostalSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCodPostalSucursal.Name = "txtCodPostalSucursal";
-            this.txtCodPostalSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtCodPostalSucursal.Size = new System.Drawing.Size(256, 25);
             this.txtCodPostalSucursal.TabIndex = 23;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(36, 125);
+            this.label11.Location = new System.Drawing.Point(48, 144);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 13);
+            this.label11.Size = new System.Drawing.Size(111, 15);
             this.label11.TabIndex = 22;
             this.label11.Text = "Codigo postal";
             // 
             // DarAltaSucursal
             // 
-            this.DarAltaSucursal.Location = new System.Drawing.Point(140, 174);
+            this.DarAltaSucursal.Location = new System.Drawing.Point(187, 201);
+            this.DarAltaSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DarAltaSucursal.Name = "DarAltaSucursal";
-            this.DarAltaSucursal.Size = new System.Drawing.Size(109, 34);
+            this.DarAltaSucursal.Size = new System.Drawing.Size(145, 39);
             this.DarAltaSucursal.TabIndex = 24;
             this.DarAltaSucursal.Text = "Dar de alta sucursal";
             this.DarAltaSucursal.UseVisualStyleBackColor = true;
@@ -83,25 +88,28 @@
             // 
             // txtDireccionSucursal
             // 
-            this.txtDireccionSucursal.Location = new System.Drawing.Point(119, 79);
+            this.txtDireccionSucursal.Location = new System.Drawing.Point(159, 91);
+            this.txtDireccionSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDireccionSucursal.Name = "txtDireccionSucursal";
-            this.txtDireccionSucursal.Size = new System.Drawing.Size(193, 20);
+            this.txtDireccionSucursal.Size = new System.Drawing.Size(256, 25);
             this.txtDireccionSucursal.TabIndex = 26;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 79);
+            this.label1.Location = new System.Drawing.Point(48, 91);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 25;
             this.label1.Text = "Direccion";
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(13, 180);
+            this.limpiar.Location = new System.Drawing.Point(17, 208);
+            this.limpiar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.Size = new System.Drawing.Size(100, 27);
             this.limpiar.TabIndex = 31;
             this.limpiar.Text = "Limpiar";
             this.limpiar.UseVisualStyleBackColor = true;
@@ -109,9 +117,10 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(287, 180);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(383, 208);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 64;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -119,9 +128,9 @@
             // 
             // AltaSucursal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 220);
+            this.ClientSize = new System.Drawing.Size(517, 254);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.txtDireccionSucursal);
@@ -131,6 +140,8 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtNombreSucursal);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "AltaSucursal";
             this.Text = "AltaSucursal";
             this.Load += new System.EventHandler(this.AltaSucursal_Load);

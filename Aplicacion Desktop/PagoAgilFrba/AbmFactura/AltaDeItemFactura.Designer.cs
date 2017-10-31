@@ -50,9 +50,10 @@
             // 
             // botonGuardarUnItem
             // 
-            this.botonGuardarUnItem.Location = new System.Drawing.Point(110, 235);
+            this.botonGuardarUnItem.Location = new System.Drawing.Point(147, 271);
+            this.botonGuardarUnItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.botonGuardarUnItem.Name = "botonGuardarUnItem";
-            this.botonGuardarUnItem.Size = new System.Drawing.Size(84, 33);
+            this.botonGuardarUnItem.Size = new System.Drawing.Size(112, 38);
             this.botonGuardarUnItem.TabIndex = 60;
             this.botonGuardarUnItem.Text = "Guardar Item";
             this.botonGuardarUnItem.UseVisualStyleBackColor = true;
@@ -60,49 +61,55 @@
             // 
             // txtCantidadDeItems
             // 
-            this.txtCantidadDeItems.Location = new System.Drawing.Point(439, 49);
+            this.txtCantidadDeItems.Location = new System.Drawing.Point(585, 57);
+            this.txtCantidadDeItems.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCantidadDeItems.Name = "txtCantidadDeItems";
-            this.txtCantidadDeItems.Size = new System.Drawing.Size(54, 20);
+            this.txtCantidadDeItems.Size = new System.Drawing.Size(71, 25);
             this.txtCantidadDeItems.TabIndex = 56;
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(301, 49);
+            this.txtMontoItem.Location = new System.Drawing.Point(401, 57);
+            this.txtMontoItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMontoItem.Name = "txtMontoItem";
-            this.txtMontoItem.Size = new System.Drawing.Size(67, 20);
+            this.txtMontoItem.Size = new System.Drawing.Size(88, 25);
             this.txtMontoItem.TabIndex = 55;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(381, 52);
+            this.label3.Location = new System.Drawing.Point(508, 60);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(79, 15);
             this.label3.TabIndex = 51;
             this.label3.Text = "Cantidad:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(256, 52);
+            this.label2.Location = new System.Drawing.Point(341, 60);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(71, 15);
             this.label2.TabIndex = 50;
             this.label2.Text = "Monto: $";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(370, 143);
+            this.label1.Location = new System.Drawing.Point(493, 165);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 49;
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(16, 240);
+            this.limpiar.Location = new System.Drawing.Point(21, 277);
+            this.limpiar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.Size = new System.Drawing.Size(100, 27);
             this.limpiar.TabIndex = 61;
             this.limpiar.Text = "Limpiar";
             this.limpiar.UseVisualStyleBackColor = true;
@@ -110,9 +117,10 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(420, 240);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(560, 277);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 77;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -120,9 +128,10 @@
             // 
             // generarFactura
             // 
-            this.generarFactura.Location = new System.Drawing.Point(210, 230);
+            this.generarFactura.Location = new System.Drawing.Point(280, 265);
+            this.generarFactura.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.generarFactura.Name = "generarFactura";
-            this.generarFactura.Size = new System.Drawing.Size(109, 42);
+            this.generarFactura.Size = new System.Drawing.Size(145, 48);
             this.generarFactura.TabIndex = 78;
             this.generarFactura.Text = "Generar Factura";
             this.generarFactura.UseVisualStyleBackColor = true;
@@ -131,17 +140,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 52);
+            this.label4.Location = new System.Drawing.Point(17, 60);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(103, 15);
             this.label4.TabIndex = 79;
             this.label4.Text = "Descripcion:";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(82, 49);
+            this.txtDescripcion.Location = new System.Drawing.Point(109, 57);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(157, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(208, 25);
             this.txtDescripcion.TabIndex = 80;
             // 
             // dataGridView1
@@ -153,10 +164,11 @@
             this.descripcion,
             this.monto,
             this.cantidad});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 110);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(477, 116);
+            this.dataGridView1.Size = new System.Drawing.Size(636, 134);
             this.dataGridView1.TabIndex = 81;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.seleccionarItem);
             // 
@@ -184,17 +196,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 20);
+            this.label5.Location = new System.Drawing.Point(20, 23);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(252, 13);
+            this.label5.Size = new System.Drawing.Size(439, 15);
             this.label5.TabIndex = 82;
             this.label5.Text = "Ingrese los datos de los items de la factura a cargar.";
             // 
             // eliminarUnItem
             // 
-            this.eliminarUnItem.Location = new System.Drawing.Point(334, 235);
+            this.eliminarUnItem.Location = new System.Drawing.Point(445, 271);
+            this.eliminarUnItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.eliminarUnItem.Name = "eliminarUnItem";
-            this.eliminarUnItem.Size = new System.Drawing.Size(80, 33);
+            this.eliminarUnItem.Size = new System.Drawing.Size(107, 38);
             this.eliminarUnItem.TabIndex = 83;
             this.eliminarUnItem.Text = "Eliminar Item";
             this.eliminarUnItem.UseVisualStyleBackColor = true;
@@ -202,9 +216,9 @@
             // 
             // AltaDeItemFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 289);
+            this.ClientSize = new System.Drawing.Size(684, 333);
             this.Controls.Add(this.eliminarUnItem);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
@@ -219,6 +233,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "AltaDeItemFactura";
             this.Text = "AltaDeItemFactura";
             this.Load += new System.EventHandler(this.AltaDeItemFactura_Load);

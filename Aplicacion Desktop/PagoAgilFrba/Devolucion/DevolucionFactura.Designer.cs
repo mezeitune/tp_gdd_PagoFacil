@@ -36,27 +36,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.motivosDevolucion = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboFacturasADevolver = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.num_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha_venc_fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuit_empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboFacturasADevolver = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(526, 405);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(701, 467);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 71;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -64,9 +65,10 @@
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(12, 405);
+            this.limpiar.Location = new System.Drawing.Point(16, 467);
+            this.limpiar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.Size = new System.Drawing.Size(100, 27);
             this.limpiar.TabIndex = 70;
             this.limpiar.Text = "Limpiar";
             this.limpiar.UseVisualStyleBackColor = true;
@@ -74,9 +76,10 @@
             // 
             // registrarDevolucion
             // 
-            this.registrarDevolucion.Location = new System.Drawing.Point(260, 394);
+            this.registrarDevolucion.Location = new System.Drawing.Point(347, 455);
+            this.registrarDevolucion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.registrarDevolucion.Name = "registrarDevolucion";
-            this.registrarDevolucion.Size = new System.Drawing.Size(109, 34);
+            this.registrarDevolucion.Size = new System.Drawing.Size(145, 39);
             this.registrarDevolucion.TabIndex = 69;
             this.registrarDevolucion.Text = "Registrar Devolucion";
             this.registrarDevolucion.UseVisualStyleBackColor = true;
@@ -91,9 +94,11 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.comboFacturasADevolver);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 14);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(589, 298);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox1.Size = new System.Drawing.Size(785, 344);
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Devolucion";
@@ -101,27 +106,30 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 25);
+            this.label2.Location = new System.Drawing.Point(8, 29);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 13);
+            this.label2.Size = new System.Drawing.Size(295, 15);
             this.label2.TabIndex = 82;
             this.label2.Text = "Seleccione la/s factura/s a devolver";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 275);
+            this.label1.Location = new System.Drawing.Point(8, 317);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.Size = new System.Drawing.Size(151, 15);
             this.label1.TabIndex = 72;
             this.label1.Text = "Motivo Devolucion:";
             // 
             // motivosDevolucion
             // 
             this.motivosDevolucion.FormattingEnabled = true;
-            this.motivosDevolucion.Location = new System.Drawing.Point(213, 267);
+            this.motivosDevolucion.Location = new System.Drawing.Point(284, 308);
+            this.motivosDevolucion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.motivosDevolucion.Name = "motivosDevolucion";
-            this.motivosDevolucion.Size = new System.Drawing.Size(231, 21);
+            this.motivosDevolucion.Size = new System.Drawing.Size(307, 23);
             this.motivosDevolucion.TabIndex = 81;
             this.motivosDevolucion.SelectedIndexChanged += new System.EventHandler(this.motivosDevolucion_SelectedIndexChanged);
             // 
@@ -137,66 +145,12 @@
             this.cuit_empresa,
             this.totalFactura,
             this.numeroPago});
-            this.dataGridView1.Location = new System.Drawing.Point(9, 86);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 99);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(568, 164);
+            this.dataGridView1.Size = new System.Drawing.Size(757, 189);
             this.dataGridView1.TabIndex = 80;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(463, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
-            this.button1.TabIndex = 79;
-            this.button1.Text = "Agregar Factura";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboFacturasADevolver
-            // 
-            this.comboFacturasADevolver.FormattingEnabled = true;
-            this.comboFacturasADevolver.Location = new System.Drawing.Point(213, 47);
-            this.comboFacturasADevolver.Name = "comboFacturasADevolver";
-            this.comboFacturasADevolver.Size = new System.Drawing.Size(231, 21);
-            this.comboFacturasADevolver.TabIndex = 66;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 13);
-            this.label10.TabIndex = 59;
-            this.label10.Text = "Numero de Factura:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 340);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(458, 13);
-            this.label4.TabIndex = 84;
-            this.label4.Text = "Si esto ocurre, por favor, dirijase a \"Modifacion\" ubicada en \"ABM\" para corrobar" +
-    " la informacion";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 360);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(309, 13);
-            this.label8.TabIndex = 89;
-            this.label8.Text = "Nota 2: Las facturas ya rendidas no se mostraran para devolver.";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 327);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(381, 13);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "Nota: Si no puede visualizar algun dato es probable que no este/n habilitado/s.";
             // 
             // num_fact
             // 
@@ -240,11 +194,72 @@
             this.numeroPago.Name = "numeroPago";
             this.numeroPago.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(617, 52);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(152, 27);
+            this.button1.TabIndex = 79;
+            this.button1.Text = "Agregar Factura";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboFacturasADevolver
+            // 
+            this.comboFacturasADevolver.FormattingEnabled = true;
+            this.comboFacturasADevolver.Location = new System.Drawing.Point(284, 54);
+            this.comboFacturasADevolver.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.comboFacturasADevolver.Name = "comboFacturasADevolver";
+            this.comboFacturasADevolver.Size = new System.Drawing.Size(307, 23);
+            this.comboFacturasADevolver.TabIndex = 66;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 63);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(151, 15);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "Numero de Factura:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 392);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(775, 15);
+            this.label4.TabIndex = 84;
+            this.label4.Text = "Si esto ocurre, por favor, dirijase a \"Modifacion\" ubicada en \"ABM\" para corrobar" +
+    " la informacion";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 415);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(511, 15);
+            this.label8.TabIndex = 89;
+            this.label8.Text = "Nota 2: Las facturas ya rendidas no se mostraran para devolver.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 377);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(639, 15);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "Nota: Si no puede visualizar algun dato es probable que no este/n habilitado/s.";
+            // 
             // DevolucionFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 440);
+            this.ClientSize = new System.Drawing.Size(831, 508);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
@@ -252,6 +267,8 @@
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.registrarDevolucion);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DevolucionFactura";
             this.Text = "DevolucionFactura";
             this.Load += new System.EventHandler(this.DevolucionFactura_Load);

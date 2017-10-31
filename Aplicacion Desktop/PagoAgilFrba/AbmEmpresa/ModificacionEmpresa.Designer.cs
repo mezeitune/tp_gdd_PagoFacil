@@ -53,16 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // Actualizar
-            // 
-            this.Actualizar.Location = new System.Drawing.Point(259, 193);
-            this.Actualizar.Name = "Actualizar";
-            this.Actualizar.Size = new System.Drawing.Size(147, 32);
-            this.Actualizar.TabIndex = 7;
-            this.Actualizar.Text = "&Actualizar";
-            this.Actualizar.UseVisualStyleBackColor = true;
-            this.Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
-            // 
             // Deshacer
             // 
             Deshacer.Location = new System.Drawing.Point(12, 193);
@@ -72,6 +62,34 @@
             Deshacer.Text = "&Deshacer todo";
             Deshacer.UseVisualStyleBackColor = true;
             Deshacer.Click += new System.EventHandler(this.Deshacer_Click);
+            // 
+            // guion2
+            // 
+            guion2.AutoSize = true;
+            guion2.Location = new System.Drawing.Point(329, 58);
+            guion2.Name = "guion2";
+            guion2.Size = new System.Drawing.Size(15, 15);
+            guion2.TabIndex = 17;
+            guion2.Text = "-";
+            // 
+            // guion1
+            // 
+            guion1.AutoSize = true;
+            guion1.Location = new System.Drawing.Point(157, 58);
+            guion1.Name = "guion1";
+            guion1.Size = new System.Drawing.Size(15, 15);
+            guion1.TabIndex = 16;
+            guion1.Text = "-";
+            // 
+            // Actualizar
+            // 
+            this.Actualizar.Location = new System.Drawing.Point(259, 193);
+            this.Actualizar.Name = "Actualizar";
+            this.Actualizar.Size = new System.Drawing.Size(147, 32);
+            this.Actualizar.TabIndex = 7;
+            this.Actualizar.Text = "&Actualizar";
+            this.Actualizar.UseVisualStyleBackColor = true;
+            this.Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
             // 
             // GroupBoxDatos
             // 
@@ -94,24 +112,6 @@
             this.GroupBoxDatos.TabIndex = 8;
             this.GroupBoxDatos.TabStop = false;
             this.GroupBoxDatos.Text = "Datos de empresa";
-            // 
-            // guion2
-            // 
-            guion2.AutoSize = true;
-            guion2.Location = new System.Drawing.Point(329, 58);
-            guion2.Name = "guion2";
-            guion2.Size = new System.Drawing.Size(15, 15);
-            guion2.TabIndex = 17;
-            guion2.Text = "-";
-            // 
-            // guion1
-            // 
-            guion1.AutoSize = true;
-            guion1.Location = new System.Drawing.Point(157, 58);
-            guion1.Name = "guion1";
-            guion1.Size = new System.Drawing.Size(15, 15);
-            guion1.TabIndex = 16;
-            guion1.Text = "-";
             // 
             // CUITVerificador
             // 
@@ -228,6 +228,7 @@
             this.Controls.Add(this.Actualizar);
             this.Controls.Add(Deshacer);
             this.Controls.Add(this.GroupBoxDatos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ModificacionEmpresa";
             this.Text = "Modificar empresa";
             this.Load += new System.EventHandler(this.ModificacionEmpresa_Load);

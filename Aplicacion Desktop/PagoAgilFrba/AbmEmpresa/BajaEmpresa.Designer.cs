@@ -159,6 +159,7 @@
             this.Controls.Add(this.DarDeBaja);
             this.Controls.Add(Limpiar);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "BajaEmpresa";
             this.Text = "Baja Empresa";

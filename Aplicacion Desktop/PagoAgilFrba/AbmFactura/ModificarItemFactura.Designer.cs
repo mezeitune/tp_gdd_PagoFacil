@@ -40,9 +40,10 @@
             // 
             // botonModificarUnItem
             // 
-            this.botonModificarUnItem.Location = new System.Drawing.Point(171, 138);
+            this.botonModificarUnItem.Location = new System.Drawing.Point(228, 159);
+            this.botonModificarUnItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.botonModificarUnItem.Name = "botonModificarUnItem";
-            this.botonModificarUnItem.Size = new System.Drawing.Size(109, 34);
+            this.botonModificarUnItem.Size = new System.Drawing.Size(145, 39);
             this.botonModificarUnItem.TabIndex = 66;
             this.botonModificarUnItem.Text = "Modificar Item";
             this.botonModificarUnItem.UseVisualStyleBackColor = true;
@@ -50,49 +51,55 @@
             // 
             // txtCantidadItem
             // 
-            this.txtCantidadItem.Location = new System.Drawing.Point(154, 84);
+            this.txtCantidadItem.Location = new System.Drawing.Point(205, 97);
+            this.txtCantidadItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtCantidadItem.Name = "txtCantidadItem";
-            this.txtCantidadItem.Size = new System.Drawing.Size(193, 20);
+            this.txtCantidadItem.Size = new System.Drawing.Size(256, 25);
             this.txtCantidadItem.TabIndex = 65;
             // 
             // txtMontoItem
             // 
-            this.txtMontoItem.Location = new System.Drawing.Point(154, 43);
+            this.txtMontoItem.Location = new System.Drawing.Point(205, 50);
+            this.txtMontoItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMontoItem.Name = "txtMontoItem";
-            this.txtMontoItem.Size = new System.Drawing.Size(193, 20);
+            this.txtMontoItem.Size = new System.Drawing.Size(256, 25);
             this.txtMontoItem.TabIndex = 64;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 87);
+            this.label3.Location = new System.Drawing.Point(53, 100);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(71, 15);
             this.label3.TabIndex = 63;
             this.label3.Text = "Cantidad";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 46);
+            this.label2.Location = new System.Drawing.Point(53, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 13);
+            this.label2.Size = new System.Drawing.Size(455, 15);
             this.label2.TabIndex = 62;
             this.label2.Text = "Monto                       $                           ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 165);
+            this.label1.Location = new System.Drawing.Point(513, 190);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 61;
             // 
             // limpiar
             // 
-            this.limpiar.Location = new System.Drawing.Point(23, 144);
+            this.limpiar.Location = new System.Drawing.Point(31, 166);
+            this.limpiar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.limpiar.Name = "limpiar";
-            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.Size = new System.Drawing.Size(100, 27);
             this.limpiar.TabIndex = 67;
             this.limpiar.Text = "Limpiar";
             this.limpiar.UseVisualStyleBackColor = true;
@@ -100,9 +107,10 @@
             // 
             // volverALaPaginaAnterior
             // 
-            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(363, 144);
+            this.volverALaPaginaAnterior.Location = new System.Drawing.Point(484, 166);
+            this.volverALaPaginaAnterior.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.volverALaPaginaAnterior.Name = "volverALaPaginaAnterior";
-            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(75, 23);
+            this.volverALaPaginaAnterior.Size = new System.Drawing.Size(100, 27);
             this.volverALaPaginaAnterior.TabIndex = 68;
             this.volverALaPaginaAnterior.Text = "Volver";
             this.volverALaPaginaAnterior.UseVisualStyleBackColor = true;
@@ -110,9 +118,9 @@
             // 
             // ModificarItemFactura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 190);
+            this.ClientSize = new System.Drawing.Size(599, 219);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.limpiar);
             this.Controls.Add(this.botonModificarUnItem);
@@ -121,6 +129,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ModificarItemFactura";
             this.Text = "ModificarItemFactura";
             this.Load += new System.EventHandler(this.ModificarItemFactura_Load);

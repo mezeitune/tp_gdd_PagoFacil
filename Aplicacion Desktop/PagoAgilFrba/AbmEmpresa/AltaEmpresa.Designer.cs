@@ -215,6 +215,7 @@
             this.Controls.Add(this.DarDeAlta);
             this.Controls.Add(Limpiar);
             this.Controls.Add(this.GroupBoxDatos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "AltaEmpresa";
             this.Text = "Alta Empresa";
