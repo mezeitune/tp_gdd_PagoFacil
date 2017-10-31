@@ -38,6 +38,8 @@ namespace PagoAgilFrba.AbmRol
 
         private void DarDeAlta_Click(object sender, EventArgs e)
         {
+            this.GroupBoxDatos.Enabled = false;
+
             var transaccion = Program.conexion().BeginTransaction();
 
             try
@@ -82,13 +84,19 @@ namespace PagoAgilFrba.AbmRol
             catch (Exception exception)
             {
                 transaccion.Rollback();
-                MessageBox.Show("No se pudo dar de alta el rol.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "No se pudo dar de alta el rol." +
+                    "Revisar que el nuevo nombre de rol no coincida con un rol ya existente.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+                );
+
+                this.GroupBoxDatos.Enabled = true;
                 return;
             }
 
             MessageBox.Show("Se ha dado de alta correctamente", "Todo bien",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)

@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label labelNombreDeRol;
-            System.Windows.Forms.GroupBox groupBox;
             System.Windows.Forms.Button EliminarFuncionalidad;
+            this.GroupBoxDatos = new System.Windows.Forms.GroupBox();
             this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
             this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nombreRol = new System.Windows.Forms.TextBox();
             this.DarDeAlta = new System.Windows.Forms.Button();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             labelNombreDeRol = new System.Windows.Forms.Label();
-            groupBox = new System.Windows.Forms.GroupBox();
             EliminarFuncionalidad = new System.Windows.Forms.Button();
-            groupBox.SuspendLayout();
+            this.GroupBoxDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,18 +52,18 @@
             labelNombreDeRol.TabIndex = 0;
             labelNombreDeRol.Text = "&Nombre de rol:";
             // 
-            // groupBox
+            // GroupBoxDatos
             // 
-            groupBox.Controls.Add(EliminarFuncionalidad);
-            groupBox.Controls.Add(labelNombreDeRol);
-            groupBox.Controls.Add(this.ListadoFuncionalidades);
-            groupBox.Controls.Add(this.nombreRol);
-            groupBox.Location = new System.Drawing.Point(16, 12);
-            groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(484, 295);
-            groupBox.TabIndex = 63;
-            groupBox.TabStop = false;
-            groupBox.Text = "Datos";
+            this.GroupBoxDatos.Controls.Add(EliminarFuncionalidad);
+            this.GroupBoxDatos.Controls.Add(labelNombreDeRol);
+            this.GroupBoxDatos.Controls.Add(this.ListadoFuncionalidades);
+            this.GroupBoxDatos.Controls.Add(this.nombreRol);
+            this.GroupBoxDatos.Location = new System.Drawing.Point(16, 12);
+            this.GroupBoxDatos.Name = "GroupBoxDatos";
+            this.GroupBoxDatos.Size = new System.Drawing.Size(484, 295);
+            this.GroupBoxDatos.TabIndex = 63;
+            this.GroupBoxDatos.TabStop = false;
+            this.GroupBoxDatos.Text = "Datos";
             // 
             // EliminarFuncionalidad
             // 
@@ -137,7 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.volverALaPaginaAnterior;
             this.ClientSize = new System.Drawing.Size(516, 349);
-            this.Controls.Add(groupBox);
+            this.Controls.Add(this.GroupBoxDatos);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.DarDeAlta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -146,8 +145,8 @@
             this.Name = "AltaRol";
             this.Text = "Alta rol";
             this.Load += new System.EventHandler(this.AltaRol_Load);
-            groupBox.ResumeLayout(false);
-            groupBox.PerformLayout();
+            this.GroupBoxDatos.ResumeLayout(false);
+            this.GroupBoxDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).EndInit();
             this.ResumeLayout(false);
 
@@ -159,5 +158,6 @@
         private System.Windows.Forms.Button volverALaPaginaAnterior;
         private System.Windows.Forms.DataGridView ListadoFuncionalidades;
         private System.Windows.Forms.DataGridViewComboBoxColumn Funcionalidad;
+        private System.Windows.Forms.GroupBox GroupBoxDatos;
     }
 }

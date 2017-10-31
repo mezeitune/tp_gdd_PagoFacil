@@ -28,35 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.GroupBox groupBox;
             System.Windows.Forms.Button EliminarFuncionalidad;
             System.Windows.Forms.Label labelNombreDeRol;
+            this.GroupBoxDatos = new System.Windows.Forms.GroupBox();
             this.EstadoHabilitacion = new System.Windows.Forms.CheckBox();
             this.ListadoFuncionalidades = new System.Windows.Forms.DataGridView();
             this.Funcionalidad = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nombreRol = new System.Windows.Forms.TextBox();
             this.volverALaPaginaAnterior = new System.Windows.Forms.Button();
             this.Actualizar = new System.Windows.Forms.Button();
-            groupBox = new System.Windows.Forms.GroupBox();
             EliminarFuncionalidad = new System.Windows.Forms.Button();
             labelNombreDeRol = new System.Windows.Forms.Label();
-            groupBox.SuspendLayout();
+            this.GroupBoxDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox
+            // GroupBoxDatos
             // 
-            groupBox.Controls.Add(EliminarFuncionalidad);
-            groupBox.Controls.Add(this.EstadoHabilitacion);
-            groupBox.Controls.Add(labelNombreDeRol);
-            groupBox.Controls.Add(this.ListadoFuncionalidades);
-            groupBox.Controls.Add(this.nombreRol);
-            groupBox.Location = new System.Drawing.Point(12, 12);
-            groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(484, 285);
-            groupBox.TabIndex = 66;
-            groupBox.TabStop = false;
-            groupBox.Text = "Datos";
+            this.GroupBoxDatos.Controls.Add(EliminarFuncionalidad);
+            this.GroupBoxDatos.Controls.Add(this.EstadoHabilitacion);
+            this.GroupBoxDatos.Controls.Add(labelNombreDeRol);
+            this.GroupBoxDatos.Controls.Add(this.ListadoFuncionalidades);
+            this.GroupBoxDatos.Controls.Add(this.nombreRol);
+            this.GroupBoxDatos.Location = new System.Drawing.Point(12, 12);
+            this.GroupBoxDatos.Name = "GroupBoxDatos";
+            this.GroupBoxDatos.Size = new System.Drawing.Size(484, 285);
+            this.GroupBoxDatos.TabIndex = 66;
+            this.GroupBoxDatos.TabStop = false;
+            this.GroupBoxDatos.Text = "Datos";
             // 
             // EliminarFuncionalidad
             // 
@@ -103,6 +102,8 @@
             this.ListadoFuncionalidades.Size = new System.Drawing.Size(472, 166);
             this.ListadoFuncionalidades.TabIndex = 62;
             this.ListadoFuncionalidades.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListadoFuncionalidades_CellValueChanged);
+            this.ListadoFuncionalidades.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ListadoFuncionalidades_Modified);
+            this.ListadoFuncionalidades.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ListadoFuncionalidades_Modified);
             // 
             // Funcionalidad
             // 
@@ -146,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 342);
-            this.Controls.Add(groupBox);
+            this.Controls.Add(this.GroupBoxDatos);
             this.Controls.Add(this.volverALaPaginaAnterior);
             this.Controls.Add(this.Actualizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -155,8 +156,8 @@
             this.Name = "ModificarDatosRol";
             this.Text = "Modificar rol";
             this.Load += new System.EventHandler(this.ModificarDatosRol_Load);
-            groupBox.ResumeLayout(false);
-            groupBox.PerformLayout();
+            this.GroupBoxDatos.ResumeLayout(false);
+            this.GroupBoxDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListadoFuncionalidades)).EndInit();
             this.ResumeLayout(false);
 
@@ -170,5 +171,6 @@
         private System.Windows.Forms.Button Actualizar;
         private System.Windows.Forms.CheckBox EstadoHabilitacion;
         private System.Windows.Forms.DataGridViewComboBoxColumn Funcionalidad;
+        private System.Windows.Forms.GroupBox GroupBoxDatos;
     }
 }

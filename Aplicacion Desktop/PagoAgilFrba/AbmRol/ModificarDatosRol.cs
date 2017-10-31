@@ -81,10 +81,16 @@ namespace PagoAgilFrba.AbmRol
             }
         }
 
+        // Setea un flag indicando que el usuario había modificado el listado de funcionalidades.
+        private void ListadoFuncionalidades_Modified(object sender, DataGridViewRowEventArgs e)
+        {
+            this.ListadoFuncionalidadesModificado = true;
+        }
+
         private void ListadoFuncionalidades_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
-                this.ListadoFuncionalidadesModificado = true;
+                this.ListadoFuncionalidades_Modified(sender, null);
 
             if (e.RowIndex < 0 || ListadoFuncionalidades.Rows[e.RowIndex]
                 .Cells["Funcionalidad"].Value == null)
@@ -113,67 +119,91 @@ namespace PagoAgilFrba.AbmRol
 
         private void Actualizar_Click(object sender, EventArgs e)
         {
-            var transaccion = Program.conexion().BeginTransaction();
+            GroupBoxDatos.Enabled = false;
 
-            try
+            using (var conexion = Program.conexion())
+            using (var transaccion = conexion.BeginTransaction("ActualizarRol"))
+            using (var cmd = conexion.CreateCommand())
             {
-                var cmd = new SqlCommand(
+                cmd.Connection = conexion;
+                cmd.Transaction = transaccion;
+
+                cmd.CommandText =
                     "UPDATE [SERVOMOTOR].ROLES " +
                     "SET NOMBRE = @NOMBRE, ESTADO = @ESTADO " +
-                    "WHERE ID_ROL = @ID_ROL",
-                    transaccion.Connection
-                );
-
-                cmd.Transaction = transaccion;
+                    "WHERE ID_ROL = @ID_ROL";
 
                 cmd.Parameters.AddWithValue("@ID_ROL", this.IDRol);
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 30).Value = nombreRol.Text;
                 cmd.Parameters.Add("@ESTADO", SqlDbType.Bit).Value = EstadoHabilitacion.Checked;
 
-                cmd.ExecuteNonQuery();
-
-                if (ListadoFuncionalidadesModificado)
+                try
                 {
-                    cmd = new SqlCommand(
-                        "DELETE FROM [SERVOMOTOR].FUNCIONES_ROLES " +
-                        "WHERE ID_ROL = @ID_ROL",
-                        transaccion.Connection
-                    );
-                    cmd.Transaction = transaccion;
-                    cmd.Parameters.AddWithValue("@ID_ROL", this.IDRol);
-                    cmd.ExecuteNonQuery();
+                    if (cmd.ExecuteNonQuery() != 1)
+                        throw new Exception();
 
-                    cmd.CommandText =
-                        "INSERT INTO [SERVOMOTOR].FUNCIONES_ROLES (ID_ROL, ID_FUNC) " +
-                        "  SELECT @ID_ROL, ID_FUNC " +
-                        "  FROM [SERVOMOTOR].FUNCIONALIDADES " +
-                        "  WHERE NOMBRE = @NOMBRE";
-
-                    var paramNombre = cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 60);
-
-                    foreach (DataGridViewRow filaFuncionalidad in ListadoFuncionalidades.Rows)
+                    if (ListadoFuncionalidadesModificado)
                     {
-                        if (filaFuncionalidad.IsNewRow)
-                            continue;
-                        paramNombre.Value = filaFuncionalidad.Cells["Funcionalidad"].Value.ToString();
-                        cmd.ExecuteNonQuery();
-                    }
-                }
+                        // Eliminar todas las funcionalidades primero.
+                        using (var cmdDelete = conexion.CreateCommand())
+                        {
+                            cmdDelete.Connection = conexion;
+                            cmdDelete.Transaction = transaccion;
 
-                transaccion.Commit();
-            }
-            catch (Exception exception)
-            {
-                transaccion.Rollback();
-                MessageBox.Show(
-                    "No se pudo modificar el rol. " +
-                    "Revisar que el nuevo nombre de rol no coincida con un rol ya existente.",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
-                );
-                return;
+                            cmdDelete.CommandText =
+                                "DELETE FROM [SERVOMOTOR].FUNCIONES_ROLES " +
+                                "WHERE ID_ROL = @ID_ROL";
+                            cmdDelete.Parameters.AddWithValue("@ID_ROL", this.IDRol);
+
+                            cmdDelete.ExecuteNonQuery();
+                        }
+
+                        // Insertar las funcionalidades nuevas.
+                        using (var cmdInsert = conexion.CreateCommand())
+                        {
+                            cmdInsert.Connection = conexion;
+                            cmdInsert.Transaction = transaccion;
+
+                            cmdInsert.CommandText =
+                                "INSERT INTO [SERVOMOTOR].FUNCIONES_ROLES (ID_ROL, ID_FUNC) " +
+                                "  SELECT @ID_ROL, ID_FUNC " +
+                                "  FROM [SERVOMOTOR].FUNCIONALIDADES " +
+                                "  WHERE NOMBRE = @NOMBRE";
+                            cmdInsert.Parameters.AddWithValue("@ID_ROL", this.IDRol);
+
+                            var paramNombre = cmdInsert.Parameters.Add("@NOMBRE", SqlDbType.VarChar, 60);
+
+                            foreach (DataGridViewRow filaFuncionalidad in ListadoFuncionalidades.Rows)
+                            {
+                                if (filaFuncionalidad.IsNewRow)
+                                    continue;
+                                paramNombre.Value = filaFuncionalidad.Cells["Funcionalidad"].Value.ToString();
+                                cmdInsert.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    transaccion.Commit();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Message: {0}", exception.Message);
+
+                    transaccion.Rollback();
+                    MessageBox.Show(
+                        "No se pudo modificar el rol. " +
+                        "Revisar que el nuevo nombre de rol no coincida con un rol ya existente.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+                    );
+
+                    GroupBoxDatos.Enabled = true;
+
+                    return;
+                }
             }
 
             MessageBox.Show("Se ha modificado el rol correctamente", "Todo bien", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult = DialogResult.OK;
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
@@ -185,7 +215,10 @@ namespace PagoAgilFrba.AbmRol
         {
             if (ListadoFuncionalidades.SelectedRows.Count > 0 &&
                 !ListadoFuncionalidades.SelectedRows[0].IsNewRow)
+            {
+                this.ListadoFuncionalidades_Modified(sender, null);
                 ListadoFuncionalidades.Rows.Remove(ListadoFuncionalidades.SelectedRows[0]);
+            }
         }
     }
 }
