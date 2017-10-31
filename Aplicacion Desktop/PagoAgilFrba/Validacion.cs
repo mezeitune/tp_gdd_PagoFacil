@@ -303,7 +303,7 @@ namespace PagoAgilFrba
 
         public static Boolean fechaPosteriorALaDeHoy(DateTimePicker dateTimePicker1)
         {
-            if (dateTimePicker1.Value < DateTime.Now.Date)
+            if (dateTimePicker1.Value.Date < DateTime.Now.Date)
             {
                 MessageBox.Show("La fecha ingresada debe ser posterior a la fecha de hoy", "Error en los datos de entrada", MessageBoxButtons.OK);
                 return false;
@@ -313,8 +313,10 @@ namespace PagoAgilFrba
 
         public static Boolean fechaAnteriorALaDeHoy(DateTimePicker dateTimePicker1)
         {
-            if (dateTimePicker1.Value > DateTime.Now.Date)
+            if (dateTimePicker1.Value.Date > DateTime.Now.Date)
             {
+                MessageBox.Show("La fecha ingresada debe ser anterior a la fecha de hoy" + dateTimePicker1.Value + DateTime.Now.Date, "Error en los datos de entrada", MessageBoxButtons.OK);
+                
                 MessageBox.Show("La fecha ingresada debe ser anterior a la fecha de hoy", "Error en los datos de entrada", MessageBoxButtons.OK);
                 return false;
             }

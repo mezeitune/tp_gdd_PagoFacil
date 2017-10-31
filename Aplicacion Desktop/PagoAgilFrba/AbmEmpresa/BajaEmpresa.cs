@@ -37,7 +37,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 }
                 // Código de error = 3
                 // Error al intentar dar de baja una empresa con rendiciones pendientes.
-                catch (SqlException ex) when (ex.State == 3)
+                catch (SqlException ex) 
                 {
                     MessageBox.Show(ex.Message, "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
