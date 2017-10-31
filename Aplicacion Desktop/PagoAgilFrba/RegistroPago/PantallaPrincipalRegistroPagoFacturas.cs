@@ -267,5 +267,10 @@ namespace PagoAgilFrba.RegistroPago
             registrarUnPago.Enabled = true;
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
