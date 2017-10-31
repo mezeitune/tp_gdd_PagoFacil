@@ -102,24 +102,31 @@ namespace PagoAgilFrba.AbmEmpresa
 
                 try
                 {
-                    // ExecuteNonQuery() de por sí podría lanzar otras excepciones.
-                    if (cmd.ExecuteNonQuery() != 1)
-                        throw new Exception();
-                }
-                // Código de error = 3
-                // Error al intentar dar de baja una empresa con rendiciones pendientes.
-                catch (SqlException ex) when (ex.State == 3)
-                {
-                    MessageBox.Show(ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        // ExecuteNonQuery() de por sí podría lanzar otras excepciones.
+                        if (cmd.ExecuteNonQuery() != 1)
+                            throw new Exception();
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ex.State != 3)
+                            throw;      // Va a ser capturado por el catch de afuera.
 
-                    // Como ya se sabe que no se puede deshabilitar la empresa,
-                    //   deshabilitar la opción para deshabilitar.
-                    Habilitar.Checked = true;
-                    Habilitar.Enabled = false;
+                        // Código de error = 3
+                        // Error al intentar dar de baja una empresa con rendiciones pendientes.
 
-                    GroupBoxDatos.Enabled = true;
-                    return;
+                        MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        // Como ya se sabe que no se puede deshabilitar la empresa,
+                        //   deshabilitar la opción para deshabilitar.
+                        Habilitar.Checked = true;
+                        Habilitar.Enabled = false;
+
+                        GroupBoxDatos.Enabled = true;
+                        return;
+                    }
                 }
                 catch (Exception ex)
                 {

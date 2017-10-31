@@ -32,19 +32,28 @@ namespace PagoAgilFrba.AbmEmpresa
 
                 try
                 {
-                    if (cmd.ExecuteNonQuery() != 1)
-                        throw new Exception();
-                }
-                // Código de error = 3
-                // Error al intentar dar de baja una empresa con rendiciones pendientes.
-                catch (SqlException ex) when (ex.State == 3)
-                {
-                    MessageBox.Show(ex.Message, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    try
+                    {
+                        if (cmd.ExecuteNonQuery() != 1)
+                            throw new Exception();
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ex.State != 3)
+                            throw;
+
+                        // Código de error = 3
+                        // Error al intentar dar de baja una empresa con rendiciones pendientes.
+
+                        MessageBox.Show(ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("Message: {0}", ex.Message);
+
                     MessageBox.Show("Error al intentar dar de baja la empresa.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
