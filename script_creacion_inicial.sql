@@ -645,7 +645,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_DirecciÃ³n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -1089,8 +1089,10 @@ BEGIN
   SELECT TOP 5
          CUIT_EMPRESA AS 'CUIT Empresa',
          NOMBRE AS 'Nombre de Empresa',
-         COUNT(NUMERO_PAGO) * 100 / CAST(COUNT(NUMERO_FACTURA) AS FLOAT)
-           AS 'Porcentaje de facturas cobradas'
+         CAST(
+           COUNT(NUMERO_PAGO) * 100 / CAST(COUNT(NUMERO_FACTURA) AS FLOAT)
+             AS NUMERIC(18, 2)
+         ) AS 'Porcentaje de facturas cobradas'
     FROM SERVOMOTOR.FACTURAS AS f
          LEFT JOIN SERVOMOTOR.EMPRESAS AS e
                 ON e.CUIT = f.CUIT_EMPRESA
