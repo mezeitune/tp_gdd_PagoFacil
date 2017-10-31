@@ -645,7 +645,7 @@ INSERT INTO [SERVOMOTOR].[SUCURSALES]
 		NOMBRE,
 		DIRECCION
 )
-SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_DirecciÃ³n]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
+SELECT DISTINCT cast([Sucursal_Codigo_Postal] as varchar) ,[Sucursal_Nombre],[Sucursal_Dirección]  FROM gd_esquema.Maestra WHERE  [Sucursal_Codigo_Postal]  IS NOT NULL
 
 INSERT INTO [SERVOMOTOR].[MEDIOS_DE_PAGO]
 (
@@ -1264,8 +1264,7 @@ BEGIN
 	insert into [SERVOMOTOR].[PAGOS] (FECHA_COBRO,IMPORTE,COD_POSTAL,ID_MEDPAGO,DNI_CLIENTE)   values (@FECHA_COBRO,@IMPORTE,@COD_POSTAL,@ID_MEDPAGO,@DNI_CLIENTE);
                                     
 END
-SELECT * FROM [SERVOMOTOR].[FACTURAS] f JOIN SERVOMOTOR.PAGOS p ON f.NUMERO_PAGO=p.NUMERO_PAGO WHERE CUIT_EMPRESA= '6-18883376-9' AND ESTADO LIKE 'PAGA'
-select * from SERVOMOTOR.FACTURAS
+
 GO
 CREATE PROCEDURE [SERVOMOTOR].insertRendiciones
   (@FECHA_COBRO [datetime],@PORCENTAJE_COMISION  [tinyint],@CANTIDAD_FACTURAS_RENDIDAS [tinyint] ,@PRECIO_COMISION [numeric] (7,2),@TOTAL_RENDIDO [numeric] (7,2),@CUIT_EMPRESA [varchar] (50))
