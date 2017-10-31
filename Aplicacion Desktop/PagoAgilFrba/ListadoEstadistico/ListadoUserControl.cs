@@ -65,13 +65,20 @@ namespace PagoAgilFrba.ListadoEstadistico
                 /* Agregar contenidos del listado. */
                 this.Tabla.Rows.Clear();
 
-                while (dataReader.Read())
+                /* Si devolvió alguna fila. */
+                if (dataReader.HasRows)
                 {
-                    var celdas = new Object[this.Tabla.Columns.Count];
-                    dataReader.GetValues(celdas);
+                    while (dataReader.Read())
+                    {
+                        var celdas = new Object[this.Tabla.Columns.Count];
+                        dataReader.GetValues(celdas);
 
-                    this.Tabla.Rows.Add(celdas);
+                        this.Tabla.Rows.Add(celdas);
+                    }
                 }
+                else
+                    MessageBox.Show("No se encontraron resultados para esta consulta.",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
