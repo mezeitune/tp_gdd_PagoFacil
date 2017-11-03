@@ -82,7 +82,9 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new MenuPrincipal();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void AltaDeItemFactura_Load(object sender, EventArgs e)
@@ -97,11 +99,9 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show("Debe registrar al menos un item ", "error", MessageBoxButtons.OK);
                 return;
             }
-            Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1);
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
-            dataGridView1.ClearSelection();
+            Form formularioSiguiente = new AbmFactura.AltaFactura(dataGridView1); 
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void eliminarUnItem_Click(object sender, EventArgs e)

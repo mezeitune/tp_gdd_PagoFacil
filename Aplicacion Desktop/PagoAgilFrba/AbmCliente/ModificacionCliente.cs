@@ -90,7 +90,9 @@ namespace PagoAgilFrba.AbmCliente
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
         }
 
         private void query_inicial()
@@ -156,9 +158,8 @@ namespace PagoAgilFrba.AbmCliente
         {
             //PASAMOS POR CONSTRUCTOR EL DNI DEL CLIENTE PARA PODER CONSULTAR SUS DATOS PARA MODIFICARLOS
             Form formularioSiguiente = new AbmCliente.ModificarDatosCliente(DNICliente);
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
         }
       
 

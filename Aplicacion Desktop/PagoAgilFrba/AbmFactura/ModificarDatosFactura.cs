@@ -60,8 +60,9 @@ namespace PagoAgilFrba.AbmFactura
                 var dataReader = cmd.ExecuteReader();
                 
 
-                MessageBox.Show("Se ha dado modificado correctamente", "Todo bien", MessageBoxButtons.OK);
-                this.DialogResult = DialogResult.Cancel;
+                MessageBox.Show("Se ha modificado correctamente", "", MessageBoxButtons.OK);
+              
+                this.Visible = false;
             }
             
         }
@@ -89,7 +90,9 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmFactura.ModificacionFactura();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void ModificarDatosFactura_Load(object sender, EventArgs e)
@@ -132,7 +135,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void levantarFacturas() {
             var cmd = new SqlCommand(
-                   "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA='" + Convert.ToInt32(nroFactura) + "';",
+                   "select * from [SERVOMOTOR].FACTURAS where NUMERO_FACTURA=" + Convert.ToInt32(nroFactura) + ";",
                     Program.conexion()
                 );
 
@@ -145,7 +148,7 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void levantarItemsFactura() {
             var cmd2 = new SqlCommand(
-                   "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA='" + Convert.ToInt32(nroFactura) + "';",
+                   "select  * from [SERVOMOTOR].ITEMS  i where i.NUMERO_FACTURA=" + Convert.ToInt32(nroFactura) + ";",
                     Program.conexion()
                 );
 

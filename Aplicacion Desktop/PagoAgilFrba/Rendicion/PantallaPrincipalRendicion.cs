@@ -45,7 +45,8 @@ namespace PagoAgilFrba.Rendicion
         
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+           
+            this.Visible = false;
         }
 
         private void limpiar_Click(object sender, EventArgs e)
@@ -67,10 +68,8 @@ namespace PagoAgilFrba.Rendicion
               
 
                 MessageBox.Show("Se ha rendido las facturas correctamente", "Todo bien", MessageBoxButtons.OK);
-                Form formularioSiguiente = new MenuPrincipal();
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+              
+                this.Visible = false;
             }
             else {
                 MessageBox.Show("Algun campo esta vacio o ha ingresado un dato de forma incorrecta", "Error en los datos de entrada", MessageBoxButtons.OK);

@@ -202,7 +202,7 @@ namespace PagoAgilFrba.AbmRol
                 }
             }
 
-            MessageBox.Show("Se ha modificado el rol correctamente", "Todo bien", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Se ha modificado el rol correctamente. Los cambios de permisos se veran reflejados en el proximo logeo", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
         }
 

@@ -40,14 +40,14 @@ namespace PagoAgilFrba.AbmSucursal
                       catch (System.Data.SqlClient.SqlException)
                       {
 
-                          MessageBox.Show("El campo codigo postal esta duplicado, vuelva a ingresar otro", "", MessageBoxButtons.OK);
+                          MessageBox.Show("Codigo postal o nombre de sucursal duplicado, vuelva a ingresar otro", "", MessageBoxButtons.OK);
                           return;
                       }
                 MessageBox.Show("Se ha dado de alta correctamente", "Todo bien", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmSucursal.Form1();
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
             }
         }
         private bool todosLosCamposLLenos()
@@ -86,7 +86,10 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmSucursal.Form1();
+
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
     }
 }

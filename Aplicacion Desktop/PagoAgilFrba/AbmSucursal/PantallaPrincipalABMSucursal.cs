@@ -20,9 +20,8 @@ namespace PagoAgilFrba.AbmSucursal
         private void button2_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmSucursal.AltaSucursal();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         
@@ -30,14 +29,14 @@ namespace PagoAgilFrba.AbmSucursal
         private void button1_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+           
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Visible = false;
         }
     }
 }

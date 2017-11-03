@@ -21,9 +21,8 @@ namespace PagoAgilFrba.AbmFactura
         private void ModificarFactura_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(numeroFactura,0);
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void comboBoxNroFacturaModif_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,7 +32,9 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new MenuPrincipal();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void ModificacionFactura_Load(object sender, EventArgs e)

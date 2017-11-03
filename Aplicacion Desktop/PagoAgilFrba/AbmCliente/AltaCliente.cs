@@ -63,7 +63,7 @@ namespace PagoAgilFrba.AbmCliente
                     cmd.Parameters.AddWithValue("@TELEFONO", txtTelCliente.Text);
                     cmd.Parameters.AddWithValue("@CALLE", txtCalleCliente.Text);
                     cmd.Parameters.AddWithValue("@PISO", txtNroPisoCliente.Text);
-                    cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.TextAlign);
+                    cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.Text);
                     cmd.Parameters.AddWithValue("@LOCALIDAD", txtLocalidadCliente.Text);
                     cmd.Parameters.AddWithValue("@FECHANAC", FechaNacCliente.Value);
                     cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalCliente.Text);
@@ -78,8 +78,10 @@ namespace PagoAgilFrba.AbmCliente
                     return;
                 }
                 MessageBox.Show("Se ha dado de alta correctamente al cliente", "", MessageBoxButtons.OK);
-                this.DialogResult = DialogResult.Cancel;
-                this.vaciarTextos();
+                Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
+
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
             }
             
             
@@ -130,7 +132,10 @@ namespace PagoAgilFrba.AbmCliente
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
+
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)

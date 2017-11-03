@@ -16,37 +16,36 @@ namespace PagoAgilFrba.AbmFactura
         string descripcion;
         string montoAnterior;
         string cantidadAnterior;
-        public ModificarItemFactura(string nroFactura,string desc)
+        public ModificarItemFactura(string nroFactura, string desc)
         {
             nroFact = nroFactura;
             descripcion = desc;
             InitializeComponent();
         }
 
-     
+
         private void botonModificarUnItem_Click(object sender, EventArgs e)
         {
             if (!todosLosCamposLLenos() && !validarTipos())
             {
-
+                String monto = txtMontoItem.Text.ToString();
                 var cmd = new SqlCommand(
                      "EXEC [SERVOMOTOR].insertOUpdateEnItems @TIPOOPERACION,@DESCRIPCION,@MONTO,@CANTIDAD,@NUMERO_FACTURA",
                Program.conexion()
                   );
-            cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
-            cmd.Parameters.AddWithValue("@DESCRIPCION", descripcion);
-            cmd.Parameters.AddWithValue("@MONTO", txtMontoItem.Text);
-            cmd.Parameters.AddWithValue("@CANTIDAD", txtCantidadItem.Text);
-            cmd.Parameters.AddWithValue("@NUMERO_FACTURA", nroFact);
-           
+                cmd.Parameters.AddWithValue("@TIPOOPERACION", 0);
+                cmd.Parameters.AddWithValue("@DESCRIPCION", descripcion);
+                cmd.Parameters.AddWithValue("@MONTO", monto);
+                cmd.Parameters.AddWithValue("@CANTIDAD", Convert.ToInt16(txtCantidadItem.Text));
+                cmd.Parameters.AddWithValue("@NUMERO_FACTURA", Convert.ToDecimal(nroFact));
+
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el item : " + descripcion, "", MessageBoxButtons.OK);
                 int subtotalAnterior = (Convert.ToInt32(montoAnterior) * Convert.ToInt32(cantidadAnterior));
                 int subtotalParametro = (Convert.ToInt32(txtMontoItem.Text.ToString()) * Convert.ToInt32(txtCantidadItem.Text.ToString())) - subtotalAnterior;
-                Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFact,subtotalParametro);
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+                Form formularioSiguiente = new AbmFactura.ModificarDatosFactura(nroFact, subtotalParametro);
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
             }
         }
 
@@ -54,7 +53,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             txtMontoItem.Text = "";
             txtCantidadItem.Text = "";
-            
+
         }
 
         private void ModificarItemFactura_Load(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace PagoAgilFrba.AbmFactura
         private void query_inicial()
         {
             var cmd = new SqlCommand(
-                    "select * from [SERVOMOTOR].ITEMS where NUMERO_FACTURA='"+nroFact+"' AND DESCRIPCION='"+descripcion+"';",
+                    "select * from [SERVOMOTOR].ITEMS where NUMERO_FACTURA='" + nroFact + "' AND DESCRIPCION='" + descripcion + "';",
                      Program.conexion()
                  );
 
@@ -89,7 +88,7 @@ namespace PagoAgilFrba.AbmFactura
 
             huboErrores = Validacion.esVacio(txtMontoItem, "Monto", true) || huboErrores;
             huboErrores = Validacion.esVacio(txtCantidadItem, "Cantidad", true) || huboErrores;
-            
+
 
             return huboErrores;
         }
@@ -97,7 +96,7 @@ namespace PagoAgilFrba.AbmFactura
         private bool validarTipos()
         {
             Boolean huboErrores = false;
-            
+
             huboErrores = !Validacion.esNumero(txtCantidadItem, "Cantidad", true) || huboErrores;
 
             huboErrores = !Validacion.esNumero(txtMontoItem, "Monto", true) || huboErrores;
@@ -107,7 +106,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Visible = false;
         }
 
     }

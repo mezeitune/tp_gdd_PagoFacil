@@ -34,7 +34,7 @@ namespace PagoAgilFrba.AbmSucursal
                 cmd.Parameters.AddWithValue("@COD_POSTAL", codigoPostal);
                 cmd.Parameters.AddWithValue("@NOMBRE", txtNombreSucursal.Text);
                 cmd.Parameters.AddWithValue("@DIRECCION", txtDireccionSucursal.Text);
-                cmd.Parameters.AddWithValue("@ESTADO_HABILITACION", 1);
+                cmd.Parameters.AddWithValue("@ESTADO_HABILITACION", Habilitar.Checked ? 1 : 0);
 
 
                 var dataReader = cmd.ExecuteReader();
@@ -42,9 +42,8 @@ namespace PagoAgilFrba.AbmSucursal
                
                 
                 Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
             }
            
         }
@@ -72,7 +71,9 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmSucursal.ModificarDatosSucursal();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void ModificarSucursal_Load(object sender, EventArgs e)
@@ -94,7 +95,7 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 txtNombreSucursal.Text = dataReader["NOMBRE"].ToString();
                 txtDireccionSucursal.Text = dataReader["DIRECCION"].ToString();
-               
+                this.Habilitar.Checked = dataReader["ESTADO_HABILITACION"].Equals(1);
             }
 
 

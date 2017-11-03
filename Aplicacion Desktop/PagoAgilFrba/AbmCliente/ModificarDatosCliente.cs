@@ -45,6 +45,7 @@ namespace PagoAgilFrba.AbmCliente
                 txtDptoCliente.Text = dataReader["DEPTO"].ToString();
                 txtLocalidadCliente.Text = dataReader["LOCALIDAD"].ToString();
                 FechaNacCliente.Value = Convert.ToDateTime(dataReader["FECHA_NACIMIENTO"]);
+                this.Habilitar.Checked = dataReader["ESTADO_HABILITACION"].Equals(1);
             }
            
           
@@ -66,11 +67,11 @@ namespace PagoAgilFrba.AbmCliente
                 cmd.Parameters.AddWithValue("@TELEFONO", txtTelCliente.Text);
                 cmd.Parameters.AddWithValue("@CALLE", txtCalleCliente.Text);
                 cmd.Parameters.AddWithValue("@PISO", txtNroPisoCliente.Text);
-                cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.TextAlign);
+                cmd.Parameters.AddWithValue("@DEPTO", txtDptoCliente.Text);
                 cmd.Parameters.AddWithValue("@LOCALIDAD", txtLocalidadCliente.Text);
                 cmd.Parameters.AddWithValue("@FECHANAC", FechaNacCliente.Value);
                 cmd.Parameters.AddWithValue("@COD_POSTAL", txtCodPostalCliente.Text);
-                cmd.Parameters.AddWithValue("@ESTADO", Habilitar.Checked ? 0:1);
+                cmd.Parameters.AddWithValue("@ESTADO", Habilitar.Checked ? 1 : 0);
                 var dataReader = cmd.ExecuteReader();
                 MessageBox.Show("Se ha modificado correctamente el cliente de DNI: " + DNICliente, "", MessageBoxButtons.OK);
                 Form formularioSiguiente = new AbmCliente.ModificacionClienteee();
@@ -112,8 +113,6 @@ namespace PagoAgilFrba.AbmCliente
             huboErrores = !Validacion.esNumeroDe4(txtCodPostalCliente, "Cod Postal") || huboErrores;
             huboErrores = !Validacion.esNumero(txtTelCliente, "Telefono", true) || huboErrores;
             huboErrores = !Validacion.fechaAnteriorALaDeHoy(FechaNacCliente) || huboErrores;
-            huboErrores = !Validacion.esNumero(txtNroPisoCliente, "Numero Piso", true) || huboErrores;
-            huboErrores = !Validacion.esNumero(txtDptoCliente, "Departamento", true) || huboErrores;
 
             huboErrores = !Validacion.esNumero(txtCodPostalCliente, "Codigo Postal", true) || huboErrores;
            
@@ -135,6 +134,11 @@ namespace PagoAgilFrba.AbmCliente
         {
             Habilitar.Checked = true;
             completarTextos();
+        }
+
+        private void Habilitar_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
       

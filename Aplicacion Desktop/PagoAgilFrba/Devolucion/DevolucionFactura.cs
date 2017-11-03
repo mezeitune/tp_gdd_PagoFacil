@@ -121,10 +121,8 @@ namespace PagoAgilFrba.Devolucion
             this.dataGridView1.Rows.Clear();
             this.limpiarTextos();
             MessageBox.Show("Se ha registrado la devolucion correctamente", "Todo bien", MessageBoxButtons.OK);
-            Form formularioSiguiente = new MenuPrincipal();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            
+            this.Visible = false;
 
 
         }
@@ -156,7 +154,7 @@ namespace PagoAgilFrba.Devolucion
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.Visible = false;
         }
         //EL BOTON "REGISTRAR DEVOLUCION" SE HABILITA CUANDO AL MENOS SE HAYA SELECCIONADO UNA EMPRESA A DEVOLVER
         private void motivosDevolucion_SelectedIndexChanged(object sender, EventArgs e)

@@ -52,9 +52,8 @@ namespace PagoAgilFrba.AbmSucursal
             if (CodPostalSucursal != null)
             {//PASO EL CODIGO POSTAL PARA ASI PODER MODIFICAR LOS DATOS DE UNA SUCURSAL
                 Form formularioSiguiente = new AbmSucursal.ModificarSucursal(CodPostalSucursal);
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+                formularioSiguiente.Visible = true;
+                this.Visible = false;
             }
             else
             {
@@ -111,7 +110,10 @@ namespace PagoAgilFrba.AbmSucursal
 
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new AbmSucursal.Form1();
+
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
 
         private void bajaLogica_Click(object sender, EventArgs e)

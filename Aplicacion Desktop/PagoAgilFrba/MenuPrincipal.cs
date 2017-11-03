@@ -30,17 +30,13 @@ namespace PagoAgilFrba
         {
             
             Form formularioSiguiente = new AbmCliente.PantallaPrincipalABMCliente();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Show();
         }
 
         private void botonABMSucursal_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmSucursal.Form1();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Show();
         }
 
         private void botonABMEmpresa_Click(object sender, EventArgs e)
@@ -54,9 +50,7 @@ namespace PagoAgilFrba
         private void botonABMFactura_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new AbmFactura.PantallaPrincipalABMFactura();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Show();
         }
 
         private void botonABMRol_Click(object sender, EventArgs e)
@@ -77,19 +71,20 @@ namespace PagoAgilFrba
 
         private void botonRegistrarPago_Click(object sender, EventArgs e)
         {
-            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(Sucursal,Rol); 
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            Form formularioSiguiente = new RegistroPago.PantallaPrincipalRegistroPagoFacturas(Sucursal,Rol);
+            formularioSiguiente.Show();
             
         }
 
         private void botonRendicion_Click(object sender, EventArgs e)
         {
             Form formularioSiguiente = new Rendicion.PantallaPrincipalRendicion();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
+            formularioSiguiente.Show();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form formularioSiguiente = new Devolucion.DevolucionFactura();
+            formularioSiguiente.Show();
         }
         //ACA VERIFICAMOS QUE TIPO DE ROL ES, SI COBRADOR O ADMINISTRADOR
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -119,13 +114,7 @@ namespace PagoAgilFrba
             diccionarioTodasLasFunc.Add(8,botonRendicion);
             diccionarioTodasLasFunc.Add(9, botonListadoEstadistico);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form formularioSiguiente = new Devolucion.DevolucionFactura();
-            this.Hide();
-            formularioSiguiente.ShowDialog();
-            this.Show();
-        }
+       
         //DESHABLIITAMOS LOS BOTONES QUE QUEDARON EN LA LISTA DONDE HICIMOS LA RESTA
         private void deshabilitarBotones(List<int> botonesABajar)
         {

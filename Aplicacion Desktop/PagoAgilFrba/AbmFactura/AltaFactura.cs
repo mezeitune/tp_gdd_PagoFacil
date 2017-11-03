@@ -84,11 +84,7 @@ namespace PagoAgilFrba.AbmFactura
                 this.limpiarTextos();
                 dataGridItems.ClearSelection();
 
-                Form formularioSiguiente = new MenuPrincipal();
-                this.DialogResult = DialogResult.Cancel;
-                this.Hide();
-                formularioSiguiente.ShowDialog();
-                this.Show();
+                this.Visible = false;
             }
             else
             {
@@ -148,6 +144,7 @@ namespace PagoAgilFrba.AbmFactura
             huboErrores = !Validacion.esNumeroMayorA0(txtTotalFactura, "total factura", true) || huboErrores;
             huboErrores = !Validacion.fechaPosteriorALaDeHoy(FechaVencFact)|| huboErrores;
             huboErrores = !Validacion.fechaAnteriorALaDeHoy(FechaAltaFac) || huboErrores;
+            huboErrores = !Validacion.estaEntreLimites(txtNroFactura,0000001,9999999,false,"numero factura") || huboErrores;
             return huboErrores;
         }
         
@@ -205,7 +202,9 @@ namespace PagoAgilFrba.AbmFactura
         }
         private void volverALaPaginaAnterior_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            Form formularioSiguiente = new MenuPrincipal();
+            formularioSiguiente.Visible = true;
+            this.Visible = false;
         }
     }
        

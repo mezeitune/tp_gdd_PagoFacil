@@ -34,6 +34,7 @@ namespace PagoAgilFrba.AbmFactura
 
                 MessageBox.Show("Se ha guardado un item correctamente en la factura", "Todo bien", MessageBoxButtons.OK);
                 this.limpiarTextos();
+                agregarItems.Enabled = true;
             }
             else
             {
